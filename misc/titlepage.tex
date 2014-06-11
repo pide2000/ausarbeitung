@@ -1,0 +1,101 @@
+% coordinates for the background shape on the titlepage
+\newcommand{\diameter}{20}
+%\newcommand{\xone}{-40}
+\newcommand{\xone}{-20}
+\newcommand{\xtwo}{480}
+\newcommand{\yone}{50}
+\newcommand{\ytwo}{-710}
+
+
+\begin{titlepage}
+
+% [ Rahmen ]
+\begin{tikzpicture}[overlay]
+\draw[color=gray]  
+ 		 (\xone pt, \yone pt)
+  -- (\xtwo pt, \yone pt)
+ arc (90:0:\diameter pt) 
+  -- (\xtwo + \diameter pt , \ytwo pt) 
+	-- (\xone + \diameter pt , \ytwo pt)
+ arc (270:180:\diameter pt)
+	-- (\xone pt, \yone pt);
+\end{tikzpicture}
+
+% [ Logo ]
+%\begin{textblock}{10}[0,0](1.7,1.125)
+\begin{textblock}{10}[0,0](2.0,1.125)
+	\includegraphics[width=.3\textwidth]{KITLogo_RGB.pdf}
+\end{textblock}
+
+  
+  \begin{center}
+    \begin{tabular}{r|l}
+%	\includegraphics[width=.3\textwidth]{KITLogo_RGB.pdf}
+%      \includegraphics[width=1.5cm]{BILDER/iprlogo} 
+& 
+      \begin{minipage}{8cm} 
+        \begin{large} \myinstitute \\
+          \\
+          \myprofessor \\
+          \\
+          \myfaculty \\
+        \end{large}
+      \end{minipage} \\
+      % \hline
+%      \multicolumn{2}{l}{
+%       \begin{minipage}{7.5cm}
+%          \vspace{.3cm}
+%          \makebox{ \large 
+%            Universit\"at Karlsruhe,
+%            Fakult\"at f\"ur Informatik} \\
+%        \end{minipage}
+%      } \\
+      \begin{minipage}{5cm}
+        \begin{flushright}
+          \vspace{4cm}
+          \myseminar \\
+          \myseminardate
+        \end{flushright}
+      \end{minipage}
+      &\\
+      & 
+      \begin{minipage}{8cm}
+        \vspace{-0.7cm}
+        
+        \begin{center}
+          \begin{minipage}{8cm}
+            \begin{flushleft}
+              
+                \mytitle\\[1cm]
+                \myname \\[.5cm]
+                
+              
+              Mat.Nr.: \mymanr
+              \vspace{3cm}
+            \end{flushleft}
+          \end{minipage}
+        \end{center}
+        \vspace{4cm}
+      \end{minipage}  \\
+      & Referent:  \\
+       & Betreuer: \myadvisor
+    \end{tabular}
+  \end{center}
+
+\begin{textblock}{10}[0,0](1.75,15.365)
+\tiny{ 
+KIT -- Universit\"at des Landes Baden-W\"urttemberg und nationales Forschungszentrum der Helmholz-Gesellschaft
+}
+\end{textblock}
+
+\begin{textblock}{10}[0,0](12,15.36)
+\normalsize{
+	\textbf{www.kit.edu} 
+}
+\end{textblock}
+
+  
+\end{titlepage}
+\clearpage
+
+

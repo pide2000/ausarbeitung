@@ -1,0 +1,1191 @@
+\documentclass[a4paper,oneside,12pt,titlepage,bibliography=totoc]{scrartcl}
+
+%==============================================================================
+
+% Packages
+\usepackage[left=3cm,right=4cm,top=3cm,bottom=6cm]{geometry}
+\usepackage[english,ngerman]{babel}
+%\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+\usepackage{array}
+\usepackage{hyperref}
+\usepackage{nameref}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% \begin{algorithm}
+% \caption{<your caption for this algorithm>}
+% \label{<your label for references later in your document>}
+% \begin{algorithmic}
+% \STATE $S \leftarrow 0$
+% \end{algorithmic}
+% \end{algorithm}
+
+\lstset{ %
+language=Python,                % choose the language of the code
+basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+stepnumber=1,                   % the step between two line-numbers. If it is 1 each line will be numbered
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=false,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,           % adds a frame around the code
+tabsize=2,          % sets default tabsize to 2 spaces
+captionpos=b,           % sets the caption-position to bottom
+breaklines=true,        % sets automatic line breaking
+breakatwhitespace=false,    % sets if automatic breaks should only happen at whitespace
+escapeinside={\%*}{*)}          % if you want to add a comment within your code
+}
+
+%%%%% \begin{lstlisting}[caption=Beispielcode]{Name}
+%%%%% print "hello world";
+%%%%% \end{lstlisting}
+
+
+%
+%%% Trennungsregeln für das gesamte Dokument.
+%
+\hyphenation{da-bei}
+\hyphenation{ge-schlos-sen-er}
+\hyphenation{ent-spre-chen}
+\hyphenation{lie-gen}
+\hyphenation{Ge-sichts-ver-fol-gung}
+\hyphenation{Re-prä-sen-tat-ion}
+\hyphenation{pe-ri-phe-ren}
+\hyphenation{an-ge-nom-me-ne}
+\hyphenation{ge-speich-ert}
+\hyphenation{ü-ber-nimmt}
+\hyphenation{spei-chert}
+\hyphenation{Schwan-kun-gen}
+\hyphenation{Be-we-gungs-lo-sig-keit}
+\hyphenation{be-reits}
+\hyphenation{eu-kli-di-sche}
+\hyphenation{ver-gleichs-wei-se}
+\hyphenation{Im-ple-men-tier-un-gen}
+\hyphenation{Haupt-auf-ga-be}
+\hyphenation{dy-na-misch-es}
+\hyphenation{ge-ne-rie-ren}
+\hyphenation{aus-schließ-lich}
+\hyphenation{auf-wei-sen}
+\hyphenation{ge-ne-rie-ren}
+\hyphenation{Zu-sam-men-set-zung}
+\hyphenation{di-gi-ta-len}
+\hyphenation{Mensch}
+\hyphenation{Farb-ver-ständ-nis}
+\hyphenation{Farb-wer-te}
+\hyphenation{HSV-Farbraum}
+\hyphenation{Schät-zung}
+\hyphenation{kon-kur-rier-en-de}
+\hyphenation{Ite-ra-ti-on}
+\hyphenation{ge-samt-en}
+\hyphenation{wis-sen-schaft-lich-en}
+\hyphenation{di-gi-tal-en}
+\hyphenation{Ma-schi-ne}
+\hyphenation{Mo-dell}
+\hyphenation{Be-wer-tungs-funk-tion}
+\hyphenation{wel-ches}
+\hyphenation{ganz-heit-liche}
+\hyphenation{Be-ob-ach-tungs-me-cha-nis-mus}
+\hyphenation{rgb-Farb-raum}
+\hyphenation{Greif-be-we-gung-en}
+\hyphenation{gauß-verteilt}
+\hyphenation{auf-zu-füh-ren}
+\hyphenation{hu-ma-no-i-den}
+\hyphenation{O-ber-kör-per-Ver-fol-gung}
+\hyphenation{ge-tes-te-ten}
+\hyphenation{re-prä-sen-tiert}
+\hyphenation{schlech-te-res}
+\hyphenation{be-kann-ten}
+\hyphenation{hoch-wer-ti-ge}
+\hyphenation{ent-sprech-en-den}
+\hyphenation{pro-blem-spe-zi-fisch-en}
+\hyphenation{ein-ge-gang-en}
+\hyphenation{ver-glei-che}
+\hyphenation{Farb-zu-sam-men-setz-ung}
+\hyphenation{Farb-raum}
+\hyphenation{be-wer-ten}
+\hyphenation{glo-ba-le}
+\hyphenation{Be-wer-tung-en}
+\hyphenation{Kon-fi-gu-ra-ti-ons-räu-men}
+\hyphenation{Film-in-dus-trie}
+\hyphenation{durch-zu-füh-ren}
+\hyphenation{aus-ge-stat-et}
+\hyphenation{igno-rie-ren}
+\hyphenation{be-zeich-net}
+\hyphenation{Ver-bin-dung}
+\hyphenation{aus-zu-füh-ren}
+\hyphenation{In-for-ma-ti-on-en}
+\hyphenation{ent-wi-ckelt}
+\hyphenation{Brenn-weite}
+\hyphenation{Hin-ter-grund-ele-mente}
+\hyphenation{ei-ner}
+\hyphenation{be-stimmt}
+\hyphenation{geo-me-trisch-e}
+\hyphenation{be-schrie-ben}
+\hyphenation{be-schrei-ben}
+\hyphenation{be-stimmt}
+\hyphenation{be-schreibt}
+\hyphenation{Wahr-schein-lich-keits-funk-ti-on-en}
+\hyphenation{Wahr-schin-lich-keits-funk-ti-on}
+\hyphenation{mar-ker-lo-sen}
+\hyphenation{Re-chen-leis-tung}
+\hyphenation{Ste-re-o-ka-me-ra}
+\hyphenation{In-te-res-se}
+\hyphenation{Schwell-wer-tes}
+\hyphenation{Kopf-po-si-ti-on-en}
+\hyphenation{un-ter-such-ten}
+\hyphenation{hie-rar-chi-sche}
+\hyphenation{ge-gen-sei-tig}
+\hyphenation{fin-det}
+\hyphenation{be-trach-tet}
+\hyphenation{Be-ob-ach-tungs-sche-ma}
+\hyphenation{Ro-bo-ters}
+\hyphenation{er-mög-lich-en}
+\hyphenation{grei-fen-de}
+\hyphenation{lin-ker}
+\hyphenation{ge-spei-chert}
+\hyphenation{drei-di-men-sio-na-len}
+\hyphenation{Be-fin-den}
+\hyphenation{dar-ge-stellt}
+\hyphenation{müs-sen}
+\hyphenation{be-stimmt}
+\hyphenation{Si-tu-a-tio-nen}
+\hyphenation{des-halb}
+\hyphenation{letz-ten}
+\hyphenation{Zu-fals-wer-tes}
+\hyphenation{mö-gli-che}
+\hyphenation{er-wei-tert}
+\hyphenation{durch-schnitt-lich}
+\hyphenation{Ro-bo-ter-kopf}
+\hyphenation{schluss-end-lich}
+\hyphenation{Farb-wahr-schein-lich-keits-ver-tei-lung}
+
+\usepackage[colorinlistoftodos, textwidth=3cm, shadow, textsize = footnotesize]{todonotes}
+\setlength{\marginparwidth}{3cm}
+
+\usepackage{calc}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{tabularx}
+\usepackage{babelbib} 
+\usepackage{titleref}
+
+\addtokomafont{caption}{\scriptsize} 
+
+
+%
+%%% Trennungsregeln für das gesamte Dokument.
+%
+\hyphenation{}
+
+
+% Config
+\graphicspath{{./Bilder/}}
+
+%==============================================================================
+
+% ---> Anpassen <----
+\newcommand{\myname}{Peter Michael Bolch}
+\newcommand{\mymanr}{1345211}
+\newcommand{\mytitle}{Entwicklung eines Beobachtungsschemas für die Erfassung von Greifbewegungen mittels Stereokameras}
+\newcommand{\mysubmissiondate}{2013}
+\newcommand{\myadvisor}{Martin Do}
+\newcommand{\myprofessor}{Lehrstuhl \\ Prof. Dr.-Ing. Tamim Asfour}
+\newcommand{\myinstitute}{Institut für Anthropomatik\\ Hochperformante Humanoide\\ Technologien (H$^2$T)}
+\newcommand{\myfaculty}{Fakultät für Informatik}
+\newcommand{\myseminar}{Studienarbeit}
+\newcommand{\myseminardate}{2013}
+
+%==============================================================================
+
+% Macros
+%\newcommand{\}[1]{\textcolor{red}{Ausarbeiten: \textit{#1}}}
+\newcommand{\name}[1]{\textit{#1}}
+
+ \renewcommand{\floatpagefraction}{.7}
+
+
+%==============================================================================
+
+\begin{document}
+\newgeometry{left=2cm,top=2cm}
+\pagestyle{empty}
+\include{titlepage}		% Titelseiten Datei einbinden
+\cleardoublepage
+\restoregeometry
+\vspace*{32\baselineskip}
+\hbox to \textwidth{\hrulefill}
+\par
+\hfill \newline
+Ich erkläre hiermit, dass ich die vorliegende Studienarbeit selbständig verfasst und
+keine anderen als die angegebenen Quellen und Hilfsmittel verwendet habe.
+\hfill \newline \newline
+Karlsruhe, \mysubmissiondate
+\hfill
+\myname
+
+\clearpage
+
+
+\pagestyle{headings}
+\pagenumbering{roman}	% römische Ziffern für das Inhaltsverzeichnis
+\setcounter{page}{1}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{center}
+%\begin{minipage}{10cm}
+%\em
+%{\bf Kurzfassung:} 
+%\end{minipage}
+%\end{center}
+%\vspace{3cm}
+
+\tableofcontents
+
+\clearpage
+%\pagestyle{empty}
+\pagenumbering{arabic} % ab hier: Seitennummerierung in arabischen Ziffern
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
+
+\section{Einleitung}
+
+\subsection{Motivation und Hintergründe}
+\label{motivationUndHintergruende}
+Humanoide Roboter sollen Menschen im Alltag helfen. Dies erfordert eine schnelle und unkomplizierte Interaktion zwischen Mensch und Roboter. Die Interaktion sollte sich möglichst natürlich gestalten, das bedeutet der Mensch sollte mit dem Roboter in einer ihm bekannten, einfachen Art und Weise interagieren können. Dies gilt auch für die Erweiterung der Fähigkeiten eines humanoiden Roboters. Es wäre einfacher, wenn der Roboter durch Beobachtung lernen könnte, statt die Fähigkeiten aufwändig programmieren zu müssen. Beim Programmieren durch Vormachen (PdV) kann der Mensch in einer ihm vertrauten Weise dem Roboter neue Fähigkeiten beibringen. 
+
+Beim Menschen wird dieses Verhalten auch als Lernen durch Imitation bezeichnet. Aus neurologischer Sicht ist für das Lernen durch Imitation eine Verbindung zwischen sensorischem System und motorischem System erforderlich, sodass die sensorische Aufnahme auf das motorische System abgebildet werden kann. Mit dieser Abbildung soll ermöglicht werden, die beobachtete Aktion auszuführen und somit zu imitieren \cite{Schaal1999}. 
+
+In der Robotik müssen zwischen sensorischer Aufnahme und Imitation eine Reihe weiterer Aufgaben bewältigt werden, zum Beispiel die Modellierung und Repräsentation der beobachteten Aktion, um diese zu speichern und reproduzieren zu können. Aus diesen Repräsentationen sollen die Bewegungen rekonstruiert werden können. Aber auch die Adaption einer erlernten Aktion auf neue Situationen muss ermöglicht werden. Um nun diese Aufgaben erfüllen zu können, ist die Qualität der erfassten sensorischen Daten von großer Bedeutung. Umso detaillierter und genauer die Daten sind, umso mehr Informationen können aus ihnen gewonnen werden, was zu genaueren und detaillierteren Modellen führt. Ein gutes Beobachtungsschema kann hierbei die Qualität der Daten positiv beeinflussen und ist deshalb ein wichtiger Bestandteil für das Programmieren durch Vormachen. Dieses Beobachtungsschema wird benötigt, um mithilfe der zur Verfügung stehenden Sensoren die benötigten Informationen zu sammeln. 
+
+In vielen Alltagsaufgaben sind Greifbewegungen von elementarer Bedeutung und deshalb von besonderem Interesse. Wichtige Informationen über eine Greifbewegung liefern beispielsweise die Position der Hände und der Finger. Um Modelle der Greifbewegung generieren zu können, müssen hinreichend gute Sensordaten während der Beobachtung gesammelt werden. Ein Beobachtungsschema welches die Sensoren dabei zielgerichtet einsetzt, erhöht dabei die Qualität der Sensordaten hinsichtlich der in ihr enthaltenen Informationen erhöhen.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Problembeschreibung}
+
+Die vorliegende Arbeit befasst sich mit der Verbesserung der markerlosen Beobachtungsfähigkeit des humanoiden Roboters ARMAR-IIIb  \cite{Asfour2006}. Es soll eine ganzheitliche, zusammenhängende Beobachtung menschlicher Greifbewegungen durch den humanoiden Roboter ermöglicht werden. 
+
+Sowohl die Anfahrtsbewegung des Oberkörpers, als auch die der Hand, sollen vor und während der Greifbewegung beobachtet werden. Dabei sollen während der Greifbewegung möglichst detaillierte Bilder der Hand erzeugt werden. Der humanoide Roboter ARMAR-IIIb ist mit dem Karlsruher Kopf nach \cite{Asfour2008} ausgestattet. In diesem Roboterkopf sind 4 Kameras verbaut. Es sind jeweils zwei Kameras für das periphere Sehen und zwei Kameras für das foveale Sehen verbaut, diese können aktiv ausgerichtet werden. Die Kameras für das foveale Sehen erzeugen detailliertere Bilder, weisen aber ein geringeres Sichtfeld auf. Wohingegen die peripheren Kameras ein weiteres Sichtfeld zulassen, aber qualitativ schlechtere Bilder liefern. Es soll ein Beobachtungsschema entwickelt und implementiert werden, welches es ermöglicht, eine Greifbewegung mittels der Kameras ganzheitlich zu beobachten. Dabei soll die Beobachtung durch den humanoiden Roboter ARMAR IIIb in einen zusammenhängenden Prozess integriert werden. 
+
+Die Hauptaufgabe besteht darin ein Schema zu entwickeln welches, vorhandene Verfahren zur Oberkörper-Verfolgung und Hand-Verfolgung derart zusammenführt, dass eine Greifbewegung beobachtet werden kann.  
+
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Grundlagen}
+\label{Grundlagen}
+In diesem Abschnitt werden die Grundlagen vermittelt, welche die Basis für die Entwicklung des Beobachtungsmechanismus darstellen. Dabei werden zuerst die verwendeten Sensoren des humanoiden Roboters ARMAR-IIIb vorgestellt. Danach wird auf einige allgemeine Verfahren der Bildverarbeitung eingegangen. Der größte Teil dieses Abschnitts beschäftigt sich mit der Untersuchung aktueller Verfahren zur Oberkörper- und  Objekt-Verfolgung in bewegten Bildern. Hierbei werden die verschiedenen Verfahren kurz vorgestellt und untersucht, um diese auf ihre Eignung für die zu lösende Aufgabe zu prüfen.  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Sensoren}
+\label{sensoren}
+
+Zur Beobachtung der Umgebung und somit der Greifbewegung werden ausschließlich die im Roboterkopf verbauten Kameras verwendet. Der humanoide Roboter ARMAR-IIIb besitzt 4 Kameras. Die Kameras liefern Bilder der Größe 640x480 Pixel, bei einer Bildwiederholfrequenz von 30 Bildern pro Sekunde. Die beiden peripheren Kameras besitzen Objektive mit einer kleinen Brennweite, was in einem weiteren Bildwinkel resultiert. Die fovealen Kameras haben eine große Brennweite. Ihr Bildwinkel ist schmaler im Vergleich zu denen der peripheren Kameras. Dies bedeutet, dass die fovealen Kameras einen kleineren Bereich der Szene auf die gleiche Sensorfläche abbilden. Im Vergleich zu den peripheren Kameras liefern die fovealen Kameras dadurch ein detaillierteres Bild. In Abbildung \ref{fovPerVergl} werden die Bilder der fovealen und peripheren Kameras direkt verglichen.
+
+Jeweils zwei Kameras bilden ein Stereokamerasystem und somit können mit Hilfe der Triangulation aus den gelieferten Bildern auch Tiefendaten gewonnen werden \cite{Azad2007}. Durch die Möglichkeit den Roboterkopf zu bewegen, handelt es sich bei dem Aufbau um ein aktives Stereokamerasystem, wodurch die Verfolgung bewegter Objekte ermöglicht wird. In Abbildung \ref{armarEyes} ist der Roboterkopf mit den vier Kameras zu sehen.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{fovealPeriphVergleich.PNG}
+\caption{Vergleich, links eine Aufnahme der fovealen Kamera, rechts der peripheren Kamera}
+\label{fovPerVergl}
+\end{figure}
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.8]{armarEyes.pdf}
+\caption{Periphere und foveale Kameras des humanoiden Roboters ARMAR-IIIb}
+\label{armarEyes}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\subsection{Farbsegmentierung}\label{colorSegmentation}
+Bei einer Segmentierung werden die Bildpunkte eines digitalen Bildes auf vorher definierte Eigenschaften untersucht. Bildpunkte, welche die selben Eigenschaften aufweisen, werden zu einer Gruppe zusammengefasst. Indem sämtliche Bildpunkte, welche nicht die gewünschte Eigenschaft haben, verworfen werden, kann ein Bild generiert werden, welches ausschließlich Elemente enthält, die für die weitere Bildanalyse von Bedeutung sind \cite{Jaehne2005} \cite{Shapiro2001}. Die Verfahren zur Segmentierung lassen sich in pixelbasierte, kantenbasierte und regionenbasierte Verfahren einordnen \cite{Jaehne2005}. 
+
+In der vorliegenden Arbeit sind die Hände und der Kopf für die weitere Bildanalyse von Bedeutung. Ein Bild in dem nur noch die Hände und der Kopf als Regionen vorhanden sind, kann durch eine Segmentierung anhand der Hautfarbe erreicht werden. Zur Segmentierung nach Hautfarbe wird eine pixelbasierte Segmetierungsmethode angewendet.  
+
+Sei $D(p)$ eine Funktion welche ein Pixel $p=(x_p,y_p)$ auf Schwarz oder Weiß abbildet. $D(p)$ ist definiert durch: 
+\[  
+D(p) = \left\{ 
+  \begin{array}{l l}
+    white & \quad \text{if color(p)==skin color}\\
+    black & \quad \text{else}\\
+  \end{array} \right. . 
+  \] 
+Die Funktion $D(p)$ bildet also ein Pixel, in Abhängigkeit seiner Farbzusammensetzung, nach Schwarz oder Weiß ab. Beim Anwenden der Funktion $D(p)$ auf jedes Pixel in einem Bild werden die Pixel, die der Hautfarbe entsprechen, weiß dargestellt. Alle anderen Pixel werden schwarz dargestellt. Hintergrundelemente, wie beispielsweise Möbel, die das Bild unruhig werden lassen und die weitere Verarbeitung stören könnten, werden dadurch eliminiert. Eine Segmentierung nach der Hautfarbe kann genutzt werden, um markerlose Verfahren zur Verfolgung zu ermöglichen. In \cite{Argyros2004} wird eine Hautfarbensegmentierung zur Vorverarbeitung verwendet. Dadurch sind nur noch die Elemente im Bild, welche Hautfarbe aufweisen. Eine umfassende Übersicht über Methoden zur Farbsegmentierung bietet die Arbeit \cite{Skarbek1994}. 
+
+Betrachtet man ein durch $D(p)$ segmentiertes Bild, fallen schnell die Fragmente im Hintergrund auf, welche fälschlicherweise als Hautfarbe identifiziert wurden (siehe Abbildung \ref{erodeAndDilate}). Diese Fragmente weisen die farblichen Eigenschaften von Haut auf, gehören allerdings nicht zur Hand oder dem Kopf. Die Flächen dieser Fragmente sind im Vergleich zu Händen oder dem Kopf klein. Um die fälschlicherweise als Hautfarbe identifizierten Fragmente zu beseitigen, wird das Bild zuerst \textit{erodiert} und anschließend \textit{dilatiert}. Die Flächen werden durch die \textit{Erodierung} kleiner oder verschwinden ganz. Die \textit{Dilation} verbindet verbleibende größere Flächen und füllt eventuell entstandene Lücken zwischen diesen wieder auf. In Abbildung \ref{erodeAndDilate} sind die Effekte von \textit{Erodierung} und \textit{Dilation} dargestellt. 
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=1.6]{erodeAndDilate.pdf}
+\caption{Links ohne Erodieren und Dilatieren, rechts mit Erodieren und Dilatieren}
+\label{erodeAndDilate}
+\end{figure}
+
+\subsubsection{Farbräume}  
+Für das Durchführen einer Farbsegmentierung ist es wichtig die Farbzusammensetzung der Haut im genutzten Farbraum festzulegen. Die Wahl dieser Werte hängt von mehreren Faktoren ab. Die Erscheinung der menschlichen Hautfarbe in einem digitalen Bild variiert durch nicht, oder wenig beeinflussbare Faktoren. Nach \cite{Kakumanu2007}  gibt es folgende Faktoren, welche das Erscheinungsbild der Hautfarbe ändern können: 
+\begin{itemize}
+\item Beleuchtung: In Abhängigkeit der Lichtquelle oder des Belichtungswinkels kann sich die Hautfarbe verändern, dies wird auch das \textit{Farbkonstanz-Problem} genannt. 
+\item Kamera-Charakteristik: zwei Aufnahmen von verschiedenen Kameras einer identischen Szene können in unterschiedlichen Hautfarben resultieren. 
+\item Ethnische Herkunft: Je nach Herkunft und ethnischer Zugehörigkeit kann die Hautfarbe variieren.
+\item Individuelle Charakteristik: Alter, Geschlecht oder verschiedene Körperteile haben einen Einfluss auf die Erscheinung der Hautfarbe. 
+\end{itemize}
+Des Weiteren ist zu beachten, welches Farbmodell zur Kodierung der Farbe verwendet wird. Daraus resultiert der Wertebereich und welche Werte konkret angepasst werden müssen, um Hautfarbe in einem digitalen Bild zuverlässig erkennen zu können. Das gebräuchlichste Farbmodell ist der \textit{rgb}-Farbraum. Dies ist ein additiver Farbraum, der jede Farbe aus den drei Grundfarben Rot, Grün und Blau zusammensetzt. $r, g$ und $b$ werden als Farbkanäle bezeichnet. Diesen Farbkanälen wird jeweils ein Wert zugeordnet, der den Farbanteil der jeweiligen Farbe angibt. Im Fall eines 8bit \textit{rgb}-Bildes liegt der Wert im Intervall [0,255]. Im Normalisierten rgb-Farbraum gilt: $ R+G+B=1 $. \begin{equation}
+ R = \frac{r}{r+g+b} , G = \frac{g}{r+g+b}, B = \frac{b}{r+g+b} \end{equation} 
+ Wobei die Großbuchstaben den normalisierten Werten entsprechen. Der \textit{rgb}-Farb\-raum besitzt keinen gesonderten Luminanz-Kanal. Die Änderung der Luminanz muss durch eine Kombination der Farbkanäle $r,g$ und $b$ erzeugt werden. Deshalb resultiert eine Änderung der Luminanz oft in einer Änderung aller drei Farbwerte. Zudem ändern sich die Farbwerte bei Belichtungsänderung nicht-proportional und sind stark voneinander abhängig.  Die starke Abhängigkeit und das Fehlen eines Luminanz-Kanals führen dazu, dass die Hautfarbe im \textit{rgb}-Farbraum nur schwer über Intervalle von $r, g$ und $b$ angegeben werden können \cite{Azad2009}. Der Mensch kann eine Farbe die aus den drei Grundfarben rot, gelb und blau gemischt ist nicht wieder in diese Bestandteile zerlegen, also die einzelnen Komponenten identifizieren, somit ist es ihm nicht intuitiv möglich eine Farbe im rgb-Farbraum zu definieren \cite{Helmholtz1852}. Das intuitive Farbempfinden legt eine Einteilung in Farbton, Sättigung und Helligkeit nahe. 
+ 
+ Beim HSV-Farbraum setzen sich die Farben durch Hue (Farbton), Saturation (Farbsättigung) und Value (Hellwert) zusammen, was dem intuitiven Farbverständnis des Menschen entgegenkommt. Es erleichtert somit die Eingabe der Farbwerte. Deshalb wird dieser Farbraum oft genutzt, wenn es darauf ankommt Farben durch Benutzer zu definieren. Es lassen sich durch die Unabhängigkeit von H, S und V die Toleranzen für die Erkennung bestimmter Farben angeben. In Abbildung \ref{hsvColorSegmantation} ist eine Applikaton zur Eingabe von Farbwerten zu sehen. In der vorliegenden Arbeit wird die Farbsegmentierung im HSV-Farbraum angewendet. Da das erhaltene Kamerabild nicht im HSV-Farbraum vorliegt wird dieses zuerst in den HSV-Farbraum transformiert und anschließend wird die Farbsegmentierung durchgeführt. Die Berechnung des HSV-Bildes ist rechentechnisch wenig aufwändig. Die Transformation kann beispielsweise mit dem Algorithmus nach \cite{Smith1978} durchgeführt werden. 
+ \begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.3]{hsvColorSegmentation.png}
+\caption{Color Segmentation Application aus den Integrating Vision Toolkit(IVT) Beispielen \cite{Azad2009}}
+\label{hsvColorSegmantation}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Verfahren zur Objektverfolgung in Videosequenzen}
+
+\subsubsection{Überblick} In \cite{Kalman1960} wird eine Sammlung von Gleichungen veröffentlicht, welche es ermöglichen in einer zeitdiskreten Reihe fehlerbehafteter Messungen den tatsächlichen Systemzustand zu schätzen. Basierend auf diesen Formeln, dem so genannten \textit{Kalman-Filter}, wurden Verfahren entwickelt, welche eine Verfolgung von Form und Position in einer Videosequenz ermöglichen \cite{Dickmanns1988} \cite{Gennery1992}. 
+
+Das so genannte \textit{Partikel-Filter} wurde 1998 von Isard und Blake als \textit{Condensation Algorithm} vorgestellt \cite{Isard1998}. Ziel der Arbeit von Isard und Blake war es, in einer visuell überladenen Umgebung Objekte anhand ihrer Form verfolgen zu können und dabei Unzulänglichkeiten des \textit{Kalman-Filters} im Umgang mit multimodalen Dichtefunktionen zu eliminieren. 
+
+\subsubsection{\textit{Kalman-Filter}}  Beim \textit{Kalman-Filter} wird zuerst ein Systemmodell aufgestellt, welches die Eigenschaften des betrachteten Systems modelliert. Das Verfahren läuft dann in drei Schritten ab. Zuerst wird eine Vorhersage über den Systemzustand gemacht. Diese basiert auf dem vorhergehenden Systemzustand, repräsentiert durch das Systemmodell. Anschließend wird eine Messung des tatsächlichen Systemzustands durchgeführt. Zuletzt wird mit Hilfe dieser Messung das Systemmodell aktualisiert. 
+
+In Abbildung \ref{kalmanDensity} ist der Ablauf des \textit{Kalman-Filters} abgebildet. Der Vektor $x$ beinhaltet alle Variablen zur Bestimmung des Systemmodellzustandes. Die abgetragene Dichtefunktion $p(x)$ ist die Wahrscheinlichkeit, dass der Systemzustands $x$ zutrifft und der realen Welt entspricht. Die Variable $z$ liefert den Wert der Messung und somit den realen Systemzustand. Beim \textit{Kalman-Filter} ist die Dichtefunktion gaussverteilt. In visuell überladenen Umgebungen sind die Messungen allerdings nicht unbedingt eindeutig, was zu mehreren konkurrierenden Messungen des aktuellen Systemzustands führen kann. In Abbildung \ref{multimodal} wird der Fall in einer visuell überladenen Umgebung dargestellt. Hierbei existieren mehrere konkurrierende Beobachtungen über den aktuellen Systemzustand, was zu einer multimodalen Dichtefunktion führt. Der klassische \textit{Kalman-Filter} kann multimodale Dichtefunktionen $p(x)$ allerdings nicht verarbeiten \cite{Isard1998}.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.4]{kalman.png}
+\caption{\textit{Kalman-Filter} im Fall einer Gaußschen Verteilung der Wahrscheinlichkeiten: Im ersten Schritt wird der neue Zustand geschätzt, in einem zweiten wird durch einen Rauschterm Ungenauigkeit simuliert, in einem dritten Schritt wird der Systemzustand durch eine Messung korrigiert. \protect\\ Quelle: \cite{Isard1998}}
+\label{kalmanDensity}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.4]{multimodal.png}
+\caption{Allgemeiner Fall in visuell überladenen Umgebungen. Die Dichtefunktion ist multimodal. Quelle: \cite{Isard1998}}
+\label{multimodal}
+\end{figure}
+
+
+
+\subsubsection{Das \textit{Partikel-Filter} nach \cite{Isard1998}}
+\label{partikelFilter}
+Das \textit{Partikel-Filter} greift die Grundidee des \textit{Kalman-Filters} auf. Isard und Blake zeigen in ihrer Arbeit ein Verfahren, um auch mit multimodalen Dichtefunktionen umgehen zu können. Dadurch wird die Verfolgung eines Objekts in visuell überladenen Umgebungen ermöglicht.  
+\paragraph{Modellbildung}
+Es wird ein Modell des zu verfolgenden Objekts erstellt, welches dessen Eigenschaften abbildet. Unter Eigenschaften werden sowohl geometrische Eigenschaften, wie auch dynamische Eigenschaften zusammengefasst.  Mit Hilfe eines Vektors $x$ wird der aktuelle Zustand des Modells beschrieben. Der Vektor $x$ enthält dabei alle relevanten Variablen, um das Objekt zu beschreiben. Das eingesetzte Modell soll speziell genug sein, um effektiv Verwechslungen zu anderen, ähnlichen Objekten zu vermeiden, aber es soll allgemein genug sein um die verschiedenen Zustände des Objekts abbilden zu können. Es sollte sowohl die Form als auch die möglichen Bewegungen des Objekts abbilden können.
+\paragraph{Stochastischer Rahmen}
+Die Messungen die während einer Videosequenz entstehen sind zeitdiskret. Jedes Bild der Videosequenz stellt einen Zeitschritt $t \rightarrow t+1$ dar. Daraus ergibt sich eine Menge von Modellzuständen $X$ wobei $X_t=\{x_1,x_2,.....,x_t\}$ alle Modellzustände bis zum Zeitpunkt $t$ beinhaltet. $Z$ stellt die Messung der Bildmerkmale dar. Die Menge der erfassten Bildmerkmale wird mit $Z_t=\{z_1,z_2,....,z_t\}$ bezeichnet und stellt die Messung aller Bildmerkmale bis zum Zeitpunkt $t$ dar.
+Es gilt die Markov Annahme, womit der aktuelle Modellzustand ausschließlich vom vorhergehenden Zustand abhängt.
+\begin{equation}
+p(x_t|X_{t-1})=p(x_t|x_{t-1}).
+\end{equation}
+Ebenfalls wird angenommen, dass die Messungen $z_t$ zeitunabhängig sind.
+\begin{equation}
+p(Z_t|X_t)=\prod_{i=1}^tp(z_i|x_i).
+\end{equation}
+Diese Annahme erlaubt es eine statische Evaluierungsfunktion anzuwenden, welche für einen gegebenen Modellzustand $x$ und eine gegebene Messung $z$ eine Wahrscheinlichkeit ermittelt.
+Die a posteriori Wahrscheinlichkeit $p(x_t|Z_t)$ ist im allgemeinen multimodal und ergibt sich durch:
+\begin{equation}
+p(x_t|Z_t)=kp(z_t|x_t)p(x_t|Z_{t-1})
+\end{equation}
+mit
+\begin{equation}
+p(x_t|Z_{t-1})=\int_{x_{t-1}}p(x_t|x_{t-1})p(x_{t-1}|Z_{t-1})
+\end{equation}
+$p(x_t|Z_{t-1})$ ist die a priori Wahrscheinlichkeit des Systemzustands. Die Komponente $p(x_t|x_{t-1})$ wird durch die dynamischen Eigenschaften des Modells bestimmt und als deterministischer Drift bezeichnet. Die Komponente $p(x_{t-1}|Z_{t-1})$ ist die a posteriori Wahrscheinlichkeit aus $t-1$ und spiegelt die stochastische Diffusion wieder. 
+
+$p(x_t|Z_t)$ stellt die Wahrscheinlichkeit nach der reaktiven Messung dar und wird auch als Propagierungsregel bezeichnet. Die Komponente $p(z_t|x_t)$ beschreibt die Messung zum Zeitpunkt $t$. $k$ ist eine Normalisierungskonstante, welche nicht von $x_t$ abhängt. 
+Somit ist der stochastische Rahmen für den Schritt von $x_{t-1}$ nach $x_t$ gegeben.
+\paragraph{\textit{Factored Sampling}}
+Der zentrale Unterschied zwischen dem \textit{Kalman-Filter} und dem \textit{Partikel-Filter} ist die Form in der die Wahrscheinlichkeitsfunktion repräsentiert wird. Die Berechnung der Wahrscheinlichkeitsfunktionen in geschlossener Form ist sehr rechenintensiv und wenig effizient, deshalb nutzen Isard und Blake das so genannte \textit{Factored Sampling}. Damit wird die Wahrscheinlichkeitsfunktion angenähert.
+
+Ein Sample ist dabei ein möglicher Zustand des Modells $x$ und wird mit $s^{(i)}$ bezeichnet. Es wird nun zuerst mit Hilfe einer a priori Wahrscheinlichkeit $p(x)$ eine Menge $S= \{s^{(1)},s^{(2)},....,s^{(N)}\}$ an Samples zufällig erzeugt. Jedem Element aus $S$ wird nun eine Gewichtung $\pi_i$ zugeordnet mit 
+\begin{equation}
+\pi_i=\frac{p_z(z|s^{(i)})}{\sum_{j=1}^Np_z(z|s^{(j)})}.
+\end{equation} 
+Das zugeordnete Gewicht $\pi_i$ ist proportional zum Wert der beobachteten Dichtefunktion $p(z|x=s^{(i)})$. Somit ist die Menge $S$ eine Annäherung an die a posteriori Wahrscheinlichkeit $p(x|z)$, denn die Gewichte spiegeln die Werte der Wahrscheinlichkeit $p(z|x=s^{(i)})$ wieder.
+
+Hierdurch wird ermöglicht eine multimodale Dichtefunktion zu propagieren und dies mit einem vertretbaren Rechenaufwand. Es müssen lediglich die Samples und ihre zugehörigen Gewichte betrachtet werden. Dabei wird die Approximation umso genauer, umso mehr Samples erzeugt werden. In Abbildung \ref{factored} wird das \textit{Factored Sampling} bildlich dargestellt. Die Zentren der Punkte repräsentieren die zufälligen Samples. Die Fläche stellt $pi_i$ dar und ist proportional zur a posteriori Wahrscheinlichkeit $p(z|x=s^n)$ \cite{Isard1998}.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{factoredSampling.pdf}
+\caption{\textit{Factored Sampling} im eindimensionalen Fall.  
+\protect\\ Quelle: \cite{Isard1998}}
+\label{factored}
+\end{figure}
+
+\paragraph{Der Algorithmus}
+Das \textit{Partikel-Filter} nutzt \textit{Factored Sampling} um Wahrscheinlichkeitsfunktionen zu approximieren. Isard Und Blake erweitern dieses, um es auf Bildern einer Sequenz einsetzen zu können. Dabei ist die a priori Wahrscheinlichkeit $p(x_{t-1}|z_{t-1})$ die a posteriori Wahrscheinlichkeit für $t$ und wird durch eine Menge von $N$ Tupeln aus Sample und zugehöriger Gewichtung repräsentiert: 
+\begin{equation}
+S_{t-1}=\{(s_{t-1}^{(1)},\pi_{t-1}^{(1)}),(s_{t-1}^{(2)},\pi_{t-1}^{(2)}),.......,(s_{t-1}^{(N)},\pi_{t-1}^{(N)})\}.
+\end{equation}
+Diese Menge approximiert die a priori Wahrscheinlichkeit $p(x_{t-1}|z_{t-1})$ aus der vorherigen Iteration. Das Ziel ist es nun aus $S_{t-1}$ und der Messung des aktuellen Zustandes $z_t$ die Wahrscheinlichkeit $p(x_t|z_t)$ zu schätzen und diese in Form von $S_t$ als Menge von Tupeln darzustellen.
+
+Die im Folgenden aufgeführten Schritte basieren auf der Idee von Kalman aus \cite{Kalman1960}. Wie auch beim \textit{Kalman-Filter} kann der Ablauf beim \textit{Partikel-Filter} in drei Phasen eingeteilt werden:
+\begin{enumerate}
+\item Vorhersage
+\begin{enumerate}
+\item Vorhersage über den Systemzustand
+\item Deterministischer Drift
+\item Diffusion
+\end{enumerate}
+\item Messung
+\begin{enumerate}
+\item Gemessener Systemzustand
+\item Reaktiver Effekt
+\end{enumerate}
+\item Verarbeitung
+\begin{enumerate}
+\item Objektmodell Aktualisierung
+\end{enumerate}
+\end{enumerate}  
+
+In einem ersten Schritt werden aus $S_{t-1}$ mit Wahrscheinlichkeit $\pi_{t-1}^{(i)}$ und $i\in{1,....,N}$ zufällig $N$ Samples $s_{ t}^{\prime(i)}$ erzeugt. Es werden Samples $s_{t-1}^{(i)}$ mit höherem Gewicht öfter gewählt und Samples mit niedrigen Gewichten nur selten, oder gänzlich ignoriert. Im nächsten Schritt werden die Samples $s_t^{\prime(i)}$ einem deterministischen Drift unterzogen, welcher die dynamischen Eigenschaften des Modells widerspiegelt. Nun folgt noch die Diffusion bei der die Samples in einem vorgegebene Rahmen zufällig verschoben werden. 
+
+Es folgt der reaktive Schritt, bei dem die Messung $z_t$ berücksichtigt wird. Dabei wird nun mit der Wahrscheinlichkeit $p(z_t|x_t=s_t^{(n)})$ jedem Sample aus $S'_t$ eine Gewichtung $\pi_t^(i)$ zugewiesen. Die resultierende Menge $S_t$ approximiert die a posteriori Wahrscheinlichkeitsfunktion $p(x_{t}|z_{t})$, welche als Eingabe für die nächste Iteration $t+1$ dient. 
+
+Die Bewertung kann anhand einer statischen Bewertungsfunktion über verschiedener Kriterien berechnet werden. Deutscher führt in \cite{Deutscher2000} Kriterien zur Konstruktion von Bewertungsfunktionen an. Die Gewichtung anhand von Bewertungsfunktionen zu realisieren hat Vorteile in Bezug auf die Laufzeit, denn in jedem Zeitschritt und für jedes Partikel muss die Gewichtung berechnet werden. Einfache Bewertungsfunktionen sind schneller zu berechnen als $p(z_t|x_t=s_t^{(n)})$ in geschlossener Form \cite{Deutscher2000}.
+
+Dieser Prozess ist in Abbildung \ref{particleF} dargestellt. 
+Abschließend wird anhand der Erkenntnisse aus den vorangegangenen Schritten das Objektmodell einer Aktualisierung unterzogen, dies ist in Abbildung \ref{particleF} nicht dargestellt. Das Objektmodell repräsentiert den geschätzten Systemzustand. Der Name \textit{Partikel-Filter} kommt von den benutzten Samples, die allgemein als Partikel bezeichnet werden.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{particleFilter.png}
+\caption{Visuelle Darstellung einer Iteration des \textit{Partikel-Filters}. Quelle: \cite{Isard1998}}
+\label{particleF}
+\end{figure}
+
+
+
+
+
+\subsection{Verfahren zur Oberkörper-Verfolgung}
+\label{skinBlobTracker}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsubsection{Überblick}
+Im wesentlichen kann man bei der Verfolgung des Oberkörpers oder des gesamten Körpers zwischen markerbasierten und markerlosen Verfahren unterscheiden. Bei markerbasierten Verfahren wird ein Marker verfolgt, der zuvor angebracht wurde. Dies hat den Vorteil, dass die Form, Farbe und unter Umständen die Position des Markers bekannt sind und deshalb eine eindeutige Zuordnung und Unterscheidung zur Umgebung gewährleistet wird. Die markerbasierte Ganzkörper-Verfolgung wird spätestens seit der Einführung des \textit{Vicon} Systems kommerziell genutzt. Markerbasierte Ganzkörper-Verfolgung wird in wissenschaftlichen Bereichen ebenso genutzt, wie in der Filmindustrie oder der Computerspiel Branche. Die Computerspiele-Branche und die Filmindustrie sind daran interessiert durch die Verfolgung natürliche Bewegungen für digitale Modelle zu erzeugen. In wissenschaftlichen Bereichen wird die markerbasierte Ganzkörper-Verfolgung in den verschiedensten Disziplinen eingesetzt. Die Notwendigkeit Marker anzubringen und die oft teure Hard- und Software für markerbasierte Systeme schränken das Einsatzgebiet allerdings ein. 
+
+In den letzten Jahren haben sich viele Gruppen mit Methoden zur markerlosen Oberkörper- oder Ganzkörper-Verfolgung beschäftigt. Ziel dieser Bemühungen ist es, die markerlose Oberkörper- oder Ganzkörper-Verfolgung zu ermöglichen und durch geringere Anforderungen mehr Einsatzgebiete zu erschließen. Begünstigt wurde dies durch die immer geringeren Kosten für Rechenleistung und Hardware im Allgemeinen. Einige der Ansätze nutzen mehrere Kameras oder zusätzliche 3D Sensoren, um eine Verfolgung umzusetzen \cite{Kakadiaris2000}, \cite{Knoop2006}. 
+
+Bei den 3D Sensoren sei besonders auf die Sensoren der Firma \textit{Primesense }hingewiesen \cite{Primesense}. Die \textit{Primesense} Technologie macht es möglich mit Standardkomponenten wie \textit{cmos} Sensoren und einer Infrarot Lichtquelle Tiefendaten zu erfassen. Das System zeigt dabei ein sehr robustes Verhalten und eine zuverlässige Verfolgung menschlicher Bewegungen \cite{Zhang2012}. Vor deren Einführung waren 3D Sensoren, die ähnliche Eigenschaften aufwiesen sehr teuer. Hier sei auf die 3D Sensoren der Firma \textit{pmd technologies} hingewiesen, welche das Verfahren der Puls-Modulations-Detektion nutzen um 3D Daten zu erzeugen \cite{moller2005robust}.  
+
+Einige Verfahren zur Verfolgung erfordern spezielle Umgebungen in denen die Kameras zum Beispiel fest und in bestimmten Konfigurationen installiert sind  \cite{Laurentini1994}. Eine markerlose Verfolgung mit Hilfe einer Stereokamera, bei dem lediglich zwei kalibrierte Kameras benötigt werden, erschließt der Ganzkörper-Verfolgung noch mehr Anwendungsbereiche \cite{Deutscher2000}, \cite{Fontmarty2007}, \cite{Bandera2008},  \cite{Deutscher2000}.
+
+\subsubsection{Markerbasierte Verfahren}
+
+Es wird hier nur kurz auf das wohl bekannteste System zur markerbasierten Ganzkörper-Verfolgung eingegangen. Die Einschränkungen auf eine Stereokamera und die Anforderung einer möglichst natürlichen Präsentation der Greifbewegung durch einen Demonstrator, lassen eine markerbasierte Lösung in der vorliegenden Arbeit nicht zu. 
+
+Die Firma \textit{Vicon} bietet Systeme an, welche es ermöglichen menschliche Bewegungen zu erfassen. Die Bewegungen werden anhand von Markern erfasst, welche auf dem Körper des Probanden aufgebracht werden. Durch diesen markerbasierten Ansatz können beliebige Punkte auf dem Körper verfolgt werden. Beim \textit{Vicon} System wird mit Hilfe von Infrarot LEDs die beobachtete Szene illuminiert, die Marker reflektieren das Infrarot Licht. Die installierten Kameras sind mit Infrarot Filtern ausgestattet, sodass in der aufgenommenen Szene ausschließlich die reflektierenden Marker zu sehen sind. Um ein lückenloses Verfolgen zu gewährleisten und eine dreidimensionale Position der Marker zu erhalten, werden im Regelfall mehrere Kameras im Raum verteilt, sodass alle Marker ständig von mindestens zwei Kameras erfasst werden. Mit Hilfe der Triangulation kann aus den Aufnahmen die Markerposition im Raum rekonstruiert werden. Um feingranulare menschliche Manipulationsbewegungen mit Hilfe dieses Systems zu erfassen, können Körperteile von besonderem Interesse, zum Beispiel die Hand, mit mehreren Markern versehen werden (siehe Abbildung \ref{viconHand}). Wenn zusätzlich der Oberkörper mit Markern versehen wird, kann eine ganzheitliche Beobachtung einer Manipulationsbewegung realisiert werden, welche Oberkörper, Arme und Finger einbezieht.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.3]{usc3.jpg}
+\caption{Komplexer Aufbau eines \textit{Vicon} Systems. Quelle: http://www.eng.augburn.edu}
+\label{viconMarker}
+\end{figure}
+
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.8]{viconHand.jpg}
+\caption{a) Hand mit Markern, b) Modell mit Markerpositionen  \protect\\ Quelle: \cite{Braido2004}}
+\label{viconHand}
+\end{figure}
+
+
+\subsubsection{Markerlose Verfahren}
+\label{markerloseBodyTrack}
+In \cite{Corazza2010} wird ein Verfahren zur Ganzkörper-Verfolgung vorgeschlagen, bei welchem 4 Kameras zum Einsatz kommen. Mit Hilfe der 4 Kameras ist es möglich eine \textit{visuelle Hülle} eines Subjekts zu erzeugen. Das Konzept der \textit{visuellen Hülle} wird in \cite{Laurentini1994} genauer erläutert. Vor der eigentlichen Verfolgung muss mithilfe eines Laserscanners ein Modell des beobachteten Subjekts erzeugt werden. Über einen \textit{Iterative-Closest-Point-Algorithmus} wird dieses Modell in die erzeugte visuelle Hülle eingepasst und ermöglicht somit eine Verfolgung. Dieses Verfahren wurde unter anderem auf dem \textit{Human Eva II Dataset} erfolgreich \footnote{http://vision.cs.brown.edu/humaneva/download2.html} getestet. 
+
+In \cite{Bandera2008} kommt eine Stereokamera zum Einsatz, um eine Oberkörper-Verfolgung zu realisieren. Initial wird der Kopf der zu verfolgenden Person in der Szene gesucht und es wird ein Tiefenbild der gesamten Szene erzeugt. Die Entfernung $d_h$ des detektierten Kopfes kann genutzt werden, um im Tiefenbild eine zusammenhängende Region zu finden. Dabei wird mittels eines Schwellwertes $th$ für die Tiefe eine zusammenhängende Region gesucht. Es werden alle Pixel $d_i$ untersucht. Wird dabei die Bedingung $d_i < d_h+th$ und $d_i > d_h-th $ nicht erfüllt werden diese Pixel verworfen. Wird die Bedingung erfüllt bleibt das Pixel mit den Tiefendaten im resultierenden Bild erhalten. In diesem Tiefenbild wird nun, ausgehend vom Kopf, eine zusammenhängende Region gesucht. Diese Region entspricht dann dem Körper des Subjekts. Nun werden innerhalb dieser Region Hautfarben-Pixel gesucht, um die Hände und den Kopf zu detektieren. Anhand des Tiefenbildes und der Hand- und Kopfpostionen wird nun in einer Datenbank nach ähnlichen Posen gesucht und jeder aufgenommenen Pose eine entsprechende Pose aus der Datenbank zugeordnet. Die Datenbank wurde zuvor angelegt und deckt viele natürliche Posen ab. 
+
+In \cite{Li2010} wird ein Verfahren zur Ganzkörper-Verfolgung vorgeschlagen, dass ebenfalls eine Stereokamera nutzt. Um den Demonstrator zu identifizieren wird eine Hintergrundsubtraktion durchgeführt. Zur Verfolgung durch ein \textit{Par\-tikel-Fil\-ter} wird ein kinematisches Modell des menschlichen Körpers mit insgesamt 25 Freiheitsgraden genutzt. Dabei wird das \textit{Partitioned-Particle-Filter} nach \cite{MacCormick2000} verwendet. Beim \textit{Partitioned-Particle-Filter} wird ein hochdimensionales Partikel in mehrere Partitionen aufgeteilt, womit eine kombinatorische Explosion vermieden wird. Diese Aufteilung ermöglicht es die Partikel für einzelne Partitionen effizient zu berechnen. Folgende Einteilung wird vorgeschlagen: Torso, Kopf, zwei Oberarme, zwei Unterarme, zwei Oberschenkel, zwei Unterschenkel. Auf jede dieser Partitionen wird nun ein \textit{Partikel-Filter} angewendet. Folgende Merkmale werden zur Gewichtung der Partikel herangezogen: Distanzen, Farbe, Kanten und Tiefendaten. Die Merkmale der Partikel werden mit den gemessenen Merkmalen aus den Bildern verglichen, analysiert und entsprechend gewichtet. Die skalierten Gewichtungen werden in der finalen Gewichtsfunktion pro Partikel zusammengetragen: 
+\begin{equation}
+\omega_{li} = \omega_{edge}^\alpha * \omega_{depth}^\beta * \omega_{color}^\gamma * \omega_{blob}^\delta *. \omega_{ground}^\theta
+\end{equation}
+
+$ \omega_{li} $ ist das l-te Partikel der i-ten Partition. $\omega_{x}$ sind die berechneten Bewertungen der Merkmale. $ \alpha, \beta, \gamma, \delta, \theta $ sind Gewichtsfaktoren im Intervall [0,1]. Dieses Verfahren wurde von den Autoren auf der \textit{CMU MOCAP} Datenbank \footnote{http://mocap.cs.cmu.edu/} getestet. In der Datenbank sind keine Tiefenbilder vorhanden, diese wurden künstlich erzeugt. 
+
+In \cite{Deutscher2001} wird ein Verfahren zur Ganzkörperverfolgung vorgestellt. Das Verfahren basiert auf einer Erweiterung des \textit{Partikel-Filter} und wird \textit{Annealed-Particle-Filtering} genannt. Für das \textit{Partikel-Filter} wird hierbei ein Ganzkörpermodell mit 29 Freiheitsgraden genutzt. Des Weiteren wird ein Kantenbild und ein Silhouettenbild zur Bewertung erzeugt. Im Folgenden sind die Bewertungsfunktionen aufgeführt.
+Die Bewertungsfunktion über die Kanten $f_{edge}(X,Z)$ lautet:
+\begin{equation}
+f_{edge}(X,Z)=\frac{1}{N}\sum_{i=1}{N}(1-p_i^{edge}(X,Z))^2.
+\end{equation} 
+$X$ ist dabei die Modellkonfiguration und $Z$ das Kantenbild. Die untersuchten Merkmale sind Punkte entlang der Kontur des Modells. $ p_i^{edge}(X,Z) $ liefert einen hohen Wert, wenn das korrespondierende Pixel im Kantenbild ebenfalls eine Kante darstellt, ansonsten einen niedrigen Wert. Somit wird allen Punkten auf den Kanten des Modells ein Wert zugewiesen, welcher angibt, ob sich dieser Punkt auf einer Kante im Kantenbild befindet oder nicht.
+Die Bewertungsfunktion $f_{surface}$ bewertet Punkte auf der Modelloberfläche:
+\begin{equation}
+f_{surface}(X,Z)=\frac{1}{N}\sum_{i=1}{N}(1-p_i^{surface}(X,Z))^2.
+\end{equation} 
+$ p_i^{surface}(X,Z) $ gibt den Wert des Pixels aus dem Silhouettenbild an, dabei werden alle Punkte des Modells betrachtet die nicht auf Kanten liegen. Beide Formeln entsprechen der \textit{Summe der Fehlerquadrate}. 
+Um diese beiden Bewertungsfunktionen zu fusionieren wird folgende Formel vorgeschlagen, welche die Gesamtwahrscheinlichkeit für ein gegebenes Modell X repräsentiert:
+\begin{equation}
+p(X|Z)=exp\{f_{edge}(X,Z)+f_{surface}(X,Z)\}.
+\end{equation}
+In hochdimensionalen Konfigurationsräumen kann es in der Bewertungsfunktion des \textit{Partikel-Filters} zu vielen lokalen Maxima kommen. Diese lokalen Maxima können das Auffinden des globalen Maxima erschweren oder sogar vollständig verhindern. In Abbildung \ref{localMax} ist dieser Sachverhalt dargestellt.
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.7]{weighitingMaxima.png}
+\caption{Selbst mit einer hohen Anzahl an Partikeln ist das globale Maxima nicht eindeutig bestimmt. Quelle: \cite{Deutscher2000}}
+\label{localMax}
+\end{figure}
+Das Grundproblem besteht darin, dass die Approximation der Bewertungsfunktion durch lokale Maxima verfälscht werden kann. Selbst bei einer hohen Anzahl an Partikeln kann dieses Verhalten beobachtet werden. Um dieses Problem zu beheben wird deshalb ein Gradientenverfahen integriert. Anstatt die Partikel, wie beim normalen \textit{Partikel-Filter}, durch eine einzige Funktion bewerten zu lassen, wird die Bewertungsfunktion über mehrere sogenannte Ebenen angewandt. 
+
+Auf der ersten Ebene ist die Bewertungsfunktion stark geglättet, auf jeder weiteren Ebene nähert sich die Funktion der ursprünglichen Bewertungsfunktion an, bis sie schließlich der ursprünglichen Funktion entspricht. Dieses Verfahren wird \textit{Annealing} genannt und im Folgenden genauer erläutert. Zu Beginn wird eine Menge von ungewichteten Samples $S$ eingegeben, danach werden für jede Ebene folgende Schritte durchgeführt:
+\begin{enumerate}
+\item Jedes Sample $ s^{(i)}$ in der Menge $S$ erhält entsprechend der geglätteten Gewichtungsfunktion der Ebene eine Gewichtung $ \pi $.
+\item Wie beim \textit{Partikel-Filter} werden zufällig aus den Samples in $S$ neue, ungewichtete Samples $ s^{\prime i} $ erzeugt. 
+\item Die Partikel $ s^{\prime i} $ werden durch einen Rauschterm gestreut.
+\item Die ungewichteten Partikel $ s^{\prime i} $ dienen als Eingabe für die nächste Ebene. 
+\end{enumerate}
+Dieser Prozess ist in Abbildung \ref{annealing} dargestellt. In Schritt 1 erhalten Samples in der Nähe des globalen Maximums eine höhere Bewertung als andere. Beim Erzeugen der neuen Samples in Schritt zwei werden deshalb um das globale Maximum mehr Samples erzeugt. Damit tendieren die Samples hin zum globalen Maximum und sind unempfindlicher gegen lokale Maxima. Durch das schrittweise Anpassen der geglätteten Bewertungsfunktion an die ursprüngliche Bewertungsfunktion ist kein Verlust der Genauigkeit zu erwarten. 
+  
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{annealing.png}
+\caption{annealing über 4 Ebenen. Quelle: \cite{Deutscher2000}}
+\label{annealing}
+\end{figure}
+  
+In \cite{Azad2008} wird ein weiteres Verfahren zur markerlosen \textit{Oberkörper-Verfol\-gung} mit Hilfe einer Stereokamera vorgeschlagen. Das Verfahren nutzt ebenfalls das \textit{Partikel-Filter}. Als Modell für das \textit{Partikel-Filter} wird ein kinematisches Oberkörpermodell mit 14 Freiheitsgraden genutzt, dieses wird in \cite{Azad2004} vorgestellt. 
+Aus der aktuellen Szene wird ein Gradientenbild erstellt welches die Kontur des Oberkörpers repräsentiert. Zusätzlich wird ein nach Hautfarbe segmentiertes Bild erzeugt. Diese Bilder dienen zur Messung der Bildmerkmale. 
+Es werden zwei Bewertungsfunktionen zur Evaluierung der Partikel angegeben. Mit Hilfe des Gradientenbildes werden die Kanten des Modells bewertet. Es wird eine Menge $P={p_1,......,p_n}$ von Punkten entlang der Modellkanten des Partikels in die Bildebene projiziert. Die Farbwerte des Gradientenbildes an diesen Positionen werden aufsummiert. Folgende Evaluierungsfunktion wird vorgeschlagen:
+\begin{equation}
+\omega_g(I_g,P)=1-\frac{1}{|P|}\sum_{i=1}^{|P|}I_g(p_i).
+\end{equation}
+Dabei ist $I_g$ das Gradientenbild und $P$ sind die projizierten 2D Punkte des Partikels entlang der Modell-Kontur. $I_g(p_i)$ liefert den Gradientenwert an der Stelle $p_i$. Die entsprechende Wahrscheinlichkeitsfunktion lautet:
+\begin{equation}
+p_g(I_g|s) \propto exp\{ -\frac{1}{2\sigma_g^2}\omega_g(I_g,f_g(s)) \}.
+\end{equation}
+$ f_g(s) $ berechnet die Menge der 2D Punkte $P$ entlang der Kante des Modells $s$. Eine zweite Funktion berechnet die \textit{Summe der Fehlerquadrate} zwischen der Messung und einer Anzahl ausgewählter Modellpunkte. Folgende Formel wird zur Bewertung vorgeschlagen:
+\begin{equation}
+\omega_d(I_d,P)=\sum_{i=1}^{|P|}|p_i-p_i'(I_d)|^2.
+\end{equation} 
+$P=\{p_i\}$ entspricht einer Menge von Modellpunkten, welche in die Bildebene transformiert wurden. $ p_i'(I_d) $ berechnet die zugehörigen gemessenen Punkte aus der Szene \cite{Azad2006}.
+Die Wahrscheinlichkeitsfunktion lautet hier:
+\begin{equation}
+p_d(I_d|s) \propto exp\{ -\frac{1}{2\sigma_d^2}\omega_d(I_d,f_d(s)) \}.
+\end{equation}
+Die Funktion $ f_d(s) $ transformiert die Koordinaten des Modells $s$ in die Bildkoordinaten. Wie auch in \cite{Deutscher2000} wird das Modell partitioniert. Kopf und Arme stellen hierbei Partitionen dar. Im \textit{Partikel-Filter} für die Arme werden zusätzlich die Schulterpositionen betrachtet. Durch die Modellierung der Schulterposition wird eine genauere Modellausrichtung erreicht. Die hierarchische Suche nach \cite{Deutscher2000} wird eingesetzt, um den Suchraum einzuschränken. Dabei wird der Kopf als Wurzel für eine kinematische Kette genutzt, um die möglichen Merkmalsräume für die Arme einzuschränken. Um die Gewichtung der Arme zu berechnen, müssen die Distanz- und die Kanten-Bewertung des jeweiligen Partikels fusioniert werden. Dies geschieht durch die \textit{Prioritized-Fusion}. Dadurch wird vermieden, dass sich die beiden Bewertungen gegenseitig beeinflussen. Für die Stichproben neuer Partikel wird \textit{adaptives Rauschen} angewandt. Dabei wird proportional zum Gesamtfehler jeweils für die Bewertung der Kanten und der Distanz ein Rauschterm hinzugefügt.
+ 
+\subsubsection{Fazit}
+Es stehen viele Möglichkeiten der markerlosen und markerbasierten Ganz- und Oberkörper-Verfolgung zur Verfügung. Von Sytemen wie beispielsweise dem \textit{Vicon}, welches schon seit geraumer Zeit erfolgreich kommerziell vertrieben und genutzt wird, bis zu 3D Sensoren von \textit{Primesense}. Es wurden bereits viele verschiedene Systeme zur Ganzkörper- und Oberkörper-Verfolgung entwickelt. Bei der Verfolgung unter Zuhilfenahme einer Stereokamera hat sich in den letzten Jahren ein Trend hin zu \textit{Partikel-Filter} basierten Verfahren mit problemspezifischen Verbesserungen abgezeichnet. Dieser Trend ist wohl nicht zuletzt der Tatsache geschuldet, dass das \textit{Partikel-Filter} in zahllosen Anwendungsgebieten Einzug gehalten hat und umfangreich untersucht wurde. 
+
+Zur Umsetzung der vorliegenden Arbeit wurde die Oberkörper-Verfolgung nach \cite{Azad2008} gewählt. Die Wahl fiel aus mehreren Gründen auf dieses Verfahren. Das Verfahren welches in dieser Arbeit vorgestellt wird erfüllt alle Anforderungen, um eine Oberkörper-Verfolgung mit Hilfe einer Stereokamera umzusetzen. Einerseits wurden die Anforderungen zum Einsatz auf dem humanoiden Roboter ARMAR-IIIb in diesem Verfahren berücksichtigt. Andererseits existiert eine Implementierung des Verfahrens basierend auf dem IVT Framework, welches auf dem humanoiden Roboter ARMAR-IIIb zum Einsatz kommt.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Verfahren zur Hand-Verfolgung}
+
+\subsubsection{Überblick}
+Bei der Hand-Verfolgung werden oft Handschuhe eingesetzt, welche mit entsprechenden Sensoren, zur Detektion der Hand- und Finger-Bewegungen, ausgestattet sind. Einen Überblick über solche Systeme bietet \cite{Sturman1994}. Aber auch markerbasierte Verfahren wie das \textit{Vicon} System kann die Aufgabe der Hand-Verfolgung erfüllen, dabei wird die Hand mit mehreren Markern versehen. Eine weitere Art einer markerbasierten Hand-Verfolgung ist es, einen Farbhandschuh einzusetzen. Dieser Handschuh ist derart eingefärbt, dass beispielsweise Handrücken, Handfläche und Finger unterschieden werden können \cite{Wang2009}. Durch Farbsegmentierung können alle Teile der Hand eindeutig identifiziert werden und durch einen Vergleich mit einer zuvor angelegten Datenbank, kann die Handpose bestimmt werden. Auch im Bereich der Hand-Verfolgung ist eine markerlose Alternative erstrebenswert. Die markerlose Hand-Verfolgung kann beispielsweise eingesetzt werden, um eine einfache intuitive Mensch-Computer-Interaktion zu realisieren. 
+
+\subsubsection{Markerlose Verfahren}
+1998 wurde von Bradski et al in \cite{Bradski1998} ein System zur Gesichtsverfolgung vorgeschlagen. Es eignet sich aber auch zur Hand-Verfolgung, da die angenommene Näherung der Gesichts-Kontur auf die Hand übertragen werden kann. Zur Extraktion der benötigten Bildmerkmale wird ein Farbwahrscheinlichkeitsbild über die Hautfarbe erzeugt. In diesem Bild erhält jedes Pixel einen Wert, der die Wahrscheinlichkeit widerspiegelt, dass dieses Pixel Hautfarben ist. Gesucht ist in diesem Bild eine zusammenhängende Region welche Hautfarben-Pixel enthält. Um diese zusammenhängende Region zu erhalten wird ein Bounding-Box in Position und Größe derart angepasst, dass schlussendlich alle Hautfarben-Pixel einer Region innerhalb dieser Bounding-Box liegen. Dies geschieht mit Hilfe des sogenannten \textit{CAM\-SHIFT-Al\-go\-rith\-mus}, welcher eine Erweiterung des \textit{Mean-Shift-Algorithmus} darstellt \cite{Fukunaga1975}. Der Algorithmus findet in einer gegebenen Wahrscheinlichkeitsfunktion das Maximum und wurde für statische Wahrscheinlichkeitsverteilungen konzipiert. Der \textit{CAM\-SHIFT-Al\-go\-rith\-mus} erweitert den \textit{Mean-Shift-Algorithmus}, um ihn zur Verfolgung bewegter Objekten einsetzen zu können, die auch in ihrer Größe variieren. Dabei wird die Größe der Bounding-Box dynamisch angepasst. Die verwendete Ellipse berechnet sich durch Bild-Momente, welche aus der Farbwahrscheinlichkeitsverteilung innerhalb der Bunding-Box gewonnen werden. Um eine Verfolgung zu ermöglichen, wird die letzte Position der Bounding-Box im nächsten Bild als initiale Position für die neue Bounding-Box genutzt. Durch das erneute Ausführen des \textit{Mean-Shift-Algorithmus} wird die Position und Größe der Bounding-Box wieder derart angepasst, dass alle Hautfarben-Pixel in ihm liegen. Basierend darauf wird die neue Ellipse berechnet. 
+
+In \cite{Shan2004} wird ein Verfahren zur Hand-Verfolgung mit Hilfe eines \textit{Par\-tikel-Fil\-ter} vorgestellt. Als Modellierung der Hand wird hier ein Rechteck verwendet. Des weiteren wird ein eingelerntes dynamisches Modell verwendet, um die Prädikation im Vor\-her\-sa\-ge-Schritt des \textit{Partikel-Filters} zu verbessern. Die Bildmerkmale werden aus einem nach Hautfarbe segmentierten Bild und einem Bewegungsbild generiert. Als weiteren Schritt wird im \textit{Partikel-Filter} der \textit{Mean-Shift-Algorithmus} eingebettet. Nach der Bewertung der Partikel werden diese durch den \textit{Mean-Shift-Algorithmus} in Richtung zum nächsten lokalen Maximum verschoben. In Abbildung \ref{msepf} ist ein Schritt des \textit{Mean-Shift-Embedded-Particle-Filter} illustriert.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=1.0]{msepf.png}
+\caption{\textit{Partikel-Filter} mit eingebettetem Mean-Shift Schritt  \cite{Shan2004}}
+\label{msepf}
+\end{figure}
+
+
+In der Arbeit \cite{Argyros2004} wird eine generelle Verfolgung von Hautfarben Regionen in einer Videosequenz vorgestellt. Es wird hier offline, durch einen Lernalgorithmus, die Hautfarbe bestimmt. Dadurch wird eine robuste Segmentierung nach Hautfarbe ermöglicht, die auch bei wechselnden Lichtverhältnissen sehr gute Ergebnisse liefert. Zuerst wird ein nach Hautfarbe segmentiertes Bild erzeugt. Jede hautfarbene Region erhält eine Kennzeichnung $i$ und es wird eine Ellipse $h_i(c,a,b,\beta)$ berechnet, welche das hautfarbene Objekt repräsentiert (siehe Abbildung \ref{paramHandEllipse}). Die Ellipsen werden über Kovarianzen berechnet und liegen im allgemeinen innerhalb der Hautfarben Region. Anhand dieser Ellipsen wird für jedes Hautfarben-Pixel eine Objekthypothese berechnet. Dabei wird durch eine Distanzfunktion $D(p,h_i)$ berechnet, ob sich ein Pixel in, auf oder außerhalb einer Ellipse befindet.
+\begin{equation}
+D(p,h_i)=\sqrt{{v}{v}}.
+\end{equation}
+mit
+\begin{equation}
+{v}=\begin{bmatrix}cos(\beta) & -sin(\beta)\\sin(\beta) & cos(\beta)\end{bmatrix}\begin{pmatrix}
+\frac{p_x-c_x}{a}&\frac{p_y-c_y}{b}\end{pmatrix}.
+\end{equation}
+Ist $D(p,h) \le 1$ befindet sich das Pixel in oder auf der Ellipse und wird dieser Ellipse beziehungsweise dem Objekt zugeordnet. Befindet sich das Pixel außerhalb der Ellipse, ergibt die Distanzfunktion einen Wert $>1$ und es wird dem Objekt zugeordnet welches sich am nächsten befindet. Ist ein Pixel innerhalb zweier Ellipsen, wird es beiden Objekten zugeordnet. Gilt hingegen für eine zusammenhängende Region $I'={p_1,p_2,....,p_n}$
+\begin{equation}
+D(p,h)>1: \forall p \in I' \land \forall h \in H.
+\end{equation} 
+so muss eine neue Objekthypothese erzeugt werden, denn keines der Pixel aus der Region $I'$ gehört zu einem Objekt. Die so gewonnen Objekthypothesen werden im nächsten Schritt als Vorhersage propagiert. Dabei wird eine einfache lineare Funktion genutzt, um anhand der letzten zwei Positionen die neue Position des Objekts zu schätzen. Dieses Verfahren ermöglicht es mehrere Regionen in einer Videosequenz zu verfolgen. 
+
+\subsubsection{Fazit}
+In der vorliegenden Arbeit wird die Hand-Verfolgung genutzt, um die greifende Hand im fovealen Sichtfeld zu halten. Damit sollen während des Greifvorgangs möglichst detailreiche Bilder der Hand  erzeugt werden. Auch hier soll, aus den bereits genannten Gründen, auf Marker vollständig verzichtet werden. Viele Verfahren zur Hand-Verfolgung haben zum Ziel die Gesamtheit der Freiheitsgrade einer Hand abzubilden, dies ist hier nicht notwendig. Lediglich die Position der Hand ist von Interesse. Das Problem der Hand-Verfolgung lässt sich somit als Verfolgung eines bewegten Objekts in einer Reihe von Messungen formulieren. In der vorliegenden Arbeit wird deshalb eine Hand-Verfolgung, basierend auf einem \textit{Partikel-Filter} verwendet. Als Hand-Modell wird eine Ellipse verwendet. Im Kapitel \nameref{loesung} wird der zur Hand-Verfolgung eingesetzte \textit{Partikel-Filter} detailliert vorgestellt.
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Lösung und Implementierung}
+\label{loesung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Einleitung}
+Im vorherigen Abschnitt wurden die benötigten theoretischen Grundlagen und vorhandene Implementierungen und Verfahren untersucht. In diesem Kapitel wird nun zuerst eine Beobachtungsaktion von einer abstrakten Ebene betrachtet. Dabei wird herausgestellt, welche Schritte generell nötig sind, um eine Beobachtung unter den gegebenen Umständen durchzuführen. Die einzelnen Komponenten, die für eine ganzheitliche Beobachtung einer Greifbewegung nötig sind, werden identifiziert und benannt. Danach wird ein Beobachtungsschema vorgestellt welche die Anforderungen erfüllt. Es wird detaillierter auf die einzelnen Phasen und die implementierten Programmteile eingegangen. Anforderungen werden erörtert und die notwendigen Methoden, die bereits im Abschnitt \nameref{Grundlagen} vorgestellt wurden, werden zugeordnet und, wenn nötig, an das Problem angepasst. Im letzten Abschnitt wird das implementierte Verfahren evaluiert und Lösungen für Probleme vorgestellt.  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsubsection{Die Beobachtung}
+Die menschliche Greifbewegung kann in zwei Phasen eingeteilt werden, zum einen die Anfahrtsbewegung der Hände an das Objekt und zum anderen das eigentliche Greifen des Objekts durch die Finger.
+
+Bei der Anfahrtsbewegung ist die Bewegung des Oberkörpers und der Hände von Interesse. Die Anforderungen an die Bilder weisen hierbei einen geringeren Detailgrad auf, als bei der Beobachtung der eigentlichen Greifbewegung. 
+
+Bei der eigentlichen Greifbewegung sind hingegen die Positionen der Finger, so wie die Orientierung der Hand von Bedeutung. Um die Finger, welche eine vergleichsweise geringe Größe aufweisen, klar erkennen zu können, sollten die erzeugten Bilder einen hohen Detailgrad aufweisen. Um über die gesamte Greifbewegung hinweg detaillierte Bilder der Hände zu erhalten, muss die Hand verfolgt werden, um diese im Sichtfeld der fovealen Stereokamera des Roboters zu halten und somit detaillierte Bilder zu erzeugen, siehe dazu Kapitel 2 \nameref{sensoren}. 
+
+Die Hand-Verfolgung beschränkt sich hierbei auf eine der beiden Hände. Diese Hand wird im folgenden greifende Hand genannt. Um die Hand verfolgen zu können, muss dem Roboter bekannt sein, welche der beiden Hände die greifende Hand ist. Dazu muss diese in einem  ersten Schritt identifiziert werden. Zur Identifikation muss eine Metrik gefunden werden, die Auskunft darüber gibt, welche die greifende Hand ist. 
+
+Des weiteren soll der Ablauf der Beobachtung für einen demonstrierenden Menschen möglichst intuitiv sein. Nur durch das Vormachen der Greifbewegung soll es ermöglicht werden diese mit den Stereokameras zu erfassen. Das bedeutet insbesondere, dass dem humanoiden Roboter nicht manuell mitgeteilt wird, welche Hand die greifende Hand darstellt. 
+
+Um die Identifizierung der greifenden Hand durch den Roboter zu ermöglichen, muss die Greifbewegung zwei mal ausgeführt werden. Dabei können aus den Bewegungen der Hände während der ersten Demonstration Rückschlüsse auf die greifende Hand gezogen werden. Dazu wird in der ersten Demonstration der Roboterkopf nicht bewegt und die Szene wird ausschließlich mit der peripheren Stereokamera beobachtet. Dies ermöglicht die Beobachtung der Anfahrtsbewegung der Hände und des Oberkörpers.
+
+In der zweiten Demonstration wird mit dem Roboterkopf die zuvor identifizierte, greifende Hand aktiv verfolgt. Somit können in der zweiten Demonstration mit der peripheren Stereokamera qualitativ hochwertige Bilder der Greifbewegung erzeugt werden. Im Folgenden sind die zwei Demonstrationen und deren Aufgaben aufgelistet. 
+\begin{enumerate}
+\item Demonstration eins Hand-Identifizierung:
+\begin{enumerate}
+\item Identifizierung der greifenden Hand
+\item Beobachtung und Erfassung des gesamten Oberkörpers
+\item Erfassung der Positionen und Anfahrtsbewegung der Hände 
+\end{enumerate}
+\item Demonstration zwei Hand-Verfolgung:
+\begin{enumerate}
+\item Ziel: Erzeugung qualitativ hochwertiger Bilder der greifenden Hand
+\item Verfolgung der greifenden Hand
+\item Erfassung der Hand-Position während der Greifbewegung
+\end{enumerate}
+\end{enumerate}
+Mit diesen zwei Demonstrationen ist es möglich, sowohl die Bewegungen des Oberkörpers, als auch die Bewegungen der Hand und Finger mit den Kameras zu erfassen und die Anforderungen an den Detailgrad der Bilder zu erfüllen. Es wird ermöglicht eine menschliche Greifbewegung ganzheitlich zu erfassen indem die Greifbewegung lediglich zwei mal vorgeführt wird.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsubsection{Programmablauf}
+
+In Abbildung \ref{pap_beobachtung} wird der Ablauf des gesamten Beobachtungsmechanismus dargestellt. In einem ersten Schritt werden sowohl die Bilder der fovealen als auch die Bilder der peripheren Stereokamera ausgelesen. Nun wird geprüft, ob bereits eine Hand als greifende Hand identifiziert wurde. Ist dies nicht der Fall so wird die Hand-Identifizierung ausgeführt. Die Hand-Identifizierung gibt nach der ersten Demonstration Auskunft darüber, welche Hand die Greifbewegung durchgeführt hat. Als Eingabe verwendet die Hand-Identifizierung die Bilder der peripheren Stereokamera. Wurde die greifende Hand bereits durch die Hand-Identifizierung gefunden, so wird die Hand-Verfolgung ausgeführt. Die Hand-Verfolgung verfolgt die greifende Hand im Bild und steuert den Roboterkopf, sodass die greifende Hand immer im Sichtfeld der fovealen Stereokamera gehalten wird. 
+
+Wie bereits beschrieben werden zur gesamten Beobachtung zwei Demonstrationen der Greifbewegung benötigt. Die einzelnen Programmzweige werden in der Abbildung \ref{pap_beobachtung} durch den gestrichelten Rahmen der jeweiligen Demonstration zugeordnet. Auf die beiden Unterprogramme Hand-Identifizierung und Hand-Verfolgung wird in den folgenden Abschnitten genauer eingegangen. 
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.7]{pap.pdf}
+\caption{Programmablaufplan des gesamten Beobachtungsmechanismus}
+\label{pap_beobachtung}
+\end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hand-Identifizierung}
+
+Als Ergebnis der Hand-Identifizierung soll die greifende Hand zurückgeliefert werden. Dabei muss zunächst geklärt werden, anhand welcher Informationen die greifende Hand identifiziert werden kann. Dazu muss eine Metrik gefunden werden mit deren Hilfe eine Aussage getroffen werden kann, welche Hand die Greifbewegung durchgeführt hat. 
+
+Des weiteren soll der Start der Demonstration und der Übergang zwischen der ersten und der zweiten Demonstration automatisch erfolgen. Es muss daher zusätzlich ein Kriterium gefunden werden, welches zulässt den Beginn und das Ende der ersten Demonstration zu erkennen. Folgenden Teilprobleme werden gelöst:
+\begin{enumerate}
+\item Metrik zur Identifikation der greifenden Hand
+\item Datenerfassung
+\item Detektion des Beginns und des Endes der ersten Demonstration
+\item Ablauf der Hand-Identifizierung
+\end{enumerate}
+
+\subsubsection{Metrik zur Identifizierung der greifenden Hand}
+Grundsätzlich ist zuerst die Frage zu beantworten anhand welcher Daten die Identifizierung der greifenden Hand ermöglicht werden kann. Im vorliegenden Fall wird angenommen, dass die Greifbewegung hauptsächlich von einer Hand ausgeführt wird, wobei die andere Hand passiv bleibt. Dadurch kann die Positionsänderung der Hand  im Laufe der ersten Demonstration Aufschluss über die greifende Hand geben. Die greifende Hand wird durch die Anfahrtsbewegung an das Objekt eine größere Distanz zurücklegt haben, als die nicht greifende Hand. Die nicht greifende Hand bleibt passiv oder nahezu unbewegt. Die euklidische Distanz der zurückgelegten Strecke kann hier als Indikator herangezogen werden. 
+
+Um einen Vergleich anstellen zu können, muss die Position beider Hände während der gesamten ersten Demonstration verfolgt werden. Daraus kann nach Abschluss der ersten Demonstration die zurückgelegte Distanz beider Hände berechnet werden und durch einen Vergleich dieser Distanzen die greifende Hand identifiziert werden. 
+
+
+\subsubsection{Erfassung der Positionsdaten}
+Wie im letzten Abschnitt bereits erläutert soll die Position beider Hände während der ersten Demonstration verfolgt werden. Die Daten sollen dabei aus den Bildern der peripheren Stereokamera extrahiert werden. In jeder Iteration steht ein Stereo-Bild-Paar der peripheren Stereokamera zur Verfügung. Mit Hilfe dieser Bilder sollen die Positionen der Hände über die gesamte erste Demonstration erfasst werden. Dabei ist die Unterscheidung zwischen rechter und linker Hand wichtig. 
+
+Zur Verfolgung der beiden Hände wird in der vorliegenden Arbeit die in \ref{markerloseBodyTrack} bereits vorgestellte Oberkörper-Verfolgung nach \cite{Azad2008} genutzt. Es werden in jeder Iteration die Bilder der peripheren Stereokamera an die Oberkörper-Verfolgung übergeben, welche die aktuellen Hand-Positionen zurückliefert. Es werden sowohl Informationen über die Position im Weltkoordinatensystem als auch im Bildkoordinatensystem berechnet. Es wird zwischen rechter und linker Hand unterschieden. Die Hand-Positionen aus jedem Bild werden gespeichert. Über alle Positionen der ersten Demonstration kann dann im Folgenden die euklidische Distanz berechnet werden. Diese entspricht der zurückgelegten Strecke der jeweiligen Hand. 
+
+\subsubsection{Detektion des Beginns und des Endes der ersten Demonstration}
+Der Beginn und der Übergang von der ersten Demonstration zur zweiten Demonstration soll möglichst einfach und ohne weitere Informationen erkannt werden. Durch die Oberkörper-Verfolgung stehen bereits Informationen über die Hand-Positionen zur Verfügung. Diese Informationen können genutzt werden, um sowohl den Beginn der ersten Demonstration, als auch den Übergang von der ersten zur zweiten Demonstration zu erkennen. 
+
+
+
+
+
+
+
+
+
+\paragraph{Beginn der ersten Demonstration}
+Bei der Vorführung der Greifbewegung steht das Objekt, dass gegriffen werden soll, auf einem Tisch oder einer anderen Oberfläche direkt vor dem Roboter, beziehungsweise in seinem unmittelbaren Sichtfeld. Der Demonstrator steht dem Roboter zugewandt vor dem Tisch, sodass sich Roboter und Demonstrator gegenüberstehen und der Tisch mit dem Objekt dazwischen steht. Dieser Aufbau ist in Abbildung \ref{aufbauDemo} dargestellt. Um die Oberkörper-Verfolgung nun zu initialisieren, müssen sowohl die Hände als auch der Oberkörper des Demonstrators im Sichtfeld des Roboters liegen. Es wird deshalb verlangt, dass die Hände des Demonstrators auf dem Tisch liegen. Indem der Demonstrator zu Beginn diese Position einnimmt wird sichergestellt, dass alle relevanten Körperteile zur Initialisierung der Oberkörper-Verfolgung im Sichtfeld des Roboters sind. 
+
+Da der Demonstrator die Hände auf den Tisch auflegt und diese erst dann wieder bewegt, wenn er die Greifbewegung vorführt, kann diese initiale Bewegung als Signal für dem Beginn der Greifbewegung genutzt werden. Um diese Bewegung aber erkennen zu können, muss eine Referenzposition gespeichert werden, anhand derer sich erkennen lässt, ob eine Bewegung vollzogen wurde. Diese Initialposition wird detektiert, indem der Demonstrator seine Hände für drei Sekunden auf dem Tisch liegen lässt, bevor er die Demonstration beginnt. Sobald sich eine der beiden Hände von dieser initialen Position weg bewegt wird dies als Beginn der Demonstration gewertet. 
+
+Während der Greifbewegung wird die Position der Hände ständig verfolgt. In Abbildung \ref{initPosDist} wird dieser Ablauf zur Detektion des Beginns der Greifbewegung in zwei Schritten illustriert. In Abbildung \ref{initDemoSeq} sind Aufnahmen aus einer Sequenz zu sehen. Im oberen Bild ist die Initialposition zu sehen und im zweiten ein Ausschnitt aus der ersten Demonstration. 
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.7]{aufbauDemo.pdf}
+\caption{Aufbau}
+\label{aufbauDemo}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{initPosUndDistanz.pdf}
+\caption{Initialposition und Distanz }
+\label{initPosDist}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{initUndDemo1.pdf}
+\caption{linkes Bild foveale Stereokamera, rechtes Bild periphere Stereokamera mit Oberkörper-Verfolgung , oben: Hände in Initialposition unten: Aufnahme während Demonstration eins}
+\label{initDemoSeq}
+\end{figure}
+
+
+
+\paragraph{Ende der ersten Demonstration}
+Um das Ende der ersten Demonstration zu erkennen wird die Distanz zwischen den Händen und der Initialposition gemessen. Unterschreitet diese Distanz für eine gewisse Zeit einen Schwellwert, wird angenommen die Hände befinden sich wieder in der Initialposition und die erste Demonstration ist abgeschlossen. Dies bedeutet für den Demonstrator, dass er nach der vollführten Greifbewegung seine Hände wieder in die Initialposition legen muss, um das Ende der ersten Demonstration zu signalisieren. Wurde das Ende erkannt wird die Hand-Verfolgung gestartet. In Abbildung \ref{initagain} hat der Demonstrator seine Hände wieder in die Intialposition gebracht.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.3]{initPosAgain.pdf}
+\caption{Der Demonstrator hat nach der Ausführung der ersten Demonstration wieder die Initialposition eingenommen}
+\label{initagain}
+\end{figure}
+
+\subsubsection{Ablauf der Hand-Identifizierung}
+Die in den letzten Abschnitten vorgestellten Lösungen werden nun in einen logischen Ablauf gebracht. Der Ablauf aus Sicht des Demonstrators wird in Abbildung \ref{pap_handidentifizierung} auf der linken Seite dargestellt. Vor der Demonstration müssen die Hände auf dem Tisch aufgelegt werden und für mindestens drei Sekunden in dieser Position verweilen. Danach kann die Greifbewegung ausgeführt werden. Nach der Greifbewegung müssen die Hände für weitere drei Sekunden an der selben Position wie vor der Demonstration aufgelegt werden, um das Ende der ersten Demonstration zu signalisieren. 
+
+Nach Beendigung der Demonstration wird anhand der gespeicherten Distanzen, welche die Hände während der ersten Demonstration zurückgelegt haben entschieden, welches die greifende Hand ist, um diese in der nächsten Demonstration aktiv verfolgen zu können.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{pap_handidentifizierung.pdf}
+\caption{Links: Ablauf für den Demonstrator \newline Rechts: zugehöriger Programmablauf der Handidentifizierung}
+\label{pap_handidentifizierung}
+\end{figure}
+
+\subsubsection{Probleme der Hand-Identifizierung}
+
+\subsubsection*{Detektion der Initialposition}
+Die Oberkörper-Verfolgung und die gelieferten Hand-Positionen unterliegen \\ Schwankungen. Dies bedeutet, dass selbst bei völliger Bewegungslosigkeit des Demonstrators die Position der Hände in zwei aufeinander folgenden Messungen nicht exakt an der selben Stelle ist und somit nicht als bewegungslos identifiziert werden können. Um diese Schwankungen auszugleichen wurde ein Schwellwert eingeführt. 
+
+Ist die Änderung der Position unter diesem Schwellwert, werden diese verworfen. Der Schwellwert kann an die Situation und das genutzte Verfahren zur Oberkörper-Verfolgung angepasst werden. In der getesteten Implementierung wurde ein Schwellwert von 15 Pixeln benutzt.
+
+Zur Bestimmung der Initialposition wird ab der ersten Detektion einer Bewegungslosigkeit eine Zeitmessung angestoßen. Wenn sich die Hand im folgenden für drei Sekunden nicht bewegt, das heißt zwischen zwei Bildern liegt die von der Hand zurückgelegte Distanz unter dem Schwellwert, so soll diese Position als Initialposition gespeichert werden. Die Initialposition kann aufgrund der Schwankungen nicht anhand einer einzigen Messung bestimmt werden. Es besteht dabei die Gefahr, dass genau diese Messung einen Ausreißer darstellt. Indem der Durchschnitt aller gemessenen Positionen als Initialposition genutzt wird, kann eine genauere Initialposition bestimmt werden. Wenn vor Ablauf der drei Sekunden die Hand wieder bewegt wird, werden die gespeicherten Positionen verworfen.
+\newpage
+
+
+
+
+
+\paragraph{Ende der ersten Demonstration}
+Die zu Beginn der Demonstration eingenommene Initialposition muss vom Demonstrator nach der Durchführung der Greifbewegung wieder eingenommen werden. 
+
+Der Demonstrator wird die Position aber nicht mehr exakt einnehmen können. Es kann hier eine gewisse Abweichung zur Initialposition angenommen werden. Nicht nur die Ungenauigkeit des Menschen beim erneuten Ablegen der Hände führen zu Abweichungen, sondern auch Ungenauigkeiten der Messung durch die Oberkörper-Verfolgung. Diese Abweichung kann aber als Schwellwert berücksichtigt werden. 
+
+Die Positionen der Hände liegen im Weltkoordinatensystem vor. Mit Hilfe eines Schwellwertes für die maximale Entfernung zur Initialposition können diese Ungenauigkeiten abgefangen werden. Es wird dadurch beim erneuten Ablegen der Hände eine gewisse Toleranz in Bezug auf die Position im dreidimensionalen Raum zugestanden. Durch die euklidische Distanz im dreidimensionalen Raum bildet dieser Schwellwert eine imaginäre Kugel, welche die Initialposition festlegt. Befindet sich die Hand innerhalb dieser Kugel wird angenommen, dass die Hand sich wieder in der Initialposition befindet. Befinden sich beide Hände für drei Sekunden innerhalb der Initialposition, so ist die Demonstration beendet. Mit den gemessenen Distanzen beider Hände kann nun entschieden werden, welche der beiden Hände die Greifbewegung durchgeführt hat. Diese Information wird als Eingabe für die Hand-Verfolgung genutzt. Abbildung \ref{distToInit} stellt aus Sicht des Roboters die Situation nach Beendigung der Demonstration dar.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.4]{distToInit.pdf}
+\caption{Situation nach Beendigung der ersten Demonstration}
+\label{distToInit}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\subsection{Hand-Verfolgung}
+\label{handVerfolgung}
+Während der zweiten Demonstration soll die Hand verfolgt werden, indem der Roboterkopf aktiv bewegt wird. Dadurch bleibt die Hand immer im Sichtfeld der fovealen Stereokamera. Dabei werden detaillierte Aufnahmen der zuvor identifizierten Hand gemacht. Um dies umsetzen zu können muss eine Hand-Verfolgung implementiert werden, welche es ermöglicht die Hand während der gesamten Demonstration zu verfolgen.
+
+In der vorliegenden Arbeit wurde ein \textit{Partikel-Filter} nach \cite{Isard1998} eingesetzt. Um das \textit{Partikel-Filter} zu implementieren wurde das \textit{Partikel-Filter} Framework der \textit{Integrated-Vision-Toolkit} (IVT) Bibliothek genutzt, welche in \ref{IVT} vorgestellt wird. Im Folgenden wird der Programmablauf und die Initialisierung beschrieben, bevor auf die Einzelheiten der \textit{Partikel-Filter} Implementierung eingegangen wird.
+\subsubsection{Programmablauf}
+Die Demonstration wird für die Hand-Verfolgung noch einmal komplett ausgeführt, um eine vollständige Beobachtung zu gewährleisten. In der ersten Demonstration wurde die greifende Hand bereits identifiziert. Um die greifende Hand zu finden wird von der Hand-Identifizierung die letzte Position der Hand an die Hand-Verfolgung übergeben. Mit dieser Information kann die Hand-Verfolgung initialisiert werden. Während der Initialisierung wird die greifende Hand gesucht und ein initiales Hand-Modell berechnet, welches zur Initialisierung des \textit{Partikel-Filters} genutzt wird. 
+
+Wurde die Hand-Verfolgung erfolgreich initialisiert wird der Roboterkopf so ausgerichtet, dass die greifende Hand im Sichtfeld der fovealen Stereokamera ist. Die Ausrichtung des Roboterkopfes auf die Hand zeigt dem Demonstrator somit an, dass er die zweite Demonstration der Greifbewegung beginnen kann. 
+
+Für die eigentliche Verfolgung der Hand werden zunächst die Geschwindigkeit und Beschleunigung der greifenden Hand über die zwei letzten bekannten Hand-Positionen berechnet. Die Geschwindigkeit und Beschleunigung wird vom \textit{Partikel-Filter} für die Vorhersage der nächsten Hand-Position berücksichtigt. Während der Demonstration wird mit Hilfe des \textit{Partikel-Filter} die Hand verfolgt. Dabei wird in jeder Iteration die aktuelle Hand-Position festgestellt. Die Position des Roboterkopfes wird abhängig von der Hand-Position in jeder Iteration angepasst, sodass sich die Hand immer im Sichtfeld der fovealen Stereokamera befindet. In Abbildung \ref{pap_handverfolgung} ist der Programmablauf dargestellt. In den folgenden Abschnitten wird auf die einzelnen Programmteile der Hand-Verfolgung genauer eingegangen, wobei zuerst ein Hand-Modell zur Hand-Verfolgung vorgestellt wird und ein Verfahren zur Berechnung eines initialen Hand-Modells. Danach werden der Ablauf des \textit{Partikel-Filters} und Details zur Implementierung betrachtet.
+
+\begin{figure}[bp]
+\centering
+\includegraphics[scale=0.7]{pap_handVerfolgung.pdf}
+\caption{Programmablaufplan der Hand-Verfolgung}
+\label{pap_handverfolgung}
+\end{figure}
+
+
+\subsubsection{Hand-Modell und Berechnung des initialen Modells}
+\label{initEllipse}
+Um die Hand-Verfolgung mit einem \textit{Partikel-Filter} realisieren zu können, müssen die möglichen Zustände der Hand modelliert werden. Dieses Modell muss hinreichend speziell sein, um die Hand identifizieren zu können, aber allgemein genug, um die verschiedenen Zustände der Hand abbilden zu können \cite{Isard1998}. Es wird also ein Modell benötigt, welches durch Anpassung seiner Parameter die Zustände der Hand approximieren kann. 
+
+In dieser Arbeit wird die Kontur der Hand genutzt, um die Zustände der Hand abzubilden. Abbildung \ref{handEllipse} zeigt nach Hautfarbe segmentierte Aufnahmen von Händen in verschiedenen Positionen. Es ist zu erkennen, dass sich in diesen verschiedenen Situationen die Hand-Kontur jeweils durch eine Ellipse hinreichend genau approximieren lässt. Die folgenden Parameter bestimmen die Dimension und Lage einer Ellipse, siehe Abbildung \ref{paramHandEllipse}:
+\begin{enumerate}
+\item $a$: große Halbachse
+\item $b$: kleine Halbachse
+\item $c$: Zentrum
+\item $\beta$: Neigungswinkel zur Abszissenachse
+\end{enumerate}
+
+\begin{figure}[bp]
+\centering
+\includegraphics[scale=0.7]{ellipseModel1.pdf}
+\caption{Ellipsenmodell als Näherung der Hand-Kontur in verschiedenen Situationen}
+\label{handEllipse}
+\end{figure}
+\begin{figure}[bp]
+\centering
+\includegraphics[scale=0.7]{ellipseModel2.pdf}
+\caption{Parameter des Ellipsenmodells}
+\label{paramHandEllipse}
+\end{figure}
+Aus einem binären Bild lassen sich alle Parameter der Ellipse durch sogenannte Bild-Momente bestimmen \cite{Teague1980}. Die Bild-Momente in einem binären Bild berechnen sich allgemein durch:
+\begin{equation}
+\mu_{m,n} = \sum_{x=0}^{\infty}\sum_{y=0}^{\infty}(x)^{m}(y)^{n}f(x, y).
+\end{equation} 
+Dabei entspricht $f(x, y)$ dem Farbwert an Position $x,y$ des Bildes. In der allgemeinen Formel wird bis $\infty$ aufsummiert. Um aber nicht jeden Punkt der Bildebene untersuchen zu müssen, wird der Bereich auf dem die Bild-Momente berechnet werden eingeschränkt. Es wird nur über die Fläche summiert, welche auch tatsächlich die Hand enthält. Diese Fläche wird durch eine Bounding-Box $B_h=(x_{min},x_{max},y_{min},y_{max})$ um die Hand definiert. In Abbildung \ref{bbellipse} ist dies bildlich dargestellt. Zur Berechnung der Dimensionen und Ausrichtung einer Ellipse werden die Bild-Momente bis zum Grad zwei benötigt. Folgende Momente müssen also berechnet werden: 
+\begin{equation}
+\mu_{0,0} = \sum_{x_{min}}^{x_{max}}\sum_{y_{min}}^{y_{max}}f(x, y).
+\end{equation}
+\begin{equation}
+\mu_{1,0} = \sum_{x_{min}}^{x_{max}}\sum_{y_{min}}^{y_{max}}(x)f(x, y).
+\end{equation}
+\begin{equation}
+\mu_{0,1} = \sum_{x_{min}}^{x_{max}}\sum_{y_{min}}^{y_{max}}(y)f(x, y).
+\end{equation}
+\begin{equation}
+\mu_{1,1} = \sum_{x_{min}}^{x_{max}}\sum_{y_{min}}^{y_{max}}(x)(y)f(x, y).
+\end{equation}
+\begin{equation}
+\mu_{2,0} = \sum_{x_{min}}^{x_{max}}\sum_{y_{min}}^{y_{max}}(x)^{2}f(x, y).
+\end{equation}
+\begin{equation}
+\mu_{0,2} = \sum_{x_{min}}^{x_{max}}\sum_{y_{min}}^{y_{max}}(y)^{2}f(x, y).
+\end{equation}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=1.8]{initialEllipse.pdf}
+\caption{Bounding-Box und errechnete Ellipse}
+\label{bbellipse}
+\end{figure}
+Die Parameter der Ellipse berechnen sich für das Zentrum $c=(c_x,c_y)$ der Ellipse durch:
+\begin{equation}
+c_x = \frac{\mu_{1,0}}{\mu_{0,0}}.
+\end{equation}
+\begin{equation}
+c_y = \frac{\mu_{0,1}}{\mu_{0,0}}.
+\end{equation}
+Die große Halbachse ist definiert durch:
+\begin{equation}
+a = \sqrt{\frac{(\mu_{2,0}-c_x^2)+(\mu_{0,2}-c_y^2)+\sqrt{((\mu_{2,0}-c_x^2)-(\mu_{0,2}-c_y^2))^2+4(\mu_{1,1}-c_xc_y)^2}}{\frac{\mu_{0,0}}{2}}}.
+\end{equation}
+Die kleine Halbachse ist definiert durch:
+\begin{equation}
+b = \sqrt{\frac{(\mu_{2,0}-c_x^2)+(\mu_{0,2}-c_y^2)-\sqrt{((\mu_{2,0}-c_x^2)-(\mu_{0,2}-c_y^2))^2+4(\mu_{1,1}-c_xc_y)^2}}{\frac{\mu_{0,0}}{2}}}.
+\end{equation}
+Die Orientierung berechnet sich durch:
+\begin{equation}
+\beta = \frac{1}{2}\tan^{-1}(\frac{2(\mu_{1,1}-c_xc_y)}{(\mu_{2,0}-c_x^2)-(\mu_{0,2}-c_y^2)}).
+\end{equation}
+Vor der Initialisierung des \textit{Partikel-Filters} wird durch die vorstehenden Formeln ein initiales Hand-Modell in Form einer Ellipse definiert. Dieses Hand-Modell dient als Initialisierung für das \textit{Partikel-Filter} und wird als Basis für die erste Iteration des \textit{Partikel-Filter} genutzt. In Abbildung \ref{initialEllipse} ist die Situation direkt nach der Initialisierung des \textit{Partikel-Filter} dargestellt. 
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{handTrackerInit.pdf}
+\caption{Oben: Hand-Verfolgung unmittelbar nach der Hand-Identifizierung, \textit{Partikel-Filter} wurde bereits initialisiert \newline Unten: direkt nach Initialisierung, aktiver Kamerakopf ausgerichtet auf greifende Hand}
+\label{initialEllipse}
+\end{figure}
+
+\subsubsection{\textit{Partikel-Filter} zur Handverfolgung}
+\label{handVerfolgungPartikel}
+
+Das \textit{Partikel-Filter} soll eine robuste Verfolgung der Hand gewährleisten. In \ref{partikelFilter} wurden die theoretischen Grundlagen des \textit{Partikel-Filter} bereits erläutert. Das \textit{Partikel-Filter} funktioniert nach folgendem Prinzip: 
+\begin{enumerate}
+\item Vorhersagen 
+\item Messen
+\item Aktualisieren
+\end{enumerate}
+
+Die Partikel repräsentieren verschiedene Zustände der Ellipsen und somit verschiedene mögliche Zustände der Hand. Die Partikel werden durch die Parameter $a$, $b$, $c$ und $\beta$ bestimmt. $a$ und $b$ modellieren dabei die Änderung der Ausmaße des Modells, also dessen Größenänderung. Der Parameter $c=(c_x,c_y)$ modelliert die Bewegungen in der Bildebene und $\beta$ die Orientierung des Hand-Modells. Um das \textit{Partikel-Filter} zu nutzen müssen folgende Funktionen bestimmt werden: 
+\begin{enumerate}
+\item Bewertungsfunktion
+\item Funktion zur Vorhersage neuer Partikel
+\end{enumerate} 
+
+
+\subsubsection{Bewertungsfunktion}
+Durch die Bewertungsfunktion wird der aktuell gemessene Systemzustand mit dem vorhergesagten verglichen und bewertet. Die Bewertungsfunktion soll dabei für jede Ellipse die Wahrscheinlichkeit berechnen, wie gut diese den aktuellen Systemzustand repräsentiert. Es soll also jeder Ellipse, die im Vor\-her\-sa\-ge-Schritt erstellt wurde ein Wert zugeordnet werden der den Zustand, also die Parameter und die daraus resultierende Ellipse, bewertet. 
+Im vorliegenden Fall kann diese Bewertung mit Hilfe der Hautfarben-Pixel aus dem aktuellen segmentierten Bild geschehen. Das Verhältnis von Hautfarben-Pixeln zu Hin\-ter\-grund-Pixeln innerhalb einer Ellipse kann als Bewertung herangezogen werden. Zuerst muss also entschieden werden, ob ein Pixel in einer Ellipse liegt oder nicht. Die Funktion $D(p,h)$ mit Ellipse $h=(c,a,b,\theta)$ und Punkt $p=(p_x,p_y)$ wird definiert durch:
+\begin{equation}
+D(p,h)=\frac{(\cos(\beta)(pc_{x})+\sin(\beta)(pc_{y}))^2}{a^2}+\frac{(\sin(\beta)(pc_{x})-\cos(\beta)(pc_{y}))^2}{b^2}.
+\end{equation}
+\begin{equation}
+pc_{x}=p_x-c_x.
+\end{equation}
+\begin{equation}
+pc_{y}=p_y-c_y.
+\end{equation}
+Dabei stellt $p$ den zu untersuchenden Punkt dar und $h$ die Ellipse. 
+
+Gilt $D(p,h)\leq1$ liegt $p$ innerhalb der Ellipse, ansonsten außerhalb. Um nicht jedes Pixel der Bildebene untersuchen zu müssen wird eine Bounding-Box $B_e$ um die Ellipse gelegt, denn es sind nur die Pixel innerhalb der Ellipse von Interesse. In Abbildung \ref{ellipseBounding} ist die Bounding-Box $B_e$ dargestellt. Die Menge $P$ sei definiert durch:
+\begin{equation}
+P:=\{p|D(p,h)\leq1\land p \in B_e \}.
+\end{equation} 
+enthält also alle Punkte innerhalb von $B_e$ die in der Ellipse liegen. 
+Die Menge $P_s$ wird definiert durch:
+\begin{equation}
+P_s:=\{p|p\in P \land f(p)=='255'\}.
+\end{equation}
+enthält also alle Hautfarben-Pixel innerhalb der Ellipse. Die Ellipsen unterscheiden sich in ihrer Größe und somit in der Anzahl enthaltener Pixel. Um einen vergleichbaren Wert zu erhalten wird deshalb das Verhältnis an Haut\-far\-ben-Pixel zur Gesamtanzahl an Pixeln innerhalb der Ellipsen berechnet. Somit ergibt sich die Wahrscheinlichkeit für eine Ellipse $h$ durch:
+\begin{equation}
+p(h)=\frac{P_s}{P}.
+\end{equation}
+Für die Menge $H={h_t^{(1)},h_t^{(2)},......,h_t^{(n)},}$ kann dann mit Wahrscheinlichkeitsfunktion $p(h)$ die Wahrscheinlichkeitsverteilung der Partikel zum Zeitpunkt $t$ approximiert werden.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=1.5]{ellipseBounding.pdf}
+\caption{Bounding Box um untersuchte Ellipse. Nur Pixel innerhalb der Box werden untersucht.}
+\label{ellipseBounding}
+\end{figure}
+
+
+\subsubsection{Funktion zur Vorhersage neuer Partikel Dimensionen}
+Wie bei \cite{Isard1998} und im Kapitel \ref{Grundlagen} dargelegt werden diejenigen Partikel, welche den aktuellen Systemzustand am besten wiederspiegeln, öfter als Grundlage gewählt als diejenigen, welche den Systemzustand nur unzureichend entsprechen. Damit wird zur Vorhersage eine Basis an Partikeln herangezogen, welche den aktuellen Systemzustand am besten abbilden. 
+
+Um eine Funktion zur Vorhersage der nächsten Partikel zu finden, muss man das Verhalten des zu verfolgenden Objektes und dessen mögliche Änderung, betrachten. Im vorliegenden Fall ist dies die Hand mit ihren Ausmaßen und dynamischen Eigenschaften. 
+
+Aus den verschiedenen dargestellten Händen in Abbildung \ref{handEllipse} kann zunächst entnommen werden, dass sich die Hand in ihren Ausmaßen ändern kann, dies bedeutet, die kleine Halbachse b und die große Halbachse a müssen während der Vorhersage angepasst werden. Dies resultiert zum einen aus der Änderung der Position der Hand in z-Richtung, zum anderen durch den Winkel indem die Hand gehoben wird. Beispielsweise ist die Hand größer, wenn die Handfläche zur Kamera zeigt als wenn die Seite der Hand der Kamera zugewendet ist. 
+
+In Abbildung \ref{handEllipse} ist auch der Neigungswinkel der Ellipse in verschiedenen Situationen zu erkennen. Je nach Position muss der Neigungswinkel $\beta$ der Ellipse angepasst werden, um die Hand-Kontur optimal approximieren zu können. 
+
+Zuletzt müssen die dynamischen Eigenschaften während der Greifbewegung betrachtet werden. Dabei bewegt sich die Hand innerhalb der Bildebene, deshalb muss das Zentrum $c$ neu bestimmt werden. Wie im \textit{Partikel-Filter} nach \cite{Isard1998} werden die neuen Parameter, durch einen Zufallswert und einen Basiswert bestimmt. In der vorliegenden Arbeit wird ein gaußscher Zufallswert $\eta$ genutzt, welcher von einer IVT internen Routine berechnet wird \cite{Azad2009}. Der Basiswert ergibt sich aus einem Sample der vorhergehenden Iteration. 
+
+\paragraph*{Große Halbachse a und kleine Halbachse b}
+Die Dimensionen der großen sowie kleinen Halbachse berechnen sich durch: 
+\begin{equation}
+a[s_{t}] = a[s_{t-1}] + \eta .
+\end{equation}
+\begin{equation}
+b[s_{t}] = b[s_{t-1}] + \eta .
+\end{equation}
+a[i] ist der neue Wert der großen Halbachse für das Partikel i, entsprechend ist b[i] der neue Wert der kleinen Halbachse für Partikel i. 
+
+
+\paragraph*{Neigungswinkel $\beta$}
+Des weiteren ist bei der Vorhersage neuer Partikel eine Änderung des Neigungswinkels zu betrachten, welche durch den Parameter $\beta$ repräsentiert wird.
+ 
+\begin{equation}
+\beta[s_{t}] = \beta[s_{t-1}]+ \eta .
+\end{equation}
+
+\paragraph*{Änderung der Position in der Bildebene }
+Zuletzt muss die Bewegung der Hand an sich modelliert werden, dies geschieht durch die Position der Ellipse und somit durch den Parameter $c=(c_x,c_y)$. 
+\begin{equation}
+c_x[s_{t}] = c_x[s_{t-1}] + \eta .
+\end{equation}
+\begin{equation}
+c_y[s_{t}] = c_y[s_{t-1}] + \eta
+\end{equation}
+
+\subsubsection{Probleme bei der Berechnung der Vorhersage}
+Der im vorherigen Abschnitt vorgestellte naive Ansatz hat sich in Versuchen als nicht robust genug herausgestellt. Im Folgenden werden die Probleme erläutert. Es werden Lösungen vorgestellt um das Partikel Filter an die Anforderungen anzupassen.
+
+\paragraph*{Große Halbachse a und kleine Halbachse b}
+Während den Versuchen hat sich gezeigt, dass die Ellipsen immer kleiner wurden und somit nicht mehr die Hand-Kontur approximiert haben, sondern vollständig in der Hand lagen. Dieses Problem ist auf die Bewertungsfunktion zurückzuführen. 
+
+Eine Ellipse, welche nur Hautfarben-Pixel beinhaltet, wird im Gegensatz zu einer Ellipse die Hautfarben-Pixel und Hintergrund-Pixel beinhaltet, besser bewertet. In Abbildung \ref{ellipseGettingSmaller} ist das Problem bildlich dargestellt. Das Verhältnis von Hautfarben-Pixeln zu Hintergrund-Pixeln wird von Bild zu Bild besser. Die letzte Ellipse wird die beste Bewertung erhalten, obwohl sie die Hand-Kontur nicht optimal approximiert.  
+\\
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=1.2]{ellipseGettingSmaller.pdf}
+\caption{Ellipse wird kleiner}
+\label{ellipseGettingSmaller}
+\end{figure}
+Anstatt die Bewertungsfunktion zu ändern werden die Formeln zur Berechnung der großen und kleinen Halbachse um einen weiteren Faktor ergänzt. 
+
+Nach wie vor soll die Basis der neuen Schätzung durch die Partikel der letzten Iteration geliefert werden, dabei sind aber potenziell diejenigen Ellipsen, welche weniger Hintergrund-Pixel beinhalten besser bewertet. Um dies auszugleichen wird ein weiterer Wert hinzugezogen der die optimalen Parameter für die beiden Halbachsen darstellt. Dazu wird mit Hilfe der Bild-Momente die perfekte Ellipse $h_c$ der vorhergehenden Iteration berechnet. Das Vorgehen ist dasselbe wie im Initialisierungsschritt des \textit{Partikel-Filter} \nameref {initEllipse}. Um zusätzlich Größenänderungen des Modells besser abschätzen zu können wird die relative Änderung der großen und kleinen Halbachsen der letzten zwei berechneten Ellipsen $h_{t}$ und $h_{t-1}$ berücksichtigt. Damit erhält man einen Wert der tendenziell die Dynamik der Größenänderung über einen Zeitraum von $t-1$ bis $t$ wiederspiegelt.
+\begin{equation}
+a[h_a]=a[h_c]+(a[h_{t}]-a[h_{t-1}]).
+\end{equation}
+\begin{equation}
+b[h_a]=b[h_c]+(b[h_{t}]-b[h]_{t-1}).
+\end{equation}
+
+Durch Versuche hat sich gezeigt, dass gute Ergebnisse erzielt werden, wenn die Werte der berechneten Ellipse zu 10\% und die Werte des Ellipsen-Samples zu 90\% in die neue Basisdimension für die Halbachsen der Ellipse eingehen. 
+\begin{equation}
+a[s_t] = 0.1(a[h_a]) + 0.9(a[s_{t-1}]) + \eta.
+\end{equation}
+\begin{equation}
+b[s_t] = 0.1(b[h_b]) + 0.9(b[s_{t-1}]) + \eta.
+\end{equation}
+
+\paragraph*{Neigungswinkel $\beta$}
+Der verwendete gaußsche Zufallswert hat den Winkel der Ellipse zunächst zu stark beeinflusst, sodass die Ellipsen der Vorhersage eine starke Streuung in ihrer Lage aufwiesen. In der Praxis ändert sich dieser Wert eher langsam und muss nur in einem begrenzten Rahmen gestreut werden. Es reicht aus den Neigungswinkel nur um wenige Grad zu verändern. Ein Faktor von 0.05 auf den gaußschen Zufallswert wurde durch Versuche festgelegt. 
+\begin{equation}
+\beta[s_t] = \beta[s_{t-1}] + 0,05*\eta.
+\end{equation}
+
+\paragraph*{Änderung der Position in der Bildebene }
+Es hat sich herausgestellt, dass die Funktion zur Vorhersage der neuen Ellipsen Position bei schnelleren Bewegungen fehlschlägt. Das Problem soll anhand eines Minimalbeispiels verdeutlicht werden. Im Folgenden wird nur der Mittelpunkt der Ellipse betrachtet und als Grundlage für die neu berechneten Partikel verwendet. Des weiteren wird nur ein einziges Partikel als Basis genutzt und es wird nur der Wert für das Zentrum $c$ vorhergesagt. In Abbildung \ref{handMotion} sieht man die Bewegung der Hand in zwei aufeinander folgenden Aufnahmen. Zum Zeitpunkt t hat die Hand sich im Vergleich zur Position in $t-1$ um $\Delta_x$ bewegt. 
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=1.0]{handMotion.pdf}
+\caption{zwei aufeinanderfolgende Frames, Handbewegung von links nach rechts}
+\label{handMotion}
+\end{figure}
+
+ In Abbildung \ref{handMotionAndParticles} Links sind exemplarisch drei berechnete Partikel für den Zeitpunkt $t$ dargestellt. Aus der Hand-Position des Frames $t-1$ resultiert eine Ellipse (hier nicht dargestellt) mit Mittelpunkt $z$. Diese dient als Basis für die neuen vorhergesagten Positionen. Durch Addition eines gaußschen Zufallswertes auf das Zentrum $z$, sowohl in $x$-Richtung als auch in $y$-Richtung wird um diesen Mittelpunkt $z$ gestreut. Der Radius in dem gestreut wird ist abhängig vom gaußschen Zufallswert, womit die Positionen der geschätzten Partikel gleichmäßig um den Mittelpunkt $z$ verteilt sind. Durch die Bewertungsfunktion wird die Ellipse $i$ In Abbildung \ref{handMotionAndParticles} Links als die beste Ellipse gewertet, obwohl diese nur ungefähr die Hälfte der Hautfarben-Pixel der Hand beinhaltet. Allerdings besitzt Ellipse $i$ das beste Verhältnis von zu Hintergrund-Pixeln. In der nächsten Iteration wird also der Mittelpunkt $z'$ der Ellipse $i$ als Basis zur Berechnung der Vorhersage verwendet. Dies ist nicht optimal, da die Position $z'$ nicht den tatsächlichen Systemzustand zum Zeitpunkt $t$ darstellt. 
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.7]{threeCombined.pdf}
+\caption{Links: Berechnete Partikel nach Handbewegung in t. Mitte: Berechnete Partikel nach Handbewegung in t+1. Rechts: Berechnete Partikel nach Handbewegung in t mit Beschleunigung und Geschwindigkeit}
+\label{handMotionAndParticles}
+\end{figure}
+In $t+1$ wird Position $z'$ als Basis für die neue Vorhersage genutzt. Bei konstanter Bewegung wird das Problem noch größer, da die Hand noch einmal um $\Delta_x$ verschoben sein wird. In Abbildung \ref{handMotionDeltaTwo} Mitte ist dies dargestellt. Es fällt auf, dass nur noch ein Teil des Daumens in der am besten bewerteten Ellipse liegt. Dies liegt daran, dass der Radius in dem gestreut wird nicht ausreichend groß ist, um ein bewegtes Objekt zu verfolgen. Die Bewegung, welche die Hand von $t$ zu $t+1$ beschreibt ist zu groß um diese mit der gegebenen Streuung vorhersagen zu können. 
+
+Eine Lösung wäre es, den Radius zu vergrößern, indem der gaußsche Zufallswert um einen Faktor $x$ vergrößert wird. Da aber die andere Hand und der Kopf ebenfalls im segmentierten Bild sind, kann es zu einem überspringen des \textit{Partikel-Filter} kommen. Um das Problem mittels eines größeren Radius zu beheben, muss der Radius derart groß gewählt werden, dass die Gefahr potenzieller Verwechslungen der Hände und des Kopfes besteht. Das Resultat sind Fehlmessungen und Verlust der zu verfolgenden Hand.
+
+In Abbildung \ref{twoHands} ist dies für den Fall zweier Hände in geringem Abstand dargestellt. In dieser Abbildung soll die Hand rechts unten verfolgt werden, allerdings wird die Ellipse Links oben, welche die falsche Hand repräsentiert, als bestes Partikel bewertet und somit als Basis für die nächste Iteration genutzt. 
+
+
+ \begin{figure}[tbp]
+\centering
+\includegraphics[scale=1.0]{twoHands.pdf}
+\caption{Streuung der Partikel erweitert}
+\label{twoHands}
+\end{figure}
+Aber noch ein weiteres Problem entsteht durch das Streuen in einem größeren Radius. In unbewegtem Zustand wird im gleichen Radius gestreut wie im bewegtem Zustand. Dadurch wird in einem größeren Radius gestreut als es notwendig ist und es kann zu potenziellen Fehlmessungen kommen. Eine mögliche Lösung wäre die Anzahl der berechneten Partikel stark zu erhöhen. Allerdings wird sich dadurch die Laufzeit auch drastisch erhöhen. 
+
+Das Grundproblem ist die Bewegung der Hand im Raum. Die Hand hat bei dieser Bewegung eine Geschwindigkeit $\dot x$ mit der sie sich in der Bildebene fortbewegt. Bezieht man nun diese Geschwindigkeit, die durch die letzten zwei bekannten Hand-Positionen berechnet werden kann in die Betrachtung ein, kann man das zuletzt berechnete Ellipsenzentrum um diesen Wert verschieben und somit abschätzen, wo sich die Hand im nächsten Bild befindet. 
+
+Um dieses Verfahren noch zu verbessern wird zusätzlich die Beschleunigung $\ddot{x}$ der Hand mit einbezogen, um eine Tendenz abzubilden. Die Beschleunigung wird aus den letzten drei bekannten Hand-Positionen berechnet. Vor der Ausführung des \textit{Partikel-Filters} werden Beschleunigung und Geschwindigkeit berechnet und das letzte Ellipsenzentrum um diesen Wert verschoben. In Abbildung \ref{handMotionWithAccAndVel} Rechts ist dargestellt, wie sich das Zentrum $z'$ mit Hilfe der Beschleunigungs- und Geschwindigkeitsdaten in x-Richtung verschiebt und die Vorhersage und die Vorhersage verbessert. 
+
+Die Funktion wird nun um Beschleunigung $\ddot{x}$ und Geschwindigkeit $\dot{x}$ erweitert. Der Faktor vor dem gaußschen Zufallswert beeinflusst die Streuung und wurde durch Versuche auf den Wert 4 für die Position in $x$-Richtung und auf den Wert 3 in $y$-Richtung festgelegt.
+
+\begin{equation}
+c_x[s_{t}] = c_x[s_{t-1}]+ \dot{x} + \ddot{x} + 4 \eta .
+\end{equation}
+\begin{equation}
+c_y[s_{t}] = c_y[s_{t-1}] + \dot{x} + \ddot{x} + 3 \eta .
+\end{equation}
+
+Im folgenden sind zwei Bilder aus einem Versuch dargestellt. In Abbildung \ref{withoutVelocity} Links bewegt sich die Hand von rechts nach links. Geschwindigkeit und Beschleunigung werden hierbei nicht berücksichtigt. Es ist klar zu erkennen, dass der Zustand der Hand durch keine der Partikel adäquat repräsentiert wird. Auf der rechten Seite werden hingegen Geschwindigkeit und Beschleunigung berücksichtigt. Bei Einbeziehung von Geschwindigkeit und Beschleunigung hat sich ab 160 Partikeln keine signifikante Verbesserung der Verfolgung ergeben. 
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=1.2]{withoutAndWithoutVelocity.png}
+\caption{Links: Ausschnitt mit 160 Partikeln ohne Geschwindigkeit und Beschleunigung. Rechts: Ausschnitt mit 160 Partikeln mit Geschwindigkeit und Beschleunigung}
+\label{withoutVelocity}
+\end{figure}
+
+\subsubsection{Hand-Position}
+Mit Hilfe der vorhergesagten Partikel und deren Wahrscheinlichkeiten wird vom \textit{Partikel-Filter Framework} des IVT ein Systemzustand geschätzt und zurückgegeben. Das folgende Bild zeigt den Systemzustand, basierend auf den Vorhersagen und deren Wahrscheinlichkeiten, es wurden Geschwindigkeit und Beschleunigung berücksichtigt.
+
+\subsubsection{Steuerung des aktiven Kamerakopfes}
+Mit den Informationen des \textit{Partikel-Filters} über die Hand-Position wird der aktive Kamerakopf des Roboters gesteuert. Der Kamerakopf wird dabei auf die geschätzte Position der Hand ausgerichtet.
+
+Die greifende Hand ist dadurch immer im Sichtfeld der fovealen Stereokamera. In der vorliegenden Arbeit wurde nicht auf die Probleme eingegangen, welche ein aktives Kamerasystem mit sich bringt. Der Kamerakopf wird direkt mit den Werten des \textit{Partikel-Filter} gesteuert. In Abbildung \ref{grasp} oben ist ein Ausschnitt während der Hand-Verfolgung dargestellt. Die greifende Hand befindet sich im Sichtfeld der fovealen Kameras. Im unteren Bild ist eine ähnliche Situation ohne Hand-Verfolgung dargestellt.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[scale=0.5]{grasp.pdf}
+\caption{Oben: Ausschnitt aus einer aufgenommenen Sequenz, Kamerakopf ist auf die greifende Hand ausgerichtet und verfolgt diese. Unten: Zum Vergleich, ohne aktiven Kamerakopf}
+\label{grasp}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Evaluation}
+
+\subsubsection{Echtzeitanforderungen}
+In \cite{Athanas1995} wird Echtzeit-Bildverarbeitung dadurch definiert, dass die Verarbeitung der Bilder und deren Ausgabe die selbe Bildwiederholfrequenz aufweisen. In der vorliegenden Arbeit sind Bildwiederholfrequenzen von durchschnittlich 15 Bildern pro Sekunde gemessen worden. Es gab allerdings keine signifikanten Verzögerungen in der Verarbeitung, welche den Ablauf gestört und zu Fehlverhalten der Beobachtung und der Verfolgung geführt hätten.  Nichtsdestotrotz wird nur die Hälfte der Daten die von der Kamera geliefert werden verarbeitet. Für den vorliegenden Anwendungsfall ist eine Bildwiederholfrequenz von 15 Bildern pro Sekunde ausreichend, um eine robuste Verfolgung zu gewährleisten.  
+
+\subsubsection{Oberkörper-Verfolgung}
+Die Oberkörper-Verfolgung muss vor der Benutzung auf die jeweilige Körpergröße eingestellt werden. In einigen Tests hat sich herausgestellt, dass ungenaue Angaben der Körpermaße zu sehr großen Schwankungen bei den detektierten Hand-Positionen führen können. Dadurch konnte die Initialposition der Hände nur schlecht oder gar nicht bestimmt werden. Auch das Einnehmen der Initialposition nach der ersten Demonstration war dadurch nur schwer möglich. Es ist also besonders wichtig die Oberkörper-Maße genau einzugeben. 
+
+Des weiteren wurde durch den Tisch ein Teil des Oberkörpers verdeckt. Dadurch war der Oberkörper aus Sicht des Roboters kürzer als angegeben und somit entstand eine fehlerhafte Messung. Eine mögliche Lösung ist es, die sichtbare Höhe des Oberkörpers zu messen, wenn der Demonstrator hinter dem Tisch steht und diese dann anzugeben. Waren die Maße korrekt eingegeben erwies sich die Oberkörper-Verfolgung als sehr robust und wenig Fehleranfällig.
+
+\subsubsection{Einnehmen der Initialposition nach erster Demonstration}
+Nach der ersten Demonstration muss der Demonstrator die Hände wieder in die Intialposition bringen. In den Versuchen ist aufgefallen, dass die Initialposition nicht immer ohne weiteres wieder einzunehmen ist. Anders als erwartet sind die Hände in anderen Positionen abgelegt worden als zu Beginn. Dies könnte daher kommen, dass die Anfahrtsbewegung eine andere ist, als die Bewegung vom Objekt weg. Auch die Position in der das Objekt auf dem Tisch platziert ist könnte einen Einfluss darauf haben, wo die Hand nach dem Griff abgelegt wird. 
+
+\subsubsection{Hand-Verfolgung}
+Bei der Hand-Verfolgung können einige Faktoren zu einer fehlerhaften Messung oder zum vollständigen scheitern der Verfolgung führen. Im Allgemeinen ist die Hand-Verfolgung jedoch sehr robust und wenig anfällig für Störungen.
+\paragraph*{Wechsel der Bewegungsrichtung der verfolgten Hand} Plötzliche Richtungswechsel können zum Scheitern der Verfolgung führen. In den Tests kam dies allerdings selten vor. Nur bei Versuchen in denen bewusst plötzliche Wechsel der Bewegungsrichtung  durchgeführt wurden schlug die Verfolgung fehl. 
+\paragraph*{Vollständige Verdeckung der verfolgten Hand}
+Ist die verfolgte Hand vollständig von einem anderen Objekt verdeckt und somit für die Hand-Verfolgung nicht mehr auffindbar schlägt diese fehl oder springt unter Umständen auf den Kopf oder die andere Hand über. Dies kann beispielsweise geschehen, wenn sehr große Objekte gegriffen werden sollen. Dabei kann es passieren, dass die Hand während der Anfahrtsbewegung hinter dem Objekt geführt wird und somit vollständig verdeckt ist. Sehr robust hingegen erwies sich die Verfolgung auch dann, wenn nur ein kleiner Teil der Hand zu sehen war, also keine vollständige Verdeckung der Hand. 
+\paragraph*{Überspringen auf die andere Hand oder den Kopf während der \\ Verfolgung}
+In einigen wenigen Versuchen hat die Hand-Verfolgung die zu verfolgende Hand verloren und stattdessen die andere Hand oder den Kopf weiter verfolgt. Dies kann geschehen, wenn die Hände zu Nahe zusammen sind und die Hand-Verfolgung nicht zwischen diesen unterschieden kann. Beispielsweise wenn beide Hände hintereinander gehalten werden. Diese Situation wird bei einer einhändigen Greifbewegung selten vorkommen. Auch wenn die verfolgte Hand zu Nahe am Kopf geführt wird, kann die Verfolgung fälschlicherweise auf den Kopf überspringen. 
+
+\subsubsection{Farbsegmentierung}
+Die Farbsegmentierung, welche in der Oberkörper-Verfolgung sowie in der Hand-Verfolgung genutzt wurden, sind sehr fehleranfällig gegenüber Änderungen der Helligkeit. Kleine Änderungen, beispielsweise Sonneneinstrahlung bei wechselhaftem Wetter, können dazu führen, dass sowohl die Ober\-kör\-per-Ver\-fol \-gung als auch die Hand-Verfolgung fehlschlagen. In einigen Fällen wurden Gegenstände im Hintergrund als Hautfarben identifiziert, oder aber die Hände wurden nicht mehr als Hautfarben identifiziert. Wenn dieser Fall eintritt, muss die Farbsegmentierung neu eingestellt werden. Um dies zu umgehen wurden die Sequenzen in einem abgedunkelten Raum unter gleichbleibenden Lichtbedingungen durchgeführt. 
+
+
+\newpage
+
+
+\section{Schlussfolgerung und Ausblick}
+Es wurde ein Verfahren vorgestellt, welches einem humanoiden Roboter mit aktivem Kamerakopf ermöglicht eine Greifbewegung zu beobachten. Es wird zuerst eine Beobachtung des gesamten Oberkörpers und danach eine Beobachtung der greifenden Hand während der Greifbewegung durchgeführt. Der Roboterkopf wird eingesetzt, um die Hand zu verfolgen und diese somit im fovealen Sichtfeld der Stereokamera zu halten. Es werden also detailliertere Bilder der Hand während der Greifbewegung erzeugt. Diese Bilder können später zur genaueren Analyse der Greifbewegung eingesetzt werden. Die Greifbewegung wird vom Demonstrator in einer für den Menschen natürlichen Art und Weise vorgeführt. Der Demonstrator muss keine weiteren Anweisungen geben damit der Roboter in der Lage ist die Greifbewegung insgesamt zu beobachten. Die Greifbewegung muss zwei mal durchgeführt werden. Um das Ende der ersten Demonstration zu signalisieren, müssen die Hände des Demonstrators lediglich an derselben Stelle abgelegt werden wie zu Beginn der ersten Demonstration. In der ersten Demonstration wird der Oberkörper verfolgt und die greifende Hand identifiziert, in der zweiten wird die greifende Hand mit dem aktiven Kamerakopf verfolgt. Das Beobachtungsschema gibt einen Ablauf und einen Rahmen vor, um eine ganzheitliche Beobachtung einer Greifbewegung zu realisieren. Dabei werden die Informationen aus der Oberkörper- und der Hand-Verfolgung genutzt, um den Ablauf zu steuern. Auch der aktive Roboterkopf wird durch die Informationen aus der Hand-Verfolgung gesteuert. 
+In zukünftigen Arbeiten könnten Schnittstellen implementiert werden, damit andere Verfahren zur Oberkörper- und Hand-Verfolgung genutzt werden können. Des weiteren werden in der vorliegenden Arbeit keine Informationen über die Greifbewegung gesammelt, auch wenn die Oberkörper-Verfolgung und die Hand-Verfolgung zahlreiche Informationen liefern, werden diese nicht gespeichert. In einem nächsten Schritt könnten die Daten gesammelt werden, um zu beurteilen ob diese beispielsweise zum Lernen durch Vormachen, verwendet werden können. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+
+\section{Appendix A: verwendete Werkzeuge}
+
+\subsection{Die Software-Bibliothek Integrating Visions Toolkit}
+\label{IVT}
+In der Arbeit wird die Open-Source-Software-Bibliothek "'Integrating Vision Toolkit"' (im Folgenden IVT genannt) eingesetzt \cite{Azad2009}. Die in C++ programmierte Software-Bibliothek besitzt ein objektorientierte Architektur und ist im Rahmen der Dissertation von Pedram Azad am KIT entstanden. Die Bibliothek bietet Standardmethoden des maschinellen Sehens und verschiedene Datenstrukturen zur Speicherung und Manipualtion von digitalen Bildern. Humanoide Roboter haben für die Onlinverarbeitung nur beschränkte Ressourcen zur Verfügung. Deshalb ist es wichtig, in Hinblick auf Speicherbedarf und Ausführungszeit möglichst effiziente Algorithemn und Methoden zu verwenden. Dies wurde bei der Implementierung des IVT berücksichtigt und umgesetzt. Aufgrund der Integration auf dem humanoiden Roboter ARMAR-IIIb und der effizienten Algorithmen zur Bildverarbeitung und Analyse wurde zur Umsetzung der Arbeit IVT gewählt. Durchaus denkbar wäre auch eine Umsetzung mit Hilfe anderer Computer-Vision Bibliotheken wie besipielsweise OpenCV. Wenn nicht darauf hingewiesen wird, werden in der Arbeit die Methoden und Datenstrukturen des IVT genutzt, um die nötigen Verarbeitungsschritte zu realsieren. Im Folgenden werden einige der für diese Arbeit wichtigen Methoden und Datenstrukturen erläutert, wobei nicht immer auf die exakte Umsetzung im IVT eingegangen wird.
+
+
+\subsubsection{IVT \textit{Partikel-Filter} Framework}
+Das IVT \textit{Partikel-Filter} Framework bietet einen Rahmen zur Implementierung eines \textit{Partikel-Filters} nach \cite{Isard1998}, welches den Ablauf des \textit{Partikel-Filters} übernimmt. Es müssen lediglich die Funktionen zur Vorhersage, Berechnung der Wahrscheinlichkeiten und das Aktualisieren der Partikel implementiert werden. Zusätzlich muss das gewünschte Modell implementiert werden, beziehungsweise dessen Parameter angelegt werden. Es wurde das Design-Pattern "'Framework with Template Methods"'   genutzt, um das \textit{Partikel-Filter} Framework umzusetzen.
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	
+\nocite{*}								% Alle Refenezen werden aufgelistet
+\bibliographystyle{alpha} 				% Layout Stil der Bibliographie
+ \bibliography{ausarbeitung_a}
+			% Literatur Datei einbinden
+			
+\end{document}

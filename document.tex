@@ -1,0 +1,88 @@
+\documentclass[a4paper,titlepage,twoside=true,bibliography=totoc]{scrreprt}
+
+%==========================Bindekorrektur Option, oben in Documenclass hinzufügen===========
+%,BCOR=15mm
+
+%===========================PRÄAMBEL===============================
+% Packages
+%\usepackage[left=3cm,right=4cm,top=3cm,bottom=6cm]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{hyperref}
+\usepackage{nameref}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{algorithmic}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{babelbib} 
+\usepackage{titleref}
+\usepackage[colorinlistoftodos, textwidth=2cm, shadow, textsize = tiny]{todonotes}
+
+%\setlength{\marginparwidth}{3cm}
+%\usepackage{amsmath,amssymb,amsthm,amsfonts}
+%\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2} \fontshape{#3} \selectfont}
+%\usepackage{array}
+%\usepackage{calc}
+%\usepackage{scrlayer-scrpage}
+%\usepackage{tabularx}
+%\addtokomafont{caption}{\scriptsize} 
+
+%===>Trennungsregeln für das gesamte Dokument.
+
+\input{misc/hyphenation.tex} 
+
+
+%===> Config
+\graphicspath{{./Bilder/}}
+
+\newcommand{\myname}{Peter Michael Bolch}
+\newcommand{\mymanr}{1345211}
+\newcommand{\mytitle}{Mein Titel}
+\newcommand{\mysubmissiondate}{2014}
+\newcommand{\myadvisor}{Matthias Keller}
+\newcommand{\myprofessor}{Lehrstuhl \\ Prof. Dr. Hannes Hartenstein}
+\newcommand{\myinstitute}{Dezentrale Systeme und Netzdienste\\ Institut für Telematik }
+\newcommand{\myfaculty}{Fakultät für Informatik}
+\newcommand{\myseminar}{Diplomarbeit}
+\newcommand{\myseminardate}{2014}
+
+%==============================================================================
+
+% Macros
+\newcommand{\name}[1]{\textit{#1}}
+
+% \renewcommand{\floatpagefraction}{.7}
+
+
+
+
+%==============================================================================
+
+\begin{document}
+
+
+\input{misc/Titelseiten} 
+
+\input{misc/Inhaltsverzeichnis}
+
+\input{chapters/Einleitung}
+
+\input{chapters/Entwurf}
+
+\input{chapters/Implementierung}
+
+\input{chapters/Leistungsbewertung}
+
+\input{chapters/Schlussfolgerungen}
+
+\input{chapters/Zusammenfassung}
+	
+\nocite{*}								% Alle Refenezen werden aufgelistet
+\bibliographystyle{alpha} 				% Layout Stil der Bibliographie
+ \bibliography{bibtex/dipl}                     % Literatur Datei einbinden
+			
+\end{document}
