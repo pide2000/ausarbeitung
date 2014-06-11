@@ -2,7 +2,35 @@
 
 \section{Indikatoren zur Bestimmung der geografischen Lokation}
 
-\todo{Wie detailliert hier auf Framework eingehen? Preprocessor Konzept zur universellen Vorverarbeitung}
-\subsection{Vorverarbeitung der Indikatoren}
+	\subsection{genutzte Indikatoren}
+		\begin{enumerate}
+			\item Begründung warum Userlocation und Timezone
+			\item Beispiele und Auswertungen (manuell getaggter Datensatz)
+			\item Verweis auf \"in justin biebers heart\"
+		\end{enumerate}
+
+	\todo{Wie detailliert hier auf Framework eingehen? Präprozessor-Konzept zur universellen Vorverarbeitung}
+	\subsection{Vorverarbeitung der Indikatoren (Präprozessor-Konzept)}
+		\begin{enumerate}
+			\item geonames matching (geonames tree) für geografische Namen bestehend aus mehreren Wörtern
+			\item Eliminierung von Sonderzeichen
+			\item Tokenizing
+			\item Ngram Erzeugung
+			\item \todo{Checken wie oft das vorkommt und wie groß der Nutzen ist} Zeitzone als \"schärfenden Indikator für doppeldeutige Namen\"
+		\end{enumerate}
+
+	\subsection{Encoding}
+		Problematik unterschiedlicher Sprachen, 
+		url-encoding sinnvoll als Vorbereitung auf Webservice. 
+
+\section{Geolocation Mapping}
+
+	\subsection{nearest neighbour mapping}
+		\begin{enumerate}
+			\item \todo{Welches Fehlermaß kann ich hier anwenden(Recherche)} Wie genau kann gemappt werden? Fehler Durchschnitt
+			\item Mapping auf cities 1000/1000/15000 mit Daten zu Ungenauigkeit	
+		\end{enumerate} 
+
+
 
 \section{}
