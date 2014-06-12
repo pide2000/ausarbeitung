@@ -2,22 +2,22 @@
 
 \section{Indikatoren zur Bestimmung der geografischen Lokation}
 
-	\subsection{genutzte Indikatoren}
+	\subsection{Geografische Indikatoren}
 		\begin{enumerate}
+			\item Mögliche Alternativen
 			\item Begründung warum Userlocation und Timezone
 			\item Beispiele und Auswertungen (manuell getaggter Datensatz)
 			\item Verweis auf \"in justin biebers heart\"
 		\end{enumerate}
 
-	\todo{Wie detailliert hier auf Framework eingehen? Präprozessor-Konzept zur universellen Vorverarbeitung}
-
+	\todo{Wie detailliert hier auf Framework eingehen? Präprozessor-Konzept zur universellen Vorverarbeitung, oder eher in Implementierung}
 	\subsection{Vorverarbeitung der Indikatoren (Präprozessor-Konzept)}
 		\begin{enumerate}
 			\item geonames matching (geonames tree) für geografische Namen bestehend aus mehreren Wörtern
 			\item Eliminierung von Sonderzeichen
-			\item Tokenizing => Implementierung
-			\item \todo{NGram ist zerntrales Element! extra subsection?} Ngram Erzeugung
-			\item \todo{Checken wie oft das vorkommt und wie groß der Nutzen ist} Zeitzone als \"schärfenden Indikator für doppeldeutige Namen\". Beispiel für Einbeziehung weiterer Indikatoren -> universeller Einsatz. 
+			\item Tokenizing
+			\item Ngram Erzeugung
+			\item \todo{Checken wie oft das vorkommt und wie groß der Nutzen ist} Zeitzone als \"schärfenden Indikator für doppeldeutige Namen\"
 		\end{enumerate}
 
 	\subsection{Encoding}
@@ -28,11 +28,26 @@
 
 	\subsection{nearest neighbour mapping}
 		\begin{enumerate}
-			\item \todo{Welches Fehlermaß kann ich hier anwenden(Recherche)} Wie genau kann gemappt werden? Fehler Durchschnitt?
+			\item \todo{Welches Fehlermaß kann ich hier anwenden(Recherche)} Wie genau kann gemappt werden? Fehler Durchschnitt
 			\item Mapping auf cities 1000/1000/15000 mit Daten zu durchschnitll. Abstand
-			\item Hier ist noch Verbesserungspotenzial -> wenn Mapping Distanz zu weit entfernt -> verwerfen!
+			\item Hier ist noch Verbesserungspotenzial -> wenn Mapping Distanz zu weit entfernt -> verwerfen! 
 		\end{enumerate} 
 
 
 
-\section{}
+\section{Wissensgenerierung}
+	
+	\subsection{Generierung eines Wissendatensatzes}
+
+	\subsection{Counter}
+
+	\subsection{Verknüpfung mit Geodaten}
+
+	\subsection{Auflösen auf Administartionsebenen, Länder}
+
+\section{Lokalisieren von Tweets ohne konkrete geografische Daten}
+
+
+
+
+
