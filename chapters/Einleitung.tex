@@ -7,10 +7,13 @@ Motivation aus Proposal abändern.
 das sehr wenige Tweets Geotags haben.
 
 \chapter{Grundlagen und Stand der Technik}
+	
 	\section{Geoinformationen in Social Media Daten}
  		\begin{enumerate}
- 			\item \todo{selbst definiert okay?} gesicherte Geoinformationen vs. ungesicherte Geoinformationen
- 			\item konkrete Geolocations (bspws. Städte zu allgemeineren, Länder) Referenz: From Justin Biebers Heart 
+ 			\item \todo{definieren!} gesicherte Geoinformationen vs. ungesicherte Geoinformationen
+ 			\item konkrete Geolocations (bsp. Städte <--> Länder) Referenz: From Justin Biebers Heart 
+ 			\item unmittelbar geografische Indikatoren
+			\item mittelbar geografische Daten bspsw. Hashtags, Inhaltsanalysen ohne spezielle geografische Hinweise
  			\item Lokalisierung von Social-Media Elementen (Videos, User, Nachrichten, Bilder) kleine Übersicht
  			\item Hinleitung zu Twitter  
  		\end{enumerate}
@@ -50,8 +53,8 @@ das sehr wenige Tweets Geotags haben.
 			\item Umfang und Informationen
 			\item Aktualität
 			\item Hierarchiebeziehungen im geonames.org Datensatz
+			\item \todo{Eventuell hier fehl am Platz} Allgemeine geografische Grundbegriffe.
 		\end{enumerate}			
-		\todo{Evetnuell hier fehl am Platz} Allgemeine geografische Grundbegriffe.
 
 	\section{N-Gramme}
 		\begin{enumerate}
@@ -60,8 +63,12 @@ das sehr wenige Tweets Geotags haben.
 		\end{enumerate}
 
 	\section{Stand der Technik}
+	Zwei vorgehen bei aktuellen Ansätzen
+	Zum ersten, dass zusammenfassen zu Gruppen von Hinweisen auf einen bestimmten Standort und das abbilden dieser Gruppen auf geografische Entitäten oder direktes abbilden der Indikatoren auf den Globus und das darauffolgende Gruppieren nach Indikatoren um Häufungen festzustellen.   
 		\begin{enumerate}
-			\item Naiver Ansatz -> Geotagging mit Google Maps API V3
+			\item Naiver Ansatz -> Geotagging mit Google Maps API V3, nur Indikatoren die geografische Namen enthalten. 
+					Prinzipiell einfache Datenbankabfrage mit ein wenig semantik. 
+					Keine Jargon Namen wie Big Apple etc.
 				\begin{enumerate}
 					\item Funktion der GMaps Api V3
 					\item Einschränkungen der GMaps Api V3
@@ -72,11 +79,9 @@ das sehr wenige Tweets Geotags haben.
 				\begin{enumerate}
 					\item{\todo{in allen anderen Arbeiten gleiches Prinzip?} 
 					allgemeiner Ansatz : Geotagged Tweets analysieren (Inhalt/andere Indikatoren usw. ), zuordnen zu geografischen \"Bereichen\" und daraus lernen.}
-					\item{Inhaltsanalyse}
-					\item{Indikatoransatz}
-					\item{Multiindikatoransatz}
-					\item
-
+					\item Verfahren mit Inhaltsanalysen
+					\item Verfahren mit Indikatoren einzelne oder mehrere
+					\item Welche Verfahren kommen beim mapping auf \todo{geografische Entität definieren} geografische Entitäten zum Einsatz
 				\end{enumerate}
 		\end{enumerate}
 
