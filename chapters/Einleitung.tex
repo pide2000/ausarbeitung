@@ -16,19 +16,20 @@
 
 	\section{Gliederung der Arbeit}
 
-		\subsection{Grundlagen und Stand der Technik}
+		\subsection*{KAPITEL1: Grundlagen und Stand der Technik}
 			In diesem Kapitel sollen die Grundlagen für die entwickelte "'Methode zur Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten"' \footnote{Eventuell als "'Universelle Methode zur ..."} vermittelt werden. 
 			Des weiteren werden aktuelle Ansätze bezüglich der Lokalisierung von Social Media Daten untersucht, die verschiedenen Verfahren untersucht und die Probleme der aktuellen Lösungen diskutiert.
 
-		\subsection{Technologien und Standards}
+		\subsection*{KAPITEL2: Technologien und Standards}
+		Fussnote beachten!
 			\footnote{Hier bin ich mir unsicher ob dies Sinn macht. 
 			Theoretisch könnte man hier die geografischen Standards und Grundbegriffe definieren sowie die genutzten Komponenten der Implemnetierung.} 
 
-		\footnote{Eventuell als "'Universelle Methode zur ..."}
-		\subsection{Entwicklung einer Methode zur konkreten Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten oder anderer konkreter Ortsangaben}
+		\subsection*{KAPITEL3: Entwicklung einer Methode zur konkreten Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten oder anderer konkreter Ortsangaben}
 			In diesem Kapitel wird die erarbeitete Methode erläutert und im Detail erklärt. 
+			Hier werde ich entweder einen Top-Down Ansatz oder einen Bottom Up Ansatz wählen.
 
-			Top Down
+			Top-Down:
 			\begin{enumerate}
 				\item Genereller Aufbau der Wissensbasis \footnote{Datenbankschema oder Informationsschema} 
 				\item Lokalisierung von Social Media Daten (Lokalisierungsprozess) 
@@ -39,17 +40,29 @@
 				\item NGramme zur Repräsentation der Indikatoren
 			\end{enumerate}
 
-		\subsection{Referenzimplementierung der entwickelten Methode}
-			Ausgewählte Auszüge, Probleme und Fallstricke der Referenzimplementierung erläutert und erklärt. 
+			Bottom-Up:
+
+		\begin{enumerate}
+			\item NGramme aus Indikatoren erzeugen
+			\item Geomapping
+			\item Datenstruktur
+			\item Treffer zählen (NGramm + Geoid gleich usw.)
+			\item Geografische Hierarchiebene
+			\item Unsicherheit bei Lokalisierung messen (neuer Daten) 
+			\item Justierung der Lokalisierungsunsicherheit auf geografischen Hierarchiebenen
+		\end{enumerate}
+
+		\subsection*{KAPITEL4: Referenzimplementierung der entwickelten Methode}
+			Es werden ausgewählte Auszüge, Probleme und Fallstricke der Referenzimplementierung erläutert und erklärt. 
 
 
-		\subsection{Leistungsbewertung der entwickelten Methode}
+		\subsection*{KAPITEL5: Leistungsbewertung der entwickelten Methode}
 			In diesem Kapitel werden die Ergebnisse der Refernzimplementierung bewertet und, soweit sinnvoll, gegenüber bestehenden Ansätze einer kritischen Betrachtung unterzogen. 
 
 
-		\subsection{Schlussfolgerungen}
+		\subsection*{KAPITEL6: Schlussfolgerungen}
 			Unter besonderer Berücksichtigung der Ergebnisse des letzten Kapitels werden Schlussfolgerungen gezogen. 
 			Der Beitrag und nutzen der entwickelten Methode soll kritisch hinterfragt werden.
 
-		\subsection{Zusammenfassung und Ausblick}
+		\subsection*{KAPITEL7: Zusammenfassung und Ausblick}
 			Zusammenfassung der Arbeit und kritischer Rückblick. Im Ausblick werden mögliche Verbesserungen und Ideen zur Weiterentwicklung gegeben.  
