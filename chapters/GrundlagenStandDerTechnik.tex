@@ -1,3 +1,4 @@
+%!TEX root = ../document.tex
 \chapter{Grundlagen und Stand der Technik} 
 
 
@@ -5,8 +6,8 @@
 
 		\subsection{Geoinformationen in Social Media Daten}
 	 		\begin{enumerate}
-	 			\item \todo{definieren!} gesicherte Geoinformationen vs. ungesicherte Geoinformationen
-	 			\item konkrete Geolocations (bsp. Städte <--> Länder) Referenz: From Justin Biebers Heart 
+	 			\item \todo{gesichert und ungesicherte Geoniformationen definieren!} gesicherte Geoinformationen vs. ungesicherte Geoinformationen
+	 			\item konkrete Geolocations (bsp. Städte <--> Länder) \cite{Hecht:2011:TJB:1978942.1978976}
 	 			\item unmittelbar geografische Indikatoren
 				\item mittelbar geografische Daten bspsw. Hashtags, Inhaltsanalysen ohne spezielle geografische Hinweise
 	 			\item Lokalisierung von Social-Media Elementen (Videos, User, Nachrichten, Bilder) kleine Übersicht
@@ -16,8 +17,8 @@
 		\subsection{Twitter}
 			Allgemeine Informationen zu Twitter. 
 			\begin{enumerate}
-				\item Was ist Twitter -> Tweets/Mechanismen/"Wie wird Twitter genutzt"
-				\item \todo{Paper raussuchen} Einfluss von Twitter auf Weltbild/Meinung/ usw.
+				\item Was ist Twitter -> Tweets/Mechanismen/"'Wie wird Twitter genutzt"''
+				\item \todo{Paper raussuchen -> Einfluss von Twitter auf Weltbild/Meinung/ } Einfluss von Twitter auf Weltbild/Meinung/ usw.
 				\item Twitter als Nachrichtenmedium (Can Twitter Replace Newswire (Petrovic et. al ))
 				\item Anatomie eines Tweets 
 					\begin{enumerate}
@@ -26,8 +27,10 @@
 					\end{enumerate}
 			\end{enumerate}
 	
-	\todo{schlechte Überschrift!} 
-	\section{Geografische Grundbegriffe}
+	
+	\section{Geografische Grundbegriffe und Geografiedaten}
+
+		\subsection{Geografische Grundbegriffe}
 
 		\subsection{Geonames.org}
 			Allgemeines zu geonames.org, was ist geonames.org. 
@@ -40,18 +43,19 @@
 
 		\subsection{}	
 
-	\section{} 
+	\section{???} 
 		\subsection{N-Gramme}
 			\begin{enumerate}
 				\item NGramme allgemein, Verwendung, Beispiele. 
-				\item \todo{Nochmal genau prüfen, Zusammenhang zu Markov Modell und NGram Statistik herausstellen} Zusammenhang zwischen Länge/Grad eines N-Grammes und Wahrscheinlichkeiten. -> mathematische Herleitung?!
+				\item \todo{NGramme -> Nochmal genau prüfen, Zusammenhang zu Markov Modell und NGram Statistik herausstellen} Zusammenhang zwischen Länge/Grad eines N-Grammes und Wahrscheinlichkeiten. -> mathematische Herleitung?!
 			\end{enumerate}
 
 	\section{Stand der Technik}
-		Zwei vorgehen bei aktuellen Ansätzen
-		Zum ersten, dass zusammenfassen zu Gruppen von Hinweisen auf einen bestimmten Standort und das abbilden dieser Gruppen auf geografische Entitäten oder direktes abbilden der Indikatoren auf den Globus und das darauffolgende Gruppieren nach Indikatoren um Häufungen festzustellen.   
+		Zweistufiger Prozess bei den meisten, mir bekannten Ansätzen.
+		Untersuchung auf Häufungen von Informationen bzw. Indikatoren anhand der konkreten geografischen Angaben. Meistens Cluster Verfahren auf geografischen Daten in Verbindung mit Indikatoren/Informationen die vorverarbeitet wurden.
+
 		\begin{enumerate}
-			\item Naiver Ansatz -> Geotagging mit Google Maps API V3, nur Indikatoren die geografische Namen enthalten. 
+			\item Naiver Ansatz -> Geocoding mit Google Maps API V3, nur Indikatoren die geografische Namen enthalten. 
 					Prinzipiell einfache Datenbankabfrage mit ein wenig semantik. 
 					Keine Jargon Namen wie Big Apple etc.
 				\begin{enumerate}
@@ -62,7 +66,7 @@
 				\end{enumerate}
 			\item aktuelle Ansätze
 				\begin{enumerate}
-					\item{\todo{in allen anderen Arbeiten gleiches Prinzip?} 
+					\item{\todo{Ist das grundsätzliche Verfahren, analysieren Inhalt/Indikatoren -> Zuordnen auf geografische Angaben und danach Clustern tatsächlich immer gleich bei allen Arbeiten? kontinuierlich vs diskrete geografische Daten} 
 					allgemeiner Ansatz : Geotagged Tweets analysieren (Inhalt/andere Indikatoren usw. ), zuordnen zu geografischen \"Bereichen\" und daraus lernen.}
 					\item Verfahren mit Inhaltsanalysen
 					\item Verfahren mit Indikatoren einzelne oder mehrere

@@ -1,16 +1,17 @@
-\chapter{Entwurf} 
+%!TEX root = ../document.tex
+\chapter{Entwicklung einer Methode zur Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten oder anderer konkreter Ortsangaben} 
 
-\section{Indikatoren zur Bestimmung der geografischen Lokation}
+\section{Indikatoren zur Ortsbestimmung}
 
+	\todo{u.U. "'unmittelbar und mittelbar geografische Indikatoren"' "'Entwurf"' -> "'Grundlagen und Stand der Technik verschieben"'} 
 	\subsection{unmittelbar geografische Indikatoren}
 		\begin{enumerate}
 			\item Mögliche Alternativen
 			\item Begründung warum Userlocation und Timezone
 			\item Beispiele und Auswertungen (manuell getaggter Datensatz)
-			\item Verweis auf "in justin biebers heart"
+			\item \cite{Hecht:2011:TJB:1978942.1978976} 
 		\end{enumerate}
 
-	\todo{Eventuell in Einleitung} 
 	\subsection{mittelbar geografische Indikatoren}
 		\begin{enumerate}
 			\item bspsw. Hashtags, Inhaltsanalysen ohne spezielle geografische Hinweise, 
@@ -22,8 +23,8 @@
 			\item geonames matching (geonames tree) für geografische Namen bestehend aus mehreren Wörtern
 			\item Eliminierung von Sonderzeichen
 			\item Tokenizing
-			\item Ngram Erzeugung
-			\item \todo{Checken wie oft das vorkommt und wie groß der Nutzen ist} Zeitzone als "schärfenden Indikator für doppeldeutige Namen"
+			\item Ngram Erzeugung allgemein
+			\item \todo{Was bringt die Zeitzone als zusätzlicher Indikator? Verbesserun messen} Zeitzone als "'schärfenden Indikator für doppeldeutige Namen"'
 		\end{enumerate}
 
 	\subsection{Encoding}
@@ -34,7 +35,7 @@
 
 	\subsection{nearest neighbour mapping}
 		\begin{enumerate}
-			\item \todo{Welches Fehlermaß kann ich hier anwenden(Recherche)} Wie genau kann gemappt werden? Fehler Durchschnitt
+			\item \todo{Welches Fehlermaß kann für das mapping angewandt werden? auf Städteebene gut möglich mit geografischen Distanzen, admin2,amdin1, Land schlecht möglich mit Distanzen} Wie genau kann gemappt werden? Fehler Durchschnitt. 
 			\item Mapping auf cities 1000/1000/15000 mit Daten zu durchschnitll. Abstand
 			\item Hier ist noch Verbesserungspotenzial -> wenn Mapping Distanz zu weit entfernt -> verwerfen! 
 		\end{enumerate} 

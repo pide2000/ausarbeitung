@@ -1,52 +1,55 @@
+%!TEX root = ../document.tex
 \chapter{Einleitung}
 
-\section{Motivation und Hintergründe}
-Motivation aus Proposal (abändern).
+	\section{Motivation und Hintergründe}
+	\todo{Motivation aus Proposal einfügen und dahingehend abändern, dass Analyse der Tweet-Retweet Paare fehlt} 
 
-\section{Problembeschreibung} 
-Allgemein die Problematik der Lokalisierung von Social Media Daten betrachten und erläutern. 
-Danach insbesondere auf Twitter und die Problematik der Informationsflüsse eingehen.
+	\section{Problembeschreibung} 
+	Allgemein die Problematik der Lokalisierung von Social Media Daten betrachten und erläutern.
+	Danach insbesondere auf Twitter und die Problematik der Informationsflüsse eingehen.
 
-\section{Fragestellungen und Zielsetzungen}
-Wie können Interaktionen, Benutzer, oder Daten aus Sozialen Netzwerken lokalisiert werden, wenn keine geografischen Koordinaten gemacht wurden? 
-Wie können diese auf konkrete geografische Entitäten abgebildet werden. 
+	\section{Fragestellungen und Zielsetzungen}
+	Wie können Interaktionen, Benutzer, oder Daten aus Sozialen Netzwerken lokalisiert werden, auch wenn keine geografischen Koordinaten angegeben sind? 
+	Lokalisierung anhand von Indikatoren bzw. Sekundärinformationen.
+	\footnote{hier konkrete, mittelbare und unmittelbare geografische Indikatoren umschreiben um diese später zu definieren-> keine Vorwärtsverweise} 
+	Wie können diese auf konkrete geografische Entitäten \footnote{geografische Entität noch nicht definiert, allgemeine geografische Begriffe verwenden}  abgebildet werden. 
 
-\section{Gliederung der Arbeit}
+	\section{Gliederung der Arbeit}
 
-\subsection{Grundlagen und Stand der Technik}
-In diesem Kapitel sollen die Grundlagen für die entwickelte \todo{Universelle Methode ist unter Umständen zu weit gefasst}  "Universelle Methode zur Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten" vermittelt werden. 
-\todo{Hier muss aufgelistet werden was alles an Grundlagen vermittelt wird}
-Des weiteren werden aktulle Ansätze bezüglich der Lokalisierung von Social Media Daten untersucht, die verschiedenen Verfahren untersucht und die Probleme der aktuellen Lösungen diskutiert.
+		\subsection{Grundlagen und Stand der Technik}
+			In diesem Kapitel sollen die Grundlagen für die entwickelte "'Methode zur Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten"' \footnote{Eventuell als "'Universelle Methode zur ..."} vermittelt werden. 
+			Des weiteren werden aktuelle Ansätze bezüglich der Lokalisierung von Social Media Daten untersucht, die verschiedenen Verfahren untersucht und die Probleme der aktuellen Lösungen diskutiert.
 
-\subsection{Technologien und Standards}
-Hier bin ich mir unsicher ob dies Sinn macht. 
-Theoretisch könnte man hier die geografischen Standards und Grundbegriffe definieren sowie die genutzten Komponenten der Implemnetierung.
+		\subsection{Technologien und Standards}
+			\footnote{Hier bin ich mir unsicher ob dies Sinn macht. 
+			Theoretisch könnte man hier die geografischen Standards und Grundbegriffe definieren sowie die genutzten Komponenten der Implemnetierung.} 
 
-\todo{Universelle Methode ist unter Umständen zu weit gefasst}
-\subsection{Entwicklung einer universellen Methode zur Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten oder anderer konkreter Ortsangaben}
-In diesem Kapitel wird die erarbeitete Methode erläutert und im Detail erklärt. 
+		\footnote{Eventuell als "'Universelle Methode zur ..."}
+		\subsection{Entwicklung einer Methode zur konkreten Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten oder anderer konkreter Ortsangaben}
+			In diesem Kapitel wird die erarbeitete Methode erläutert und im Detail erklärt. 
 
-Top Down
-\begin{enumerate}
-	\item Genereller Aufbau der Wissensbasis
-	\item Lokalisierung von Social Media Daten (Lokalisierungsprozess) 
-	\item Geografische Hierarchiebenen
-	\item Sicherheit anhand der Verteilungswahrscheinlichkeiten
-	\item Einsatz der geografischen Hierarchiebenen zur Justierung der Sicherheit    
-	\item NGramme zur Repräsentation der Indikatoren
-\end{enumerate}
+			Top Down
+			\begin{enumerate}
+				\item Genereller Aufbau der Wissensbasis \footnote{Datenbankschema oder Informationsschema} 
+				\item Lokalisierung von Social Media Daten (Lokalisierungsprozess) 
+				\item Geografische Hierarchiebenen \footnote{In Grundlagen und Stand der Technik behandelt bei Geografie, hier nur erklären wie verwednet wirdHier bin ich mir unsicher ob dies Sinn macht. 
+			Theoretisch könnte man hier die geografischen Standards und Grundbegriffe definieren sowie die genutzten Komponenten der Implemnetierung.}
+				\item Sicherheit anhand der Verteilungswahrscheinlichkeiten
+				\item Einsatz der geografischen Hierarchiebenen zur Justierung der Sicherheit    
+				\item NGramme zur Repräsentation der Indikatoren
+			\end{enumerate}
 
-\subsection{Referenzimplementierung der entwickelten Methode}
-Ausgewählte Auszüge, Probleme und Fallstricke der Referenzimplementierung erläutert und erklärt. 
-
-
-\subsection{Leistungsbewertung der entwickelten Methode}
-In diesem Kapitel werden die Ergebnisse der Refernzimplementierung bewertet und, soweit sinnvoll, gegenüber bestehenden Ansätze einer kritischen Betrachtung unterzogen. 
+		\subsection{Referenzimplementierung der entwickelten Methode}
+			Ausgewählte Auszüge, Probleme und Fallstricke der Referenzimplementierung erläutert und erklärt. 
 
 
-\subsection{Schlussfolgerungen}
-Unter besonderer Berücksichtigung der Ergebnisse des letzten Kapitels werden Schlussfolgerungen gezogen. 
-Der Beitrag und nutzen der entwickelten Methode soll kritisch hinterfragt werden.
+		\subsection{Leistungsbewertung der entwickelten Methode}
+			In diesem Kapitel werden die Ergebnisse der Refernzimplementierung bewertet und, soweit sinnvoll, gegenüber bestehenden Ansätze einer kritischen Betrachtung unterzogen. 
 
-\subsection{Zusammenfassung und Ausblick}
-Zusammenfassung der Arbeit und kritischer Rückblick. Im Ausblick werden mögliche Verbesserungen und Ideen zur Weiterentwicklung gegeben.  
+
+		\subsection{Schlussfolgerungen}
+			Unter besonderer Berücksichtigung der Ergebnisse des letzten Kapitels werden Schlussfolgerungen gezogen. 
+			Der Beitrag und nutzen der entwickelten Methode soll kritisch hinterfragt werden.
+
+		\subsection{Zusammenfassung und Ausblick}
+			Zusammenfassung der Arbeit und kritischer Rückblick. Im Ausblick werden mögliche Verbesserungen und Ideen zur Weiterentwicklung gegeben.  
