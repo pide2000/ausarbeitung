@@ -13,7 +13,7 @@
   Ee                       = {http://arxiv.org/abs/1310.2671}
 }
 
-@InProceedings{Hecht2011,
+@InProceedings{Hecht:2011:TJB:1978942.1978976,
   Title                    = {Tweets from Justin Bieber's Heart: The Dynamics of the Location Field in User Profiles},
   Author                   = {Hecht, Brent and Hong, Lichan and Suh, Bongwon and Chi, Ed H.},
   Booktitle                = {Proceedings of the SIGCHI Conference on Human Factors in Computing Systems},
