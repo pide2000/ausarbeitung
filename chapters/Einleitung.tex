@@ -1,98 +1,99 @@
+%!TEX root = ../document.tex
 \chapter{Einleitung}
 
-\section{Motivation und Hintergründe}
-Motivation aus Proposal (abändern).
+	\section{Motivation und Hintergründe}
+		Die Auslandsnachrichten in Fernsehen und Zeitungen bestimmen das Weltbild der Menschen.
+		Für viele Menschen ist es die einzige Möglichkeit, sich ein Bild von der Welt zu machen. 
+		In den Kommunikationswissenschaften wird im Teilgebiet der Nachrichtengeographie untersucht, welche Nachrichtenflüsse zwischen Ländern bestehen.
+		Es wird betrachtet, über welche Länder in den klassischen Nachrichtenmedien, wie Fernsehen oder Zeitungen, berichtet wird.
 
-\section{Problembeschreibung} 
-Lokalisierung von Tweets ohne konkrete geografische Angaben. 
-Problem das sehr wenige Tweets Geotags haben.
+		Die Verbreitung von Nachrichten und Informationen findet immer stärker auch in sozialen Netzwerken wie Twitter statt. 
+		Längst ist Twitter zu einem Massenphänomen geworden und und kann die Rolle eines Nachrichtenmediums übernehmen \cite{Petrovic2013}.
+		Twitter bietet seinen Nutzern, im Gegensatz zu klassischen Nachrichtenmedien, die Möglichkeit, direkt Einfluss auf die Verbreitung von Informationen zu nehmen. 
+		Diese direkte Einflussnahme der Nutzer kann gemessen und analysiert werden, dadurch lässt sich beispielsweise ein Interesse der Nutzer an Nachrichten anderer Länder ableiten.
+		Daher ist es interessant Nachrichtenflüsse im Twitter Netzwerk zu untersuchen. 
 
-\chapter{Grundlagen und Stand der Technik}
-	
-	\section{Geoinformationen in Social Media Daten}
- 		\begin{enumerate}
- 			\item \todo{definieren!} gesicherte Geoinformationen vs. ungesicherte Geoinformationen
- 			\item konkrete Geolocations (bsp. Städte <--> Länder) Referenz: From Justin Biebers Heart 
- 			\item unmittelbar geografische Indikatoren
-			\item mittelbar geografische Daten bspsw. Hashtags, Inhaltsanalysen ohne spezielle geografische Hinweise
- 			\item Lokalisierung von Social-Media Elementen (Videos, User, Nachrichten, Bilder) kleine Übersicht
- 			\item Hinleitung zu Twitter  
- 		\end{enumerate}
-
-	\section{Twitter}
-		Allgemeine Informationen zu Twitter. 
-		\begin{enumerate}
-			\item Was ist Twitter -> Tweets/Mechanismen/"Wie wird Twitter genutzt"
-			\item \todo{Paper raussuchen} Einfluss von Twitter auf Weltbild/Meinung/ usw.
-			\item Twitter als Nachrichtenmedium (Can Twitter Replace Newswire (Petrovic et. al ))
-			\item Anatomie eines Tweets 
-				\begin{enumerate}
-					\item Welche Informationen sind in einem Tweet enthalten? 
-					\item Konzentration auf Daten die Hinweise zur räumlichen Lage geben könnten aber auch allgemein auf die Daten eingehen.
-				\end{enumerate}
-		\end{enumerate}
+		Um diese Nachrichtenflüsse untersuchen zu können, muss bekannt sein von welchem Standort ein Tweet abgesetzt wurde. 
+		Die Genauigkeit der Ortsauflösung, also beispielsweise auf Städte-, Länder- oder Bundesebene \footnote{Hier werden als Begrifflichkeiten nur die deutschen Administrationsebenen genannt, andere Länder haben hierfür andere Begriffe die nicht vollständig aufgelistet werden können} , hängt davon ab, ob internationale oder aber nationale Nachrichtenflüsse von Interesse sind.
 		
-	\section{Datenbasis}
-		\begin{enumerate}
-			\item Welche Datenbasis wurde genutzt 
-				\begin{enumerate}
-					\item Streaming API
-					\item Is the Sample good enough (Morstatter et al 13)
-					\item When is it biased? (Morstatter et al)
-					\item How does the Data sampling Startegy Impact the Discovery of Information Diffusion in Social Media (De Choudhurry, 1)
-				\end{enumerate}
-			\item Lerndatensatz
-			\item Kontrolldatensatz
-			\item Manuell getaggter Datensatz
-			\item Google Maps getaggter Datensatz
-		\end{enumerate}			
-	
-	\section{Geonames.org}
-		Allgemeines zu geonames.org, was ist geonames.org. 
-		\begin{enumerate}
-			\item Woher stammen die Daten?
-			\item Umfang und Informationen
-			\item Aktualität
-			\item Hierarchiebeziehungen im geonames.org Datensatz
-
-		\end{enumerate}			
+		Beim, absetzen eines Tweet werden allerdings nicht immer konkrete Daten über den aktuellen Standort des Senders angehängt.
+		Vergleichsweise selten erhält man geographische Koordinaten oder andere Daten, welche mit Hilfe von IT Systemen unmittelbar auf einen konkreten Ort aufgelöst werden können.
 
 
-	\section{N-Gramme}
-		\begin{enumerate}
-			\item NGramme allgemein, Verwendung, Beispiele. 
-			\item \todo{Nochmal genau prüfen, Zusammenhang zu Markov Modell und NGram Statistik herausstellen} Zusammenhang zwischen Länge/Grad eines N-Grammes und Wahrscheinlichkeiten. -> mathematische Herleitung?!
-		\end{enumerate}
+	  
 
-	\section{Stand der Technik}
-	Zwei vorgehen bei aktuellen Ansätzen
-	Zum ersten, dass zusammenfassen zu Gruppen von Hinweisen auf einen bestimmten Standort und das abbilden dieser Gruppen auf geografische Entitäten oder direktes abbilden der Indikatoren auf den Globus und das darauffolgende Gruppieren nach Indikatoren um Häufungen festzustellen.   
-		\begin{enumerate}
-			\item Naiver Ansatz -> Geotagging mit Google Maps API V3, nur Indikatoren die geografische Namen enthalten. 
-					Prinzipiell einfache Datenbankabfrage mit ein wenig semantik. 
-					Keine Jargon Namen wie Big Apple etc.
-				\begin{enumerate}
-					\item Funktion der GMaps Api V3
-					\item Einschränkungen der GMaps Api V3
-					\item zurückgelieferte Daten der GMaps Api V3
-					\item Kurze Beschreibung wie ich die API genutzt habe
-				\end{enumerate}
-			\item aktuelle Ansätze
-				\begin{enumerate}
-					\item{\todo{in allen anderen Arbeiten gleiches Prinzip?} 
-					allgemeiner Ansatz : Geotagged Tweets analysieren (Inhalt/andere Indikatoren usw. ), zuordnen zu geografischen \"Bereichen\" und daraus lernen.}
-					\item Verfahren mit Inhaltsanalysen
-					\item Verfahren mit Indikatoren einzelne oder mehrere
-					\item Welche Verfahren kommen beim mapping auf \todo{geografische Entität definieren} geografische Entitäten zum Einsatz
-				\end{enumerate}
-		\end{enumerate}
 
-		\subsection{Probleme früherer Ansätze}
+	\subsection{alte Motivation} 
+		Die Auslandsnachrichten in Fernsehen und Zeitungen bestimmen das Weltbild der Menschen.
+		Für viele Menschen ist es die einzige Möglichkeit, sich ein Bild von der Welt zu machen. 
+		In den Kommunikationswissenschaften wird im Teilgebiet der Nachrichtengeographie untersucht, welche Nachrichtenflüsse zwischen Ländern bestehen.
+		Es wird betrachtet, über welche Länder in den klassischen Nachrichtenmedien, wie Fernsehen oder Zeitungen, berichtet wird. 
+		Die Nachrichtengeographie versucht, diese Nachrichtenflüsse durch bestimmte Faktoren, wie beispielsweise Wirtschaftsmacht, zu erklären. 
+
+		Die Verbreitung von Nachrichten und Informationen findet immer stärker auch in sozialen Netzwerken wie Twitter statt. 
+		Längst ist Twitter zu einem Massenphänomen geworden und übernimmt die Rolle eines Nachrichtenmediums \cite{Petrovic2013}.
+		Eine interessante Forschungsfrage ist daher, welche län\-der\-ü\-ber\-grei\-fen\-den Nachrichtenflüsse im Twit\-ter-Netz\-werk bestehen und wie diese in Bezug zur klassischen Nachrichtengeographie zu bewerten sind. 
+		Twitter bietet seinen Nutzern, im Gegensatz zu klassischen Nachrichtenmedien, die Möglichkeit, direkt Einfluss auf die Verbreitung von Informationen zu nehmen. Diese direkte Einflussnahme der Nutzer kann gemessen und analysiert werden, wodurch sich das Interesse der Nutzer für Nachrichten aus anderen Ländern ableiten lässt.
+
+	\section{Problembeschreibung} 
+	Allgemein die Problematik der Lokalisierung von Social Media Daten betrachten und erläutern.
+	Danach insbesondere auf Twitter und die Problematik der Informationsflüsse eingehen.
+
+	\section{Fragestellungen und Zielsetzungen}
+	Wie können Interaktionen, Benutzer, oder Daten aus Sozialen Netzwerken lokalisiert werden, auch wenn keine geografischen Koordinaten angegeben sind? 
+	Lokalisierung anhand von Indikatoren bzw. Sekundärinformationen.
+	\footnote{hier konkrete, mittelbare und unmittelbare geografische Indikatoren umschreiben um diese später zu definieren-> keine Vorwärtsverweise} 
+	Wie können diese auf konkrete geografische Entitäten \footnote{geografische Entität noch nicht definiert, allgemeine geografische Begriffe verwenden}  abgebildet werden. 
+
+	\section{Gliederung der Arbeit}
+
+		\subsection*{KAPITEL1: Grundlagen und Stand der Technik}
+			In diesem Kapitel sollen die Grundlagen für die entwickelte "'Methode zur Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten"' \footnote{Eventuell als "'Universelle Methode zur ..."} vermittelt werden. 
+			Des weiteren werden aktuelle Ansätze bezüglich der Lokalisierung von Social Media Daten untersucht, die verschiedenen Verfahren untersucht und die Probleme der aktuellen Lösungen diskutiert.
+
+		\subsection*{KAPITEL2: Technologien und Standards}
+		Fussnote beachten!
+			\footnote{Hier bin ich mir unsicher ob dies Sinn macht. 
+			Theoretisch könnte man hier die geografischen Standards und Grundbegriffe definieren sowie die genutzten Komponenten der Implemnetierung.} 
+
+		\subsection*{KAPITEL3: Entwicklung einer Methode zur konkreten Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten oder anderer konkreter Ortsangaben}
+			In diesem Kapitel wird die erarbeitete Methode erläutert und im Detail erklärt. 
+			Hier werde ich entweder einen Top-Down Ansatz oder einen Bottom Up Ansatz wählen.
+
+			Top-Down:
 			\begin{enumerate}
-				\item{Genutzte API's und Indikatoren nur in bestimmten Sprachen verfügbar}
-				\item{keine Schätzung für Genauigkeit auf verschiedenen geografischen Hierarchieebenen verfügbar}  
+				\item Genereller Aufbau der Wissensbasis \footnote{Datenbankschema oder Informationsschema} 
+				\item Lokalisierung von Social Media Daten (Lokalisierungsprozess) 
+				\item Geografische Hierarchiebenen \footnote{In Grundlagen und Stand der Technik behandelt bei Geografie, hier nur erklären wie verwednet wirdHier bin ich mir unsicher ob dies Sinn macht. 
+			Theoretisch könnte man hier die geografischen Standards und Grundbegriffe definieren sowie die genutzten Komponenten der Implemnetierung.}
+				\item Sicherheit anhand der Verteilungswahrscheinlichkeiten
+				\item Einsatz der geografischen Hierarchiebenen zur Justierung der Sicherheit    
+				\item NGramme zur Repräsentation der Indikatoren
 			\end{enumerate}
 
-		\subsection{Vorteile neuer Ansatz bei Mapping auf Geografische Daten}
-		
-		Notwendigkeit/Vorteile von Hierarchiebeziehungen im Mapping auf Geograohie Daten
+			Bottom-Up:
+
+		\begin{enumerate}
+			\item NGramme aus Indikatoren erzeugen
+			\item Geomapping
+			\item Datenstruktur
+			\item Treffer zählen (NGramm + Geoid gleich usw.)
+			\item Geografische Hierarchiebene
+			\item Unsicherheit bei Lokalisierung messen (neuer Daten) 
+			\item Justierung der Lokalisierungsunsicherheit auf geografischen Hierarchiebenen
+		\end{enumerate}
+
+		\subsection*{KAPITEL4: Referenzimplementierung der entwickelten Methode}
+			Es werden ausgewählte Auszüge, Probleme und Fallstricke der Referenzimplementierung erläutert und erklärt. 
+
+
+		\subsection*{KAPITEL5: Leistungsbewertung der entwickelten Methode}
+			In diesem Kapitel werden die Ergebnisse der Refernzimplementierung bewertet und, soweit sinnvoll, gegenüber bestehenden Ansätze einer kritischen Betrachtung unterzogen. 
+
+
+		\subsection*{KAPITEL6: Schlussfolgerungen}
+			Unter besonderer Berücksichtigung der Ergebnisse des letzten Kapitels werden Schlussfolgerungen gezogen. 
+			Der Beitrag und nutzen der entwickelten Methode soll kritisch hinterfragt werden.
+
+		\subsection*{KAPITEL7: Zusammenfassung und Ausblick}
+			Zusammenfassung der Arbeit und kritischer Rückblick. Im Ausblick werden mögliche Verbesserungen und Ideen zur Weiterentwicklung gegeben.  
