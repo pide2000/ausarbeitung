@@ -1,0 +1,66 @@
+%!TEX root = ../document.tex
+\chapter{Grundlagen} 
+
+	\section{Soziale Medien}
+
+		\subsection{Geoinformationen in Daten sozialer Medien}
+	 		\begin{enumerate}
+	 			\item \todo{gesichert und ungesicherte Geoniformationen definieren!} gesicherte Geoinformationen vs. ungesicherte Geoinformationen
+	 			\item konkrete Geolocations (bsp. Städte <--> Länder) \cite{Hecht2011}
+	 			\item unmittelbar geografische Indikatoren
+				\item mittelbar geografische Daten bspsw. Hashtags, Inhaltsanalysen ohne spezielle geografische Hinweise
+	 			\item Lokalisierung von Social-Media Elementen (Videos, User, Nachrichten, Bilder) kleine Übersicht
+	 			\item Hinleitung zu Twitter  
+	 		\end{enumerate}
+
+		\subsection{Twitter}
+			Allgemeine Informationen zu Twitter. 
+			\begin{enumerate}
+				\item Was ist Twitter -> Tweets/Mechanismen/"'Wie wird Twitter genutzt"''
+				\item \todo{Paper raussuchen -> Einfluss von Twitter auf Weltbild/Meinung/ } Einfluss von Twitter auf Weltbild/Meinung/ usw.
+				\item Twitter als Nachrichtenmedium (Can Twitter Replace Newswire (Petrovic et. al ))
+				\item Anatomie eines Tweets 
+					\begin{enumerate}
+						\item Welche Informationen sind in einem Tweet enthalten? 
+						\item Konzentration auf Daten die Hinweise zur räumlichen Lage geben könnten aber auch allgemein auf die Daten eingehen.
+					\end{enumerate}
+			\end{enumerate} 
+
+
+\chapter{Stand der Technik} 
+
+	\section{Stand der Technik}
+		Zweistufiger Prozess bei den meisten, mir bekannten Ansätzen.
+		Untersuchung auf Häufungen von Informationen bzw. Indikatoren anhand der konkreten geografischen Angaben. Meistens Cluster Verfahren auf geografischen Daten in Verbindung mit Indikatoren/Informationen die vorverarbeitet wurden.
+
+		\begin{enumerate}
+			\item Naiver Ansatz -> Geocoding mit Google Maps API V3, nur Indikatoren die geografische Namen enthalten. 
+					Prinzipiell einfache Datenbankabfrage mit ein wenig semantik. 
+					Keine Jargon Namen wie Big Apple etc.
+				\begin{enumerate}
+					\item Funktion der GMaps Api V3
+					\item Einschränkungen der GMaps Api V3
+					\item zurückgelieferte Daten der GMaps Api V3
+					\item Kurze Beschreibung wie ich die API genutzt habe
+				\end{enumerate}
+			\item aktuelle Ansätze
+				\begin{enumerate}
+					\item{\todo{Ist das grundsätzliche Verfahren, analysieren Inhalt/Indikatoren -> Zuordnen auf geografische Angaben und danach Clustern tatsächlich immer gleich bei allen Arbeiten? kontinuierlich vs diskrete geografische Daten} 
+					allgemeiner Ansatz : Geotagged Tweets analysieren (Inhalt/andere Indikatoren usw. ), zuordnen zu geografischen \"Bereichen\" und daraus lernen.}
+					\item Verfahren mit Inhaltsanalysen
+					\item Verfahren mit Indikatoren einzelne oder mehrere
+					\item Welche Verfahren kommen beim mapping auf \todo{geografische Entität definieren} geografische Entitäten zum Einsatz
+				\end{enumerate}
+		\end{enumerate}
+
+		\subsection{Probleme früherer Ansätze}
+			\begin{enumerate}
+				\item{Genutzte API's und Indikatoren nur in bestimmten Sprachen verfügbar}
+				\item{keine Schätzung für Genauigkeit auf verschiedenen geografischen Hierarchieebenen verfügbar}  
+			\end{enumerate}
+
+	
+	
+	
+
+	
