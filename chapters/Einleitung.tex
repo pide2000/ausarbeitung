@@ -2,57 +2,49 @@
 \chapter{Einleitung}
 
 	\section{Motivation und Hintergründe}
-		Die Auslandsnachrichten in Fernsehen und Zeitungen bestimmen das Weltbild der Menschen.
-		Für viele Menschen ist es die einzige Möglichkeit, sich ein Bild von der Welt zu machen. 
-		In den Kommunikationswissenschaften wird im Teilgebiet der Nachrichtengeographie untersucht, welche Nachrichtenflüsse zwischen Ländern bestehen.
-		Es wird betrachtet, über welche Länder in den klassischen Nachrichtenmedien, wie Fernsehen oder Zeitungen, berichtet wird.
 
 		Die Verbreitung von Nachrichten und Informationen findet immer stärker auch in sozialen Netzwerken wie Twitter statt. 
-		Längst ist Twitter zu einem Massenphänomen geworden und und kann die Rolle eines Nachrichtenmediums übernehmen \cite{Petrovic2013}.
-		Twitter bietet seinen Nutzern, im Gegensatz zu klassischen Nachrichtenmedien, die Möglichkeit, direkt Einfluss auf die Verbreitung von Informationen zu nehmen. 
-		Diese direkte Einflussnahme der Nutzer kann gemessen und analysiert werden, dadurch lässt sich beispielsweise ein Interesse der Nutzer an Nachrichten anderer Länder ableiten.
-		Daher ist es interessant Nachrichtenflüsse im Twitter Netzwerk zu untersuchen. 
-	
-		Um diese Nachrichtenflüsse untersuchen zu können, muss bekannt sein von welchem Standort ein Tweet abgesetzt wurde. 
-		Die Genauigkeit der Ortsauflösung, also beispielsweise auf Städte-, Länder- oder Bundesebene \footnote{Hier werden als Begrifflichkeiten nur die deutschen Administrationsebenen genannt, andere Länder haben hierfür andere Begriffe die nicht vollständig aufgelistet werden können} , hängt davon ab, ob internationale oder aber nationale Nachrichtenflüsse von Interesse sind.
-		
-		Beim, absetzen eines Tweet werden allerdings nicht immer konkrete Daten über den aktuellen Standort des Senders angehängt.
-		Vergleichsweise selten erhält man geographische Koordinaten oder andere Daten, welche mit Hilfe von IT Systemen unmittelbar auf einen konkreten Ort aufgelöst werden können.
+		Längst ist Twitter zu einem Massenphänomen geworden und kann die Rolle eines Nachrichtenmediums übernehmen \cite{Petrovic2013}.
+		Twitter bietet seinen Nutzern, im Gegensatz zu klassischen Nachrichtenmedien, die Möglichkeit, direkt Einfluss auf die Verbreitung von Informationen zu nehmen, oder selbst Nachrichten und Informationen für andere Nutzer bereit zu stellen.  
+		Die direkte Einflussnahme der Nutzer auf die Verbreitung der Nachrichten kann gemessen und analysiert werden, dadurch lässt sich beispielsweise ein Interesse der Nutzer an Nachrichten anderer Länder ableiten.
+		Des weiteren können die Nachrichten, welche von Nutzern selbst generiert werden, interessante Informationen, beispielsweise über Katastrophen oder  Krankheiten enthalten, womit sich neue Möglichkeiten für den Katastrophen- oder Seuchenschutz ergeben. 
+		Damit aus diesen Informationen gewinnbringende Erkenntnisse gezogen werden können muss bekannt sein, wo der Tweet abgesetzt wurde. 
+		Die Erkentniss, dass beispielsweise eine Krankheit ausgebrochen ist, ist ohne konkrete Angaben über den Ort nicht hilfreich.
+		Auch bei der Untersuchung der Verbreitung von Nachrichten ist es wichtig den Ursprung der Twitter-Kurznachricht zu kennen.  
+		Oftmals existieren keine konkreten geografischen Angaben zu einer Twitter-Kurznachricht. 
+		Nur ca. 1,6\% der Twitter Kurznachrichten enthalten eine konkrete geografische Angabe in Form von Längen- und Breitengrad. 
 
-	\subsection{alte Motivation} 
-		Die Auslandsnachrichten in Fernsehen und Zeitungen bestimmen das Weltbild der Menschen.
-		Für viele Menschen ist es die einzige Möglichkeit, sich ein Bild von der Welt zu machen. 
-		In den Kommunikationswissenschaften wird im Teilgebiet der Nachrichtengeographie untersucht, welche Nachrichtenflüsse zwischen Ländern bestehen.
-		Es wird betrachtet, über welche Länder in den klassischen Nachrichtenmedien, wie Fernsehen oder Zeitungen, berichtet wird. 
-		Die Nachrichtengeographie versucht, diese Nachrichtenflüsse durch bestimmte Faktoren, wie beispielsweise Wirtschaftsmacht, zu erklären. 
-
-		Die Verbreitung von Nachrichten und Informationen findet immer stärker auch in sozialen Netzwerken wie Twitter statt. 
-		Längst ist Twitter zu einem Massenphänomen geworden und übernimmt die Rolle eines Nachrichtenmediums \cite{Petrovic2013}.
-		Eine interessante Forschungsfrage ist daher, welche län\-der\-ü\-ber\-grei\-fen\-den Nachrichtenflüsse im Twit\-ter-Netz\-werk bestehen und wie diese in Bezug zur klassischen Nachrichtengeographie zu bewerten sind. 
-		Twitter bietet seinen Nutzern, im Gegensatz zu klassischen Nachrichtenmedien, die Möglichkeit, direkt Einfluss auf die Verbreitung von Informationen zu nehmen. Diese direkte Einflussnahme der Nutzer kann gemessen und analysiert werden, wodurch sich das Interesse der Nutzer für Nachrichten aus anderen Ländern ableiten lässt.
 
 	\section{Problembeschreibung} 
-	Allgemein die Problematik der Lokalisierung von Social Media Daten betrachten und erläutern.
-	Danach insbesondere auf Twitter und die Problematik der Informationsflüsse eingehen.
+		Die Lokalisierung von Twitter-Kurznachrichten hilf
 
 	\section{Fragestellungen und Zielsetzungen}
-	Wie können Interaktionen, Benutzer, oder Daten aus Sozialen Netzwerken lokalisiert werden, auch wenn keine geografischen Koordinaten angegeben sind? 
-	Lokalisierung anhand von Indikatoren bzw. Sekundärinformationen.
-	\footnote{hier konkrete, mittelbare und unmittelbare geografische Indikatoren umschreiben um diese später zu definieren-> keine Vorwärtsverweise} 
-	Wie können diese auf konkrete geografische Entitäten \footnote{geografische Entität noch nicht definiert, allgemeine geografische Begriffe verwenden}  abgebildet werden. 
+		Wie können Twitter Nachrichten ohne konkrete Ortsangaben, in Form von Längen- und Breitengrad, zuverlässig lokalisiert und direkt auf geographische Einheiten abgebildet werden?
 
+
+	\section{Anforderungen}
+		\begin{enumerate}
+			\item Unabhängig von kommerziellen Anbietern geografischer Informationen, oder sonstiger benötigter Daten, einsetzbar sein.
+			\item Bestimmung des Ortes von welchem die Twitter-Kurznachricht abgesetzt wurde möglichst exakt.
+			\item Ergebniss der Lokalisierung ist ein konkreter geografischer Ort. Zur Auswahl sollen die folgenden Hierarchieebenen stehen: 
+			\begin{enumerate}
+			 	\item Land
+			 	\item Verwaltungsebene erster Ordnung \footnote{in D bspsw. Länder, Baden-Württemberg, Bayern usw. }
+			 	\item Verwaltungsebene zweiter Ordnung \footnote{in D bspsw. Regierungsbezirke, Regierungsbezirk Stuttgart, Regierungsbezirk Karlsruhe usw.}
+			 	\item Stadt
+			 \end{enumerate} 
+			\item Lokalisierung unter Angabe einer maximalen Unsicherheit. 
+			\item Verfahren unabhängig von Sprache und Schriftzeichen.
+			\item Minimaler Aufwand zur Lokalisierung einer Twitter-Kurznachricht mit unbekanntem Ort.
+		\end{enumerate}
+		
 	\section{Gliederung der Arbeit}
 
-		\subsection*{KAPITEL1: Grundlagen und Stand der Technik}
-			In diesem Kapitel sollen die Grundlagen für die entwickelte "'Methode zur Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten"' \footnote{Eventuell als "'Universelle Methode zur ..."} vermittelt werden. 
-			Des weiteren werden aktuelle Ansätze bezüglich der Lokalisierung von Social Media Daten untersucht, die verschiedenen Verfahren untersucht und die Probleme der aktuellen Lösungen diskutiert.
+		\subsection*{Abschnitt 1: Grundlagen und Stand der Technik}
+			In diesem Kapitel sollen die Grundlagen für die entwickelte Methode vermittelt werden. 
+			Es werden aktuelle Ansätze untersucht, die verschiedenen Verfahren untersucht und die Probleme der aktuellen Lösungen in Bezug auf die postulierten anforderungen diskutiert. 
 
-		\subsection*{KAPITEL2: Technologien und Standards}
-		Fussnote beachten!
-			\footnote{Hier bin ich mir unsicher ob dies Sinn macht. 
-			Theoretisch könnte man hier die geografischen Standards und Grundbegriffe definieren sowie die genutzten Komponenten der Implemnetierung.} 
-
-		\subsection*{KAPITEL3: Entwicklung einer Methode zur konkreten Ortsbestimmung von Social Media Daten in Abwesenheit geografischer Koordinaten oder anderer konkreter Ortsangaben}
+		\subsection*{Abschnitt 3: Lösungsansatz}
 			In diesem Kapitel wird die erarbeitete Methode erläutert und im Detail erklärt. 
 			Hier werde ich entweder einen Top-Down Ansatz oder einen Bottom Up Ansatz wählen.
 
@@ -69,27 +61,27 @@
 
 			Bottom-Up:
 
-		\begin{enumerate}
-			\item NGramme aus Indikatoren erzeugen
-			\item Geomapping
-			\item Datenstruktur
-			\item Treffer zählen (NGramm + Geoid gleich usw.)
-			\item Geografische Hierarchiebene
-			\item Unsicherheit bei Lokalisierung messen (neuer Daten) 
-			\item Justierung der Lokalisierungsunsicherheit auf geografischen Hierarchiebenen
-		\end{enumerate}
+			\begin{enumerate}
+				\item NGramme aus Indikatoren erzeugen
+				\item Geomapping
+				\item Datenstruktur
+				\item Treffer zählen (NGramm + Geoid gleich usw.)
+				\item Geografische Hierarchiebene
+				\item Unsicherheit bei Lokalisierung messen (neuer Daten) 
+				\item Justierung der Lokalisierungsunsicherheit auf geografischen Hierarchiebenen
+			\end{enumerate}
 
-		\subsection*{KAPITEL4: Referenzimplementierung der entwickelten Methode}
+		\subsection*{Abschnitt 4: Referenzimplementierung der entwickelten Methode}
 			Es werden ausgewählte Auszüge, Probleme und Fallstricke der Referenzimplementierung erläutert und erklärt. 
 
 
-		\subsection*{KAPITEL5: Leistungsbewertung der entwickelten Methode}
+		\subsection*{Abschnitt 5: Leistungsbewertung der entwickelten Methode}
 			In diesem Kapitel werden die Ergebnisse der Refernzimplementierung bewertet und, soweit sinnvoll, gegenüber bestehenden Ansätze einer kritischen Betrachtung unterzogen. 
 
 
-		\subsection*{KAPITEL6: Schlussfolgerungen}
+		\subsection*{Abschnitt 6: Schlussfolgerungen}
 			Unter besonderer Berücksichtigung der Ergebnisse des letzten Kapitels werden Schlussfolgerungen gezogen. 
 			Der Beitrag und nutzen der entwickelten Methode soll kritisch hinterfragt werden.
 
-		\subsection*{KAPITEL7: Zusammenfassung und Ausblick}
+		\subsection*{Abschnitt 7: Zusammenfassung und Ausblick}
 			Zusammenfassung der Arbeit und kritischer Rückblick. Im Ausblick werden mögliche Verbesserungen und Ideen zur Weiterentwicklung gegeben.  
