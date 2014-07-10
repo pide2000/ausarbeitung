@@ -1,4 +1,4 @@
-\documentclass[a4paper,titlepage,bibliography=totoc]{scrreprt}
+\documentclass[parskip=half,a4paper,titlepage,bibliography=totoc]{scrreprt}
 
 %==========================Bindekorrektur Option, oben in Documenclass hinzufügen===========
 %,BCOR=15mm
@@ -9,7 +9,10 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
+\usepackage{setspace}
+\setstretch{1,3}
+\usepackage{array}
+\usepackage{tabularx}
 \usepackage{hyperref}
 \usepackage{nameref}
 \usepackage{graphicx}
@@ -55,7 +58,7 @@ im Twitter-Netzwerk}
 
 % Macros
 \newcommand{\name}[1]{\textit{#1}}
-
+\newcolumntype{C}{>{\centering\arraybackslash}p{2em}}
 % \renewcommand{\floatpagefraction}{.7}
 
 %==============================================================================
