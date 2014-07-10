@@ -1,0 +1,55 @@
+\select@language {ngerman}
+\select@language {ngerman}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Motivation und Hintergr\IeC {\"u}nde}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Problembeschreibung}{2}{section.1.2}
+\contentsline {section}{\numberline {1.3}Fragestellungen und Anforderungen}{3}{section.1.3}
+\contentsline {section}{\numberline {1.4}Anforderungen}{3}{section.1.4}
+\contentsline {section}{\numberline {1.5}Gliederung der Arbeit}{4}{section.1.5}
+\contentsline {chapter}{\numberline {2}Grundlagen}{6}{chapter.2}
+\contentsline {section}{\numberline {2.1}Geografische Grundlagen und Begriffe}{6}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Geoinformationen in Daten sozialer Netzwerke}{6}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Twitter}{7}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Geographie Daten}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Data Sample}{7}{section.2.3}
+\contentsline {chapter}{\numberline {3}Stand der Technik}{8}{chapter.3}
+\contentsline {section}{\numberline {3.1}Kategorisierung bestehender Ans\IeC {\"a}tze}{8}{section.3.1}
+\contentsline {subsubsection}{\nonumberline Kategorisierung \IeC {\"u}ber die untersuchte Ressource}{8}{section*.14}
+\contentsline {subsubsection}{\nonumberline Kategorisierung \IeC {\"u}ber die verwendete Methode}{9}{section*.15}
+\contentsline {subsection}{\numberline {3.1.1}ttt<sss}{12}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Probleme fr\IeC {\"u}herer Ans\IeC {\"a}tze}{14}{subsection.3.1.2}
+\contentsline {chapter}{\numberline {4}L\IeC {\"o}sungsansatz}{15}{chapter.4}
+\contentsline {section}{\numberline {4.1}Indikatoren zur Ortsbestimmung}{15}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}unmittelbar geografische Indikatoren}{15}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}mittelbar geografische Indikatoren}{15}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Vorverarbeitung der Indikatoren (Pr\IeC {\"a}prozessor-Konzept)}{15}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}Encoding}{16}{subsection.4.1.4}
+\contentsline {section}{\numberline {4.2}Geolocation Mapping}{16}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}nearest neighbour mapping}{16}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Verkn\IeC {\"u}pfung von Indikatoren und geografischen Lokationen zur wiedergewinnung des erlernten Wissens}{17}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Generierung eines Wissendatensatzes}{17}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Verkn\IeC {\"u}pfung mit Geodaten}{17}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Aufl\IeC {\"o}sen auf Administartionsebenen, L\IeC {\"a}nder}{17}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Lokalisieren von Tweets ohne konkrete geografische Daten}{17}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Ablauf der Lokalisierung}{17}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Lokalisierungssicherheit durch Ausnutzung der geografischen Hierarchiebeziehungen}{17}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Geografische Grundbegriffe und Geografiedaten}{17}{subsection.4.4.3}
+\contentsline {subsubsection}{\nonumberline Geografische Grundbegriffe}{17}{section*.33}
+\contentsline {subsubsection}{\nonumberline Geonames.org}{17}{section*.34}
+\contentsline {subsection}{\numberline {4.4.4}???}{17}{subsection.4.4.4}
+\contentsline {subsubsection}{\nonumberline N-Gramme}{17}{section*.36}
+\contentsline {chapter}{\numberline {5}Implementierung}{19}{chapter.5}
+\contentsline {chapter}{\numberline {6}Leistungsbewertung}{20}{chapter.6}
+\contentsline {chapter}{\numberline {7}Schlussfolgerungen, Ausblick und Fragen}{21}{chapter.7}
+\contentsline {chapter}{\numberline {8}Zusammenfassung}{22}{chapter.8}
+\contentsline {chapter}{\numberline {9}Ideen und Notizen}{23}{chapter.9}
+\contentsline {section}{\numberline {9.1}Stakeholder analyse}{23}{section.9.1}
+\contentsline {section}{\numberline {9.2}Fragen an Matthias}{23}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Strukturell}{23}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Inhalt}{23}{subsection.9.2.2}
+\contentsline {section}{\numberline {9.3}Ideen}{23}{section.9.3}
+\contentsline {section}{\numberline {9.4}Formulierungen}{24}{section.9.4}
+\contentsline {subsection}{\numberline {9.4.1}unmittelbare ungesicherte geografische Indikatoren}{24}{subsection.9.4.1}
+\contentsline {section}{\numberline {9.5}Datenbasis}{25}{section.9.5}
+\contentsline {section}{\numberline {9.6}Vorteile neuer Ansatz bei Mapping auf Geografische Daten}{25}{section.9.6}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{26}{chapter*.40}

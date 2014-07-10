@@ -6,15 +6,57 @@ Es werden zunächst Begriffe der sozialen Medien im allgemeinen behandelt um dan
 Des weiteren werden besonders die geografischen Aspekte und Möglichkeiten geografischer Angaben in sozialen Medien und insbesondere Twitter erklärt.
 Zum Schluss wird die genutzte Datenbasis vorgestellt und erläutert.
 
+\newpage
+
 	\section{Geografische Grundlagen und Begriffe}
+	In diesem Kapitel sollen einige geigrafische Grundbegiffe erlätert werden. 
+	Die geografischen Begriffe werden in verschiedenen Bereichen unterschiedlich genutzt und teilweise widersprüchlich definiert. 
+	Um Missverständnissen vorzubeugen wird hier definiert was unter den einzelnen Begriffen zu verstehen ist.
+	Des weiteren folgt eine Reihe von Begriffen die selbst definiert werden um bestimmte Sachverhalte klarer ausdrücken zu können. 
+
 	gesicherte Geoinformationen vs. ungesicherte Geoinformationen+
 	unmittelbar geografische Indikatoren
 	mittelbar geografische Daten bspsw. Hashtags, Inhaltsanalysen ohne spezielle geografische Hinweise
 
+		\paragraph*{Geodätisches Referenzsystem}
+		Ein geodätisches Referenzsystem dient als einheitliche Grundlage zur Angabe einer Position. 
+		Geodätische Referenzsysteme sind Koordinatensysteme durch die geografische Koordinaten auf die reale Welt projiziert werden können. 
+		In der vorliegenden Arbeit wird das World Geodetic System 1984, kurz wgs84, genutzt.
+		Es handelt sich hierbei um ein weit verbreitetes geodätisches Referenzssytem das unter anderem in der Luftfahrt eingsetzt wird.
 
-	\paragraph*{geografische Position}
-	Unter geografischer Position wird hier ein konkreter Ort in
 
+		\paragraph{Georeferenz}
+		Eine Georeferenz (engl. Spatial Reference) wird auch als Raumbezug bezeichnet. 
+		Unter dem Begriff der Georeferenz versteht man die Beschreibung der Lage in einem Bezugssystem. 
+		Die konkreten Angaben zum Raumbezug und deren Genauigkeit hängt von den Anforderungen ab, die an die Georeferenz gestellt werden. 
+		Auch die in \ref{chp:Einleitung} erwähnten Anwednungen stellen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz.
+		Die Georeferenz lässt sich weiter unterteilen:
+		
+			\begin{description}
+	 			\item[Direkte Georeferenz (direkter Raumbezug)] Unter direktem Raumbezug versteht man eine Angabe einer konkreten Koordinate bezüglich eines geeigneten, unveränderlichen Bezugssystems. 
+	 			Zusätzlich wird eine Genauigkeit angegeben. 
+	 			Beispielsweise geographische Koordinaten bezüglich eines geodätischen Referenzsystems. 
+	 			\item[indirekter Georeferenz (indirekter Raumbezug) ] Unter indirektem Raumbezug werden alle Angaben verstanden die eine ungenauere Position bestimmen und einem veränderlichen Bezugssystem unterliegen.
+	 			Meist beschrieben die Angaben Flächen einer gewissen Ausdehnung.
+	 			Beispielsweise Länder, vollständige Adressen, Postleitzahlen oder auch Telefonvorwahlen. 
+
+	 		\end{description}
+
+	 	Aufrgund der einfacheren Verständlichkeit werden die folgenden zwei Begriffe definiert, welche in der restlichen Arbeit verwendet werden.
+
+		\paragraph*{geografische Position}
+		Unter geografischer Position wird hier ein konkreter Ort unter Angabe geografischer Koordinaten verstanden.
+		Eine geografische Position ist somit eine direkte Georeferenz.
+
+		\paragraph*{geographische Region} 
+		Unter einer geografischen Region werden Flächen von geografischer Ausdehnung verstanden. 
+		Hierbei kann es sich beispielsweise um Bundesländer oder Länder handeln.
+		Somit sind diese Angaben indirekte Georeferenzen
+
+		\paragraph*{Georeferenzierung}
+		Unter Georeferenzierung versteht man die Zuordnung einer Georeferenz zu einem Datensatz. 
+
+		
 
 
 		\subsection{Geoinformationen in Daten sozialer Netzwerke}
@@ -52,14 +94,13 @@ Zum Schluss wird die genutzte Datenbasis vorgestellt und erläutert.
 
 
 \chapter{Stand der Technik} 
-	Die Lokalisierung von Twitter-Kurznachrichten oder Twitter-Nutzern ist ein Feld an dem nach wie vor aktiv geforscht wird.
+	Die Georeferenzierung von Twitter-Kurznachrichten oder Twitter-Nutzern ist ein Feld an dem nach wie vor aktiv geforscht wird.
 	Nicht zuletzt trägt auch die große Verfügbarkeit an Twitter-Daten zu dem Umstand bei, dass Twitter in den letzten Jahren Forschungsgegenstand zahlreicher Publikationen war. 
-
 	
-	In diesem Abschnitt sollen bestehende Ansätze zur Lokalisierung im Twitter-Umfeld untersucht werden. 
+	In diesem Abschnitt sollen bestehende Ansätze zur Georeferenzierung im Twitter-Umfeld untersucht werden. 
 	Es werden Kriterien zur Einordnung der bestehenden Ansätze erarbeitet und erläutert.   
 	Die Arbeiten werden mit Hilfe der Kriterien schematisch eingeordnet um einen Überblick zu erhalten. 
-	Zum Schluss wird untersucht ob die Arbeiten die bereits formulierten Anforderungen erfüllen, und wie sich die vorliegende Arbeit von den bestehenden Ansätzen abgrenzt. \todo{verweis auf anforderungen}    
+	Zum Schluss wird untersucht ob die Arbeiten die bereits formulierten Anforderungen aus \ref{sec:Anforderungen} erfüllen, und wie sich die vorliegende Arbeit von den bestehenden Ansätzen abgrenzt.    
 
 		\section{Kategorisierung bestehender Ansätze}
 

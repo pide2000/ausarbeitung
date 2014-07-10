@@ -6,81 +6,89 @@
 		Über den Kurznachrichtendienst Twitter lassen sich in Echtzeit 140 Zeichen lange Textnachrichten veröffentlichen.
 		Seit dem Start des Kurznachrichtendienstes im Jahr 2006 sind die Nutzerzahlen kontinuierlich angestiegen.
 		2010 konnte Twitter 75 Millionen aktive Nutzer verzeichnen \cite{Cheng2010}.
-		Im Jahr 2014 wird Twitter täglich von zirka 100 Millionen Menschen weltweit aktiv genutzt. 
-		Zur Gesamtanzahl der Nutzer-Konten gibt es von Twitter selbts keine verlässlichen Aussagen.
-		Die Nutzer versenden täglich mehr als 500 Millionen Kurznachrichten über den Dienst \cite{twitterinc2013}.
+		Im Jahr 2014 wird Twitter täglich von zirka 100 Millionen Menschen weltweit aktiv genutzt, wie Twitter in seinem Prospekt zum Börsengang 2013 berichtet \cite{twitterinc2013}.  
+		Zur Gesamtanzahl der Nutzer-Konten gibt es von Twitter selbst keine verlässlichen Aussagen. 
+		Dies kann mitunter darin begründet werden, dass die Gesamtanzahl der Nutzer-Konten auch inaktive Nutzer einschliesst und somit keine Informationen über die tatsächliche Aktivität im Netzwerk liefert. 
+		Auch andere soziale Netzwerke ziehen aktive Nutzer als Metrik heran, des weiteren wird die Metrik vom Interactive Advertising Bureau (IAB) empfohlen. \cite{IAB}
+		
+		Die Twitter-Nutzer versenden täglich mehr als 500 Millionen Kurznachrichten über den Dienst \cite{twitterinc2013}.
 		Die meisten dieser Nachrichten sind öffentlich zugänglich und können von allen Twitter-Nutzern uneingeschränkt betrachtet werden. 
 		Twitter selbst bietet eine sogenannte Streaming-API an.
-		Über diese lässt sich ein Echtzeit-Sample der Twitter-Kurznachrichten abrufen. \footnote{https://dev.twitter.com/docs/streaming-apis} 
-		Die Streaming-API liefert maximal 1\% aller versendeten Twitter-Kurznachrichten.
-		Zudem lassen sich die Twitter-Kurznachrichten nach bestimmten Kriterien wie Nutzer-ID, geografischer Region oder Schlüsselwörtern Filtern. \cite{Morstatter2013}
+		Über diese lässt sich ein Echtzeit-Sample der Twitter-Kurznachrichten abrufen. 
+		Die Streaming-API liefert laut Twitter maximal 1\% aller versendeten Twitter-Kurznachrichten.
+		Zudem lassen sich die Twitter-Kurznachrichten nach bestimmten Kriterien wie Nutzer-ID, geografischer Region oder Schlüsselwörtern Filtern. \footnote{https://dev.twitter.com/docs/streaming-apis} 
 
-		Im Text der Twitter-Kurznachrichten sind viele nutzergenerierte Informationen enthalten.
-		Sakaki et al interpretieren die Twitter-Kurznachrichten als Sensor-Daten \cite{Sakaki2010}.
+		Im Text der Twitter-Kurznachrichten sind nutzergenerierte Informationen enthalten.  
+		Erstmals ist es möglich im großen Stil Informationen direkt von Nutzern zu erhalten. 
+		Theoretisch kann jeder Mensch Nachrichten und Informationen über das Twitter-Netzwerk verbreiten und weitergeben. 
+		Diese Masse an nutzergenerierten Informationen bietet Wissenschaftlern in verschiedenen Bereichen zahlreiche neue Möglichkeiten.
+
+		Sakaki et al interpretieren die Twitter-Kurznachrichten beispielsweise als Sensor-Daten \cite{Sakaki2010}.
 		Der Twitter-Nutzer fungiert dabei als Sensor, der ein beliebiges Ereignis erfährt oder erlebt.
 		Möglicherweise berichtet der Twitter-Nutzer im Text der Twitter-Kurznachricht über dieses Ereignis. 
 		Damit kann der Text als Sensor-Datum interpretiert werden, wenn auch mit erheblichm Rauschen.    
 		Sakaki et al zeigen aber, dass mit diesem Vorgehen, Erdbebenzentren lokalisiert oder die Trajektorie eines Typhoons vorhergesagt werden können.  
 		
-		Aus der Masse an Informationen und Nachrichten die über Twitter-Kurznachrichten versendet werden, können noch weitere Erkentnisse gewonnen werden. 
-		Sozialwissenschaften und Meinungsforschung profitieren von dem enormen Informationsfundus der durch Twitter geboten wird. 
-		Die Kommunikation innerhalb des Twitter-Netzwerks kann neue Einsichten über die globale Kommunikation oder die Ausbreitung von Neuigkeiten liefern. 
+		Auch die Sozialwissenschaften und die Meinungsforschung profitieren von dem enormen Informationsfundus der durch Twitter geboten wird.  
 		Tumasjan et al. untersuchen in \cite{Tumasjan2011} wie sich die politische Landschaft im Twitter-Netzwerk wiederspiegelt. 
-		Die Wissenschaaftler haben zur Bundestagswahl 2009 100.000 Tweets analysiert und stellten fest, dass die Erwähnungen von Parteien und Politikern in Twitter, den Wahlausgang sehr genau wiederspiegelten.  
+		Die Wissenschaftler haben zur Bundestagswahl 2009 100.000 Tweets analysiert und stellten fest, dass die Erwähnungen von Parteien und Politikern in Twitter, den Wahlausgang sehr genau wiederspiegelten.  
+		Die Kommunikation innerhalb des Twitter-Netzwerks kann aber auch neue Einsichten über die globale Kommunikation oder die Ausbreitung von Nachrichten liefern.
 		Garcia-Gavilanes et al. erforschen in \cite{Garcia-Gavilanes2014} die Kommunikation zwischen Ländern. 
 		Es wird gezeigt, dass die globale Kommunikation innerhalb des Twitter-Netzwerks nicht nur von der geografischen Distanz abhängig ist, sondern auch von sozialen, ökonomischen und kulturellen Attributen eines Landes.   
-		aber auch die Epidemieforschung kann von den Daten des Twitter-Netzwerks profitieren. 
+		Selbst die Epidemieforschung kann von den Daten des Twitter-Netzwerks profitieren. 
 		So zeigten Szomsor et al. in \cite{Szomszor2011}, dass die Vorhersage der Schweingrippe im Jahr 2009 durch die Analyse von Twitter Daten eine Woche früher möglich gewesen wäre als dies mit konventionellen Frühwarnsystemen der Fall war. 
 
 		Diese Erkenntnisse und Informationen sind allerdings nur gewinnbringend einzusetzen, wenn der Standort des Twitter-Nutzers bekannt ist. 
-		Die Information, dass eine Krankheit ausgebrochen ist, ist mit einer Georeferenz wertvoller als ohne diese. 
-		Auch die Arbeit von Sakaki et al. sind auf eine Georeferenz angewiesen, wobei die Wissenschaftler ausführen, dass die ungefähre Position für ihre Anwendung ausreichend ist.
+		Die Information, dass eine Krankheit ausgebrochen ist, ist mit einer exakten Georeferenz wertvoller als ohne diese. 
+		Auch die Arbeit von Sakaki et al. ist auf eine Georeferenz angewiesen, wobei die Wissenschaftler ausführen, dass die ungefähre Position für ihre Anwendung ausreichend ist.
 		Bei der Untersuchung internationaler Kommunikation wiederum, ist es wichtig zu Wissen aus welchem Land eine Twitter-Kurznachricht abgesetzt wurde.
 		In diesem Fall kann die Georefrenz einen weiteren Raum umfassen und muss nicht GPS-Genauigkeit aufweisen.  
-		Wohingegen eine detaillierte Untersuchung des politischen Klimas innerhalb Deutschlands eine Auflösung auf Bundesländerebene erforderlich machen würde. 
+		Wohingegen eine detaillierte Untersuchung des politischen Klimas innerhalb Deutschlands eine Auflösung auf Bundesländer-Ebene erforderlich machen würde. 
 
  		
  		Twitter bietet seinen Nutzern die Möglichkeit ihren Standort im Nutzerprofil anzugeben. 
- 		Hecht et al. stellten in \cite{Hecht2011} eine erste ausführliche Analyse der eingegebenen Standort-Daten bereit.  
+ 		Hecht et al. stellen in \cite{Hecht2011} eine erste ausführliche Analyse der eingegebenen Standort-Daten bereit.  
  		Ab 2009 ermöglichte Twitter ein "'per-tweet geo-tagging"' \cite{Cheng2010}.
  		Dadurch können Anwendungen, auf Endgeräten mit GPS, Längen- und Breitengrad des aktuellen Standorts als Georeferenz an die Twitter-Kurznachricht anhängen.    
 		Nur ca. 1,7\% der Twitter-Kurznachrichten enthalten allerdings eine konkrete Georeferenz in dieser Form.
 
 
 	\section{Problembeschreibung} 
-		Um das volle Potenzial der Informationen in Twitter-Kurznachrichten auszuschöpfen ist es wichtig die Position des Twitter-Nutzers, beziehungsweise den Ort der Twitter-Kurznachricht bestimmen zu können. 
+		Um das volle Potenzial der Informationen in Twitter-Kurznachrichten auszuschöpfen ist es wichtig die Position des Twitter-Nutzers, beziehungsweise den Ort wo eine Twitter-Kurznachricht abgeschickt wurde, bestimmen zu können. 
 		Die Anzahl der Twitter-Kurznachrichten die unmittelbar einem geografischen Ort zugeordnet werden können ist sehr gering. 
 		
-		Es ist also wichtig ein Verfahren zu finden um Twitter-Nutzer oder Twitter-Kurznachrichten mit Hilfe der in einem Tweet vorhandenen Daten einen möglichst geanuen geografischen Position. 
+		Es ist also wichtig ein Verfahren zu finden um Twitter-Nutzer oder Twitter-Kurznachrichten eine Georeferenz zuzuordnen. 
+		Mit Hilfe, der in einem Tweet vorhandenen Daten sollte eine möglichst genaue Position bestimmt werden. 
 		Dies soll auch möglich sein, wenn keine konkrete geografische Angabe in Form von Längen- und Breitengrad vorliegt. 
 
 	\section{Fragestellungen und Anforderungen}\label{sec:fragestellung}
 		Folgende Fragestellungen sollen beantwortet werden: 
 		\begin{enumerate}
-			\item[Q1] Wie können Twitter-Nutzern, ohne Angabe von Längen- und Breitengrad, zuverlässig lokalisiert und direkt auf geographische Einheiten abgebildet werden?
-			\item[Q2] Kann die Lokalisierung von Twitter-Nutzern durch die Anwendung von probabilistischen Modellen auf das Userlocation Feld verbessert werden. 
+			\item[Q1] Wie kann Twitter-Nutzern, unter zuhilfenahme des Standort-Feldes und der Zeitzone, eine Georeferenz zugeordnet werden?
+			\item[Q2] Kann die Lokalisierung von Twitter-Nutzern durch die Anwendung von probabilistischen Sprach-Modellen auf das Standort-Feld im Vergleich zum nachschlagen in einer Geodatenbank verbessert werden? 
 		\end{enumerate}
 		  
-	\section{Anforderungen}
+	\section{Anforderungen}\label{sec:Anforderungen}
 		\begin{enumerate}
-			\item[R1] Möglichst exakte Bestimmung des Ortes, von welchem die Twitter-Kurznachricht abgesetzt wurde. (R1) 
+			\item[R1] Möglichst exakte Zuordnung einer Georefrenz zu einem Twitter-Nutzer. (R1) 
 			\item[R2] Unabhängig von kommerziellen Anbietern geografischer Informationen, oder sonstiger benötigter Daten. (R2)
-			\item[R3] Das Ergebniss ist ein konkreter geografischer Ort, dabei soll zwischen folgenden Hierarcheibenen gewählt werden können (R3) : 
+			\item[R3] Das Ergebniss ist eine Georeferenz, dabei soll vom Anwender individuell zwischen folgenden Hierarchieebenen gewählt werden können (R3) : 
 			\begin{enumerate}
 			 	\item Land
 			 	\item Verwaltungsebene erster Ordnung \footnote{in D bspsw. Länder, Baden-Württemberg, Bayern usw. }
 			 	\item Verwaltungsebene zweiter Ordnung \footnote{in D bspsw. Regierungsbezirke, Regierungsbezirk Stuttgart, Regierungsbezirk Karlsruhe usw.}
 			 	\item Stadt
 			 \end{enumerate} 
-			\item[R4] Die Lokalisierung soll unter Angabe einer maximalen Unsicherheit beziehungsweise einer minimalen Sicherheit erfolgen. 
-			\item[R5] Verfahren unabhängig von Sprache und Schriftzeichen weltweit einsetzbar.
+			\item[R4] Es soll möglich sein eine Mindestanforderung für die Konfidenz, mit welcher die Georeferenz bestimmt wurde anzugeben.
+			\item[R5] Für jedes Ergebnis wird die Sicherheit, mit der  
+			\item[R6] Verfahren unabhängig von Sprache und Schriftzeichen weltweit einsetzbar.
 		\end{enumerate}
 		
 	\section{Gliederung der Arbeit}
 
 		\subsection*{Abschnitt 2: Grundlagen}
 			In diesem Abschnitt sollen die Grundlagen für die entwickelte Methode vermittelt werden. 
-			Es wird auf den Kurznachrichtendienst Twitter eingegangen und es werden grundsätzliche Methoden und Verfahren vorgestellt welche zum Verständniss der entwickelten Methode benötigt werden. Ebenso werden geografische Grundbegriffe vermittelt, welche im in der arbeit häufig genutzt werden.
+			Es wird auf den Kurznachrichtendienst Twitter eingegangen und es werden grundsätzliche Methoden und Verfahren vorgestellt welche zum Verständniss der entwickelten Methode benötigt werden. Ebenso werden geografische Grundbegriffe vermittelt, welche in der vorliegenden Arbeit häufig genutzt werden.
 
 		\subsection*{Abschnitt 3: Stand der Technik}
 			Es werden aktuelle Ansätze betrachtet, eingeordnet und in Bezug auf die angegebenen Anforderungen untersucht.

@@ -160,6 +160,17 @@
   Url                      = {http://doi.acm.org/10.1145/1978942.1978976}
 }
 
+@Standard{IAB,
+  Title                    = {Social Media Ad Metrics Definitions},
+  Organization             = {Interactive Advertising Bureau (IAB)},
+  Author                   = {Interactive Advertising Bureau IAB},
+  HowPublished             = {Internet},
+  Url                      = {http://www.iab.net/media/file/SocialMediaMetricsDefinitionsFinal.pdf},
+
+  Owner                    = {peter},
+  Timestamp                = {2014.07.10}
+}
+
 @InProceedings{Kamath2013,
   Title                    = {Spatio-temporal Dynamics of Online Memes: A Study of Geo-tagged Tweets},
   Author                   = {Kamath, Krishna Y. and Caverlee, James and Lee, Kyumin and Cheng, Zhiyuan},
@@ -338,5 +349,10 @@
 
   Owner                    = {peter},
   Timestamp                = {2014.03.04}
+}
+
+@Other{,
+  Owner                    = {peter},
+  Timestamp                = {2014.07.10}
 }
 
