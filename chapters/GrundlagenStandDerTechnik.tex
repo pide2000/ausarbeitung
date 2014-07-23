@@ -1,76 +1,206 @@
 %!TEX root = ../document.tex
 \chapter{Grundlagen} 
-Um die Fragestellungen aus Kapitel \ref{sec:fragestellung} beantworten zu können und eine geeignete Methode zu entwickeln um die Anforderungen zu erfüllen, werden eine Reihe von grundlegenden Verfahren und Begriffen benötigt. 
+Um die Fragestellungen aus Kapitel \ref{sec:fragestellung} beantworten zu können und eine geeignete Methode zu entwickeln um die Anforderungen zu erfüllen, werden eine Reihe von grundlegenden Verfahren und Begriffen verwendet. 
 Der Leser soll hier auf einen Stand gebracht werden, der es ihm ermöglicht die Ausführungen und Ideen nachvollziehen zu können.  
-Es werden zunächst Begriffe der sozialen Medien im allgemeinen behandelt um dann den Terminus und die Mechanismen im Twitter-Netzwerk zu erläutern. 
-Des weiteren werden besonders die geografischen Aspekte und Möglichkeiten geografischer Angaben in sozialen Medien und insbesondere Twitter erklärt.
-Zum Schluss wird die genutzte Datenbasis vorgestellt und erläutert.
+Des weiteren werden die Möglichkeiten geografischer Angaben in Twitter erklärt.
+Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutzten Sampling Strategie vorgestellt und erläutert.
 
 \newpage
 
 	\section{Geografische Grundlagen und Begriffe}
-	In diesem Kapitel sollen einige geigrafische Grundbegiffe erlätert werden. 
-	Die geografischen Begriffe werden in verschiedenen Bereichen unterschiedlich genutzt und teilweise widersprüchlich definiert. 
-	Um Missverständnissen vorzubeugen wird hier definiert was unter den einzelnen Begriffen zu verstehen ist.
-	Des weiteren folgt eine Reihe von Begriffen die selbst definiert werden um bestimmte Sachverhalte klarer ausdrücken zu können. 
+	In diesem Kapitel sollen einige geografische Grundbegiffe erläutert werden. 
+	Einige geografische Begriffe werden in verschiedenen wissenschaftlichen Bereichen unterschiedlich genutzt und teilweise widersprüchlich definiert. 
+	Um Missverständnissen vorzubeugen wird hier definiert was unter den einzelnen Begriffen genau zu verstehen ist.
+	Eine Reihe von Begriffen wird werden selbst definiert um bestimmte Sachverhalte klarer ausdrücken zu können. 
 
 	gesicherte Geoinformationen vs. ungesicherte Geoinformationen+
 	unmittelbar geografische Indikatoren
 	mittelbar geografische Daten bspsw. Hashtags, Inhaltsanalysen ohne spezielle geografische Hinweise
 
-		\paragraph*{Geodätisches Referenzsystem}
-		Ein geodätisches Referenzsystem dient als einheitliche Grundlage zur Angabe einer Position. 
-		Geodätische Referenzsysteme sind Koordinatensysteme durch die geografische Koordinaten auf die reale Welt projiziert werden können. 
-		In der vorliegenden Arbeit wird das World Geodetic System 1984, kurz wgs84, genutzt.
-		Es handelt sich hierbei um ein weit verbreitetes geodätisches Referenzssytem das unter anderem in der Luftfahrt eingsetzt wird.
-
-
+		\paragraph*{Geodätisches Referenzsystem} 
+		\todo{Referenz} 
+		Ein geodätisches Referenzsystem dient als einheitliche Grundlage zur Angabe einer Position auf der Erde. 
+		In diesem Referenzsystem werden unter anderem Referenzpunkte und ein geeignetes Koordinatensystem festgelegt.  
+		
 		\paragraph{Georeferenz}
+		\todo{Referenz} 
 		Eine Georeferenz (engl. Spatial Reference) wird auch als Raumbezug bezeichnet. 
-		Unter dem Begriff der Georeferenz versteht man die Beschreibung der Lage in einem Bezugssystem. 
-		Die konkreten Angaben zum Raumbezug und deren Genauigkeit hängt von den Anforderungen ab, die an die Georeferenz gestellt werden. 
-		Auch die in \ref{chp:Einleitung} erwähnten Anwednungen stellen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz.
+		Unter dem Begriff der Georeferenz versteht man die Zuordnung der Lage beziehungsweise einer Position zu Daten. 
+		Die konkreten Angaben zum Raumbezug und deren Genauigkeit hängen von den Anforderungen ab, die an die Georeferenz gestellt wird. 
+		Auch die in \ref{chp:Einleitung} erwähnten Anwendungen stellen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz.
 		Die Georeferenz lässt sich weiter unterteilen:
 		
 			\begin{description}
-	 			\item[Direkte Georeferenz (direkter Raumbezug)] Unter direktem Raumbezug versteht man eine Angabe einer konkreten Koordinate bezüglich eines geeigneten, unveränderlichen Bezugssystems. 
-	 			Zusätzlich wird eine Genauigkeit angegeben. 
-	 			Beispielsweise geographische Koordinaten bezüglich eines geodätischen Referenzsystems. 
-	 			\item[indirekter Georeferenz (indirekter Raumbezug) ] Unter indirektem Raumbezug werden alle Angaben verstanden die eine ungenauere Position bestimmen und einem veränderlichen Bezugssystem unterliegen.
-	 			Meist beschrieben die Angaben Flächen einer gewissen Ausdehnung.
-	 			Beispielsweise Länder, vollständige Adressen, Postleitzahlen oder auch Telefonvorwahlen. 
+	 			\item[Direkte Georeferenz (direkter Raumbezug)] 
+	 			Unter direktem Raumbezug versteht man die Angabe einer konkreten Koordinate bezüglich eines geeigneten, unveränderlichen geodätischen Referenzsystems. 
+	 			\item[indirekter Georeferenz (indirekter Raumbezug) ] 
+	 			Unter indirektem Raumbezug werden alle Angaben verstanden die eine ungenauere Position bezüglich eines beliebigen Referenzysystems bestimmen.
+	 			Ungenauer ist in dem Sinne zu verstehen, dass die Angabe der Position auch eine Fläche beschreiben kann.
+	 			Zusätzlich muss das gewählte Referenzsystem nicht zwingenderweise unveränderlich sein.   
+	 			Beispiele für die Angabe eines indirekten Raumbezugs wären Länder, Adressen, Postleitzahlen oder auch Telefonvorwahlen. 
+	 			Alle diese Angaben, mit Ausnahme der Adresse, definieren eine geografische Fläche. 
+	 			Diese Fläche ist nicht zwingenderweise klar abzugrenzen.
+	 			Eine Adresse mit Hausnummer definiert eine relativ genaue Position, allerdings ist das Bezugsystem nicht unveränderlich.
+			\end{description}
 
-	 		\end{description}
+	 	\paragraph*{Georeferenzierung}
+		Unter Georeferenzierung versteht man die Zuordnung einer Georeferenz zu einem Datensatz. 
+		Also den Vorgang einem Datensatz, zum Beispiel einem Twitter-Nutzer eine Georeferenz zuzuordnen.
 
 	 	Aufrgund der einfacheren Verständlichkeit werden die folgenden zwei Begriffe definiert, welche in der restlichen Arbeit verwendet werden.
 
-		\paragraph*{geografische Position}
-		Unter geografischer Position wird hier ein konkreter Ort unter Angabe geografischer Koordinaten verstanden.
-		Eine geografische Position ist somit eine direkte Georeferenz.
+		\paragraph*{Geografische Position}
+		Unter geografischer Position wird hier ein konkreter Ort, unter Angabe geografischer Koordinaten verstanden.
+		Eine geografische Position entspricht somit einer direkten Georeferenz (direktem Raumbezug).
 
-		\paragraph*{geographische Region} 
-		Unter einer geografischen Region werden Flächen von geografischer Ausdehnung verstanden. 
-		Hierbei kann es sich beispielsweise um Bundesländer oder Länder handeln.
-		Somit sind diese Angaben indirekte Georeferenzen
+		\paragraph*{Geografische Region} 
+		Unter einer geografischen Region werden Flächen verstanden welche nicht mit einem Punkt, in Form von Längen- und Breitengrad, beschrieben werden können. 
+		Hierbei kann es sich beispielsweise um Bundesländer, Länder oder Städte handeln.
+		Somit entspricht der Begriff geografische Region einer indirekten Georeferenz (indirektem Raumbezug).
 
-		\paragraph*{Georeferenzierung}
-		Unter Georeferenzierung versteht man die Zuordnung einer Georeferenz zu einem Datensatz. 
+		\paragraph*{Geografische Hierarchien}
+		In der vorliegenden Arbeit werden geografische Hierarchien verwendet um eine Einteilung der Erde in geografische Regionen umzusetzen.
+		Dabei können geografische Regionen wiederum geografische Regionen oder geografische Positionen enthalten, wodurch sich eine hierarchische Gliederung der Regionen ergibt.
+		Diese Einteilung spiegelt im wesentlichen die Einteilung der Erde in Staaten und deren individuellen Verwaltungseinheiten wieder.
+		Im vorliegenden Fall ist das Staatsgebiet, also die Fläche über die sich der Staat erstreckt, von Interesse. \footnote{Die genaue Definition eines Staatsgebietes kann in \cite{jellinek1921} nachgelesen werden.} 
 
-		
+		Im Gegensatz dazu könnte die Erde auch in ein Gitternetz eingeteilt werden. 
+		Die einzelnen Zellen würden dann als Referenz für eine geografische Region verwendet werden.
+		Dieses vorgehen wird unter anderem in \cite{Serdyukov2009} angewendet.
+
+		Eine Aufteilung der Erde in geografische Regionen lässt sich auf oberster Ebene mit Hilfe von Ländern und deren Grenzen umsetzen. 
+		Daraus resultiert eine Einteilung, welche direkt intuitiv verständlich ist und vielen Anforderungen an geografische Informationen gerecht wird.
+		Die meisten Länder sind in weiter administrative Einheiten aufgeteilt welche als zweite Ebene fungieren.
+		Diese geografischen Regionen werden in dieser Arbeit als Administartionsebenen erster Ordnung bezeichnet.   
+		Ausnahmen sind besipielsweise Stadtstaaten wie der Vatikan-Staat oder das Fürstentum Monaco, welche aufgrund ihrer Größe nicht in Verwaltungsbezirke unterteilt werden. 
+		Die nächste Ebene wird durch Administartionsebenen zweiter Ordnung beschrieben. 
+		Die unterste Ebene wird durch Städte beschrieben
+
+	\section{Twitter} 
+	In diesem Kapitel werden grundlegende Begriffe rund um das Twitter-Netzwerk erläutert. 
+	Weiter werden die Mechanismen in Twitter erläutert und an praktischen Beispielen erklärt. 
+	Zum Schluss wird aufgezeigt welche Informationen pro Twitter-Kurznachricht übermittelt werden und welche Daten zur Lokalisierung verwendet werden können.
+
+	\subsection{Geschichtliches}
+	Twitter wurde 2006 von Jack Dorsey, Biz Stone, Noah Glass und Evan Williams gegründet.
+	Ursprünglich war Twitter zur internen Kommunikation innerhalb der Firma Odeo geplant.
+	Schnell wurde allerdings klar, dass in dem Dienst mehr potenzial steckt und so wurde Twitter öffentlich gemacht.
+	Seitdem erfreut sich der Dienst einer wachsenden Nutzer-Gemeinde.
+	Die Twitter-Gründer haben von Anfang an keine exakten Nutzer-Zahlen oder die Anzahl der versendeten Twitter-Kurznachrichten bekanntgegeben.
+	Dies geschah einerseits, weil die Gründer davon überzeugt sind, dass anhand der reinen Nutzer-Zahlen und gesendeten Twitter-Kurznachrichten nicht die '"Gesundheit"' des Twitter-Netzwerks nachvollzogen werden kann, andererseits werden durch diese Massnahme auch strategische Ziele verfolgt.  \footnote{http://www.pbs.org/mediashift/2007/05/twitter-founders-thrive-on-micro-blogging-constraints137}
+	2013 ging Twitter an die Börse und vermeldete 100 Millionen täglich aktive Nutzer und über 500 Millionen Twitter-Kurznachrichten, die täglich über den Dienst versendet werden. 
+
+	\subsection{Was ist Twitter?}
+	Twitter wird als Kurznachrichten-Dienst, Mikroblogging-Dienst oder auch als soziales-Netzwerk bezeichnet. 
+	Twitter Geschäftsführer Kevin Thau hat 2010 auf dem Nokia-World Kongress öffentlich bestritten, dass Twitter ein Soziales-Netzwerk ist. 
+	Laut Thau handelt es sich um ein Nachrichten-, Inhalts- und Informations-Netzwerk. 
+	Er begründete dies damit, dass Twitter die Art und Weise wie Nachrichten verteilt werden ändert und praktisch jeder zum Journalisten werden kann. 
+	Als Beispiel nennt er die Landung des Fluges 1549 auf dem Hudson River, die Zeugen hätten keine Mails versendet um die Nachricht zu verbreiten, sondern die Nachricht via Twitter weitergegeben.
+	Es lassen sich eine Reihe weitere Beispiele derselben Art finden. 
+	In \cite{Kwak2010} wird diese Einschätzung wissenschaftlich bestätigt.
+	Kwak et al überprüfen die in \cite{Newman2003} beschriebenen Eigenschaften sozialer Netzwerke und kommen zu dem Schluss, dass Twitter diese Eigenschaften nicht erfüllt.
+
+	Twitter ermöglicht es den Nutzern 140 Zeichen lange Nachrichten, so genannte Tweets, zu erstellen. 
+	Diese Tweets sind standardmäßig öffentlich sichtbar und werden als Liste in umgekehrter chronologischer Reihenfolge im Twitter-Profil dargestellt. 
+	Damit hat das Twitter-Profil einen Blog Charakter.  
+	In der vorliegenden Arbeit wird Twitter deshalb als Mikroblogging-Dienst bezeichnet.
+	Die Bezeichnung Kurznachrichten-Dienst ist irreführend, da dieser mit sms (small messeneger service) in Verbindung gebracht werden kann. 
+	Tatsächlich galt der sms in der Anfangsphase von Twitter als Vorbild für den Dienst.
+	Die Darstellung als Liste, und die Funktion einen Tweet standardmäßig allen Nutzern freizugeben unterscheidet sich grundlegend von der Funktion des sms, bei dem eine Nachricht direkt an einen Empfänger gesendet wird und nicht öffentlich ist.
+
+	\subsection{Funktionen von Twitter}
+	Der Mikroblogging-Dienst Twitter bietet neben dem Profil, auf dem die Tweets des Nutzers angezeigt werden, noch eine Reihe weiterer Funktionen. 
+	Im folgenden soll das Twitter-Profil und die Timeline kurz erläutert werden. 
+	Danach werden Funktionen wie das weitergeben eines Tweets, Favorisieren und Antworten erklärt. 
+	Zum Schluss wird auf den gesendeten Tweet Inhalt eingenagen und der Netzwerk-Charakter von Twitter untersucht.
+
+	\begin{figure}[h!]
+	\begin{center}
+	\includegraphics[scale=0.4]{profile.png}
+	\caption{Dies ist die Bildbeschreibung, die direkt beim Bild steht}
+	\label{twitterProfile}
+	\end{center}
+	\end{figure}
 
 
-		\subsection{Geoinformationen in Daten sozialer Netzwerke}
-	 		\begin{enumerate}
-	 			\item \todo{gesicherte und ungesicherte Geoniformationen definieren!} 
-	 			\item konkrete Geolocations (bsp. Städte <--> Länder) \cite{Hecht2011}
-	 			\item 
-	 			\item Lokalisierung von Social-Media Elementen (Videos, User, Nachrichten, Bilder) kleine Übersicht
-	 			\item Hinleitung zu Twitter  
-	 		\end{enumerate}
+		\subsubsection{Das Nutzer-Profil und die Nutzer-Timeline}
+			Das Nutzer-Profil kann über die Url http://twitter.com/BENUTZERNAME abgerufen werden und bietet neben der Nutzer-Timeline, in der die Tweets des Nutzers angezeigt werden, eine Reihe an weiteren Informationen.
+			In Abbildung \ref{twitterProfile} ist in der mitte die Timeline des Benutzers dargestellt in der dei Tweets zu sehen sind. 
+			Unter dem Profilbild links sind Informationen des Nutzers aufgelistet.
+			Diese Informationen kann der Nutzer selbst einstellen und entscheiden welche er angeben möchte.   
+
+
+		\subsubsection{Folgen (Following/Follower/Tweeps)}
+			Diese Funktion erlaubt es Tweets eines bestimmten Nutzers zu abonnieren. 
+			Im Twitter-Umfeld spricht man von '"following"' oder '"folgen"', wenn man die Tweets eines bestimmten Nutzers abonniert.
+			Hat man Tweets eines bestimmten Nutzers abonniert so wird man als dessen '"Follower"' bezeichnet. 
+			Das englische Wort '"Follower"' hat sich im Twitter-Umfeld und darüber hinaus eingebürgert und wird selten übersetzt. 
+			Auch auf der Twitter Website wird '"Follower"' nicht ins deutsche übersetzt.
+			In der vorliegenden Arbeit wird deshalb auch auf eine Übersetzung verzichtet. 
+
+			In Abbildung \ref{twitterProfile} an Position 3 wird unter '"Folge ich"' die Anzahl der Twitter-Nutzer angezeigt denen der Beispielnutzer folgt. 
+			Neben dem Feld '"Folge ich"' wird unter '"Follower"' angezeigt wieviele Nutzer dem Beispielnutzer folgen.
+
+
+		\subsubsection{Netzwerk Charakter}
+			Netzwerke in Twitter entstehen ausschliesslich durch Follower-Beziehungen.
+
+			 
+
+
+		\subsubsection{Persönliche Timeline}
+			Jeder Twitter-Nutzer hat seine persönliche Timeline, auf dieser werden die Tweets derjenigen Nutzer angezeigt, denen er folgt. 
+			Die Timeline kann als Aggregator für Tweets betrachtet werden.
+			Diese Timeline ist die zentrale Stelle, an der die Nutzer Tweets anderer Nutzer empfangen und lesen.
+			Auch hier werden die Tweets in umgekehrter chronologischer Reihenfolge angezeigt.  
+
+		\subsubsection{Weitergeben eines Tweets (Retweet)}
+			Unter einem Retweet versteht man die Weitergabe eines Tweets den man nicht selbst verfasst hat an die eigenen Follower.
+			Genauer gesagt wird der Tweet übernommen und ein Hinweis hinzugefügt, dass es sich um einen Retweet handelt, und nicht einen vom Nutzer selbst verfassten Tweet.
+			Diese Funktion wird hauptsächlich genutzt um Nachrichten schnell zu verbreiten ohne diese neu eingeben zu müssen. 
+			Die Weitergabe an die eigenen Follower impliziert einen gewissen Grad an Kontrolle und Filterfunktion.
+			Der weitergebende Nutzer kontrolliert und filtert die Nachrichten die er erhält und gibt diejenigen weiter, denen er eine Gewisse Relevanz beimisst, oder von denen er erwartet, dass sie seine Follower interessieren. \todo{1 retweet Reichweite 1000 Nutzer} 
+			Mit dieser Funktion können einzelne Nutzer eine Art Filterfunktion übernehmen, welche früher Journalisten vorbehalten war. 
+			Auch können Nutzer dadurch zu Tweet-Aggregatoren werden, welche Tweets von mehreren Nutzern erhalten, aber nur relevante oder themenspezifische Tweets weitergeben.
+
+
+			\todo{Diagramm Retweet, Filterfunktion} 
+
+
+		\subsubsection{Antworten und ansprechen eines Nutzers}
+			Twitter bietet die Möglichkeit einzelne Nutzer direkt anzusprechen. 
+			Mit Hilfe des @-Symbols kann ein Nutzer referenziert werden. 
+			Der referenzierte Nutzer, besipielsweise @alfred, wird dann benachrichtigt, dass er in einem Tweet erwähnt wurde. 
+			Der erwähnte Nutzer muss dabei nicht Follower des Verfassers sein.
+			Eine weitere Funktion im Twitter-Netzwerk ist das Antworten auf einen Tweet.
+			Über eine Schaltfläche kann man auf einen Tweet Antworten. 
+			Das @-Symbol und der Nutzername des Verfassers, des Ursprungstweets werden automatisch eingetragen, womit eine Benachrichtigung erfolgt. 
+			Auch kann dem Antwort-Tweet der ursprüngliche Tweet zugeordnet werden.
+			Es ist möglich, das auf einen Antwort-Tweet wieder geantwortet wird, wodurch ein sigenannter Thread entsteht. 
+			Auch ist es möglich, dass an einer solchen Konversation mehrere Twitter-Nutzer beteiligt sind. 
+			Dies ist dann der Fall, wenn im ursprünglichen Tweet, auf den geantwortet wurde, auf weitere User referenziert wurde. 
+			Aber auch wenn ein Nutzer auf einen bestheneden Antwort-Thread wiederum antwortet, werden alle beteiligtien Nutzer referenziert. 
+			\todo{Diagramm Antwort, Antwort Thread, Bild Antwirten Button, Referenzieren}     
+
+
+		\subsubsection{Favorisieren}
+			Mit dieser Funktion lässt sich ausdrücken, das man einen Tweet interessant oder gut findet.
+			Auch Zustimmung wird durch favorisieren ausgedrückt.  
+			Einen Tweet zu favorisieren kann aber auch bedeuten '"ich habe deine Reaktion registriert"', oft um einen Antwort-Thread nicht abrupt abzubrechen sondern eine zustimmende Rückmeldung zu geben ohne extra einen Tweet zu verfassen.
+
+ 		
+	 	\subsubsection{Tweets}
+	 		Neben den sichtbaren Daten, welche in der Timeline angezeigt werden. 
+	 		Enthält ein tweet eine reihe weiterer interessanter Informationen. 
+	 		  
+	 		
+	 	\subsubsection{}
+
 
 		\subsection{Twitter}
 			Allgemeine Informationen zu Twitter. 
 			\begin{enumerate}
+			\item \todo{gesicherte und ungesicherte Geoniformationen definieren!} 
 				\item Was ist Twitter -> Tweets/Mechanismen/"'Wie wird Twitter genutzt"''
 				\item \todo{Paper raussuchen -> Einfluss von Twitter auf Weltbild/Meinung/ } Einfluss von Twitter auf Weltbild/Meinung/ usw.
 				\item Twitter als Nachrichtenmedium (Can Twitter Replace Newswire (Petrovic et. al ))
@@ -85,7 +215,7 @@ Zum Schluss wird die genutzte Datenbasis vorgestellt und erläutert.
 
 
 
-	\section{Geographie Daten}
+	\section{geografie Daten}
 
 
 	\section{Data Sample}
@@ -144,7 +274,7 @@ Zum Schluss wird die genutzte Datenbasis vorgestellt und erläutert.
 		In \cite{bibsmaniaaa:Goldberg2008} wird genauer auf den Begriff des Geocoding und die Poblematik eingegangen und eine Definition  des Begriffs vorgeschlagen.
 		Im vorliegenden Kontext ist es präziser und weniger missverständlich die Methodik als "'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis"' zu bezeichnen, anstatt den Begriff "'Geocoding"' einzusetzen. 
 		
-		\paragraph*{"'Geografische Themenmodelle (Geographic Topic Modeling)"'} wird definiert als die Verbindung von "'Themenmodellierung"' und "'Standorterkennung (Location Awareness)"'. 
+		\paragraph*{"'Geografische Themenmodelle (geografic Topic Modeling)"'} wird definiert als die Verbindung von "'Themenmodellierung"' und "'Standorterkennung (Location Awareness)"'. 
 		Durch klassisches "'Themenmodellierung"' lässt sich aus aus Texten eine Menge von Themen extrahieren. 
 		Durch eine Lernphase werden Wörterbücher zu den Themen erstellt.
 		Mit Hilfe dieser Themen-Wörterbücher kann später das Thema eines Textes bestimmt werden. \cite{Blei2012} 
@@ -188,10 +318,7 @@ Zum Schluss wird die genutzte Datenbasis vorgestellt und erläutert.
 		Mahmud et al. bringen aber auch eine weitere Dimension ein. 
 		Es wird hier zusätzlich unterschieden ob das angewendete Verfahren den Tweet-Inhalt nutzt oder andere Informationen. 
 
-		Dies ist sinnvoll, denn die genannten Methoden lassen sich sowohl auf den Tweet-Inhalt als auch auf andere Informationen, beispielsweise aus dem Nutzerprofil, anwenden.     
-
-
-
+		Dies ist sinnvoll, denn die genannten Methoden lassen sich sowohl auf den Tweet-Inhalt als auch auf andere Informationen, beispielsweise aus dem Nutzerprofil, anwenden. 
 		
 		Frühere Arbeiten verweisen auf ein weiteres Spektrum an Arbeiten aus anderen Bereichen, wie Lokalisierung von Flickr Bildern oder Web-Log Einträgen.
 		Arbeiten zur Lokalisierung im Twitter-Umfeld werden hier seltener erwähnt. 
