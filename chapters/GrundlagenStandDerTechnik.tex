@@ -55,7 +55,7 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 
 		\paragraph*{Geografische Hierarchien}
 		\todo{Bild mit Hierarchie von Deutschland} 
-		In der vorliegenden Arbeit werden geografische Hierarchien verwendet um eine Einteilung der Erde in geografische Regionen umzusetzen.
+		In der vorliegenden Arbeit wird eine geografische Hierarchie verwendet um eine Einteilung der Erde in geografische Regionen umzusetzen.
 		Dabei können geografische Regionen wiederum geografische Regionen oder geografische Positionen enthalten, wodurch sich eine hierarchische Gliederung ergibt.
 		Diese Einteilung spiegelt im wesentlichen die Einteilung der Erde in Staaten und deren individuellen Verwaltungseinheiten wieder.
 		Im vorliegenden Fall ist das Staatsgebiet, also die Fläche über die sich der Staat erstreckt, von Interesse. \footnote{Die genaue Definition eines Staatsgebietes kann in \cite{jellinek1921} nachgelesen werden.} 
@@ -67,17 +67,19 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		Eine Aufteilung der Erde in geografische Regionen lässt sich auf oberster Ebene mit Hilfe von Ländern und deren Grenzen umsetzen. 
 		Daraus resultiert eine Einteilung, welche direkt intuitiv verständlich ist und vielen Anforderungen an geografische Informationen gerecht wird.
 		Die meisten Länder sind in weitere administrative Einheiten aufgeteilt.
-		Ausnahmen sind besipielsweise Stadtstaaten wie der Vatikan-Staat oder das Fürstentum Monaco, welche aufgrund ihrer Größe nicht in Verwaltungsbezirke unterteilt werden.
 		Diese geografischen Regionen werden hier als Administartionsebenen bezeichnet.
 		Es wird zwischen Administrationsebenen erster und zweiter Ordnung unterschieden. 
 		Des weiteren werden Städte in der untersten Ebene der Hierarchie dargestellt.
-		Wenn man als Beispiel Deutschland heranzieht, ergibt sich eine Einteilung wie in Bilde \todo{referenz auf Bilc}.
+		Ausnahmen sind besipielsweise Stadtstaaten wie der Vatikan-Staat oder das Fürstentum Monaco, welche aufgrund ihrer Größe nicht in Verwaltungsbezirke unterteilt werden und keine Städte.
+		Wenn man als Beispiel Deutschland heranzieht, ergibt sich eine Einteilung wie in Bild \todo{referenz auf Bild} dargestellt wird.
 		Die oberste Ebene beschreibt das Land worauf die zweite Ebene die Bundesländer darstellt.
 		Auf der dritten Ebene werden die Regierungsbezirke abgebildet, worauf die Städte in der letzten Ebene folgen. 
+		Analog kann die Einteilung für die USA vorgenommen werden woraus sich die Hierarchie Country->State->County->City ergibt.
+
 		Bis auf die letzte Ebene wird den Objekten in der Hierarchie eine geografische Region zugeordnet. 
-		Lediglich die unterste Ebene, die der Städte wird durch eine geografische Position genau beschrieben. 
+		Lediglich die unterste Ebene, die der Städte, wird durch eine geografische Position genau beschrieben. 
 		Die Ausdehnung einer Stadt wird in der gegebenen Hierarchie also nicht berücksichtigt. 
-		Jede Stadt beziehungsweise Stadtteile werden als konkrete geografische Koordinate in Form von Längen- und Breitengrad repräsentiert. 
+		Jeder Stadt werden als konkrete geografische Koordinate in Form von Längen- und Breitengrad repräsentiert. 
 
 	\section{Twitter} 
 	In diesem Kapitel werden grundlegende Begriffe rund um das Twitter-Netzwerk erläutert. 
