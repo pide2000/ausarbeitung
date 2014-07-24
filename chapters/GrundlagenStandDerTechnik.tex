@@ -1,42 +1,41 @@
 %!TEX root = ../document.tex
 \chapter{Grundlagen} 
-Um die Fragestellungen aus Kapitel \ref{sec:fragestellung} beantworten zu können und eine geeignete Methode zu entwickeln um die Anforderungen zu erfüllen, werden eine Reihe von grundlegenden Verfahren und Begriffen verwendet. 
+Um die Fragestellungen aus Abschnitt \ref{sec:fragestellung} beantworten zu können und eine geeignete Methode zu entwickeln um die Anforderungen zu erfüllen, werden eine Reihe von grundlegenden Verfahren und Begriffen verwendet. 
 Der Leser soll hier auf einen Stand gebracht werden, der es ihm ermöglicht die Ausführungen und Ideen nachvollziehen zu können.  
-Des weiteren werden die Möglichkeiten geografischer Angaben in Twitter erklärt.
+Des weiteren wierden einige Grundlagen zu Twitter erklärt und die Daten, welche mit einem Tweet gesendet werden betrachtet.
 Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutzten Sampling Strategie vorgestellt und erläutert.
 
 \newpage
 
 	\section{Geografische Grundlagen und Begriffe}
-	In diesem Kapitel sollen einige geografische Grundbegiffe erläutert werden. 
+	In diesem Kapitel sollen geografische Grundbegiffe erläutert werden. 
 	Einige geografische Begriffe werden in verschiedenen wissenschaftlichen Bereichen unterschiedlich genutzt und teilweise widersprüchlich definiert. 
 	Um Missverständnissen vorzubeugen wird hier definiert was unter den einzelnen Begriffen genau zu verstehen ist.
-	Eine Reihe von Begriffen wird werden selbst definiert um bestimmte Sachverhalte klarer ausdrücken zu können. 
+	Eine Reihe von Begriffen werden selbst definiert um bestimmte Sachverhalte klarer ausdrücken zu können. 
 
 		\paragraph*{Geodätisches Referenzsystem} 
-		\todo{Referenz} 
+		\todo{Referenz. MAtthias Fragen, Online Lexikon zu Geoinformatik Uni Rostock} 
 		Ein geodätisches Referenzsystem dient als einheitliche Grundlage zur Angabe einer Position auf der Erde. 
 		In diesem Referenzsystem werden unter anderem Referenzpunkte und ein geeignetes Koordinatensystem festgelegt.  
 		
 		\paragraph{Georeferenz}
-		\todo{Referenz} 
+		\todo{Referenz. MAtthias Fragen, Online Lexikon zu Geoinformatik Uni Rostock} 
 		Eine Georeferenz (engl. Spatial Reference) wird auch als Raumbezug bezeichnet. 
-		Unter dem Begriff der Georeferenz versteht man die Zuordnung der Lage beziehungsweise einer Position zu Daten. 
+		Unter dem Begriff der Georeferenz versteht man die zugeordnete der Lage beziehungsweise Position zu einem Datensatz. 
 		Die konkreten Angaben zum Raumbezug und deren Genauigkeit hängen von den Anforderungen ab, die an die Georeferenz gestellt wird. 
-		Auch die in \ref{chp:Einleitung} erwähnten Anwendungen stellen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz.
-		Die Georeferenz lässt sich weiter unterteilen:
+		Auch die in Kapitel \ref{chp:Einleitung} erwähnten Anwendungen stellen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz.
+		Die Georeferenz lässt sich weiter unterteilen in:
 		
 			\begin{description}
 	 			\item[Direkte Georeferenz (direkter Raumbezug)] 
 	 			Unter direktem Raumbezug versteht man die Angabe einer konkreten Koordinate bezüglich eines geeigneten, unveränderlichen geodätischen Referenzsystems. 
-	 			\item[indirekter Georeferenz (indirekter Raumbezug) ] 
-	 			Unter indirektem Raumbezug werden alle Angaben verstanden die eine ungenauere Position bezüglich eines beliebigen Referenzysystems bestimmen.
-	 			Ungenauer ist in dem Sinne zu verstehen, dass die Angabe der Position auch eine Fläche beschreiben kann.
+	 			\item[Indirekte Georeferenz (indirekter Raumbezug) ] 
+	 			Unter indirektem Raumbezug werden alle Angaben verstanden die eine ungenaue Position bezüglich eines beliebigen Referenzysystems bestimmen.
+	 			Ungenau ist in dem Sinne zu verstehen, dass die Angabe der Position auch eine Fläche beschreiben kann.
 	 			Zusätzlich muss das gewählte Referenzsystem nicht zwingenderweise unveränderlich sein.   
 	 			Beispiele für die Angabe eines indirekten Raumbezugs wären Länder, Adressen, Postleitzahlen oder auch Telefonvorwahlen. 
 	 			Alle diese Angaben, mit Ausnahme der Adresse, definieren eine geografische Fläche. 
 	 			Diese Fläche ist nicht zwingenderweise klar abzugrenzen.
-	 			Eine Adresse mit Hausnummer definiert eine relativ genaue Position, allerdings ist das Bezugsystem nicht unveränderlich.
 			\end{description}
 
 	 	\paragraph*{Georeferenzierung}
@@ -51,12 +50,13 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 
 		\paragraph*{Geografische Region} 
 		Unter einer geografischen Region werden Flächen verstanden welche nicht mit einem Punkt, in Form von Längen- und Breitengrad, beschrieben werden können. 
-		Hierbei kann es sich beispielsweise um Bundesländer, Länder oder Städte handeln.
+		Hierbei kann es sich beispielsweise um Bundesländer oder Länder.
 		Somit entspricht der Begriff geografische Region einer indirekten Georeferenz (indirektem Raumbezug).
 
 		\paragraph*{Geografische Hierarchien}
+		\todo{Bild mit Hierarchie von Deutschland} 
 		In der vorliegenden Arbeit werden geografische Hierarchien verwendet um eine Einteilung der Erde in geografische Regionen umzusetzen.
-		Dabei können geografische Regionen wiederum geografische Regionen oder geografische Positionen enthalten, wodurch sich eine hierarchische Gliederung der Regionen ergibt.
+		Dabei können geografische Regionen wiederum geografische Regionen oder geografische Positionen enthalten, wodurch sich eine hierarchische Gliederung ergibt.
 		Diese Einteilung spiegelt im wesentlichen die Einteilung der Erde in Staaten und deren individuellen Verwaltungseinheiten wieder.
 		Im vorliegenden Fall ist das Staatsgebiet, also die Fläche über die sich der Staat erstreckt, von Interesse. \footnote{Die genaue Definition eines Staatsgebietes kann in \cite{jellinek1921} nachgelesen werden.} 
 
@@ -66,14 +66,18 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 
 		Eine Aufteilung der Erde in geografische Regionen lässt sich auf oberster Ebene mit Hilfe von Ländern und deren Grenzen umsetzen. 
 		Daraus resultiert eine Einteilung, welche direkt intuitiv verständlich ist und vielen Anforderungen an geografische Informationen gerecht wird.
-		Die meisten Länder sind in weitere administrative Einheiten aufgeteilt welche als zweite Ebene fungieren.
-		Diese geografischen Regionen werden in dieser Arbeit als Administartionsebenen erster Ordnung bezeichnet.   
-		Ausnahmen sind besipielsweise Stadtstaaten wie der Vatikan-Staat oder das Fürstentum Monaco, welche aufgrund ihrer Größe nicht in Verwaltungsbezirke unterteilt werden. 
-		Die nächste Ebene wird durch Administartionsebenen zweiter Ordnung beschrieben. 
-		Nicht alle Länder besitzen diese Einteilung beziheunsgweise die genutzten geografische Datenbank hat nicht zu allen Ländern Infromationen über die weitere Einteilung in Administrationsebenen zweiter Ordnung.
-		Die unterste Ebene wird durch Städte beschrieben. 
-		Allerdings wird die Ausdehnung der Stadt als geografische region nicht berücksichtigt.
-		Jede Stadt wird als konkrete geografisch Koordinate in Form von Längen- und Breitengrad repräsentiert. 
+		Die meisten Länder sind in weitere administrative Einheiten aufgeteilt.
+		Ausnahmen sind besipielsweise Stadtstaaten wie der Vatikan-Staat oder das Fürstentum Monaco, welche aufgrund ihrer Größe nicht in Verwaltungsbezirke unterteilt werden.
+		Diese geografischen Regionen werden hier als Administartionsebenen bezeichnet.
+		Es wird zwischen Administrationsebenen erster und zweiter Ordnung unterschieden. 
+		Des weiteren werden Städte in der untersten Ebene der Hierarchie dargestellt.
+		Wenn man als Beispiel Deutschland heranzieht, ergibt sich eine Einteilung wie in Bilde \todo{referenz auf Bilc}.
+		Die oberste Ebene beschreibt das Land worauf die zweite Ebene die Bundesländer darstellt.
+		Auf der dritten Ebene werden die Regierungsbezirke abgebildet, worauf die Städte in der letzten Ebene folgen. 
+		Bis auf die letzte Ebene wird den Objekten in der Hierarchie eine geografische Region zugeordnet. 
+		Lediglich die unterste Ebene, die der Städte wird durch eine geografische Position genau beschrieben. 
+		Die Ausdehnung einer Stadt wird in der gegebenen Hierarchie also nicht berücksichtigt. 
+		Jede Stadt beziehungsweise Stadtteile werden als konkrete geografische Koordinate in Form von Längen- und Breitengrad repräsentiert. 
 
 	\section{Twitter} 
 	In diesem Kapitel werden grundlegende Begriffe rund um das Twitter-Netzwerk erläutert. 
