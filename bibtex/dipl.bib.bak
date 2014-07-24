@@ -271,6 +271,24 @@
   Url                      = {http://www.aaai.org/ocs/index.php/ICWSM/ICWSM13/paper/viewPDFInterstitial/6071/6379}
 }
 
+@Article{Morstatter2013,
+  Title                    = {Is the sample good enough? Comparing data from Twitter's streaming API with Twitter's firehose},
+  Author                   = {Morstatter, Fred and Pfeffer, J and Liu, H and Carley, KM},
+  Journal                  = {Proceedings of ICWSM},
+  Year                     = {2013},
+  Pages                    = {400--408},
+
+  Abstract                 = {Twitter is a social media giant famous for the exchange of short, 140-character messages called “tweets”. In the scientific community, the microblogging site is known for openness in sharing its data. It provides a glance into its millions of users and billions of tweets through a “Streaming API” which provides a sample of all tweets matching some parameters preset by the API user. The API service has been used by many researchers, companies, and governmental institutions that want to extract knowledge in accordance with a diverse array of questions pertaining to social media. The essential drawback of the Twitter API is the lack of documentation concerning what and how much data users get. This leads researchers to question whether the sampled data is a valid representation of the overall activity on Twitter. In this work we embark on answering this question by comparing data collected using Twitter’s sampled API service with data collected using the full, albeit costly, Firehose stream that includes every single published tweet. We compare both datasets using common statistical metrics as well as metrics that allow us to compare topics, networks, and locations of tweets. The results of our work will help researchers and practitioners understand the implications of using the Streaming API.},
+  Archiveprefix            = {arXiv},
+  Arxivid                  = {arXiv:1306.5204v1},
+  Eprint                   = {arXiv:1306.5204v1},
+  File                     = {:home/peter/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Morstatter et al. - 2013 - Is the sample good enough Comparing data from Twitter's streaming API with Twitter's firehose.pdf:pdf},
+  Mendeley-groups          = {closely related work},
+  Owner                    = {peter},
+  Timestamp                = {2014.07.24},
+  Url                      = {http://www.aaai.org/ocs/index.php/ICWSM/ICWSM13/paper/viewPDFInterstitial/6071/6379}
+}
+
 @Article{Newman2003,
   Title                    = {Why social networks are different from other types of networks.},
   Author                   = {Newman, M E J and Park, Juyong},
