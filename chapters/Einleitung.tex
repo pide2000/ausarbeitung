@@ -12,7 +12,7 @@
 		Dies kann mitunter damit begründet werden, dass die Gesamtanzahl der Nutzer-Konten auch inaktive Nutzer einschliesst und somit keine Informationen über die tatsächliche Aktivität im Netzwerk liefert. 
 		Auch andere soziale Netzwerke ziehen die aktiven Nutzer als Metrik heran, des weiteren wird die Metrik vom Interactive Advertising Bureau (IAB) empfohlen. \cite{IAB}
 		
-		Die Twitter-Nutzer verfassen täglich mehr als 500 Millionen Nachrichten, sogenannte Tweets \cite{twitterinc2013}.
+		Die Twitter-Nutzer verfassen täglich mehr als 500 Millionen Nachrichten, sogenannte Tweets \cite{twitterinc2013}. \footnote{Im Abschnitt Grundlagen wird der Begriff Tweet genauer untersucht, für den Moment sollen darunter die Nachrichten verstanden werden, welche von den Twitter-Nutzern verfasst werden}
 		Die meisten dieser Tweets sind öffentlich zugänglich und können von allen Twitter-Nutzern uneingeschränkt betrachtet werden. 
 		Twitter bietet zusätzlich eine sogenannte Streaming-API an, welche es ermöglicht Tweets programmatisch zu empfangen. \footnote{API: Application Programming Interface oder auch Programmierschnittstelle}
 		Die Streaming-API stellt ein Echtzeit-Sample der aktuell versendeten Tweets bereit und liefert maximal 1\% aller Tweets die zum aktuellen Zeitpunkt verfasst wurden \cite{Morstatter2013}. 
@@ -62,26 +62,26 @@
 
 
 	\section{Problembeschreibung} 
-		Um gewinnbringende Informationen aus den Tweets erzeugen zu können, ist es wichtig möglichst vielen Tweets eine Georeferenz zuordenen zu können.
+		Um gewinnbringende Informationen aus den Tweets erzeugen zu können, ist es wichtig Tweets eine Georeferenz zuordenen zu können.
 		Die Anzahl der Twitter-Kurznachrichten die mit Hilfe von Längen- und Breitengrad unmittelbar einem geografischen Ort zugeordnet werden können ist sehr gering. 
 		
 		Es ist also wichtig ein Verfahren zu finden um Twitter-Nutzer oder Tweets eine Georeferenz zuzuordnen. 
-		Mit Hilfe, der in einem Tweet vorhandenen Daten sollte eine möglichst genaue Position bestimmt werden. 
+		Mit Hilfe der in einem Tweet vorhandenen Daten sollte eine möglichst genaue Position bestimmt werden. 
 		Dies soll auch möglich sein, wenn keine konkrete geografische Angabe in Form von Längen- und Breitengrad vorliegt. 
 
 	\section{Fragestellungen und Anforderungen}\label{sec:fragestellung}
 		Die folgenden Fragestellungen sollen beantwortet: 
 		\begin{enumerate}
-			\item[Q1] Wie kann Twitter-Nutzern, unter zuhilfenahme des Standort-Feldes und der Zeitzone, eine Georeferenz zugeordnet werden?
-			\item[Q2] Kann die Lokalisierung von Twitter-Nutzern durch die Anwendung von probabilistischen Sprach-Modellen auf das Standort-Feld im Vergleich zum nachschlagen in einer Geodatenbank verbessert werden? 
+			\item[Q1] Wie kann Twitter-Nutzern eine Georeferenz zugeordnet werden?
+			\item[Q2] Kann die Lokalisierung von Twitter-Nutzern durch die Anwendung von probabilistischen Sprach-Modellen auf das Standort-Feld im Vergleich zum nachschlagen in einer Geodatenbank verbessert werden? \todo{Diese Frage ist eventuell zu weit gegriffen. Analyse der Tweet Daten auf Eignung für Lokalisierung entfällt } 
 		\end{enumerate}
 		  
 	\subsection{Anforderungen}\label{sec:Anforderungen}
-	Die folgenden Anforderungen sollen von der erarbeiteten Lösung erfüllt werden.
+	Das erarbeitete verfahren soll folgende anforderungen erfüllen.
 		\begin{enumerate}
 			\item[R1] Zuordnung einer Georefrenz zu einem Twitter-Nutzer. (R1) 
 			\item[R2] Unabhängig von kommerziellen Anbietern geografischer Informationen, oder sonstiger benötigter Daten. (R2)
-			\item[R3] Das Ergebniss ist eine Georeferenz, dabei soll vom Anwender individuell zwischen folgenden Hierarchieebenen frei gewählt werden können (R3): 
+			\item[R3] Das Ergebniss ist eine Georeferenz welche einer geografischen Hierarcheiebene enstpricht. Folgende Hierarcheiebenen werden angeboten (R3): 
 			\begin{enumerate}
 			 	\item Land oder Staat
 			 	\item Verwaltungsebene erster Ordnung \footnote{in D Bundesländer, bspsw. Baden-Württemberg, Bayern usw. }
@@ -104,18 +104,10 @@
 			Es werden sowohl die Verfahren zur '"Analyse'" und Zuordnung als auch die Verfahren zum abbilden der geografischen Einheiten untersucht und eingeordnet. 
 
 		\subsection*{Abschnitt 4: Lösungsansatz}
-			In diesem Abschnitt wird die erarbeitete Methode erläutert und im Detail erklärt. 
-
-			Top-Down:
-			\begin{enumerate}
-				\item Genereller Aufbau der Wissensbasis \footnote{Datenbankschema oder Informationsschema} 
-				\item Lokalisierung von Social Media Daten (Lokalisierungsprozess) 
-				\item Geografische Hierarchiebenen \footnote{In Grundlagen und Stand der Technik behandelt bei Geografie, hier nur erklären wie verwednet wirdHier bin ich mir unsicher ob dies Sinn macht. 
-			Theoretisch könnte man hier die geografischen Standards und Grundbegriffe definieren sowie die genutzten Komponenten der Implemnetierung.}
-				\item Sicherheit anhand der Verteilungswahrscheinlichkeiten
-				\item Einsatz der geografischen Hierarchiebenen zur Justierung der Sicherheit    
-				\item NGramme zur Repräsentation der Indikatoren
-			\end{enumerate}
+			In diesem Kapitel wird, unter Berücksichtigung der gegebenen Anforderungen, ein Verfahren zur Lösung der Fragestellungen entwickelt. 
+			Um einen Überblick zu gewährleisten, wird das Verfahren zunächst allgemein betrachtet, danach wird jeder Verfahrensschritt dargelegt.
+			Es wird gezeigt wie aus Tweet-Daten der Standort eines Twitter-Nutzers bestimmen werden kann.
+			Dabei werden Methoden der Sprachverarbeitung, Statistik und geografische Hierarchien eingesetzt. 
 
 			Bottom-Up:
 

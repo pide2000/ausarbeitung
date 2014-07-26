@@ -1,11 +1,38 @@
 %!TEX root = ../document.tex
-\chapter{Lösungsansatz} 
+\chapter{Lösungsansatz} \label{chp:Loesungsansatz}
+In diesem Kapitel wird ein Verfahren zur Lokalisierung von Twitter-Nutzern vorgestellt, welches die Fragestellungen aus \ref{sec:fragestellung} beantwortete.
+Es werden dabei die Anforderungen aus Kapitel \ref{sec:Anforderungen} berücksichtigt.
+Zunächst soll das Verfahren und die Vorgehensweise allgemein erklärt um dem Leser ein Überblick zu bieten. 
+Daraufhin wird die Lösung systematisch von grundauf erarbeitet.    
+
+\section{Verfahen zur Georeferenzierung von Twitter-Nutzern}
+
+	\subsection{Informationen und benötigte Daten}
+
+	\subsection{Verfahrensablauf}
+
+
+\section{Analyse der Tweet Daten}
+	
+	\subsection{Welche Tweet-Daten können zur Georeferenzierung herangezogen werden} \todo{Nur optional} 
+
+	Um diese Frage zu beantworten muss man die Daten die mit einem Tweet gesendet werden untersuchen. \todo{Problem, ich brauche die Definitionen schon früher....} 
+	Dabei spielt nicht nur der reine Informationsgehalt der Daten eine Rolle, sondern auch dessen Enstehung und die Gegebenheiten unter denen die Daten entstanden sind. 
+	Im folgenden werden einige Datenfelder welche mit jedem Tweet versandt werden untersucht.
+	Anhand geeigneter Beispiele die Bergiffe gesichert -, ungesicherte -, mittelbare - und unmittelbare geografische Indikatoren 
+
+		\subsubsection{gesicherte vs ungesicherte geografische Indikatoren}
+
+		\subsubsection{mittelbare und unmittelbare geografische Indikatoren} 
+
+	\subsectio{Detailanalyse Standort und Zeitzone}
+
+
 
 \section{Indikatoren zur Ortsbestimmung}
 
 	\begin{enumerate}
-		\item{Training und Validierungsdaten erklären}
-		\item{}  
+		\item{Training und Validierungsdaten erklären} 
 	\end{enumerate}
 
 
@@ -23,7 +50,7 @@
 			\item bspsw. Hashtags, Inhaltsanalysen ohne spezielle geografische Hinweise, 
 		\end{enumerate}
 
-	\todo{Wie detailliert hier auf Framework eingehen? Präprozessor-Konzept zur universellen Vorverarbeitung, oder eher in Implementierung}
+	
 	\subsection{Vorverarbeitung der Indikatoren (Präprozessor-Konzept)}
 		\begin{enumerate}
 			\item geonames matching (geonames tree) für geografische Namen bestehend aus mehreren Wörtern
@@ -67,13 +94,7 @@
 		\subsubsection{Geografische Grundbegriffe}
 
 		\subsubsection{Geonames.org} \footnote{eventuell erst in Implemetierung darauf eingehen} 
-			Allgemeines zu geonames.org, was ist geonames.org. 
-			\begin{enumerate}
-				\item Woher stammen die Daten?
-				\item Umfang und Informationen
-				\item Aktualität
-				\item Hierarchiebeziehungen im geonames.org Datensatz
-			\end{enumerate}	
+			
 
 		\subsubsection{}	
 
