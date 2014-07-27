@@ -141,14 +141,14 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		3: Allgemeine Informationen über den Benutzer und dessen Netzwerk
 		4: Nutzer-Timeline: Tweets des Nutzer in umgekehrter chronologischer Reihenfolge 
 		5: Button zum Folgen}
-		\label{twitterProfile}
+		\label{img:twitterProfile}
 		\end{center}
 		\end{figure}	
 
 
 			\paragraph{Das Nutzer-Profil und die Nutzer-Timeline}
 				Das Nutzer-Profil kann über die Url http://twitter.com/BENUTZERNAME abgerufen werden und bietet neben der Nutzer-Timeline, in der die Tweets des Nutzers angezeigt werden, eine Reihe an weiteren Informationen.
-				In Abbildung \ref{twitterProfile} ist in der mitte die Timeline des Benutzers dargestellt in der dei Tweets zu sehen sind. 
+				In Abbildung \ref{img:twitterProfile} ist in der mitte die Timeline des Benutzers dargestellt in der dei Tweets zu sehen sind. 
 				Unter dem Profilbild links sind Informationen des Nutzers aufgelistet.
 				Diese Informationen kann der Nutzer selbst einstellen und entscheiden welche er angeben möchte.   
 
@@ -161,12 +161,8 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 				Auch auf der Twitter Website wird '"Follower"' nicht ins deutsche übersetzt.
 				In der vorliegenden Arbeit wird deshalb auch auf eine Übersetzung verzichtet. 
 
-				In Abbildung \ref{twitterProfile} an Position 3 wird unter '"Folge ich"' die Anzahl der Twitter-Nutzer angezeigt denen der Beispielnutzer folgt. 
+				In Abbildung \ref{img:twitterProfile} an Position 3 wird unter '"Folge ich"' die Anzahl der Twitter-Nutzer angezeigt denen der Beispielnutzer folgt. 
 				Neben dem Feld '"Folge ich"' wird unter '"Follower"' angezeigt wieviele Nutzer dem Beispielnutzer folgen.
-
-			\paragraph{Netzwerk Charakter}
-				Netzwerke in Twitter entstehen ausschliesslich durch Follower-Beziehungen.
-
 
 			\paragraph{Persönliche Timeline}
 				Jeder Twitter-Nutzer hat seine persönliche Timeline, auf dieser werden die Tweets derjenigen Nutzer angezeigt, denen er folgt. 
@@ -174,8 +170,8 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 				Diese Timeline ist die zentrale Stelle, an der die Nutzer Tweets anderer Nutzer empfangen und lesen.
 				Auch hier werden die Tweets in umgekehrter chronologischer Reihenfolge angezeigt.  
 
-			\paragraph{Weitergeben eines Tweets (Retweet)}
-				Unter einem Retweet versteht man die Weitergabe eines Tweets den man nicht selbst verfasst hat an die eigenen Follower.
+			\paragraph{Weiterleiten eines Tweets (Retweet)}
+				Unter einem Retweet versteht man das weiterleiten eines Tweets den man nicht selbst verfasst hat an die eigenen Follower.
 				Genauer gesagt wird der Tweet übernommen und ein Hinweis hinzugefügt, dass es sich um einen sogenannten Retweet handelt, und nicht einen vom Nutzer selbst verfassten Tweet.
 				Diese Funktion wird hauptsächlich genutzt um Nachrichten schnell zu verbreiten ohne diese neu eingeben zu müssen. 
 				Die Weitergabe an die eigenen Follower impliziert einen gewissen Grad an Kontrolle und Filterfunktion. 
@@ -185,6 +181,13 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 				Auch können Nutzer durch diese Funktion zu Tweet-Aggregatoren werden, welche Tweets von mehreren Nutzern erhalten oder sammeln, aber nur relevante oder themenspezifische Tweets weitergeben.
 
 				\todo{Diagramm Retweet, Filterfunktion} 
+
+			\paragraph{Hashtags}
+				Hashtags werden genutzt um Tweet Nachrichten zu kategorisieren oder Metag Informationen zu liefern. 
+				Ein Hashtag kann vom verfasser selbst als solches ausgezeichnet werden indem ein # vor das gewünschte Wort, welches als Hashtag fungieren soll, gesetzt wird. 
+				Hahstags ermöglichen es Tweets nach Stichworten zu filtern. 
+				Anhand der Hashtags werden auch die Twitter-Trends analysiert.
+				Twitter Trends 
 				
 			\paragraph{Antworten und direktes ansprechen eines Nutzers}
 				Twitter bietet die Möglichkeit einzelne Nutzer direkt anzusprechen. 
@@ -206,41 +209,46 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 				Auch Zustimmung wird durch favorisieren ausgedrückt.  
 				Einen Tweet zu favorisieren kann aber auch bedeuten '"ich habe deine Reaktion registriert"', oft um einen Antwort-Thread nicht abrupt abzubrechen sondern eine zustimmende Rückmeldung zu geben ohne extra einen Tweet zu verfassen.
 
-		\subsection{Daten einer Twitter Nachricht}
+		\subsection{Daten einer Twitter-Nachricht}
+			Neben den direkt sichtbaren Informationen enthält ein Tweet eine Reihe weiterer Daten.
+			Betrachtet man einen einzelnen Tweet, beispielsweise auf twitter.com, wird der Tweet-Text, der Verfasser und die Zeit, wann der Tweet verfasst wurde, mitgeteilt. \todo{siehe Bild} 
+			Die Gesamtheit der Daten die in einem Tweet enthalten sind werden hier allgemein als Tweet-Daten bezeichnet.
+
+			\begin{figure}[h!]
+			\begin{center}
+			\includegraphics[scale=0.8]{tweetFinal.png}
+			\caption{Was ist zu sehen?}
+			\label{tweet}
+			\end{center}
+			\end{figure}	
+
 
 		 	\paragraph{Daten}
-		 		Neben den sichtbaren Daten, welche in der Timeline angezeigt werden. 
-		 		Enthält ein tweet eine reihe weiterer interessanter Informationen. 	
+		 		Neben den sichtbaren Daten, welche in der Timeline angezeigt werden, enthält ein Tweet eine Reihe weiterer interessanter Informationen. 	
+
 
 	 	\subsection{Geoinformationen in Twitter Daten}
 
 	 		\subsubsection{Welche Tweet-Daten können zur Georeferenzierung herangezogen werden} \todo{Nur optional} 
 
-				Um diese Frage zu beantworten muss man die Daten die mit einem Tweet gesendet werden untersuchen. 
-				Dabei spielt nicht nur der reine Informationsgehalt der Daten entnommen werden kann eine Rolle, sondern auch dessen Enstehung und die Gegebenheiten unter denen die Daten entstanden sind.
-				Beispielsweise kann bei einem Tweet, dem ein Längen- und Breitengrad mit einer Genauigkeit von 14 Nachkommastellen zugeordnet ist, davon ausgegangen werden, dass die geografische Position der tatsächlichen geografischen Position entspricht, von der der Tweet abgesetzt wurde. 
+				Um diese Frage zu beantworten, müssen die Tweet-Daten eingehend untersucht werden. 
+				Dabei spielt nicht nur die reine Information die den Daten entnommen werden kann eine Rolle, sondern auch wie die Daten generietr oder eingegeben wurden.
+				Beispielsweise kann bei einem Tweet, dem ein Längen- und Breitengrad mit einer Genauigkeit von 14 Nachkommastellen zugeordnet ist, davon ausgegangen werden, dass die geografische Position der tatsächlichen geografischen Position, von welcher der Tweet abgesetzt wurde, entspricht. 
 				Es liegt hier die Vermutung nahe, dass diese Werte durch ein mobiles GPS \footnote{Global Positioning System} erfasst worden sind. 
 				Anders verhält sich dies beispielsweise beim Tweet-Text, eine Erwähnung der Stadt New York, muss nicht bedeuten, dass der Tweet aus dieser Stadt stammt. 
-				Es impliziert noch nicht mal das der Verfasser jemals in dieser Stadt war.  
+				Es impliziert nicht einmal, dass der Verfasser jemals in dieser Stadt war.  
 				Im folgenden werden einige Datenfelder, welche mit jedem Tweet versandt werden, untersucht.
 				Dabei wird die Eignung dieser Daten als geografischer Indikatoren bewertet.
 				Waährenddessen werden anhand geeigneter Beispiele die Bergiffe gesicherter -, ungesicherter -, mittelbarer - und unmittelbarer geografischer Indikator eingeführt.  
 
-			\subsubsection{gesicherte vs ungesicherte geografische Indikatoren}
 
-			\subsubsection{mittelbare und unmittelbare geografische Indikatoren} 
+			\subsubsection{gesicherte geografische Indikatoren in Tweet-Daten}
 
-	 	\paragraph{gesicherte und ungesicherte Informationen in Tweets}
+			\subsubsection{ungesicherte geografische Indikatoren in Tweet-Daten}
 
-	 	\paragraph{direkte Geoinformation}
+			\subsubsection{mittelbare geografische Indikatoren in Tweet-Daten}
 
-	 	\paragraph{indirekte Geoinformation}
-
-	
-
-	
-
-
+			\subsubsection{unmittelbare geografische Indikatoren in Tweet-Daten} 
 
 \chapter{Stand der Technik} 
 	Die Georeferenzierung von Tweets oder Twitter-Nutzern ist ein Feld an dem nach wie vor aktiv geforscht wird.
