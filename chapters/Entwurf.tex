@@ -1,11 +1,56 @@
 %!TEX root = ../document.tex
 \chapter{Lösungsansatz} \label{chp:Loesungsansatz}
-In diesem Kapitel wird ein Verfahren zur Lokalisierung von Twitter-Nutzern vorgestellt, welches die Fragestellungen aus \ref{sec:fragestellung} beantwortete.
-Es werden dabei die Anforderungen aus Kapitel \ref{sec:Anforderungen} berücksichtigt.
-Zunächst soll das Verfahren und die Vorgehensweise allgemein erklärt um dem Leser ein Überblick zu bieten. 
-Daraufhin wird die Lösung systematisch von grundauf erarbeitet.    
+In diesem Kapitel wird ein Verfahren zur Lokalisierung von Twitter-Nutzern vorgestellt.
+Die Fragestellungen aus Kapitel \ref{sec:fragestellung} werden, unter Berücksichtigung der Anforderungen aus Kapitel \ref{sec:Anforderungen}, beantwortet.  
 
-\section{Verfahen zur Georeferenzierung von Twitter-Nutzern}
+Zunächst wird ein Überblick über die Funktion und den Ablauf des Verfahrens gegeben ohne detailliert auf die einzelnen Verfahrensschritte einzugehen.
+Im darauffolgenden Kapitel wird das Verfahen dann von Grundauf betrachtet und die einzelnen Verfahrensschritte eingehender erklärt. 
+
+
+	\section{Überblick}
+	Das erarbeitete Verfahren soll es ermöglichen Twitter-Nutzern, deren geografische Position unbekannt ist, eine Georeferenz zuzuordnen.
+	Um diese Georeferenzierung zu ermöglichen sollen Indikatoren aus den Twitter-Profilen verwendet werden. 
+	Als geografische Indikatoren werden der Nutzer-Standort und die Nutzer-Zeitzone herangezogen.
+
+	Das Verfahren zur Georeferenzierung kann dabei in zwei Phasen eingeteilt werden.
+	In einer ersten Phase wird eine Datenbasis generiert, diese Phase wird im folgenden Lernphase genannt. 
+	Die zweite Phase ist die eigentliche Georeferenzierung, welche die zuvor erzeugte Datenbasis nutzt um Nutzern, deren geografsiche Position unbekannt ist, eine Georeferenz zuzuordnen. 
+
+	\subsection{Lernphase}
+	In dieser Phase wird eine Datenbasis erzeugt die eine spätere Georeferenzierung ermöglicht. 
+	Um diese Datenbasis erstellen zu können muss eine umfangreiche Sammlung an Tweets vorliegen.
+	Diese Tweet-Sammlung wurde über die Twitter-Streaming-API generiert und wird im folgenden als Lerndaten bezeichnet. \footnot{Siehe Kapitel \ref{chp:Einleitung} genutzte Daten} 
+	 
+	Des weiteren wurden in den Datensatz nur Tweets aufgenommen, welche über eine Georeferenz verfügen. 
+	In der Lernphase wird der Nutzer-Standort, die Nutzer-Zeitzone sowie die Georeferenz jedes einzelnen Tweets verarbeitet um eine Datenbasis zur Georeferenzierung zu generieren. 
+	Der Nutzer-Standort wird dabei einer mehrstufigen Vorverarbeitung unterzogen.
+	In den einzelnen Stufen der Vorverarbeitung werden Sonderzeichen entfernt, alle Zeichen in Kleinbuchstaben umgewandelt, in der Wortfolge werden nach geografischen Begriffen gesucht die zwei oder mehr Worte beinhalten, die Zeichen werden url-encoded und die einzlenen Wörter werden in Tokens zerlegt welche alphanumerisch sortiert werden.
+	Im nächsten Schritt werden aus den Tokens Uni-Gramme, Bi-Gramme und Tri-Gramme erstellt. 
+	Jedes dieser so entstandenen N-Gramme wird die Zeitzone angehängt.  
+
+	 
+
+	Das Ergebnis dieser Phase ist eine Datenbasis welche eine Reihe von Zeichenketten aus der Nutzer-Standort und der Nutzer-Zeitzone generiert haben. 
+	Jeder dieser Zeicheneketten wird die Häufigkeit ihres Vorkommens und die nächste Stadt mit über 15.000 Einwohnern zugeordnet. 
+
+
+	\subsection{Georeferenzierung}  
+
+	In der zweiten Phase kann mit Hilfe der Datenbasis die eigentliche Georeferenzierung von Twitter-Nutzern, mit unbekannter geografischer Position, durchgeführt werden. 
+
+	Es wird dem Anwedner ermöglicht die Genauigkeit über die geografischen Hierarchien anzugeben und einen Konfidenzschwellwert zu bestimmen.
+
+
+	Bei der Georeferenzierung kann bestimmt werden wie genau die geografische Position oder die geografische Region bestimmt werden soll. 
+	Dabei kann zwischen den bereits in Kapitel \ref{par: geografische Hierarchie} erläuterten Hierarchieebenen gewählt werden.
+	Dies hat den Vorteil, dass die Genauigkeit der Georeferenzierung den jeweiligen Anforderungen angepasst werden kann.
+	Des weiteren kann eine Konfidenz angegeben werden, desto höher die Konfidenzschwelle gewählt wird desto sicherer ist die Georeferenzierung. 
+
+
+
+
+
+
 
 	\subsection{Informationen und benötigte Daten}
 
@@ -13,12 +58,6 @@ Daraufhin wird die Lösung systematisch von grundauf erarbeitet.
 
 
 \section{Analyse der Tweet Daten}
-	
-	
-
-	\subsection{Detailanalyse Standort und Zeitzone}
-
-
 
 \section{Indikatoren zur Ortsbestimmung}
 
@@ -99,4 +138,17 @@ Daraufhin wird die Lösung systematisch von grundauf erarbeitet.
 
 
 
+\section{Einbauen in dieses Kapitel}
 
+Die folgenden Vorverarbeitungsschritte werden durchgeführt.
+
+	\begin{enumerate}
+		\item Eliminierung von Sonderzeichen
+		\item ausschließlich Kleinschreibung
+		\item geografische Zuordnung von Teilworten \todo{Bessere Umschreibung finden für Teilworte, es ist eig. eine Menge von Worten aus Nutzer-Standort} 	
+		\item Tokenisierung
+		\item html Encoding
+	\end{enumerate}
+
+	Diese Vorverarbeitung dient der Bereiningung und Vereinheitlichung des Nutzer-Standorts.  
+	Die gegografische Zuordnung dient der  
