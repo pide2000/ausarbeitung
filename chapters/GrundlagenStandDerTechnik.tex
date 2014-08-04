@@ -1,17 +1,21 @@
 %!TEX root = ../document.tex
 \chapter{Grundlagen} 
-Um die Fragestellungen aus Abschnitt \ref{sec:fragestellung} beantworten zu können und eine geeignete Methode zu entwickeln um die Anforderungen zu erfüllen, werden eine Reihe von grundlegenden Verfahren und Begriffen verwendet. 
-Der Leser soll hier auf einen Stand gebracht werden, der es ihm ermöglicht die Ausführungen und Ideen nachvollziehen zu können.  
-Des weiteren wierden einige Grundlagen zu Twitter erklärt und die Daten, welche mit einem Tweet gesendet werden betrachtet.
-Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutzten Sampling Strategie vorgestellt und erläutert.
+In den folgenden Abschnitten werden eine Reihe von Begriffen und Verfahren genutzt, die hier eingeführt werden sollen.     
+Dies ermöglicht dem Leser die Beantwortung der Fragestellungen aus Abschnitt \ref{chp:Loesungsansatz} nachzuvollziehen. 
+
+Zunächst werden einige geografische Grundbegriffe eingeführt. 
+Danach wird auf Twitter eingegangen, es werden grundsätzliche Funktionen und Begriffe von Twitter eingeführt. 
+
+ 
+Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutzten Sampling-Strategie vorgestellt und erläutert.
 
 \newpage
 
 	\section{Geografische Grundlagen und Begriffe}
 	In diesem Kapitel sollen geografische Grundbegiffe erläutert werden. 
 	Einige geografische Begriffe werden in verschiedenen wissenschaftlichen Bereichen unterschiedlich genutzt und teilweise widersprüchlich definiert. 
-	Um Missverständnissen vorzubeugen wird hier definiert was unter den einzelnen Begriffen genau zu verstehen ist.
-	Eine Reihe von Begriffen werden selbst definiert um bestimmte Sachverhalte klarer ausdrücken zu können. 
+	Um Missverständnissen vorzubeugen wird hier definiert was in der vorliegenden Arbeit unter den einzelnen Begriffen zu verstehen ist.
+	Eine Reihe von Begriffen wird selbst definiert um bestimmte Sachverhalte klarer ausdrücken zu können. 
 
 		\paragraph*{Geodätisches Referenzsystem} 
 		\todo{Referenz. MAtthias Fragen, Online Lexikon zu Geoinformatik Uni Rostock} 
@@ -19,7 +23,7 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		In diesem Referenzsystem werden unter anderem Referenzpunkte und ein geeignetes Koordinatensystem festgelegt.  
 		
 		\paragraph{Georeferenz}
-		\todo{Referenz. MAtthias Fragen, Online Lexikon zu Geoinformatik Uni Rostock} 
+		\todo{Referenz. MAtthias Fragen, Online Lexikon zu Geoinformatik Uni Rostock / Vorlesungsfolien frei zugänglich Professor Bill} 
 		Eine Georeferenz (engl. Spatial Reference) wird auch als Raumbezug bezeichnet. 
 		Unter dem Begriff der Georeferenz versteht man die zugeordnete der Lage beziehungsweise Position zu einem Datensatz. 
 		Die konkreten Angaben zum Raumbezug und deren Genauigkeit hängen von den Anforderungen ab, die an die Georeferenz gestellt wird. 
@@ -53,7 +57,7 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		Hierbei kann es sich beispielsweise um Bundesländer oder Länder.
 		Somit entspricht der Begriff geografische Region einer indirekten Georeferenz (indirektem Raumbezug).
 
-		\paragraph*{Geografische Hierarchien}
+		\paragraph*{Geografische Hierarchie}
 		\todo{Bild mit Hierarchie von Deutschland} 
 		In der vorliegenden Arbeit wird eine geografische Hierarchie verwendet um eine Einteilung der Erde in geografische Regionen umzusetzen.
 		Dabei können geografische Regionen wiederum geografische Regionen oder geografische Positionen enthalten, wodurch sich eine hierarchische Gliederung ergibt.
@@ -84,152 +88,170 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 	\section{Twitter} 
 	In diesem Kapitel werden grundlegende Begriffe rund um das Twitter-Netzwerk erläutert. 
 	Weiter werden die Mechanismen in Twitter erläutert und an praktischen Beispielen erklärt. 
-	Zum Schluss wird aufgezeigt welche Informationen pro Twitter-Kurznachricht übermittelt werden und welche Daten zur Lokalisierung verwendet werden können.
+	Zum Schluss wird aufgezeigt welche Informationen pro Tweet übermittelt werden und welche Daten zur Lokalisierung verwendet werden können.
 
-	\subsection{Geschichtliches}
-	Twitter wurde 2006 von Jack Dorsey, Biz Stone, Noah Glass und Evan Williams gegründet.
-	Ursprünglich war Twitter zur internen Kommunikation innerhalb der Firma Odeo geplant.
-	Schnell wurde allerdings klar, dass in dem Dienst mehr potenzial steckt und so wurde Twitter öffentlich gemacht.
-	Seitdem erfreut sich der Dienst einer wachsenden Nutzer-Gemeinde.
-	Die Twitter-Gründer haben von Anfang an keine exakten Nutzer-Zahlen oder die Anzahl der versendeten Twitter-Kurznachrichten bekanntgegeben.
-	Dies geschah einerseits, weil die Gründer davon überzeugt sind, dass anhand der reinen Nutzer-Zahlen und gesendeten Twitter-Kurznachrichten nicht die '"Gesundheit"' des Twitter-Netzwerks nachvollzogen werden kann, andererseits werden durch diese Massnahme auch strategische Ziele verfolgt.  \footnote{http://www.pbs.org/mediashift/2007/05/twitter-founders-thrive-on-micro-blogging-constraints137}
-	2013 ging Twitter an die Börse und vermeldete 100 Millionen täglich aktive Nutzer und über 500 Millionen Twitter-Kurznachrichten, die täglich über den Dienst versendet werden. 
+		\subsection{Geschichtliches}
+		Twitter wurde 2006 von Jack Dorsey, Biz Stone, Noah Glass und Evan Williams gegründet.
+		Ursprünglich war Twitter zur internen Kommunikation innerhalb der Firma Odeo geplant.
+		Schnell wurde allerdings klar, dass in dem Dienst mehr potenzial steckt und so wurde Twitter öffentlich gemacht.
+		Seitdem erfreut sich der Dienst einer wachsenden Nutzer-Gemeinde.
+		Die Twitter-Gründer haben von Anfang an keine exakten Nutzer-Zahlen oder die Anzahl der versendeten Twitter-Kurznachrichten bekanntgegeben.
+		Dies geschah einerseits, weil die Gründer davon überzeugt sind, dass anhand der reinen Nutzer-Zahlen und gesendeten Twitter-Kurznachrichten nicht die '"Gesundheit"' des Twitter-Netzwerks nachvollzogen werden kann, andererseits werden durch diese Massnahme auch strategische Ziele verfolgt.  \footnote{http://www.pbs.org/mediashift/2007/05/twitter-founders-thrive-on-micro-blogging-constraints137}
+		2013 ging Twitter an die Börse und vermeldete 100 Millionen täglich aktive Nutzer und über 500 Millionen Twitter-Kurznachrichten, die täglich über den Dienst versendet werden. 
 
-	\subsection{Was ist Twitter?}
-	Twitter wird als Kurznachrichten-Dienst, Mikroblogging-Dienst oder auch als soziales-Netzwerk bezeichnet. 
-	Twitter Geschäftsführer Kevin Thau hat 2010 auf dem Nokia-World Kongress öffentlich bestritten, dass Twitter ein Soziales-Netzwerk ist. 
-	Laut Thau handelt es sich um ein Nachrichten-, Inhalts- und Informations-Netzwerk. 
-	Er begründete dies damit, dass Twitter die Art und Weise wie Nachrichten verteilt werden ändert und praktisch jeder zum Journalisten werden kann. 
-	Als Beispiel nennt er die Landung des Fluges 1549 auf dem Hudson River, die Zeugen hätten keine Mails versendet um die Nachricht zu verbreiten, sondern die Nachricht via Twitter weitergegeben.
-	Es lassen sich eine Reihe weitere Beispiele derselben Art finden. 
-	In \cite{Kwak2010} wird diese Einschätzung wissenschaftlich bestätigt.
-	Kwak et al überprüfen die in \cite{Newman2003} beschriebenen Eigenschaften sozialer Netzwerke und kommen zu dem Schluss, dass Twitter diese Eigenschaften nicht erfüllt.
+		\subsection{Was ist Twitter?}
+		Twitter wird als Kurznachrichten-Dienst, Mikroblogging-Dienst oder auch als soziales-Netzwerk bezeichnet. 
+		Twitter Geschäftsführer Kevin Thau hat 2010 auf dem Nokia-World Kongress öffentlich bestritten, dass Twitter ein Soziales-Netzwerk ist. 
+		Laut Thau handelt es sich um ein Nachrichten-, Inhalts- und Informations-Netzwerk. 
+		Er begründete dies damit, dass Twitter die Art und Weise wie Nachrichten verteilt werden geändert hat und praktisch jeder zum Journalisten werden kann. 
+		Als Beispiel nennt er die Landung des Fluges 1549 auf dem Hudson River. 
+		Die Augenzeugen hätten damals keine Mails versendet um die Nachricht zu verbreiten, sondern die Nachricht via Twitter weitergegeben.
+		Es lassen sich eine Reihe weitere Beispiele derselben Art finden. 
+		In \cite{Petrovic2013} wird ein Vergleich zwischen sogenannten Newswire anbietern und Twitter gezogen. \footnote{Newswire stellt eine Art Nachrichtenaggregator dar, über welchen Nachrichten aus verscheidenen Quellen aggregiert und weitergegeben werden. In deutschland kommt die Deutsche Presse agentur diesem Konzept am nächsten.}
+		Es stellte sich heraus, dass über nahezu alle Nachrichten, welche in den Newswires verbreitet wurden auch im Twitter-Netzwerk berichtet wird.
+		Nachrichten zu bestimmten, vermutlich sehr speziellen Themen oder Auslandsnachrichten wurden ausschliesslich in Twitter gefunden. 
+		Diese Erkenntnisse decken sich mit der Einschätzung von Kevin Thau. 
+		In \cite{Kwak2010} wird die Einschätzung, bei Twitter handele es sich nicht um ein soziales Netzwerk, wissenschaftlich bestätigt.
+		Kwak et al überprüfen die in \cite{Newman2003} beschriebenen Eigenschaften sozialer Netzwerke und kommen zu dem Schluss, dass Twitter diese Eigenschaften nicht erfüllt.	
 
-	Twitter ermöglicht es den Nutzern 140 Zeichen lange Nachrichten, so genannte Tweets, zu erstellen. 
-	Diese Tweets sind standardmäßig öffentlich sichtbar und werden als Liste in umgekehrter chronologischer Reihenfolge im Twitter-Profil dargestellt. 
-	Damit hat das Twitter-Profil einen Blog Charakter.  
-	In der vorliegenden Arbeit wird Twitter deshalb als Mikroblogging-Dienst bezeichnet.
-	Die Bezeichnung Kurznachrichten-Dienst ist irreführend, da dieser mit sms (small messeneger service) in Verbindung gebracht werden kann. 
-	Tatsächlich galt der sms in der Anfangsphase von Twitter als Vorbild für den Dienst.
-	Die Darstellung als Liste, und die Funktion einen Tweet standardmäßig allen Nutzern freizugeben unterscheidet sich grundlegend von der Funktion des sms, bei dem eine Nachricht direkt an einen Empfänger gesendet wird und nicht öffentlich ist.
+		Die Bezeichnung Kurznachrichten-Dienst ist irreführend, da dieser mit sms (small messeneger service) in Verbindung gebracht werden kann. 
+		Tatsächlich galt der sms in der Anfangsphase von Twitter als Vorbild für den Dienst.
+		In Twitter werden Nachrichten allerdings standardmäßig allen Benutzern zur Verfügung gestellt und können eingesehen werden. 
+		Des weiteren wird eine Liste der Nachrichten, welche von einem Nutzer verfasst wurden, als Liste in umgekehrter chronologischer Reihenfolge auf dessen Profil dargestellt.
+		Damit ähnelt das Twitter-Profil einem Blog mit Einträgen deren Länge 140 Zeichen nicht überschreiten darf. 
+		Die Darstellung als Liste, und die Funktion einen Tweet standardmäßig allen Nutzern freizugeben unterscheidet sich grundlegend von der Funktion des sms, bei dem eine Nachricht direkt an einen Empfänger gesendet wird und nicht öffentlich ist.
+		Im sms steht die Konversation zweier Nutzer im Vordergrund, wohingegen Nachrichten im Twitter-Netzwerk einen Brodcast an alle Nutzer darstellen.
 
-	\subsection{Funktionen von Twitter}
-	Der Mikroblogging-Dienst Twitter bietet neben dem Profil, auf dem die Tweets des Nutzers angezeigt werden, noch eine Reihe weiterer Funktionen. 
-	Im folgenden soll das Twitter-Profil und die Timeline kurz erläutert werden. 
-	Danach werden Funktionen wie das weitergeben eines Tweets, Favorisieren und Antworten erklärt. 
-	Zum Schluss wird auf den gesendeten Tweet Inhalt eingenagen und der Netzwerk-Charakter von Twitter untersucht.
+		Die 140 Zeichen langen Nachrichten in Twitter werden als Tweets bezeichnet.
+		Tweet bedeutet übersetzt Zwitschern, womit die Redenwendung '"Die Spatzen zwitschern es von den Dächern"' auch im Twitter-Netzwerk zu einer passenden Redenwendung  wird.  
+		In der vorliegenden Arbeit wird Twitter deshalb als Mikroblogging-Dienst bezeichnet.
+	
 
-	\begin{figure}[h!]
-	\begin{center}
-	\includegraphics[scale=0.4]{profile.png}
-	\caption{Die Twitter-Timeline auf einem Twitter Profil. 1: Nutzername und Informationen über den Nutzer. 2: Profilbild
-	3: Allgemeine Informationen über den Benutzer und dessen Netzwerk
-	4: Nutzer-Timeline: Tweets des Nutzer in umgekehrter chronologischer Reihenfolge 
-	5: Button zum Folgen}
-	\label{twitterProfile}
-	\end{center}
-	\end{figure}
+		\subsection{Funktionen von Twitter}
+		Der Mikroblogging-Dienst Twitter bietet neben dem Profil, auf dem die Tweets des Nutzers angezeigt werden, noch eine Reihe weiterer Funktionen. 
+		Im folgenden soll das Twitter-Profil und die Timeline kurz erläutert werden. 
+		Eine der zentralen Funktionen von Twitter ist das sogennante Folgen, womit sich Nutzer win Netzwerk aufbauen können aus dem sie Twitter Nachrichten erhalten.
+		Danach werden Funktionen wie das weitergeben eines Tweets, Favorisieren und Antworten erklärt. 
+		Zum Schluss wird auf den gesendeten Tweet Inhalt eingenagen und der Netzwerk-Charakter von Twitter untersucht.
 
-
-		\paragraph{Das Nutzer-Profil und die Nutzer-Timeline}
-			Das Nutzer-Profil kann über die Url http://twitter.com/BENUTZERNAME abgerufen werden und bietet neben der Nutzer-Timeline, in der die Tweets des Nutzers angezeigt werden, eine Reihe an weiteren Informationen.
-			In Abbildung \ref{twitterProfile} ist in der mitte die Timeline des Benutzers dargestellt in der dei Tweets zu sehen sind. 
-			Unter dem Profilbild links sind Informationen des Nutzers aufgelistet.
-			Diese Informationen kann der Nutzer selbst einstellen und entscheiden welche er angeben möchte.   
-
-
-		\paragraph{Folgen (Following/Follower/Tweeps)}
-			Diese Funktion erlaubt es Tweets eines bestimmten Nutzers zu abonnieren. 
-			Im Twitter-Umfeld spricht man von '"following"' oder '"folgen"', wenn man die Tweets eines bestimmten Nutzers abonniert.
-			Hat man Tweets eines bestimmten Nutzers abonniert so wird man als dessen '"Follower"' bezeichnet. 
-			Das englische Wort '"Follower"' hat sich im Twitter-Umfeld und darüber hinaus eingebürgert und wird selten übersetzt. 
-			Auch auf der Twitter Website wird '"Follower"' nicht ins deutsche übersetzt.
-			In der vorliegenden Arbeit wird deshalb auch auf eine Übersetzung verzichtet. 
-
-			In Abbildung \ref{twitterProfile} an Position 3 wird unter '"Folge ich"' die Anzahl der Twitter-Nutzer angezeigt denen der Beispielnutzer folgt. 
-			Neben dem Feld '"Folge ich"' wird unter '"Follower"' angezeigt wieviele Nutzer dem Beispielnutzer folgen.
-
-		\paragraph{Netzwerk Charakter}
-			Netzwerke in Twitter entstehen ausschliesslich durch Follower-Beziehungen.
-
-		\paragraph{Persönliche Timeline}
-			Jeder Twitter-Nutzer hat seine persönliche Timeline, auf dieser werden die Tweets derjenigen Nutzer angezeigt, denen er folgt. 
-			Die Timeline kann als Aggregator für Tweets betrachtet werden.
-			Diese Timeline ist die zentrale Stelle, an der die Nutzer Tweets anderer Nutzer empfangen und lesen.
-			Auch hier werden die Tweets in umgekehrter chronologischer Reihenfolge angezeigt.  
-
-		\paragraph{Weitergeben eines Tweets (Retweet)}
-			Unter einem Retweet versteht man die Weitergabe eines Tweets den man nicht selbst verfasst hat an die eigenen Follower.
-			Genauer gesagt wird der Tweet übernommen und ein Hinweis hinzugefügt, dass es sich um einen Retweet handelt, und nicht einen vom Nutzer selbst verfassten Tweet.
-			Diese Funktion wird hauptsächlich genutzt um Nachrichten schnell zu verbreiten ohne diese neu eingeben zu müssen. 
-			Die Weitergabe an die eigenen Follower impliziert einen gewissen Grad an Kontrolle und Filterfunktion.
-			Der weitergebende Nutzer kontrolliert und filtert die Nachrichten die er erhält und gibt diejenigen weiter, denen er eine Gewisse Relevanz beimisst, oder von denen er erwartet, dass sie seine Follower interessieren. \todo{1 retweet Reichweite 1000 Nutzer} 
-			Mit dieser Funktion können einzelne Nutzer eine Art Filterfunktion übernehmen, welche früher Journalisten vorbehalten war. 
-			Auch können Nutzer dadurch zu Tweet-Aggregatoren werden, welche Tweets von mehreren Nutzern erhalten, aber nur relevante oder themenspezifische Tweets weitergeben.
+		\begin{figure}[h!]
+		\begin{center}
+		\includegraphics[scale=0.4]{profile.png}
+		\caption{Die Twitter-Timeline auf einem Twitter Profil. 1: Nutzername und Informationen über den Nutzer. 2: Profilbild
+		3: Allgemeine Informationen über den Benutzer und dessen Netzwerk
+		4: Nutzer-Timeline: Tweets des Nutzer in umgekehrter chronologischer Reihenfolge 
+		5: Button zum Folgen}
+		\label{img:twitterProfile}
+		\end{center}
+		\end{figure}	
 
 
-			\todo{Diagramm Retweet, Filterfunktion} 
+			\paragraph{Das Nutzer-Profil und die Nutzer-Timeline}
+				Das Nutzer-Profil kann über die Url http://twitter.com/BENUTZERNAME abgerufen werden und bietet neben der Nutzer-Timeline, in der die Tweets des Nutzers angezeigt werden, eine Reihe an weiteren Informationen.
+				In Abbildung \ref{img:twitterProfile} ist in der mitte die Timeline des Benutzers dargestellt in der dei Tweets zu sehen sind. 
+				Unter dem Profilbild links sind Informationen des Nutzers aufgelistet.
+				Diese Informationen kann der Nutzer selbst einstellen und entscheiden welche er angeben möchte.   
 
 
-		\paragraph{Antworten und ansprechen eines Nutzers}
-			Twitter bietet die Möglichkeit einzelne Nutzer direkt anzusprechen. 
-			Mit Hilfe des @-Symbols kann ein Nutzer referenziert werden. 
-			Der referenzierte Nutzer, besipielsweise @alfred, wird dann benachrichtigt, dass er in einem Tweet erwähnt wurde. 
-			Der erwähnte Nutzer muss dabei nicht Follower des Verfassers sein.
-			Eine weitere Funktion im Twitter-Netzwerk ist das Antworten auf einen Tweet.
-			Über eine Schaltfläche kann man auf einen Tweet Antworten. 
-			Das @-Symbol und der Nutzername des Verfassers, des Ursprungstweets werden automatisch eingetragen, womit eine Benachrichtigung erfolgt. 
-			Auch kann dem Antwort-Tweet der ursprüngliche Tweet zugeordnet werden.
-			Es ist möglich, das auf einen Antwort-Tweet wieder geantwortet wird, wodurch ein sigenannter Thread entsteht. 
-			Auch ist es möglich, dass an einer solchen Konversation mehrere Twitter-Nutzer beteiligt sind. 
-			Dies ist dann der Fall, wenn im ursprünglichen Tweet, auf den geantwortet wurde, auf weitere User referenziert wurde. 
-			Aber auch wenn ein Nutzer auf einen bestheneden Antwort-Thread wiederum antwortet, werden alle beteiligtien Nutzer referenziert. 
-			\todo{Diagramm Antwort, Antwort Thread, Bild Antwirten Button, Referenzieren}     
+			\paragraph{Folgen (Following/Follower/Tweeps)}
+				Diese Funktion erlaubt es Tweets eines bestimmten Nutzers zu abonnieren. 
+				Im Twitter-Umfeld spricht man von '"following"' oder '"folgen"', wenn man die Tweets eines bestimmten Nutzers abonniert.
+				Hat man Tweets eines bestimmten Nutzers abonniert so wird man als dessen '"Follower"' bezeichnet. 
+				Das englische Wort '"Follower"' hat sich im Twitter-Umfeld und darüber hinaus eingebürgert und wird selten übersetzt. 
+				Auch auf der Twitter Website wird '"Follower"' nicht ins deutsche übersetzt.
+				In der vorliegenden Arbeit wird deshalb auch auf eine Übersetzung verzichtet. 
 
+				In Abbildung \ref{img:twitterProfile} an Position 3 wird unter '"Folge ich"' die Anzahl der Twitter-Nutzer angezeigt denen der Beispielnutzer folgt. 
+				Neben dem Feld '"Folge ich"' wird unter '"Follower"' angezeigt wieviele Nutzer dem Beispielnutzer folgen.
 
-		\paragraph{Favorisieren}
-			Mit dieser Funktion lässt sich ausdrücken, das man einen Tweet interessant oder gut findet.
-			Auch Zustimmung wird durch favorisieren ausgedrückt.  
-			Einen Tweet zu favorisieren kann aber auch bedeuten '"ich habe deine Reaktion registriert"', oft um einen Antwort-Thread nicht abrupt abzubrechen sondern eine zustimmende Rückmeldung zu geben ohne extra einen Tweet zu verfassen.
+			\paragraph{Persönliche Timeline}
+				Jeder Twitter-Nutzer hat seine persönliche Timeline, auf dieser werden die Tweets derjenigen Nutzer angezeigt, denen er folgt. 
+				Die Timeline kann als Aggregation von Tweets betrachtet werden.
+				Diese Timeline ist die zentrale Stelle, an der die Nutzer Tweets anderer Nutzer empfangen und lesen.
+				Auch hier werden die Tweets in umgekehrter chronologischer Reihenfolge angezeigt.  
 
- 		
-	 	\paragraph{Tweets}
-	 		Neben den sichtbaren Daten, welche in der Timeline angezeigt werden. 
-	 		Enthält ein tweet eine reihe weiterer interessanter Informationen. 
-	 		  
-	 		
-	 	\paragraph{}
-	 	\begin{enumerate}
-	 		 \item Anatomie eines Tweets 
-					\begin{enumerate}
-						\item Welche Informationen sind in einem Tweet enthalten? 
-						\item Konzentration auf Daten die Hinweise zur räumlichen Lage geben könnten aber auch allgemein auf die Daten eingehen.
-					\end{enumerate}
-	 	\end{enumerate}
-			
+			\paragraph{Weiterleiten eines Tweets (Retweet)}
+				Unter einem Retweet versteht man das weiterleiten eines Tweets den man nicht selbst verfasst hat an die eigenen Follower.
+				Genauer gesagt wird der Tweet übernommen und ein Hinweis hinzugefügt, dass es sich um einen sogenannten Retweet handelt, und nicht einen vom Nutzer selbst verfassten Tweet.
+				Diese Funktion wird hauptsächlich genutzt um Nachrichten schnell zu verbreiten ohne diese neu eingeben zu müssen. 
+				Die Weitergabe an die eigenen Follower impliziert einen gewissen Grad an Kontrolle und Filterfunktion. 
+				Der weitergebende Nutzer kontrolliert und filtert die Nachrichten die er erhält und gibt diejenigen weiter, denen er eine Gewisse Relevanz beimisst, oder von denen er erwartet, dass sie seine Follower interessieren. \todo{1 retweet Reichweite 1000 Nutzer}
+				Mit dieser Funktion können einzelne Nutzer eine Art Filterfunktion übernehmen, welche früher Journalisten vorbehalten war. 
+				Es darf jedoch nicht vergessen werden, dass der Nutzer nur im Rahmen seiner eigenen Möglichkeiten einen Tweet verifizieren kann und Nachrichten in Twitter keinesfalls gesicherte Fakten darstellen.
+				Auch können Nutzer durch diese Funktion zu Tweet-Aggregatoren werden, welche Tweets von mehreren Nutzern erhalten oder sammeln, aber nur relevante oder themenspezifische Tweets weitergeben.
 
-		\subsection{Twitter}
-			Allgemeine Informationen zu Twitter. 
-			\begin{enumerate}
-			\item \todo{gesicherte und ungesicherte Geoniformationen definieren!} 
-				\item Twitter als Nachrichtenmedium (Can Twitter Replace Newswire (Petrovic et. al ))
+				\todo{Diagramm Retweet, Filterfunktion} 
+
+			\paragraph{Hashtags}
+				Hashtags werden genutzt um Tweet Nachrichten zu kategorisieren oder Metag Informationen zu liefern. 
+				Ein Hashtag kann vom verfasser selbst als solches ausgezeichnet werden indem ein # vor das gewünschte Wort, welches als Hashtag fungieren soll, gesetzt wird. 
+				Hahstags ermöglichen es Tweets nach Stichworten zu filtern. 
+				Anhand der Hashtags werden auch die Twitter-Trends analysiert.
+				Twitter Trends 
 				
+			\paragraph{Antworten und direktes ansprechen eines Nutzers}
+				Twitter bietet die Möglichkeit einzelne Nutzer direkt anzusprechen. 
+				Mit Hilfe des @-Symbols kann ein Nutzer referenziert werden. 
+				Der referenzierte Nutzer, besipielsweise @alfred, wird dann benachrichtigt, dass er in einem Tweet erwähnt wurde. 
+				Der erwähnte Nutzer muss dabei nicht Follower des Verfassers sein. \todo{siehe Bild ref1} 
+				Eine weitere Funktion im Twitter-Netzwerk ist das Antworten auf einen Tweet.
+				Über eine Schaltfläche wird es ermöglicht auf einen Tweet zu Antworten. 
+				Das @-Symbol und der Nutzername des Verfassers werden automatisch eingetragen, womit eine Benachrichtigung an den Verfasser des Ursprungstweets erfolgt. \todo{siehe Bild ref2}
+				Es ist möglich, das auf einen Antwort-Tweet wiederum geantwortet wird, wodurch ein sogenannter Thread oder Konversation entsteht. \todo{siehe Bild ref3}
+				Auch ist es möglich, dass an einer solchen Konversation mehrere Twitter-Nutzer beteiligt sind. 
+				Dies ist dann der Fall, wenn im ursprünglichen Tweet, auf weitere User referenziert wurde. 
+				Aber auch wenn ein Nutzer auf eine bestehende Konversation antwortet, werden alle beteiligtien Nutzer referenziert. \todo{siehe Bild ref4}
+				\todo{Diagramm Antwort, Antwort Thread, Bild Antworten Button, Referenzieren}     
 
-					\item Definition Twitter-Umfeld
-			\end{enumerate} 
+
+			\paragraph{Favorisieren}
+				Mit dieser Funktion lässt sich ausdrücken, dass man einen Tweet interessant oder gut findet.
+				Auch Zustimmung wird durch favorisieren ausgedrückt.  
+				Einen Tweet zu favorisieren kann aber auch bedeuten '"ich habe deine Reaktion registriert"', oft um einen Antwort-Thread nicht abrupt abzubrechen sondern eine zustimmende Rückmeldung zu geben ohne extra einen Tweet zu verfassen.
+
+		\subsection{Daten einer Twitter-Nachricht}
+			Neben den direkt sichtbaren Informationen enthält ein Tweet eine Reihe weiterer Daten.
+			Betrachtet man einen einzelnen Tweet, beispielsweise auf twitter.com, wird der Tweet-Text, der Verfasser und die Zeit, wann der Tweet verfasst wurde, mitgeteilt. \todo{siehe Bild} 
+			Die Gesamtheit der Daten die in einem Tweet enthalten sind werden hier allgemein als Tweet-Daten bezeichnet.
+
+			\begin{figure}[h!]
+			\begin{center}
+			\includegraphics[scale=0.8]{tweetFinal.png}
+			\caption{Was ist zu sehen?}
+			\label{tweet}
+			\end{center}
+			\end{figure}	
 
 
-
-	\section{geografie Daten}
-
-
-	\section{Data Sample}
+		 	\paragraph{Daten}
+		 		Neben den sichtbaren Daten, welche in der Timeline angezeigt werden, enthält ein Tweet eine Reihe weiterer interessanter Informationen. 	
 
 
+	 	\subsection{Geoinformationen in Twitter Daten}
 
+	 		\subsubsection{Welche Tweet-Daten können zur Georeferenzierung herangezogen werden} \todo{Nur optional} 
+
+				Um diese Frage zu beantworten, müssen die Tweet-Daten eingehend untersucht werden. 
+				Dabei spielt nicht nur die reine Information die den Daten entnommen werden kann eine Rolle, sondern auch wie die Daten generietr oder eingegeben wurden.
+				Beispielsweise kann bei einem Tweet, dem ein Längen- und Breitengrad mit einer Genauigkeit von 14 Nachkommastellen zugeordnet ist, davon ausgegangen werden, dass die geografische Position der tatsächlichen geografischen Position, von welcher der Tweet abgesetzt wurde, entspricht. 
+				Es liegt hier die Vermutung nahe, dass diese Werte durch ein mobiles GPS \footnote{Global Positioning System} erfasst worden sind. 
+				Anders verhält sich dies beispielsweise beim Tweet-Text, eine Erwähnung der Stadt New York, muss nicht bedeuten, dass der Tweet aus dieser Stadt stammt. 
+				Es impliziert nicht einmal, dass der Verfasser jemals in dieser Stadt war.  
+				Im folgenden werden einige Datenfelder, welche mit jedem Tweet versandt werden, untersucht.
+				Dabei wird die Eignung dieser Daten als geografischer Indikatoren bewertet.
+				Waährenddessen werden anhand geeigneter Beispiele die Bergiffe gesicherter -, ungesicherter -, mittelbarer - und unmittelbarer geografischer Indikator eingeführt.  
+
+
+			\subsubsection{gesicherte geografische Indikatoren in Tweet-Daten}
+
+			\subsubsection{ungesicherte geografische Indikatoren in Tweet-Daten}
+
+			\subsubsection{mittelbare geografische Indikatoren in Tweet-Daten}
+
+			\subsubsection{unmittelbare geografische Indikatoren in Tweet-Daten} 
 
 \chapter{Stand der Technik} 
-	Die Georeferenzierung von Twitter-Kurznachrichten oder Twitter-Nutzern ist ein Feld an dem nach wie vor aktiv geforscht wird.
+	Die Georeferenzierung von Tweets oder Twitter-Nutzern ist ein Feld an dem nach wie vor aktiv geforscht wird.
 	Nicht zuletzt trägt auch die große Verfügbarkeit an Twitter-Daten zu dem Umstand bei, dass Twitter in den letzten Jahren Forschungsgegenstand zahlreicher Publikationen war. 
 	
 	In diesem Abschnitt sollen bestehende Ansätze zur Georeferenzierung im Twitter-Umfeld untersucht werden. 
@@ -311,10 +333,10 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		Die Schätzung erfolgt dabei durch probabilistische Modelle.
 		Diese Kategorie vereint damit "'Geografische Themenmodelle"', "'Statistische Klassifizierung"' aus \cite{Priedhorsky2013} mit "'Inhaltsanalyse mit probabilsitischen Sprachmodellen"' aus \cite{Cheng2010} und ist damit als genereller anzusehen, als die vorgenannten Kategorien. 
 
-		\paragraph*{"'Inhaltsbasierte Standort-Extrahierung von Tweets (Conetnt-based Location Extraction from Tweets"'} die verwandten Arbeiten in dieser Kategorie versuchen direkte Hinweise auf einen geografischen Ort aus einer Twitter-Kurznachricht zu extrahieren. 
+		\paragraph*{"'Inhaltsbasierte Standort-Extrahierung von Tweets (Content-based Location Extraction from Tweets"'} die verwandten Arbeiten in dieser Kategorie versuchen direkte Hinweise auf einen geografischen Ort aus einer Twitter-Kurznachricht zu extrahieren. 
 		Diese Kategorie ähnelt dem "'Geocoding"' beziehungsweise der "'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis"'. 
 
-		\paragraph*{"'Standortschätzung ohne den Tweet Inhalt zu nutzen (Location Estimation without using Tweets Content)"'} hierunter versteht der Autor alle Informationen die nicht unmittelbar in der Twitter-Kurznachricht enthalten sind. Dazu zählen Informationen aus dem Nutzerprofil oder Informationen über die sozialen Verbindungen des Nutzers.
+		\paragraph*{"'Standortschätzung ohne den Tweet Inhalt zu nutzen (Location Estimation without using Tweets Content)"'} hierunter versteht der Autor alle Informationen die nicht unmittelbar im Tweet-Text enthalten sind. Dazu zählen Informationen aus dem Nutzerprofil oder Informationen über die sozialen Verbindungen des Nutzers.
 
 
 		\cite{Mahmud2012} nutzt ebenfalls die Methodik um die Arbeiten zu kategorisieren. 
@@ -330,8 +352,6 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		In späteren Arbeiten, wie in \cite{Priedhorsky2013}, wird hingegen fast ausschließlich auf Arbeiten aus dem Twitter-Umfeld verwiesen. 
 		Dies spiegelt die steigende Anzahl der Arbeiten zur Lokalisierung im Twitter-Umfeld wieder.
 		Betrachtet man die Ausarbeitungen zur Lokalisierung im Twitter-Umfeld genauer, wird allerdings schnell klar, dass die Kategorisierung der Arbeiten anhand der verwendeten Methodik, dem Umfang nicht mehr gerecht wird. 
-
-		
 		
 		Bei genauerer Betrachtung der Arbeiten stellt man allerdings fest, dass diese Klassifizierungen dem Umfang der Arbeiten nicht gerecht wird. 
 		\cite{Hecht2011} verweist auf ähnliche Ansätze mit einem anderen Untersuchungsgegenstand.
@@ -340,20 +360,13 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		Die Methodeneinteilung ist aufgrund der Begriffswahl missverständlich und kann somit zu Problemen führen. 
 
 		\subsection{ttt<sss}
-
-
 		In \cite{Schulz2013} werden die folgenden Dimensionen zur Abgrenzung herangezogen.
 
-
-
+		\todo{Indikatoren aus \cite{Schulz2013}}
 
 		Allerdings lassen sich noch andere Dimensionen zur Klassifizierung der Arbeiten heranziehen. 
 		Wird besipielsweise der Text einer Twitter-Kurznachricht durch eine einfache Geokodierung untersucht wird dies andere Ergebnisse liefern als eine Untersuchung auf Basis eines geografischen Themenmodells.  
 		
-
-
-
-
 
 		\cite{Hecht2011} nutzen diese Methode um eine Ground-Truth zu bestimmen indem das Userlocation-Feld in Wikipedia nachschlagen wird. Wikipedia bietet zu vielen Artikeln eine grografische Position in Form von Längen- und Breitengrad an, diese werden dann der untersuchten Twitter-Kurznachricht zugeordnet. 
 		\cite{Hale2012} nutzen die Yahoo und die Google Geocoding Api um das Userlocation-Feld eingehender zu untersuchen.  
@@ -365,8 +378,6 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 
 		Betrachtet man die Gesamtheit an arbeiten im Bereich der Lokalisierung im Twitter Netzwerk drängen sich noch mehr Dimensionen zur Klassifizeirung der arbeiten auf.
 
-		
-
 		\begin{enumerate}
 		 	\item Räumliche Indikatoren
 		 	\item Techniken
@@ -374,14 +385,10 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		 \end{enumerate} 	
 
 
+		\todo{Tabelle einfügen, bereits fertig, nur noch Format anpassen (Lesbarkeit)}
+		\todo{Requirements Tabelle einfügen}
 
-
-
-
-
-
-
-\includegraphics[scale=0.7]{gPlusPlaces.png}
+		
 
 		\begin{enumerate}
 			\item Naiver Ansatz -> Geocoding mit Google Maps API V3, nur Indikatoren die geografische Namen enthalten. 
@@ -395,8 +402,6 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 				\end{enumerate}
 			\item aktuelle Ansätze
 				\begin{enumerate}
-					\item{\todo{Ist das grundsätzliche Verfahren, analysieren Inhalt/Indikatoren -> Zuordnen auf geografische Angaben und danach Clustern tatsächlich immer gleich bei allen Arbeiten? kontinuierlich vs diskrete geografische Daten} 
-					allgemeiner Ansatz : Geotagged Tweets analysieren (Inhalt/andere Indikatoren usw. ), zuordnen zu geografischen \"Bereichen\" und daraus lernen.}
 					\item Verfahren mit Inhaltsanalysen
 					\item Verfahren mit Indikatoren einzelne oder mehrere
 					\item Welche Verfahren kommen beim mapping auf \todo{geografische Entität definieren} geografische Entitäten zum Einsatz
