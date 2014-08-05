@@ -4,29 +4,80 @@ In diesem Kapitel wird ein Verfahren zur Lokalisierung von Twitter-Nutzern vorge
 Die Fragestellungen aus Kapitel \ref{sec:fragestellung} werden, unter Berücksichtigung der Anforderungen aus Kapitel \ref{sec:Anforderungen}, beantwortet.  
 
 Zunächst wird ein Überblick über die Funktion und den Ablauf des Verfahrens gegeben ohne detailliert auf die einzelnen Verfahrensschritte einzugehen.
-Im darauffolgenden Kapitel wird das Verfahen dann von Grundauf betrachtet und die einzelnen Verfahrensschritte eingehender erklärt. 
+Im darauffolgenden Kapitel wird das Verfahen dann von Grundauf betrachtet und die einzelnen Verfahrensschritte eingehender erläutert. 
 
 
 	\section{Überblick}
 	Das erarbeitete Verfahren soll es ermöglichen Twitter-Nutzern, deren geografische Position unbekannt ist, eine Georeferenz zuzuordnen.
-	Um diese Georeferenzierung zu ermöglichen sollen Indikatoren aus den Twitter-Profilen verwendet werden. 
-	Als geografische Indikatoren werden der Nutzer-Standort und die Nutzer-Zeitzone herangezogen.
+	Dabei sollen als Eingabe für die Georeferenzierung lediglich die Nutzer-Zeitzone und der Nutzer-Standort des jeweiligen Nutzer-Profils verwendet werden.
+	Als Ergebnis soll eine Georeferenz mit einem Konfidenzwert zurückgeliefert werden. 
+	Dabei gibt es die Möglichkeit, sowohl die Genauigkeit in Bezug auf die geografische Hierarchie, als auch einen Schwellwert für die gewünschte Konfidenz der Georeferenz anzugeben.
+	In Abbildung \ref{A1} ist der Ablauf der Georeferenzierung dargestellt. 
+	
+	\todo{Schema Darstellung Eingabe->Ausgabe  Sketchbook A1: Unterschrift Die Eingabe besteht aus dem Nutzer-Standort sowie der Nutzer-Zeitzone. 
+	Als Randbedingungen wird die gewünschte Hierarchie-Ebene sowie der Schwellwert für die Konfidenz angeben. 
+	Als Ausgabe erhält man eine Georeferenz und einen Konfidenzwert, der angibt wie sicher das Ergebnis ist.} 
+	\label{A1} 
 
-	Das Verfahren zur Georeferenzierung kann dabei in zwei Phasen eingeteilt werden.
-	In einer ersten Phase wird eine Datenbasis generiert, diese Phase wird im folgenden Lernphase genannt. 
-	Die zweite Phase ist die eigentliche Georeferenzierung, welche die zuvor erzeugte Datenbasis nutzt um Nutzern, deren geografsiche Position unbekannt ist, eine Georeferenz zuzuordnen. 
+	Im folgenden wird ein Verfahren beschrieben, welches die Georeferenzierung nach obigem Schema ermöglicht. 
+	Um eine Zuordnung des Nutzer-Standortes und der Nutzer-Zeitzone zu einer Georeferenz realisieren zu können, wird eine Datenbasis erzeugt, die im folgenden als Georeferenz-Basis bezeichnet wird.
+	Diese Georeferenz-Basis wird durch eine statistische Auswertung einer umfangreichen Tweet-Datensammlung erzeugt. 
+	Jeder Datensatz in der Tweet-Datensammlung beinhaltet den Nutzer-Standort und die Nutzer-Zeitzone aus dem Twitter-Profil des Verfassers, sowie eine Georeferenz in Form von Längen- und Breitengrad.
+	Vor der statistsichen Auswertung der Indikatoren wird eine Vorverarbeitung der Indikatoren vorgenommen. 
+	Dieser Vorverarbeitungsschritt kann als generischer Teil des Verfahrens angesehen werden, da er sowohl beim erzeugen der Georeferenz-Basis, als auch bei der Georeferenzierung durchgeführt wird. 
+	
+	Das erzeugen der Georeferenz-Basis kann als "'Einlernen"' bezeichnet werden, denn es wird aus den vorhandenen Lerndaten Wissen generiert.
+
+	Das Verfahren kann also in das "'Einlernen"' und die Georeferenzierung unterteilt werden, wobei die genutzten Indikatoren in beiden Fällen derselben Vorverarbeitung unterzogen werden.
+
+
+	\todo{Ablaufplan der beiden Phasen} 
+	
+
+	Jeder dieser Phasen ist eine Vorverarbeitung der Indikatoren vornageschalten, sodass die Indikatoren vergleichbar gemacht werden können.
+	Die Vorverarbeitung der Indikatoren kann als generische Phase betrachtet werden.
+	Die Vorverarbeitung wird sowohl der Lernphase als auch der Georeferenzierung vorangeschalten um die Indikatoren der Lernphase mit den Indikatoren bei der Georeferenzierung vergleichbar zu machen.  
+	Die zweite Phase ist die eigentliche Georeferenzierung, welche die zuvor erzeugte Datenbasis nutzt um Twitter-Nutzern, deren geografsiche Position unbekannt ist, eine Georeferenz zuzuordnen.  
+
+	\paragraph{Lernphase}
+	Eine Menge von Tweet-Datensätzen, bezeichnet als Lerndaten-Basis, wird in der Lernphase derart verarbeitet, dass eine Datenbasis entsteht, mit Hilfe der die Georeferenzierung durchgeführt werden kann.
+	Die entstehende Datenbasis zur Georeferenzierung wird im folgenden als Georeferenz-Basis bezeichnet.
+	Als Lerndaten-Basis wird der die Tweet-Sammlung aus dem Abschnitt \ref{chp:Grundlagen} genutzt. 
+
+	Jeder Tweet-Datensatz der Lerndaten-Basis beinhaltet den Nutzer-Standort, die Nutzer-Zeitzone und eine Georeferenz in Form von Längen- und Breitengrad.
+	Zunächst wird der Nutzer-Standort und die Nutzer-Zeitzone einer Vorverarbeitung unterzogen. 
+	Die Vorverarbeitung dient hautsächlich der Bereinigung des Nutzer-Standortes, da dieser eine nutzergenerierte Zeichenkette darstellt. 
+	Des weiteren werden beide Indikatoren, der Nutzer-Standort und die Nutzer-Zeitzone, für die weitere Verarbeitung vorbereitet. 
+
+
 
 	\subsection{Lernphase}
-	In dieser Phase wird eine Datenbasis erzeugt die eine spätere Georeferenzierung ermöglicht. 
-	Um diese Datenbasis erstellen zu können muss eine umfangreiche Sammlung an Tweets vorliegen.
-	Diese Tweet-Sammlung wurde über die Twitter-Streaming-API generiert und wird im folgenden als Lerndaten bezeichnet. \footnot{Siehe Kapitel \ref{chp:Einleitung} genutzte Daten} 
-	 
-	Des weiteren wurden in den Datensatz nur Tweets aufgenommen, welche über eine Georeferenz verfügen. 
-	In der Lernphase wird der Nutzer-Standort, die Nutzer-Zeitzone sowie die Georeferenz jedes einzelnen Tweets verarbeitet um eine Datenbasis zur Georeferenzierung zu generieren. 
-	Der Nutzer-Standort wird dabei einer mehrstufigen Vorverarbeitung unterzogen.
-	In den einzelnen Stufen der Vorverarbeitung werden Sonderzeichen entfernt, alle Zeichen in Kleinbuchstaben umgewandelt, in der Wortfolge werden nach geografischen Begriffen gesucht die zwei oder mehr Worte beinhalten, die Zeichen werden url-encoded und die einzlenen Wörter werden in Tokens zerlegt welche alphanumerisch sortiert werden.
-	Im nächsten Schritt werden aus den Tokens Uni-Gramme, Bi-Gramme und Tri-Gramme erstellt. 
-	Jedes dieser so entstandenen N-Gramme wird die Zeitzone angehängt.  
+	In dieser Phase wird eine Datenbasis erzeugt, die eine spätere Georeferenzierung anhand des Nutzer-Standorts und der Nutzer-Zeitzone ermöglicht. 
+	Um die Datenbasis erstellen zu können muss eine umfangreiche Sammlung an Tweets vorliegen.
+	Diese Tweet-Sammlung wurde über die Twitter-Streaming-API generiert und wird im folgenden als Lerndatenbasis bezeichnet. \footnote{Siehe Kapitel \ref{chp:Einleitung} genutzte Daten} 
+	Jeder Datensatz in der Lerndatenbasis beinhaltet den Nutzer-Standort, die Nutzer-Zeitzone sowie eine Georeferenz in Form von Längen und Breitengrad.
+	
+	Jeder Datensatz, also jeder Tweet wird in dieser Phase einzeln verarbeitet. 
+	Dazu werden die folgenden Schritte durchgeführt.
+
+	\paragraph{Vorverarbeitung des Nutzer-Standortes} 
+	Der Nutzer-Standort wird einer mehrstufigen Vorverarbeitung unterzogen.
+	Die Vorverarbeitung des Nutzer-Standortes erfüllt mehrere Aufgaben. 
+
+	Zunächst soll sichergestellt werden, dass keine unnötigen Sonder- oder Satzzeichen in die weitere Verarbeitung einfliessen. 
+	Im Nutzer-Standort finden sich oft Sonder- oder Satzzeichen, die für die Bestimmung des Standortes von keinem oder sehr geringem Nutzen sind, diese sollen in der weiteren Verarbeitung nicht berücksichtigt werden.
+  	Des weiteren sollen Toponyme welche aus zwei oder mehr Wörtern bestehen \todo{Toponym definieren} erkannt, und als zusammengehörig markiert werden.
+  	Die erkannten Toponyme werden nicht zur Georeferenzierung genutzt, sondern ausschließlich um die Wörter zusammenfassen zu können und in weiteren Verarbeitungsschritten als zusammengehörige Einheit zu verarbeiten.
+  	Dies bringt den Vorteil, dass in den nächsten Verarbeitungsschritten weniger Wörter verarbeitet werden müssen.
+  	Die so verarbeiteten Worte werden zuletzt in Tokens aufgeteilt und alphanumerisch sortiert. 
+  	Dieser Schritt dient zur Vorverarbeitung für den nächsten Verarbeitugsschritt.
+
+  	\paragraph{Erzeugung von N-Grammen}
+  	Aus den alphanumerisch sortierten Tokens der Vorverarbeitung werden in diesem Schritt N-Gramme erzeugt.
+  	Genauer werden N-Gramme der Ordnung 1, 2 und 3 erzeugt.
+  	Diese werden auch als Mono-, Bi- und Tri-Gramme bezeichnet.  
+
+  	Jedes dieser so entstandenen N-Gramme wird die Zeitzone angehängt.  
 
 	 
 
@@ -148,7 +199,11 @@ Die folgenden Vorverarbeitungsschritte werden durchgeführt.
 		\item geografische Zuordnung von Teilworten \todo{Bessere Umschreibung finden für Teilworte, es ist eig. eine Menge von Worten aus Nutzer-Standort} 	
 		\item Tokenisierung
 		\item html Encoding
+		\item alphanumerische Sortierung 
 	\end{enumerate}
 
 	Diese Vorverarbeitung dient der Bereiningung und Vereinheitlichung des Nutzer-Standorts.  
 	Die gegografische Zuordnung dient der  
+
+	In den einzelnen Stufen der Vorverarbeitung werden Sonderzeichen entfernt, alle Zeichen in Kleinbuchstaben umgewandelt, in der Wortfolge werden nach geografischen Begriffen gesucht die zwei oder mehr Worte beinhalten, die Zeichen werden url-encoded und die einzlenen Wörter werden in Tokens zerlegt welche alphanumerisch sortiert werden.
+	Im nächsten Schritt werden aus den Tokens Uni-Gramme, Bi-Gramme und Tri-Gramme erstellt. 
