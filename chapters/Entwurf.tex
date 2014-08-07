@@ -9,40 +9,74 @@ Im darauffolgenden Kapitel wird das Verfahen dann von Grundauf betrachtet und di
 
 	\section{Überblick}
 	Das erarbeitete Verfahren soll es ermöglichen Twitter-Nutzern, deren geografische Position unbekannt ist, eine Georeferenz zuzuordnen.
-	Dabei sollen als Eingabe für die Georeferenzierung lediglich die Nutzer-Zeitzone und der Nutzer-Standort des jeweiligen Nutzer-Profils verwendet werden.
+	Dabei sollen als Eingabe für die Georeferenzierung lediglich die Nutzer-Zeitzone und der Nutzer-Standort aus dem Profil eines Twitter-Nutzers verwendet werden.
 	Als Ergebnis soll eine Georeferenz mit einem Konfidenzwert zurückgeliefert werden. 
-	Dabei gibt es die Möglichkeit, sowohl die Genauigkeit in Bezug auf die geografische Hierarchie, als auch einen Schwellwert für die gewünschte Konfidenz der Georeferenz anzugeben.
-	In Abbildung \ref{A1} ist der Ablauf der Georeferenzierung dargestellt. 
-	
+	Dabei hat der Anwender die Möglichkeit, sowohl die Genauigkeit in bezüglich der geografischen Position, als auch einen Schwellwert für die gewünschte Konfidenz der Georeferenz anzugeben.
+	In Abbildung \ref{A1} ist der generelle Ablauf der Georeferenzierung dargestellt. 
 	\todo{Schema Darstellung Eingabe->Ausgabe  Sketchbook A1: Unterschrift Die Eingabe besteht aus dem Nutzer-Standort sowie der Nutzer-Zeitzone. 
-	Als Randbedingungen wird die gewünschte Hierarchie-Ebene sowie der Schwellwert für die Konfidenz angeben. 
+	Als Rahmenbedingungen wird die gewünschte Hierarchie-Ebene sowie der Schwellwert für die Konfidenz angeben. 
 	Als Ausgabe erhält man eine Georeferenz und einen Konfidenzwert, der angibt wie sicher das Ergebnis ist.} 
 	\label{A1} 
 
-	Im folgenden wird ein Verfahren beschrieben, welches die Georeferenzierung nach obigem Schema ermöglicht. 
-	Um eine Zuordnung des Nutzer-Standortes und der Nutzer-Zeitzone zu einer Georeferenz realisieren zu können, wird eine Datenbasis erzeugt, die im folgenden als Georeferenz-Basis bezeichnet wird.
-	Diese Georeferenz-Basis wird durch eine statistische Auswertung einer umfangreichen Tweet-Datensammlung erzeugt. 
-	Jeder Datensatz in der Tweet-Datensammlung beinhaltet den Nutzer-Standort und die Nutzer-Zeitzone aus dem Twitter-Profil des Verfassers, sowie eine Georeferenz in Form von Längen- und Breitengrad.
-	Vor der statistsichen Auswertung der Indikatoren wird eine Vorverarbeitung der Indikatoren vorgenommen. 
-	Dieser Vorverarbeitungsschritt kann als generischer Teil des Verfahrens angesehen werden, da er sowohl beim erzeugen der Georeferenz-Basis, als auch bei der Georeferenzierung durchgeführt wird. 
+	Die Georeferenzierung nach obigem Schema setzt voraus, dass aus den eingegebenen Indikatoren eine Georeferenz abgeleitet werden kann.
+	Sowohl der Nutzer-Standort als auch die Nutzer-Zeitzone sind unmittelbare geografische Indikatoren, was bedeuetet das sich ein geografischer Bezug aus den Indikatoren ableiten lässt. 
+	Der Nutzer-Standort ist im Gegensatz zur Nutzer-Zeitzone ein ungesicherter geografischer Indikator, dies macht eine Analyse des Nutzer-Standortes nötig um die zu erwartenden Ungenaugigkeiten zu minimieren.     
+	Die Idee besteht nun darin, aus einer umfangreichen Tweet-Datensammlung die Zuordnung der eingegebenen Indikatoren zu geografischen Positionen zu lernen und diese in einer Datenbasis zu speichern.
+	Diese Datenbasis soll im folgenden als Georeferenz-Basis bezeichnet werden.
+	Damit dies realsiert werden kann, muss die Tweet-Datensammlung pro Datensatz den Nutzer-Standort, die Nutzer-Zeitzone und eine Georeferenz in Form von Längen- und Breitengrad beinhalten.  \footnote{Siehe Kapitel \ref{chp:Einleitung} genutzte Daten}
 	
-	Das erzeugen der Georeferenz-Basis kann als "'Einlernen"' bezeichnet werden, denn es wird aus den vorhandenen Lerndaten Wissen generiert.
+	Zur Erstellung der Georeferenz-Basis wird zunächst für jeden Datensatz in der Tweet-Datensammlung eine Vorverarbeitung der Indikatoren vorgenommen.
+	Durch die Vorverarbeitung wird der eingegebene Nutzer-Standort genauer untersucht, zusätzliche Informationen extrahiert und in eine einheitliche Form gebracht.
+	Danach wird mit Hilfe des Längen- und Breitengrades und einer Geografie-Datenbank jedem Tweet eine konkrete Instanz der untersten Ebene der geografischen Hierarchie zugeordnet.
+	Legt man die in Abschnitt \ref{chp:Grundlagen} vorgestellte geografische Hierarchie zugrunde, wird dadurch jedem Tweet eine Stadt zugeordnet.
+	Durch diese Zuordnung werden jedem Tweet implizit die höheren Ebenen der geografischen Hierarchie zugeordnet, denn die verwendete Geografie-Datenbank kann die geografische Hierarchie abbilden.   	 
+	Dieser Schritt markiert den Übergang von einer kontinuierlichen Darstellung der Georeferenz, durch Längen- und Breitengrad, in eine diskrete Darstellung , durch eine Stadt. 
+	Die so verarbeiteten Datensätze werden nun einer simplen statistischen Auswertung unterzogen, dessen Resultat die Georeferenz-Basis darstellt.
+	Die Georeferenz-Basis beinhaltet nun die verarbeiteten Indikatoren und die zuvor zugeordnete geografische Position, in Form einer Stadt, sowie die Häufigkeit in der die Kombination Indikator/Stadt ermittelt wurde.
+	Der Ablauf zur Erstellung der Georeferenz-Basis wird in Abbildung \ref{A2} dargestellt.
 
-	Das Verfahren kann also in das "'Einlernen"' und die Georeferenzierung unterteilt werden, wobei die genutzten Indikatoren in beiden Fällen derselben Vorverarbeitung unterzogen werden.
+	Bei der Georeferenzierung werden die Indikatoren zunächst derselben Vorverarbeitung wie beim einlernen unterzogen.
+	Die Vorverarbeitung ist somit ein generischer Schritt des Verfahrens, da er sowohl vor dem erzeugen der Georeferenz-Basis als auch vor der eigentlichen Georeferenzierung durchgeführt wird.
+	Nach der Vorverarbeitung wird in der Georeferenz-Basis nach diesen vorverarbeitenden Indikatoren gesucht.
+	Das Ergebnis dieser Suche wird unter Berücksichtigung des Konfidenzschwellwertes und der geografischen Hierarchie ausgewertet und die zugeordnete geografische Position wird ausgegeben.  
+	Der Ablauf der Georeferenzierung wird in Abbildung \ref{A3} dargestellt. 
 
-
-	\todo{Ablaufplan der beiden Phasen} 
+	\todo{Ablaufplan A1, A2, A3} 
 	
 
-	Jeder dieser Phasen ist eine Vorverarbeitung der Indikatoren vornageschalten, sodass die Indikatoren vergleichbar gemacht werden können.
-	Die Vorverarbeitung der Indikatoren kann als generische Phase betrachtet werden.
-	Die Vorverarbeitung wird sowohl der Lernphase als auch der Georeferenzierung vorangeschalten um die Indikatoren der Lernphase mit den Indikatoren bei der Georeferenzierung vergleichbar zu machen.  
-	Die zweite Phase ist die eigentliche Georeferenzierung, welche die zuvor erzeugte Datenbasis nutzt um Twitter-Nutzern, deren geografsiche Position unbekannt ist, eine Georeferenz zuzuordnen.  
+	\section{Detailierte Beschreibung des Verfahrens}
+	In diesem Kapitel soll genauer auf die einzelnen Teile des Verfahrens eingegangen werden. 
+	Das Kapitel wird in drei größere Teile gegliedert, die Vorverarbeitung, das Einlernen und die Georeferenzierung.
 
-	\paragraph{Lernphase}
-	Eine Menge von Tweet-Datensätzen, bezeichnet als Lerndaten-Basis, wird in der Lernphase derart verarbeitet, dass eine Datenbasis entsteht, mit Hilfe der die Georeferenzierung durchgeführt werden kann.
-	Die entstehende Datenbasis zur Georeferenzierung wird im folgenden als Georeferenz-Basis bezeichnet.
-	Als Lerndaten-Basis wird der die Tweet-Sammlung aus dem Abschnitt \ref{chp:Grundlagen} genutzt. 
+	Zunächst soll der generische Teil des Verfahrens, die Vorverarbeitung der Indikatoren, erläutert werden.
+	Dabei wird eine Analyse der Indikatoren durchgeführt um die nötigen Schritte der Vorverarbeitung zu identifizieren. \todo{eventuell nicht Analyse, könnte schwirig werden}  
+	Die einzelnen Schritte der Vorverarbeitung sollen daraufhin genauer betrachtet werden.
+
+	Beim Einlernen wird zunächst das Vefrahren zur Zuordnung eines Tweets zu einer Stadt erläutert. 
+	Danach wird die statistische Auswertung der durch die Vorverarbeitung und die Zuordnung der Tweets entstandenen Daten erläutert.
+	Damit ist das Einlernen des Verfahrens, und die damit verbundene Erstellung der Georeferenz-Basis, abgeschlossen.
+
+	Nun soll auf die eigentliche Georeferenzierung eingegangen werden.
+	Die Vorverarbeitung der Indikatoren wird in diesem Teil nur angeschnitten, da diese bereits im ersten Teil genau erläutert wird. 
+	Nachdem die Indikatoren vorverarbeitet wurden, wird in der Georeferenz-Basis nach korrespondierenden Indikatoren gesucht. 
+	Die Ergebnisse dieser Suche werden unter Berücksichtigung des Konfidenzschwellwertes und der gewünschten georafischen Genauigkeit, in Form der geografischen Hierarchieebene, ausgewertet.
+	Das Ergebnis dieser Auswertung ist die gewünschte Georeferenz. 
+
+
+	\subsection{Vorverarbeitung}
+	Bla Blubb
+
+	\subsection{Einlernen}
+	Blubb
+
+	\subsection{Georeferenzierung}   
+	
+
+
+	
+
+
+
 
 	Jeder Tweet-Datensatz der Lerndaten-Basis beinhaltet den Nutzer-Standort, die Nutzer-Zeitzone und eine Georeferenz in Form von Längen- und Breitengrad.
 	Zunächst wird der Nutzer-Standort und die Nutzer-Zeitzone einer Vorverarbeitung unterzogen. 
@@ -54,13 +88,15 @@ Im darauffolgenden Kapitel wird das Verfahen dann von Grundauf betrachtet und di
 	\subsection{Lernphase}
 	In dieser Phase wird eine Datenbasis erzeugt, die eine spätere Georeferenzierung anhand des Nutzer-Standorts und der Nutzer-Zeitzone ermöglicht. 
 	Um die Datenbasis erstellen zu können muss eine umfangreiche Sammlung an Tweets vorliegen.
-	Diese Tweet-Sammlung wurde über die Twitter-Streaming-API generiert und wird im folgenden als Lerndatenbasis bezeichnet. \footnote{Siehe Kapitel \ref{chp:Einleitung} genutzte Daten} 
+	Diese Tweet-Sammlung wurde über die Twitter-Streaming-API generiert und wird im folgenden als Lerndatenbasis bezeichnet. 
 	Jeder Datensatz in der Lerndatenbasis beinhaltet den Nutzer-Standort, die Nutzer-Zeitzone sowie eine Georeferenz in Form von Längen und Breitengrad.
 	
 	Jeder Datensatz, also jeder Tweet wird in dieser Phase einzeln verarbeitet. 
 	Dazu werden die folgenden Schritte durchgeführt.
 
 	\paragraph{Vorverarbeitung des Nutzer-Standortes} 
+
+
 	Der Nutzer-Standort wird einer mehrstufigen Vorverarbeitung unterzogen.
 	Die Vorverarbeitung des Nutzer-Standortes erfüllt mehrere Aufgaben. 
 
@@ -98,10 +134,24 @@ Im darauffolgenden Kapitel wird das Verfahen dann von Grundauf betrachtet und di
 	Des weiteren kann eine Konfidenz angegeben werden, desto höher die Konfidenzschwelle gewählt wird desto sicherer ist die Georeferenzierung. 
 
 
+	\paragraph{Einabauen in detaillierte Betrachtung -> Unteruschung der Indikatoren}
 
+	Um dies zu gewährleisten müssen die beiden Indikatoren und deren Eigenschaften betrachtet werden.
 
+	Der Nutzer-Standort ist ein unmittelbarer geografischer Indikator, es kann deshalb davon ausgegangen werden, dass er Auskunft über die geografische Position gibt.
+	Als Nutzer-Standort kann der Twitter-Nutzer eine beliebige Zeichenfolge eingeben. 
+	Es handelt sich beim Nutzer-Standort deshalb um einen ungesicherten geografischen Indikator, es ist deshalb damit zu rechnen, dass unter Umständen keine geografische Position angegeben ist und andererseits keine einheitliche Angabe bezüglich des selben Standorts erwartet werden kann.
+	Beispielsweise beschreiben die Zeichenketten "'Karlsruhe, Deutschland"' und "'Baden-Württemberg, Karlsruhe"' den selben Ort.
+	Noch deutlicher wird dieser Umstand, wenn man alternative Namen oder umgangssprachliche Namen für Städte betrachtet. 
+	Mit "'The Big Apple"' und "'New York, USA"' oder mit "'Motown"' und "'Detroit, MI"' sind dieselben Orte gemeint.   
+	Auch die Genauigkeit bezüglich der geografischen Position ist nicht zuverlässig vorhersagbar, sehr konkrete geografische Positionen, wie die Angabe einer Stadt oder eines Stadtteils, oder aber eine geografische Region wie beispielsweise ein Land oder ein Kontinent, sind möglich. 
 
+	Die Nutzer-Zeitzone stellt dagegen einen gesicherten, unmittelbaren geografischen Indikator dar.
+	Bei der Nutzer-Zeitzone kann aus einer Liste möglicher Werte gewählt werden, womit keine Ungenauigkeiten bezüglich der Eingabe besteht und eine definierte Zeichenkette erwartete werden kann, deren geografische Region klar definiert ist. 
+	Die Nutzer-Zeitzone beschreibt allerdings in jedem Fall eine größere geografische Region, die nicht immer mit den konventionellen Ländergrenzen korrespondiert und somit eine Bestimmung der geografischen Position nahezu unmöglich macht.
+	\todo{Irgendwo auf den Umstand eingehen, dass Timezone nicht angegeben werden wird und dann der Standard gewählt wird der us central pacific time ist? .......} 
 
+	Bei beiden Indikatoren besteht natürlich die Möglichkeit der Falscheingabe durch den Benutzer. Dieser Umstand wird jedoch durch die Analyse der Daten ausgemerzt. \todo{Umschreiben und woanders darauf eingehen!} 
 
 	\subsection{Informationen und benötigte Daten}
 
@@ -207,3 +257,21 @@ Die folgenden Vorverarbeitungsschritte werden durchgeführt.
 
 	In den einzelnen Stufen der Vorverarbeitung werden Sonderzeichen entfernt, alle Zeichen in Kleinbuchstaben umgewandelt, in der Wortfolge werden nach geografischen Begriffen gesucht die zwei oder mehr Worte beinhalten, die Zeichen werden url-encoded und die einzlenen Wörter werden in Tokens zerlegt welche alphanumerisch sortiert werden.
 	Im nächsten Schritt werden aus den Tokens Uni-Gramme, Bi-Gramme und Tri-Gramme erstellt. 
+
+
+
+	\paragraph{In Bewertung einbauen} 
+	Legt man zugrunde, dass der Nutzer-Standort als ungesicherter, unmittelbarer geografischer Indikator angesehen werden kann, besteht eine Möglichkeit der Georeferenzierung darin, eine sogenannte Geocoding-API zu nutzen.
+	Die Nutzer-Zeitzone wird in diesem Fall nicht als Indikator herangezogen, da diese von den Geocoding-API's nicht als zusätzliche Information verarbeitet wird. 
+	Eine Reihe von bekannten Firmen bietet eine API zur Georeferenzierung an. 
+	Die bekanntesten sind Google, Yahoo, Microsoft, Map Quest und Cloud Made. 
+	Teilweise sind die Anfragen, welche an die Geocoding-API's gesendet werden können, in ihrer Anzahl begrenzt.
+	Auch die Antwortzeiten der Geocoding-APIs begrenzen die Anzahl möglicher Anfragen pro Zeiteinheit. 
+	In Tabelle \ref{eine Tabelle mit den Georef API anbietern} ist eine Auflistung der Anbieter mit den jeweiligen Begrenzungen dargestellt.
+	\todo{Tabelle mit Georef Api Anbietern.}
+	Eine detaillierte Analyse der Antwortzeiten wurde im Zuge dieser Arbeit nicht durchgeführt. \todo{Link in footnote einfügen} \footnote{für eine Analyse Vergleiche} 
+
+
+	
+	Dieses vorgehen wird in einigen Arbeiten angewendet um den Nutzer-Standort zu bestimmen. 
+	Dabei wird, mit einer simplen Vorverarbeitung des Nutzer-Standortes, direkt in einer Geografie-Datenbank nach der eingegebenen Zeichenfolge gesucht. 
