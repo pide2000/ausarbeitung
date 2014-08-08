@@ -239,17 +239,51 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 				Es impliziert nicht einmal, dass der Verfasser jemals in dieser Stadt war.  
 				Im folgenden werden einige Datenfelder, welche mit jedem Tweet versandt werden, untersucht.
 				Dabei wird die Eignung dieser Daten als geografischer Indikatoren bewertet.
-				Waährenddessen werden anhand geeigneter Beispiele die Bergiffe gesicherter -, ungesicherter -, mittelbarer - und unmittelbarer geografischer Indikator eingeführt.  
+				Währenddessen werden anhand geeigneter Beispiele die Bergiffe gesicherter -, ungesicherter -, mittelbarer - und unmittelbarer geografischer Indikator eingeführt.  
 
 
-			\subsubsection{gesicherte geografische Indikatoren in Tweet-Daten}
+		\subsection{geografischer Indikator}
+		
+		Unter einem geografischen Indikator wird eine Angabe verstanden, welche direkt einem Nutzer zugeordnet werden kann und die Auskunft über die geografische Position oder Region des Nutzers geben kann.
+		Im Zuge dieser Arbeit wurden potentielle geografische Indikatoren untersucht und eine Reihe von Eigenschaften identifiziert anhand derer sich geografische Indikatoren kategorisieren lassen. 
+		Diese Eigenschaften haben Einfluss darauf, wie und ob eine Georeferenz aus dem Indikator abgeleitet werden kann.
+		Dabei ist zu unterscheiden ob sich die Eigenschaft auf den, durch den Nutzer eingegebenen, Wert bezieht oder auf die Information die durch die Angabe geliefert werden soll. 
 
-			\subsubsection{ungesicherte geografische Indikatoren in Tweet-Daten}
+			\subsubsection{Objektivität der Werte geografischer Indikatoren} 
+			Der Wert eines geografischen Indikators ist genau dann objektiv wenn zwei Nutzer für denselben geografischen Ort oder dieselbe geografische Region immer den selben Wert eingeben.
+			Ein Beispiel für einen objektiven geografischen Indikator wäre eine Liste von Ländern aus der ein Nutzer wählen kann.
+			Der Nutzer hat dabei eine Wahl, kann aber nur aus einem begrenzten Anzahl an Möglichkeiten wählen. 
 
-			\subsubsection{mittelbare geografische Indikatoren in Tweet-Daten}
+			Geben zwei Nutzer unterschiedliche Werte ein, obwohl sie denselben Ort oder dieselbe Region beschreiben wollen, ist dieser Wert nicht objektiv.
+			Eingaben in Freitext Felder, welche ohne weitere Verarbeitung übernommen werden fallen in diese Kategorie.
 
-			\subsubsection{unmittelbare geografische Indikatoren in Tweet-Daten} 
+			\subsubsection{Zuverlässigkeit der Werte geografischer Indikatoren}
+			Ein Wert ist genau dann zuverlässig wenn er in jedem Fall die Information enthält, welche durch das Feld repräsentiert werden soll. 
+			Unzuverlässig ist der Wert, wenn er nicht in jedem Fall die Information enthält welche druch das Feld repräsentiert werden soll.  
 
+			\subsubsection{Gesicherte Werte geografischer Indikatoren} 
+			Als gesichert gilt ein Wert genau dann wenn die enthaltene Information in jedem Fall dem tatsächlichen Wert entspricht. 
+			Im Umfeld von Twitter ist diese Eigenschaft nicht stichhaltig nachzuprüfen. 
+			Alle Angaben die ein Benutzer eingibt werden nicht verfiiziert und können dementsprechen auch nicht gesichert sein. 
+			Es besteht die Möglichkeit das ein Nutzer in jedem Feld Falschangaben macht. 
+			Dies gilt es im erarbeiteten Verfahren zu beachten.
+
+
+			\subsubsection{mittelbare und unmittelbare geografische Indikatoren}
+				Diese Eigenschaft bezieht sich, im Gegensatz zu den vorgenannten auf die Information die durch das Feld oder die Eingabe repräsentiert werden soll. 
+				
+				Hierbei handelt es sich um Indikatoren welche unter Umständen einen geogarfischen Bezug haben können, aber die Intention bei der Eingabe war nicht eine geografische Position mitzuteilen.
+
+				Beispielsweise die Verwendung bestimmter umgangssprachlicher oder dialektischer Wörter die einen Hinweis auf eine geografische Region geben können.
+				Die Intention des Nutzers war nicht, dadurch einen Hinweis auf die geografische Position oder seinen Aufenthalstort zu geben, allerdings lässt sich mittelbar eine geografische Region daraus ableiten. 
+
+			\subsubsection{unmittelbare geografische Indikatoren in Tweet-Daten}
+				Unmittelbare geografische Indikatoren sind solche aus denen direkt eine geografische Position abgeleitet werden kann.
+
+				 bzw. die Intention des Nutzers bei der Eingabe darauf abzielt eine geografische Position zu beschreiben.  
+				Mit einer Gewissen Sicherheit kann ein geografischer Bezug abgeleitet werden, da die Intention des Feldes einen Standort angibt. 
+
+			
 \chapter{Stand der Technik} 
 	Die Georeferenzierung von Tweets oder Twitter-Nutzern ist ein Feld an dem nach wie vor aktiv geforscht wird.
 	Nicht zuletzt trägt auch die große Verfügbarkeit an Twitter-Daten zu dem Umstand bei, dass Twitter in den letzten Jahren Forschungsgegenstand zahlreicher Publikationen war. 
