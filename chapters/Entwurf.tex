@@ -26,18 +26,19 @@ Danach wird das Verfahen von Grundauf betrachtet und die einzelnen Verfahrenssch
 
 	
 	Der Wert des Nutzer-Standortes ist nicht objektiv und unzuverlässig, dies macht eine Analyse und eine entsprechende Vorverarbeitung dieses Indikators nötig.
-	Zur Erstellung der Georeferenz-Basis werden deshalb zunächst einige Vorverarbeitung der Indikatoren durchgeführt.
-	Durch die Vorverarbeitung wird der eingegebene Nutzer-Standort genauer analysiert, zusätzliche Informationen extrahiert und in eine einheitliche Form gebracht.
-	Danach wird mit Hilfe des Längen- und Breitengrades und einer Geografie-Datenbank jedem Tweet eine konkrete Instanz der untersten Ebene der geografischen Hierarchie zugeordnet.
+	Zur Erstellung der Georeferenz-Basis werden deshalb zunächst einige Schritte zur Vorverarbeitung der Indikatoren durchgeführt.
+	Durch die Vorverarbeitung werden die eingegebenen Indikatoren genauer analysiert, zusätzliche Informationen extrahiert und in eine einheitliche Form gebracht.
+	Die Indikatoren werden durch die Vorverarbeitung derart verändert, dass aus einem Indikator-Paar mehrere Datensätze enstehen können, welche Informationen aus den ursprünglichen Indikatoren enthalten.
+	Danach wird mit Hilfe des Längen- und Breitengrades jedem Tweet eine konkrete Instanz der untersten Ebene der geografischen Hierarchie zugeordnet.
 	Legt man die in Abschnitt \ref{chp:Grundlagen} vorgestellte geografische Hierarchie zugrunde, wird dadurch jedem Tweet eine Stadt zugeordnet.
-	Durch diese Zuordnung werden jedem Tweet implizit auch die höheren Ebenen der geografischen Hierarchie zugeordnet, denn die verwendete Geografie-Datenbank kann die geografische Hierarchie abbilden.   	 
-	Dieser Schritt markiert den Übergang von einer kontinuierlichen Darstellung der Georeferenz, durch Längen- und Breitengrad, in eine diskrete Darstellung , durch eine Stadt. 
-	Die so verarbeiteten Datensätze werden nun einer simplen statistischen Auswertung unterzogen, dessen Resultat die Georeferenz-Basis darstellt.
+	Durch diese Zuordnung werden jedem Tweet implizit auch die höheren Ebenen der geografischen Hierarchie zugeordnet.   	 
+	Dieser Schritt markiert den Übergang von einer kontinuierlichen Darstellung der Georeferenz, durch Längen- und Breitengrad, in eine diskrete Darstellung, durch eine Stadt. 
+	Die so verarbeiteten Datensätze werden nun einer simplen statistischen Auswertung unterzogen indem ermittelt wird wie häufig einer Stadt ein bestimmter Indikator zugeordnet wurde.
 	Die Georeferenz-Basis beinhaltet nun die verarbeiteten Indikatoren und die zuvor zugeordnete geografische Position, in Form einer Stadt, sowie die Häufigkeit in der die Kombination Indikator/Stadt ermittelt wurde.
 	Der Ablauf zur Erstellung der Georeferenz-Basis wird in Abbildung \ref{A2} dargestellt.
 
 	Bei der Georeferenzierung werden die Indikatoren zunächst derselben Vorverarbeitung wie beim einlernen unterzogen.
-	Die Vorverarbeitung ist somit ein generischer Schritt des Verfahrens, da er sowohl vor dem erzeugen der Georeferenz-Basis als auch vor der eigentlichen Georeferenzierung durchgeführt wird.
+	Die Vorverarbeitungsschritte sind somit generisch, da sie sowohl vor dem erzeugen der Georeferenz-Basis als auch vor der eigentlichen Georeferenzierung durchgeführt werden.
 	Nach der Vorverarbeitung wird in der Georeferenz-Basis nach diesen vorverarbeitenden Indikatoren gesucht.
 	Das Ergebnis dieser Suche wird unter Berücksichtigung des Konfidenzschwellwertes und der geografischen Hierarchie ausgewertet und die zugeordnete geografische Position wird ausgegeben.  
 	Der Ablauf der Georeferenzierung wird in Abbildung \ref{A3} dargestellt. 
@@ -45,30 +46,116 @@ Danach wird das Verfahen von Grundauf betrachtet und die einzelnen Verfahrenssch
 	\todo{Ablaufplan A1, A2, A3} 
 
 	In den folgenden Kapiteln soll nun genauer auf die einzelnen Teile des Verfahrens eingegangen werden. 
-	Das Verfahren wird dabei in drei Teilen behandelt, die Vorverarbeitung, das Einlernen und die Georeferenzierung.
+	Das Verfahren wird dabei in zwei Teilen behandelt.
 
-	Zunächst soll der generische Teil des Verfahrens, die Vorverarbeitung der Indikatoren, erläutert werden.
-	Dabei werden die Indikatoren genauer betrachtet um die nötigen Schritte der Vorverarbeitung zu identifizieren. \todo{eventuell nicht Analyse, könnte schwirig werden}  
-	Die einzelnen Schritte der Vorverarbeitung sollen daraufhin genauer betrachtet werden.
-
-	Beim Einlernen wird zunächst das Verfahren zur Zuordnung eines Tweets zu einer Stadt erläutert bevor die Indikatoren einem weiteren Verarbeitungsschritt unterzogen werden. 
-	Danach wird die Auswertung der durch die Vorverarbeitung und die Zuordnung der Tweets entstandenen Daten erläutert.
-	Damit ist das Einlernen des Verfahrens, und die damit verbundene Erstellung der Georeferenz-Basis, abgeschlossen.
-
-	Zuletzt soll auf die eigentliche Georeferenzierung eingegangen werden.
-	Die Vorverarbeitung der Indikatoren wird in diesem Teil nur angeschnitten, da diese bereits im ersten Teil genau erläutert wird. 
+	Im ersten Teil wird das Einlernen der Georeferenz-Basis behandelt.
+	Im Zuge des Einlernens der Georeferenz-Basis sollen auch die generischen Vorverarbeitungsschritte erläutert werden.
+	Die Vorverarbeitungsschritte lassen sich in zwei Klassen einteilen.
+	Die erste Klasse beinhaltet Verarbeitungsschritte um die Indikatoren für die weitere Verarbeitung zu optimieren und vorzubereiten, diese extrahieren keine zusätzlichen Informationen aus den Indikatoren.
+	Die zweite Klasse beinhaltet Vorverarbeitungsschritte, durch die versucht wird zusätzliche Informationen aus den Indikatoren zu extrahieren.
+	Diese Verarbeitungsschritte hängen stark zusammen mit der verwendeten geografischen Hierarchie und der späteren Auswertung.
+	Deshalb werden diese Vorverarbeitungsschritte in Bezug auf die verwendete geografische Hierarchie und das Auswertungs-Verfahren betrachtet.
+	Danach soll der gesamte Ablauf des Einlernens noch einmal dargestellt und kurz erklärt werden um einen Gesamtüberblick zu liefern.
+	
+	Zuletzt soll auf die Georeferenzierung eingegangen werden.
+	Die Vorverarbeitungsschritte der Indikatoren wird in diesem Teil nur angeschnitten, da diese bereits im ersten Teil genau erläutert werden. 
 	Nachdem die Indikatoren vorverarbeitet wurden, wird in der Georeferenz-Basis nach korrespondierenden Indikatoren gesucht. 
 	Die Ergebnisse dieser Suche werden unter Berücksichtigung des Konfidenzschwellwertes und der gewünschten georafischen Genauigkeit, in Form der geografischen Hierarchieebene, ausgewertet.
 	Das Ergebnis dieser Auswertung ist die gewünschte Georeferenz. 
 
 
-	\section{Vorverarbeitung}
-	Zunächst soll der Nutzer-Standort als geografischer Indikator genauer betrachtet werden. 
-	Insbesondere die Tatsache, dass der Wert des Nutzer-Standortes nicht objektiv und unzuverlässig ist muss beachtet werden. 
-	Die Vorverarbeitung des Nutzer-Standortes wird in mehreren Schritten durchgeführt, welche einzeln erläutert werden.
-	Nach den einzelnen Schritten zur Vorverarbeitung des Nutzer-Standortes wird die Nutzer-Zeitzone betrachtet.
-	Welche zwar objektiv, aber auch zuverlässig ist. 
-	Dabei wird der Nutzen, diese als zusätzlichen Indikator hinzuzufügen, herausgestellt und an einem Beispiel belegt.  
+	\section{Einlernen der Georeferenz-Basis}
+	Zunächst sollen die Vorverarbeitungsschritte der ersten Klasse erklärt werden.
+	Danach soll der Nutzer-Standort als geografischer Indikator genauer betrachtet werden und die Extrahierung tiefergehender Informationen aus den Indikatoren werden erläutert. 
+	Dabei wird insbesondere auf den Zusammenhang zwischen den Vorverarbeitungsschritten der zweiten Klasse, der geografischen Hierarchie und der darauffolgenden Auswertung der Ergebnisse eingegangen.   
+	Die Tatsache, dass der Wert des Nutzer-Standortes nicht objektiv und unzuverlässig ist muss dabei beachtet werden. 
+
+
+			\subsubsection{Der Nutzer-Standort als geografischer Indikator}
+
+			Zunächst soll der Nutzer-Standort als geografischer Indikator eingehender betrachtet werden. 
+			In Abschnitt \ref{chp:Grundlagen} wurde der Nutzer Standort bezüglich seiner Eigenschaften untersucht. 
+			Demnach kann der Nutzer-Standort als unmittelbarer geografischer Indikator angesehen werden, da als Eingabe eine geografische Position gefordert wird.  
+			In zahlreichen anderen Arbeiten wurde deshalb versucht den Nutzer-Standort \todo{Referenzen auf frühere Ansätze mit Gazetteer Abfrage} durch eine Anfrage an Geografie-Datenbanken oder Geocoding-APIs auf eine konkrete geografische Position aufzulösen.
+			Dieser naive Ansatz ignoriert allerdings die Eigenschaften des Wertes der im Nutzer-Standort gespeichert ist und die folgenden Probleme verursacht.
+
+			Nach Abschnitt \ref{chp:Grundlagen} ist der Wert des Nutzer-Standortes nicht objektiv, nicht zuverlässig und nicht gesichert. 
+			
+			\paragraph{Nicht zuverlässig} Diese Eigenschaft sagt aus, dass der eingegebene Wert nicht zwingend ein Toponym darstellt.
+			Vom Nutzer kann jeder beliebige Wert eingegeben werden, unabhängig davon ob dieser ein Toponym ist oder nicht.
+			Beim naiven Ansatz, der Abfrage an eine Geocoding-Api oder eine Geografie-Datenbank wird allerdings implizit angenommen das es sich beim eingegebenen Wert um ein Toponym handelt.
+			Dadurch kann es zu Fehlern bei der Auflösung kommen.
+			Dadurch das der Wert nicht zuverlässig ist wird die Eigenschaft, dass der Nutzer-Standort ein unmittelbarer geografischer Indikator ist, in gewisser Weise relativiert.
+			Denn theoretisch könnte jeder Nutzer einen Wert eingeben, der kein Toponym darstellt, womit die Eigenschaft des unmittelbaren geografischen Indikators hinfällig wäre.
+			Es muss allerdings beachtet werden, dass der Nutzer-Standorts von einem Großteil der Nutzer zu seinem vorgesehenen Zweck genutzt wird.
+			Nach Hecht et al in \cite{Hecht2011} wird in \todo{xyz Prozent} der Fälle der Nutzer-Standort verwendet um ein Toponym anzugeben. \footnote{Hecht et al untersuchen allerdings nur Nutzer-Standorte die in englischer Sprache eingegeben wurden.}
+			Im Zuge der vorliegenden Arbeit wurde eine manuelle Untersuchung an xyz Tausend Twitter-Profilen vorgenommen bei denen xyz Prozent der Nutzer ein Toponym im Nutzer-Standort gespeichert hatten.   
+
+			\todo{kleines Beispiel mit Hilfe der Geocoding Api erstellen} 
+
+			\paragraph{Nicht gesichert} Dadurch besteht keine Garantie, dass der eingegebene Wert, sollte er ein Toponym darstellen, dem tatsächlichen Standort des Nutzers entspricht. 
+			Dieser Umstand wird bei einer Auflösung mit Hilfe einer Geocoding-API oder Geografie-Datenbank nicht berücksichtigt.
+
+			\paragraph{Nicht Objektiv} 
+			Dies bedeutet, dass dieselbe georafische Position von jeweils zwei Nutzern mit unterschiedlich Toponymen bezeichnet werden kann.
+			Dies wäre an sich kein Problem, wenn Toponyme über die Geocoding-API oder eine Geografie-Datenbank korrekt aufgelöst werden würden. 
+			Allerdings ist in Kombination mit der Unzuverlässigkeit des Wertes zu beachten, dass auch Werte die nicht aufgelöst werden können und somit nicht direkt als Toponym identifiziert werden, einen geografischen Ort beschreiben können und damit ein Toponym darstellen. 
+			Dies kann der Fall sein wenn ein Ort beispielsweise eine lokale Bezeichnung besitzt welche in Datenbanken nicht hinterlegt ist. 
+			Als Beispiel hierfür sollen Spitznamen für Städte dienen.  			
+			Bei Wikipedia sind für die Stadt Detroit im US-Bundesstaat Michigan folgende Spitznamen angegeben: The Motor City, Motown, Hockeytown, Rock City und The D. 
+			Die ersten zwei dürften weltweit einen Gewissen Bekanntheitsgrad haben, wohingegen Hockeytown, Rock City und The D weniger bekannt sein dürften.  
+			Es existieren Datenbanken mit solchen Städte-Spitznamen, aber für diese kann keine Vollständigkeit garantiert werden. 
+			Auch besteht die Möglichkeit das in Teilen der Welt Spitznamen für Städte existieren die kaum über die Grenzen des Landes bekannt sind, oder aber die Schreibweise ist landesintern anders als diese in der Datenbank hinterlegt ist. 
+			Eine weitere Fehlerquelle sind netzwerkinterne Schreibweisen die sich etabliert haben und ausschließlich innerhalb eines Netzwerks verwendet werden.
+			Beachtet man nun noch, dass das Verfahren unabhängig von der verwendeten Sprache und dem verwendeten Alphabet funktionieren soll, ist eine Auflösung mit Hilfe von Geocoding-APIs oder einer Geografie-Datenbank sehr schwer umzusetzen und vor allem schwer zu kontrollieren. 
+			Zudem ist es fraglich in wie weit und ob diese Spitznamen im Nutzer-Standort überhaupt verwendet werden.  
+			Neben Spitznamen von Städten sind aber auch Toponyme denkbar die einen bestimmten Landstrich oder eine landschaftliche Besonderheit beschreiben.
+			Beispieslweise beschreibt '"An der Förde'" eine geografische Region an der Ostsee, meist ist damit die Kieler Förde gemeint, es wird allerdings nicht explizit daraf hingewiesen. 
+			Diese geografischen Bezeichnungen sind unter Umständen nur in speziellen Datenbanken zu finden und können so nur schlecht aufgelöst werden. 
+			Diese sehr speziellen Fälle sind im Twitter-Netzwerk nicht unbedingt zu erwarten, es kann allerdings auch nicht gänzlich ausgeschlossen werden, dass solche Bezeichnungen verwendet werden. 
+			Des weiteren kann aufgrund der nicht Objektivität und der Unzuverlässigkeit nicht garantiert werden, dass der aufgelöste Ort tatsächlich der Standort ist den der Nutzer angeben wollte. 
+			Es gibt zahlreiche Städte, die in mehreren Ländern vorkommen.
+			Ein gutes Beispiel hierfür sind US Städte. 
+			Da die USA ein Einwanderungsland ist übernahmen viele Einwanderer bei der Gründung neuer Städte die Namen aus der alten Heimat. 
+			So finden sich in den USA zahlreiche Städte deren Namen exakt den deutschen Städtenamen entsprechen. 
+			So gibt es in den USA 30 Städte mit dem Namen Hamburg, 40 mit dem Namen Hannover, 39 mit dem Namen Berlin und 25 mit dem Namen Frankfurt um nur einige beispiele zu nennen.
+			Es gibt auch Orte die in einem Land mehrfach vorkommen.
+			Innerhalb Deutschlands gibt es beispielsweise 12 Gemeinden mit dem Namen Hausen und zahlreiche Stadtteile die diesen Namen tragen.  
+
+			Diese Umstände machen es schwierig und sehr unsicher eine Auflösung direkt über den angegebenen Wert durchzuführen.
+			Die Idee besteht deshalb darin den Nutzer-Standort so zu behandeln als ob keine Information direkt aus ihm entnommen werden kann.
+			Es soll aus den angegebenen Werten für den Nutzer-Standort eine Zuordnung zu gegrafischen Positionen gelernt werden. 
+			Damit werden einige der Probleme die in Bezug auf die Eigenschaften des Nutzer-Standortes bestehen vermieden. 
+
+
+
+			
+
+
+		  	\subsubsection{Eliminierung von Satz- und Sonderzeichen}
+			  	Oft werden im Nutzer-Standort Sonder- und Satzzeichen verwendet. 
+				Einige Nutzer haben ausschließlich Sonder- und Satzzeichen als Nutzer-Standort angegeben, andere benutzen diese um Emotionen auszudrücken oder als Dekoration. 
+				Beispiele hierfür sind "'I $\heartsuit$ New York"' oder "'$\dagger\textasciitilde$ Los Angeles$\textasciitilde\dagger$"'.
+				Es konnte kein Hinweis darauf gefunden werden, dass Sonder- und Satzzeichen zusätzliche Informationen zum angebenen Nutzer-Standort liefern. 
+				In den x Millionen verfügbaren Tweets befinden sich y Nutzer welche einen Nutzer-Standort angegeben haben der ausschliesslich aus Sonder- oder Satzzeichen besteht. 
+				\todo{Auswertung von Sonder Stazzeichen Datensätzen in UL} 
+				Es wurden lediglich einige Beispiele gefunden in denen Satzzeichen ein Bestandteil des Standortes sind.
+				Ein Beispiel hierfür ist "'Paris, 3. Arrondissement"'.
+				Entfernt man die Satzzeichen, liefern diese Werte immernoch ausreichende Informationen über den Standort.  
+				In diesem Vorverarbeitungsschritt werden alle Sonder- und Satzzeichen entfernt. 
+				Dadurch wird gewährleistet, dass keine unnötigen Zeichen in den folgenden Schritten verarbeitet werden müssen.
+
+		  	\subsubsection{Tokenisierung}
+
+
+		  	\subsubsection{Identifizierung von Toponymen innerhalb des Nutzer-Standortes}
+		  		Da der Nutzer-Standort ein unmittelbaren geografischen Indikator darstellt kann eine Analyse auf Toponyme Vorteile bringen. 
+		  		In diesem Schritt werden Toponyme, welche aus zwei oder mehr Wörtern bestehen zusammengefasst um in folgenden nicht einzeln behandelt zu werden.
+		  		Dadurch wird die weitere Verarbeitung effizienrter bezüglich der Anzahl der zu verarbeitenden Worte. 
+		  		Zum Beispiel werden die Token [New] [York] [City] zusammengefasst zu dem Token [New York City]  
+		  		Aber insbesondere soll hier nicht das Toponym analysiert und direkt eine Georeferenz hinzugefügt werden. 
+		  		Die Identifizierung von toponymen dient lediglich dazu die folgenden Verarbeitungsschritte effizienter zu machen. 
+
 
 		\subsection{Der Nutzer-Standort als geografischer Indikator} 
 
@@ -126,30 +213,6 @@ Danach wird das Verfahen von Grundauf betrachtet und die einzelnen Verfahrenssch
 	  	Dies bringt den Vorteil, dass in den nächsten Verarbeitungsschritten weniger Wörter verarbeitet werden müssen.
 	  	Die so verarbeiteten Worte werden zuletzt in Tokens aufgeteilt und alphanumerisch sortiert. 
 	  	Dieser Schritt dient zur Vorverarbeitung für den nächsten Verarbeitugsschritt.
-
-		  	\subsubsection{Eliminierung von Satz- und Sonderzeichen}
-		  	Oft werden im Nutzer-Standort Sonder- und Satzzeichen verwendet. 
-			Einige Nutzer haben ausschließlich Sonder- und Satzzeichen als Nutzer-Standort angegeben, in diesen Fällen wird davon ausgegangen, dass damit kein geografischer Ort gemeint ist. 
-			In den x Millionen verfügbaren Tweets befinden sich y Nutzer welche einen Nutzer-Standort angegeben haben der nur aus Sonderzeichen besteht. 
-
-			Viel öfter werden Sonder- und Satzzeichen als reine Dekoration verwendet oder um Emotionen auszudrücken. 
-			Beispiele hierfür sind "'I $\heartsuit$ New York"' oder "'\dagger\textasciitilde Los Angeles\textasciitilde\dagger"'.
-			Diese Zeichen geben keine weitere Auskunft über den geografischen Ort an dem sich der Nutzer befindet. 
-			Auch Satzzeichen wie ein Punkt oder ein Fragezeichen bieten keinen Mehrwert zur Bestimmung der geografischen Position. 
-
-
-
-		  	\subsubsection{Kleinschreibung}
-
-		  	\subsubsection{Tokenisierung}
-
-		  	\subsubsection{Identifizierung von Toponymen innerhalb des Nutzer-Standortes}
-		  		Kann bereits in diesem Schritt erkannt werden, dass es sich bei zwei oder mehreren aufeinanderfolgenden Token um ein Toponym handelt werden die Tokens zusammengefasst. 
-		  		Dadurch wird die weitere Verarbeitung effizienrter bezüglich der Anzahl der zu verarbeitenden Token. 
-		  		Zum Beispiel werden die Token [New] [York] [City] zusammengefasst zu dem Token [New York City]  
-		  		Aber insbesondere soll hier nicht das Toponym analysiert und direkt eine Georeferenz hinzugefügt werden. 
-		  		Die Identifizierung von toponymen dient lediglich dazu die folgenden Verarbeitungsschritte effizienter zu machen. 
-		  	
 
 		  	\subsubsection{alphanumerische Sortierung der Tokens}
 
