@@ -15,20 +15,19 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 	In diesem Kapitel sollen geografische Grundbegiffe erläutert werden. 
 	Einige geografische Begriffe werden in verschiedenen wissenschaftlichen Bereichen unterschiedlich genutzt und teilweise widersprüchlich definiert. 
 	Um Missverständnissen vorzubeugen wird hier definiert was in der vorliegenden Arbeit unter den einzelnen Begriffen zu verstehen ist.
-	Eine Reihe von Begriffen wird selbst definiert um bestimmte Sachverhalte klarer ausdrücken zu können. 
+	Eine Reihe von Begriffen wird selbst definiert um bestimmte Sachverhalte im Kontext dieser Arbeit klarer ausdrücken zu können. 
 
 		\paragraph*{Geodätisches Referenzsystem} 
-		\todo{Referenz. MAtthias Fragen, Online Lexikon zu Geoinformatik Uni Rostock} 
 		Ein geodätisches Referenzsystem dient als einheitliche Grundlage zur Angabe einer Position auf der Erde. 
-		In diesem Referenzsystem werden unter anderem Referenzpunkte und ein geeignetes Koordinatensystem festgelegt.  
+		In diesem Referenzsystem werden unter anderem Referenzpunkte und ein geeignetes Koordinatensystem festgelegt. \footnote{Vergleiche Geoinformatik Lexikon der Universität Roctock: http://www.geoinformatik.uni-rostock.de/lexikon.asp und Vorlesungen zur Geo-Informatik von Prof. Dr.-Ing. Ralf Bill : http://www.geoinformatik.uni-rostock.de/vorlesungsthem.asp \label{ft:geoinfolex} }   
 		
 		\paragraph{Georeferenz}
-		\todo{Referenz. MAtthias Fragen, Online Lexikon zu Geoinformatik Uni Rostock / Vorlesungsfolien frei zugänglich Professor Bill} 
 		Eine Georeferenz (engl. Spatial Reference) wird auch als Raumbezug bezeichnet. 
 		Unter dem Begriff der Georeferenz versteht man die zugeordnete der Lage beziehungsweise Position zu einem Datensatz. 
 		Die konkreten Angaben zum Raumbezug und deren Genauigkeit hängen von den Anforderungen ab, die an die Georeferenz gestellt wird. 
 		Auch die in Kapitel \ref{chp:Einleitung} erwähnten Anwendungen stellen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz.
-		Die Georeferenz lässt sich weiter unterteilen in:
+		Die Georeferenz lässt sich weiter unterteilen in: 
+		\footref{ft:geoinfolex} 
 		
 			\begin{description}
 	 			\item[Direkte Georeferenz (direkter Raumbezug)] 
@@ -42,9 +41,18 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 	 			Diese Fläche ist nicht zwingenderweise klar abzugrenzen.
 			\end{description}
 
+		\paragraph{geografische Objekt}
+		Ein geografisches Objekt, ist ein Objekt der Realwelt, dessen Position durch eine Georeferenz bestimmt werden kann. 
+		Die EN ISO 19110 Norm beschreibt ein geografisches Objekt folgendermaßen:
+		"'Geographische Objekte sind Erscheinungen der realen Welt, die einen Bezug zur Erde (Raumbezug) haben..."'
+
+		\paragraph*{Toponyme}
+		Ein Toponym ist ein konkreter Name für ein geografisches Objekts. 
+		Beispiele hierfür sind: Städtenamen, Ländernamen oder Landschaftsnamen.  
+
 	 	\paragraph*{Georeferenzierung}
 		Unter Georeferenzierung versteht man die Zuordnung einer Georeferenz zu einem Datensatz. 
-		Also den Vorgang einem Datensatz, zum Beispiel einem Twitter-Nutzer eine Georeferenz zuzuordnen.
+		Also den Vorgang einem Datensatz, zum Beispiel einem Twitter-Nutzer eine Georeferenz zuzuordnen. \footref{ft:geoinfolex} 
 
 	 	Aufrgund der einfacheren Verständlichkeit werden die folgenden zwei Begriffe definiert, welche in der restlichen Arbeit verwendet werden.
 
@@ -58,11 +66,10 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		Somit entspricht der Begriff geografische Region einer indirekten Georeferenz (indirektem Raumbezug).
 
 		\paragraph*{Geografische Hierarchie} \label{par: geografische Hierarchie} 
-		\todo{Bild mit Hierarchie von Deutschland} 
 		In der vorliegenden Arbeit wird eine geografische Hierarchie verwendet um eine Einteilung der Erde in geografische Regionen umzusetzen.
 		Dabei können geografische Regionen wiederum geografische Regionen oder geografische Positionen enthalten, wodurch sich eine hierarchische Gliederung ergibt.
 		Diese Einteilung spiegelt im wesentlichen die Einteilung der Erde in Staaten und deren individuellen Verwaltungseinheiten wieder.
-		Im vorliegenden Fall ist das Staatsgebiet, also die Fläche über die sich der Staat erstreckt, von Interesse. \footnote{Die genaue Definition eines Staatsgebietes kann in \cite{jellinek1921} nachgelesen werden.} 
+		Im vorliegenden Fall ist das Staatsgebiet, also die Fläche über die sich der Staat erstreckt, von Interesse. \footnote{Zur genauen Definition eines Staatsgebietes vergleiche \cite{jellinek1921}} 
 
 		Im Gegensatz dazu könnte die Erde auch in ein Gitternetz eingeteilt werden. 
 		Die einzelnen Zellen würden dann als Referenz für eine geografische Region verwendet werden.
@@ -73,17 +80,29 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		Die meisten Länder sind in weitere administrative Einheiten aufgeteilt.
 		Diese geografischen Regionen werden hier als Administartionsebenen bezeichnet.
 		Es wird zwischen Administrationsebenen erster und zweiter Ordnung unterschieden. 
-		Des weiteren werden Städte in der untersten Ebene der Hierarchie dargestellt.
 		Ausnahmen sind besipielsweise Stadtstaaten wie der Vatikan-Staat oder das Fürstentum Monaco, welche aufgrund ihrer Größe nicht in Verwaltungsbezirke unterteilt werden und keine Städte.
-		Wenn man als Beispiel Deutschland heranzieht, ergibt sich eine Einteilung wie in Bild \todo{referenz auf Bild} dargestellt wird.
+		Des weiteren werden in der untersten Ebene der Hierarchie Städte dargestellt.
+
+		Wenn man als Beispiel Deutschland heranzieht, ergibt sich eine Einteilung wie in Bild \ref{img:hierarchy} dargestellt wird. \footnote{Aus Platzgründen sind im Bild pro Ebene nur einige wenige geografische Objekte aufgezählt.} 
 		Die oberste Ebene beschreibt das Land worauf die zweite Ebene die Bundesländer darstellt.
 		Auf der dritten Ebene werden die Regierungsbezirke abgebildet, worauf die Städte in der letzten Ebene folgen. 
-		Analog kann die Einteilung für die USA vorgenommen werden woraus sich die Hierarchie Country->State->County->City ergibt.
+		Analog kann die Einteilung für die USA vorgenommen werden, woraus sich die Hierarchie Country->State->County->City ergibt.
 
 		Bis auf die letzte Ebene wird den Objekten in der Hierarchie eine geografische Region zugeordnet. 
-		Lediglich die unterste Ebene, die der Städte, wird durch eine geografische Position genau beschrieben. 
+		Lediglich die unterste Ebene, die der Städte, wird durch eine geografische Position exakt beschrieben. 
 		Die Ausdehnung einer Stadt wird in der gegebenen Hierarchie also nicht berücksichtigt. 
-		Jeder Stadt werden als konkrete geografische Koordinate in Form von Längen- und Breitengrad repräsentiert. 
+		Jede Stadt wird als konkrete geografische Position mit Koordinaten repräsentiert. 
+
+		\begin{figure}[h!]
+		\begin{center}
+		\includegraphics[scale=0.5]{hierarchie.png}
+		\caption{Die Hierarchiebenen exemplarisch. Bis in die Städtebene wird nur der Pfad Welt -> Deutschland -> Baden-Württemberg -> Karlsruhe ->K arlsruhe,Pforzheim,Baden-Baden dargestellt.}
+		\label{img:hierarchy}
+		\end{center}
+		\end{figure}	
+
+
+
 
 	\section{Twitter} 
 	In diesem Kapitel werden grundlegende Begriffe rund um das Twitter-Netzwerk erläutert. 
