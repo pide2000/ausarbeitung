@@ -12,26 +12,61 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 \newpage
 
 	\section{Geografische Grundlagen und Begriffe}
-	In diesem Kapitel sollen geografische Grundbegiffe erläutert werden. 
-	Einige geografische Begriffe werden in verschiedenen wissenschaftlichen Bereichen unterschiedlich genutzt und teilweise widersprüchlich definiert. 
-	Um Missverständnissen vorzubeugen wird hier definiert was in der vorliegenden Arbeit unter den einzelnen Begriffen zu verstehen ist.
-	Eine Reihe von Begriffen wird selbst definiert um bestimmte Sachverhalte im Kontext dieser Arbeit klarer ausdrücken zu können. 
+	
+		In diesem Kapitel sollen geografische Grundbegiffe erläutert werden. 
+		Einige geografische Begriffe werden in verschiedenen wissenschaftlichen Bereichen unterschiedlich genutzt und teilweise widersprüchlich definiert. 
+		Um Missverständnissen vorzubeugen wird hier definiert was in der vorliegenden Arbeit unter den einzelnen Begriffen zu verstehen ist.
+		Eine Reihe von Begriffen wird selbst definiert um bestimmte Sachverhalte im Kontext dieser Arbeit klarer ausdrücken zu können. 
 
-		\paragraph*{Geodätisches Referenzsystem} 
-		Ein geodätisches Referenzsystem dient als einheitliche Grundlage zur Angabe einer Position auf der Erde. 
-		In diesem Referenzsystem werden unter anderem Referenzpunkte und ein geeignetes Koordinatensystem festgelegt. \footnote{Vergleiche Geoinformatik Lexikon der Universität Roctock: http://www.geoinformatik.uni-rostock.de/lexikon.asp und Vorlesungen zur Geo-Informatik von Prof. Dr.-Ing. Ralf Bill : http://www.geoinformatik.uni-rostock.de/vorlesungsthem.asp \label{ft:geoinfolex} }   
+
+		\subsection{Geografische Koordinaten}
+			
+			Geografische Koordinaten bestehen aus zwei Werten, einem Wert für den Längengrad und einem für den Breitengrad.
+			Mit diesen zwei Werten kann eine Position auf dem Globus exakt bestimmt werden.  
+			
+			Die Längen- und Breitengrade beschreiben ein imaginäres Netz auf dem Globus. 
+			Dabei ziehen sich die Breitengrade wie ein Gürtel um den Globus.
+			Der Breitengrad mit dem Wert 0, also 0 Grad Breite, verläuft entlang des Äquators.
+			Die Längegrade hingegen verlaufen vom Nord- zum Südpol. 
+			Der Längegrad mit dem Wert 0 wurde 1884 durch ein Konsortium festgelegt, da vertikal des Globus keine natürliche Marke wie der Äquator, verläuft. 
+			Die Werte liegen im IT-Umfeld meist als Fliesskommazahlen vor und beschreiben jeweils einen Winkel.
+
+		\subsection{Geodätisches Referenzsystem} 
+			
+			Ein geodätisches Referenzsystem dient als einheitliche Grundlage zur Angabe einer Position auf dem Globus mit Hilfe geografischer Koordinaten. 
+			Dazu wird ein kartesisches Rechtssystem mit definierter Lage und Ausrichtung festgelegt.
+			Die Lage und Ausrichtung erfolgt relativ zur Erde. 
+			Der Ursprung des Koordinatensystems liegt im Zentrum des Globus, meist im Masseschwerpunkt der Erde.
+			Die Z-Achse zeigt meist in Richtung Nordpol und die X-Achse in Richtung 0 Grad Länge und 0 Grad Breite. 
+			Mit diesen zwei Werten ist die Lage eines kartesischen Rechtssystem eindeutig definiert.
+			In diesem Koordinatensystem sind Referenzpunkte festgelegt.
+			Diese Referenzpunkte werden benötigt um einen Referenzellipsoid zu verankern.
+			Der Referenzellipsoid soll eine möglichst genaue Approximation der Erde darstellen und diese im geodätischen Referenzsystem repräsentieren. 
+			Ein Punkt auf diesem Ellipsoid enstpricht damit einem Punkt auf der Erde.
+
+			Mit diesen Komponenten kann nun ein Punkt auf dem Ellipsoid eindeutig bestimmt werden.
+			Der Längen und Breitengrad eines Punktes auf dem Ellipsoid lässt sich folgendermaßen bestimmen:
+			Durch den Punkt auf dem Ellipsoid und dem Ursprung des Koordinatensystems kann ein Gerade gezogen werden. 
+			Der Breitengrad ist nun der Winkel zwischen dieser Linie und der Äquatorebene.
+			Der Längengrad ist der Winkel zwischen der X-Achse, also dem Null Meridian und demjenigen Median welcher durch den Punkt geht. 
+			Durch eine Projektion der Punkte auf de Ellipsoid können diese Punkte beispielsweise auf einer Karte dargestellt werden.
+			
+			Heutzutage ist das Referenzsystem WGS84 weit verbreitet.
+
+			\footnote{Vergleiche Geoinformatik Lexikon der Universität Roctock: http://www.geoinformatik.uni-rostock.de/lexikon.asp und Vorlesungen zur Geo-Informatik von Prof. Dr.-Ing. Ralf Bill : http://www.geoinformatik.uni-rostock.de/vorlesungsthem.asp \label{ft:geoinfolex} }   
 		
-		\paragraph{Georeferenz}
+		\subsection{Georeferenz}
 		Eine Georeferenz (engl. Spatial Reference) wird auch als Raumbezug bezeichnet. 
-		Unter dem Begriff der Georeferenz versteht man die zugeordnete der Lage beziehungsweise Position zu einem Datensatz. 
-		Die konkreten Angaben zum Raumbezug und deren Genauigkeit hängen von den Anforderungen ab, die an die Georeferenz gestellt wird. 
-		Auch die in Kapitel \ref{chp:Einleitung} erwähnten Anwendungen stellen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz.
+		Ist einem Datensatz eine Lage beziehungsweise Position zugeordnet so wird diese als Georeferenz bezeichnet. 
+		Die Art wie die Georeferenz angegeben wird und deren Genauigkeit hängen von den Anforderungen ab, die an die Georeferenz gestellt werden. 
+		Beispielsweise stellen die in Kapitel \ref{chp:Einleitung} erwähnten Anwendungen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz.
+		
 		Die Georeferenz lässt sich weiter unterteilen in: 
 		\footref{ft:geoinfolex} 
 		
 			\begin{description}
 	 			\item[Direkte Georeferenz (direkter Raumbezug)] 
-	 			Unter direktem Raumbezug versteht man die Angabe einer konkreten Koordinate bezüglich eines geeigneten, unveränderlichen geodätischen Referenzsystems. 
+	 			Unter direktem Raumbezug versteht man die Angabe einer konkreten Koordinate bezüglich eines geeigneten geodätischen Referenzsystems. 
 	 			\item[Indirekte Georeferenz (indirekter Raumbezug) ] 
 	 			Unter indirektem Raumbezug werden alle Angaben verstanden die eine ungenaue Position bezüglich eines beliebigen Referenzysystems bestimmen.
 	 			Ungenau ist in dem Sinne zu verstehen, dass die Angabe der Position auch eine Fläche beschreiben kann.
@@ -41,31 +76,43 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 	 			Diese Fläche ist nicht zwingenderweise klar abzugrenzen.
 			\end{description}
 
-		\paragraph{geografische Objekt}
+		\subsection{geografische Objekte}
 		Ein geografisches Objekt, ist ein Objekt der Realwelt, dessen Position durch eine Georeferenz bestimmt werden kann. 
 		Die EN ISO 19110 Norm beschreibt ein geografisches Objekt folgendermaßen:
 		"'Geographische Objekte sind Erscheinungen der realen Welt, die einen Bezug zur Erde (Raumbezug) haben..."'
+		Es wird insbesondere nicht festegelegt ob es sich dabei um einen direkten oder einen indirekten Raumbezug handeln muss.
+		Beispiele für geografische Objekte sind: Städte, Länder, Häuser oder auch Fahrzeuge.
 
-		\paragraph*{Toponyme}
-		Ein Toponym ist ein konkreter Name für ein geografisches Objekts. 
+		\subsection{Toponyme}
+		Ein Toponym ist ein Name für ein geografisches Objekts.
 		Beispiele hierfür sind: Städtenamen, Ländernamen oder Landschaftsnamen.  
+		Ein Toponym muss nicht eindeutig sein. 
+		Zu einem geografischen Objekt können mehrere unterschiedliche Toponyme existieren. 
+		Aus einem Toponym kann, eine Georeferenz abgeleitet werden. 
 
-	 	\paragraph*{Georeferenzierung}
+	 	\subsection{Georeferenzierung}
 		Unter Georeferenzierung versteht man die Zuordnung einer Georeferenz zu einem Datensatz. 
 		Also den Vorgang einem Datensatz, zum Beispiel einem Twitter-Nutzer eine Georeferenz zuzuordnen. \footref{ft:geoinfolex} 
+		In diesem Sinne stellen die Datensätze geografische Objekte dar, da diese einen Bezug zur Erde haben können.
 
-	 	Aufrgund der einfacheren Verständlichkeit werden die folgenden zwei Begriffe definiert, welche in der restlichen Arbeit verwendet werden.
+		\subsection{Ortsverzeichnis}
+			Sehr umfangreich mal schauen.
+			Ein Orstverzeichnis beinhaltet eine Liste von Werten, meist Zeichenketten, welchen eine 
 
-		\paragraph*{Geografische Position}
-		Unter geografischer Position wird hier ein konkreter Ort, unter Angabe geografischer Koordinaten verstanden.
-		Eine geografische Position entspricht somit einer direkten Georeferenz (direktem Raumbezug).
+		\subsection{Geografische Position}
+		Unter einer geografischen Position soll hier eine Position auf dem Globus verstanden werden deren Wert durch geografische Koordinaten angegeben wird.
+		
 
-		\paragraph*{Geografische Region} 
-		Unter einer geografischen Region werden Flächen verstanden welche nicht mit einem Punkt, in Form von Längen- und Breitengrad, beschrieben werden können. 
-		Hierbei kann es sich beispielsweise um Bundesländer oder Länder.
+		\subsection{Geografische Region} 
+		Unter einer geografischen Region werden hier Flächen auf dem Globus verstanden.
+		Diese können nicht durch einen einzelnen Punkt beschrieben werden. 
+		Flächen werden üblicherweise durch eine Menge von Punkten beschrieben.
+		Die Punkte liegen als geografische Koordinaten vor und werden durch Geraden verbunden. 
+		Die so eingeschlossene Fläche innerhalb des Polygons beschreibt dann die geografische Region.  
+		Bundesländer oder Länder sind Beispiele für geografische Regionen.
 		Somit entspricht der Begriff geografische Region einer indirekten Georeferenz (indirektem Raumbezug).
 
-		\paragraph*{Geografische Hierarchie} \label{par: geografische Hierarchie} 
+		\subsection{Geografische Hierarchie} \label{par: geografische Hierarchie} 
 		In der vorliegenden Arbeit wird eine geografische Hierarchie verwendet um eine Einteilung der Erde in geografische Regionen umzusetzen.
 		Dabei können geografische Regionen wiederum geografische Regionen oder geografische Positionen enthalten, wodurch sich eine hierarchische Gliederung ergibt.
 		Diese Einteilung spiegelt im wesentlichen die Einteilung der Erde in Staaten und deren individuellen Verwaltungseinheiten wieder.
@@ -268,6 +315,7 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 			Diese Eigenschaften haben Einfluss darauf, wie und ob eine Georeferenz aus dem Indikator abgeleitet werden kann.
 			Dabei ist zu unterscheiden ob sich die Eigenschaft auf den, durch den Nutzer eingegebenen, Wert bezieht oder auf die Information die durch die Angabe geliefert werden soll. 
 
+
 			\subsubsection{Objektivität der Werte geografischer Indikatoren} 
 				
 				Der Wert eines geografischen Indikators ist genau dann objektiv wenn zwei Nutzer für denselben geografischen Ort oder dieselbe geografische Region immer den selben Wert eingeben.
@@ -290,15 +338,7 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 				Dies gilt es im erarbeiteten Verfahren zu beachten.
 
 
-			\subsubsection{mittelbare und unmittelbare geografische Indikatoren}
-				
-				Diese Eigenschaft bezieht sich, im Gegensatz zu den vorgenannten auf die Information die durch das Feld oder die Eingabe repräsentiert werden soll. 
-				
-				Hierbei handelt es sich um Indikatoren welche unter Umständen einen geogarfischen Bezug haben können, aber die Intention bei der Eingabe war nicht eine geografische Position mitzuteilen.
-
-				Beispielsweise die Verwendung bestimmter umgangssprachlicher oder dialektischer Wörter die einen Hinweis auf eine geografische Region geben können.
-				Die Intention des Nutzers war nicht, dadurch einen Hinweis auf die geografische Position oder seinen Aufenthalstort zu geben, allerdings lässt sich mittelbar eine geografische Region daraus ableiten. 
-
+			
 			\subsubsection{unmittelbare geografische Indikatoren in Tweet-Daten}
 				
 				Unmittelbare geografische Indikatoren sind solche aus denen direkt eine geografische Position abgeleitet werden kann.
