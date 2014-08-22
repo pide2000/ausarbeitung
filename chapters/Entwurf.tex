@@ -51,7 +51,12 @@
 		Der Ablauf der Georeferenzierung wird in Abbildung \ref{img:Georeferenzierung} dargestellt. 
 
 		\todo{img:georef, img:ablaufEinlernen, img:Georeferenzierung} 
- 
+
+		In den folgenden Kapiteln sollen die Probleme der Georeferenzeirung in Hinblick auf Twitter betrachtet werden. 
+		Dabei werden Toponyme genauer betrachtet und an einigen Beispielen die Problematik des Nutzer-Standortes aus Twitter erläutert.
+		Basierend darauf soll ein Verfahren zum einlernen der Georeferent-Basis und eine Struktur für die Georeferenz-Basus entwickelt werden.
+		Im letzten Kapitel wird die Georeferenzierung betrachtet.
+		Mit Hilfe eines Analyseverfahrens sollen die Probleme bei der Verwendung des Nutzer-Standortes und der Nutzer-Zeitzone behoben werden.
 
 	\section{Generelle Struktur einer Georeferenz-Basis zur Georeferenzierung} \label{sec:generelleStruktur} 
 
@@ -247,8 +252,6 @@
 
 				Da Toponyme nicht definiert sind und neben den offiziellen Namen für Städte, Länder usw. weitere Namen vorkommen it die Vielfalt nahezu unbegrenzt.
 				
-
-
 				\paragraph{Spitznamen oder alternative Namen für geografische Objekte} 
 					In Wikipedia sind für die Stadt Detroit, im US-Bundesstaat Michigan, folgende Spitznamen angegeben:
 					
@@ -316,7 +319,6 @@
 
 					Diese Mehrdeutigkeit stellt ein Problem bei der Georeferenzierung dar.
 					Es kann keine eindeutige Entscheidung getroffen werden welche Georeferenz dem Ort zugewiesen werden soll. 
-					\todo{Lösung über Konfidenzen} 
 
 				\paragraph{Zu einer Georeferenz können mehrere Referenzwerte existieren}
 
@@ -346,14 +348,14 @@
 			Unter diesem Gesichtspunkt hätte "'Bieberville"' keinen geografischen Bezug.
 			Sucht man allerdings im Internet weltweit nach "'Bieberville"' stößt man auf einen Imbiß in Groß-Bieberau.
 			"'Bieberville"' kann also durchaus einen geografischen Bezug haben, wenngleich es im Twitter-Umfeld nicht als solcher benutzt wird. 
-			Ein Nutzer-Stadnort der in einem Land kein Toponym darstellt, kann in einem anderen durchaus ein Toponym sein.
+			Ein Nutzer-Standort der in einem Land kein Toponym darstellt, kann in einem anderen durchaus ein Toponym sein.
 
 			Die Benutzung von "'Bieberville"' könnte auch ein temporäres Phänomen darstellen. 
-			In den Tweet-Daten welche für diese Arbeit verwendet werden befindet sich kein Eintrag mit dem Nutzer-Stadort "'Bieberville"'.
+			In den Tweet-Daten welche für diese Arbeit verwendet werden befindet sich kein Eintrag mit dem Nutzer-Standort "'Bieberville"'.
 			Dies könnte ein Hinweis auf eine temporäre Verwendung des Begriffes im Nutzer-Standort sein.
 			Leider ist es nicht möglich Nutzer nach ihrem Nutzer-Standort zu suchen und deshalb kann diese Aussage nicht mit letzter Sicherheit getroffen werden. 
 			Gibt es Toponyme die tatsächlich nur temporär auftauchen wird das Problem noch größer. 
-			Dies ist durchaus denkbar, denn mit wenigen Klicks und einer kurzen EIngabe kann der Nutzer-Stadort geändert werden.
+			Dies ist durchaus denkbar, denn mit wenigen Klicks und einer kurzen EIngabe kann der Nutzer-Standort geändert werden.
 
 			Das Wissen über solche Begriffe und Formulierungen kann nur sehr schlecht erfasst werden, wenn man die enstprechende Domäne nicht untersucht. 
 			
@@ -372,7 +374,7 @@
 		Des weiteren können alle in Kapitel \ref{sec:topGeogInd} erwähnten Probleme auftreten.
 		Durch die unkontrollierte Eingabe sind tatsächlich alle möglichen Toponyme denkbar.   
 		
-		Hier soll nun der Nutzer-Stadort genauer betrachtet werden und ob dieser überhaupt zur Erzeugung geografischer Indikatoren geeignet ist.
+		Hier soll nun der Nutzer-Standort genauer betrachtet werden und ob dieser überhaupt zur Erzeugung geografischer Indikatoren geeignet ist.
 
 		\subsection{Hat der Nutzer-Standort überhaupt einen geografischen Bezug?} 
 			
@@ -431,12 +433,22 @@
 
 			Es hier gefolgert werden, dass selbst wenn ein geografischer Bezug besteht, nicht mit Sicherheit bestimmt werden kann wie genau dieser ist.
 
-		\subsection{Stimmt der tatsächliche Stadort mit dem angegeben überein?}
+		\subsection{Stimmt der tatsächliche Standort mit dem angegeben überein?}
 
-			Diese Frage ist nur schwer zu beantworten. 
+			Diese Frage ist grundsätzlich nur schwer zu beantworten.
+			Die einzige Möglichkeit besteht darin Tweets mit geografschen Angaben zu untersuchen.
+			Dabei können aber Probleme auftreten. 
+			Der Nutzer-Standort gibt oft nicht den Aufenthaltsort sondern den Heimatort an. 
+			Befindet sich der Nutzer auf Reisen oder in arbeitet er in einer anderen Stadt korrespondiert die gegrafische Koordinate nicht mit dem angegeben Ort.
+			Dies könnte in einige Fällen gelöst werden indem mehrere Tweets desselben Nutzers über einen längeren Zeitraum untersucht werden. 
+			Um den eigentlcihen Wohnort sollte eine Häufung auftreten mit Hilfe derer der Stadort bestimmt werden könnte.
+			Der Nutzer kann aber auch absichtlich einen falschen Stadnort angeben oder bei Umzug in einer andere Stadt oder ein anderes Land schlicht vergessen haben den Nutzer-Stadort anzupassen.
+
+			Durch den manuell verarbeiteten Datensatz konnte festgestellt werden, dassxyz\% der Tweets in weniger als xyz km Entfernung von der manuell ermittelten Stelle abgesetzt wurden.
+
 			%Hier manuelles Tagge rein! 
 
-		\subsection{Partieller geografischer Bezug des Nutzer-Standortes}
+		\subsection{Partieller geografischer Bezug des Nutzer-Standortes} \label{subsec:partiellerGeografischerBezug} 
 
 			In einigen der Einträge konnte festgestellt werden, dass nur Teile der Einträge geografischen Bezug haben. 
 			Oft wollen die Nutzer noch weitere Informationen geben, diese haben oft keinen Nutzen für eine Georeferenzierung. 
@@ -451,10 +463,10 @@
 			11th Dimension hat hier offensichtlich keinen geografischen Bezug.
 			Im zweiten Fall ist die Aussage "'between here and there"' nicht zu gebrauchen, Miami kann jedoch als Bezug zur Stadt Miami in Florida, USA gebracht werden.
 			
-			Es können also auch nur Teile des Nutzer-Stadorts für eine Georeferenzierung von Nutzen sein.
+			Es können also auch nur Teile des Nutzer-Standorts für eine Georeferenzierung von Nutzen sein.
 
 
-		\subsection{Mehrere wiedersprüchliche geografische Bezüge} 
+		\subsection{Mehrere wiedersprüchliche geografische Bezüge} \label{subsec:wiederspruechlicheBezuege} 
 
 			Es existieren auch Einträge für Nutzer-Standorte welche mehrere wiedersprüchliche Angaben machen.
 			Das bedeutet es werden zwei oder mehr Werte mit geografischem Bezug angegegeben.
@@ -552,7 +564,7 @@
 
 			Mit der Nutzer-Zeitzone lassen sich Doppeldeutigkeiten auflösen. 
 
-			Besteht zu einem Nutzer-Stadort eine Doppeldeutigkeit, kann nicht enstcheiden werden welches geografische Objekt zugeordnet werden soll.
+			Besteht zu einem Nutzer-Standort eine Doppeldeutigkeit, kann nicht enstcheiden werden welches geografische Objekt zugeordnet werden soll.
 			Liegen die beiden geografischen Objekte allerdings in zwei unterschiedlichen Zeitzonen und der Nutzer hat diese angegegeben kann die Doppeldeutigkeit aufgelöst werden.
 			Somit kann dem Nutzer die korrelte Georeferenz zugewiesen werden.
 			Vorausetzung dazu ist natürlich, dass die geografischen Objekte in zwei unterschiedlichen Zeitzonen liegen und die Nutzer-Zeitzone angegegeben ist.
@@ -597,7 +609,7 @@
 
 		\subsection{Vorverarbeitung des Nutzer-Standortes und der Nutzer-Zeitzone}
 
-			Aus dem Nutzer-Stadort und der Nutzer-Zeitzone werden durch die Vorverarbeitung mehrere Werte erzeugt. 
+			Aus dem Nutzer-Standort und der Nutzer-Zeitzone werden durch die Vorverarbeitung mehrere Werte erzeugt. 
 			Diese Werte müssen nicht zwangsweise einen gegrafischen Indikator darstellen. 
 			Sie werden deshalb potenzielle geografische Indikatoren genannt.
 			Bei unmittelbaren geografischen Indikatoren kann zunächst nicht entschieden werden ob diese einen geografischen Indikator darstellen oder nicht.
@@ -677,6 +689,8 @@
 
 				Der Wert 6 existiert nun nicht mehr, der Wert ist leer und wird somit nicht weiter betrachtet.
 
+				Der Vorteil besteht darin, dass unnötige Sonder- und Satzzeichen entfernt werden und mögliche geografische Indikatoren einfacher verarbeitet werden können.
+
 			\subsubsection{Zusammenfassen von Toponymen}
 
 				In diesem Schritt sollen Toponyme, welche aus zwei oder mehr Wörtern bestehen mit Hilfe eines Ortsverzeichnisses zusammengefasst werden. 
@@ -708,7 +722,7 @@
 				In diesem Schritt wird insbesondere keine Georeferenzierung vorgenommen. 
 				Dieser Schritt dient dazu, möglichst früh vorhandenes Wissen über Toponyme einzubeziehen.
 
-				Im wesentlichen sollen die Werte hiemrit auf die nächsten Verarbeitungsschritte vorbereitet werden um eine unnötige Fragmentierung der Werte zu vermeiden.
+				Im wesentlichen sollen die Werte hiermit für die nächsten Verarbeitungsschritte vorbereitet werden.
 
 			\subsubsection{Alphanumerische Sortierung}
 
@@ -738,32 +752,40 @@
 				\end{multicols}
 
 				Die Werte 6 und 8 sind nun gleich. 
+				Durch die Sortierung werden Werte mit gleichem Inhalt aber unterschiedlicher Reihenfolge angeglichen.
 				Durch das zusammenfassen der Toponyme im vorherigen Schritt werden bekannte Toponyme nicht getrennt.
+				Es wird eine unnötige Fragmentierung der Werte vermieden.
 
-				Dieser Schritt stellt einen Kompromiss dar.
-				Sortiert man die Werte werden Werte mit gleichem Inhalt aber unterschiedlicher Reihenfolge angeglichen.
-				Aber es werden auch potenzielle Toponyme die aus mehreren Werten bestehen auseinandergezogen.
-
+				Dieser Schritt stellt aber einen Kompromiss dar.
+				Es werden zwar Werte mit gleichem Inhalt und unterschiedlicher Reihenfolge angeglichen.
+				Aber es werden auch potenzielle Toponyme, die aus mehreren Werten bestehen, auseinandergezogen.
 				Aus "'Motor City Michigan USA"' würde "'City Michigan Motor USA"' entstehen.
 				Der Zusammenhang zwischen Motor und City wäre nicht mehr vorhanden.  
-
-				%Problem nicht bekannte Toponyme aus mehreren Worten werden auseinandergerissen 
 
 			\subsubsection{Erzeugung von N-Grammen}
 
 				Es sollen nun N-Gramme bis zum Grad 3 erzeugt werden. 
 				Aus einem Nutzer-Standort werden mehrere potenzielle geografische Indikatoren erzeugt.
-				Dieses Vorgehene löst gleich mehrere Probleme.
+				Dieses Vorgehen löst gleich mehrere Probleme.
 
-				Zum ersten sind sowohl Toponyme als auch Werte die kein Toponym darstellen in den Nutzer-Standorten vorhanden.
+				Zum ersten können sowohl geografische Indikatoren als auch Werte die kein geografischen Indikator darstellen in den Nutzer-Standorten vorhanden.
 				Durch die Erzeugung von N-Grammen können diese getrennt voneinander betrachtet werden.
+				Es löst das Problem des partiellen geografischen Bezugs des Nutzer-Standortes aus \ref{subsec:partiellerGeografischerBezug} in der Hinsicht, dass die Werte für die weitere Verarbeitung getrennt betrachtet werden können.
 
-				Zum zweiten können in einem Nutzer-Stadort meherere Toponyme enthalten sein.  
-				Der Wert "'Pitmedden Scotland UK"' enthält mit UK das Land, mit Scottland den Landesteil und mit Pitemedden eine Stadt. 
-				Allen drei Werten kann mit Hilfe der geografischen Koordinaten aus dem Tweet somit eine Georeferenz zugewiesen werden. 
+				Zum zweiten können in einem Nutzer-Standort mehrere geografische Indikatoren enthalten sein.  
+				Der Wert "'Pitmedden Scotland UK"' enthält mit "'UK"' das Land, mit "'Scottland"' den Landesteil und mit "'Pitemedden"' eine Stadt. 
+				Mit der Georeferenz aus dem zugehörigen Tweet kann nun allen drei Werten eine Georeferenz zugeordnet werden.
 
-				Besteht eine Beziehung der Werte zueinander, kann dies durch Bi- und Trigramme abgebildet werden.
-				Aus "'Pitmedden Scotland UK"' wird "'Pitmedden Scotland"',"'Scotland UK"' und "'Pitmedden Scotland UK"' erzeugt.
+				Aber auch zwei verschiedene Städte wie "'Nottingham\textbackslash/London"' können in einem Wert vorkommen.
+				Diese werden zu "'Nottingham\textbackslash/London"', "'Nottingham"' und "'London"'.
+				Wird hier wiederum beiden Werten die geografische Koordinate zugeordnet können drei Fälle auftreten.
+				Erstens: Der Nutzer war in keiner der beiden Städte als er den Tweet abgesetzt hat. 
+				Damit sind beide Zuordnungen unbrauchbar.
+				Zweitens: Er war in einer der beiden Städte, dann ist zumindest einer der entstandenen Datensätze brauchbar.
+				Dies löst das Problem aus \ref{subsec:wiederspruechlicheBezuege} in der Hinsicht, dass die Werte für die weitere Verarbeitung getrennt betrachtet werden können.
+
+				Besteht allerdings eine Beziehung der Werte zueinander, kann diese durch Bi- und Trigramme abgebildet werden.
+				Aus "'Pitmedden Scotland UK"' wird "'Pitmedden Scotland"', "'Scotland UK"' und "'Pitmedden Scotland UK"' erzeugt.
 
 				Dieser Schritt soll nur an einigen ausgewählten Beispielen aus der Liste erfolgen die Bestandteile der N-Gramme werden mit \textless \textgreater gekennzeichnet:
 
@@ -799,9 +821,7 @@
 				Jeder Wert der in der aktuellen Liste vorkommt soll einmal mit und einmal ohne Zeitzone existieren. 
 				Damit wird garantiert, das eingelrnete Werte die eine falsche Zeitzone aufweisen trotzdem berücksichtigt werden bei einer Anfrage. 
 
-				Auch hier wird die Liste weiter eingeschränkt, da diese sonst den Rahmen sprengt:
-
-
+				Auch hier wird die Liste weiter eingeschränkt und es werden lediglich noch zwei Beispiele betrachtet.
 				\begin{multicols}{2}
 					\begin{enumerate}
 						\item England West+Sussex
@@ -830,19 +850,23 @@
 				\end{multicols}
 				Mit Hilfe der Zeitzone können nun auch die beiden letzten Einträge unterschieden werden. 
 				Zum einen York in England zum anderen York in den USA. 
+				Dies löst das Problem der Mehrdeutgkeiten von Toponymen. 
+				Mit Hilfe der zusätzlichen Zeitzone können geografische Objekte, zumindest wenn sie in zwei verschiedenen Zeitzonen liegen, unterschieden werden.
 
 			\subsubsection{Fazit} 
 
 				Nach der Vorverarbeitung liegen eine Menge von potenziellen geografischen Indikatoren mit zugehörigen geografischen Koordinaten vor.
-				Diese Indikatoren und Referenzwerte können nun in der Georeferenz-Basis gespeichert werden.
+				Bei der Vorverarbeitung wurden einige Probleme des Nutzer-Standortes und bei der Verwendung von Toponymen beseitigt.
 
-				Mit der nun erzeugten Georeferenz-Basis ist es grundsätzlich möglich eine Georeferenzierung durchzuführen. 
+				Diese durch die Vorverarbeitung erzeugten potenziellen geografischen Indikatoren können nun in der Georeferenz-Basis gespeichert werden.
+				Mit der so erzeugten Georeferenz-Basis ist es grundsätzlich möglich eine Georeferenzierung durchzuführen. 
 				Allerings wird jedem potenziellen geografischen Indikator eine Georeferenz zugeordnet.
-				Das ist grundsätzlich problematisch, da einige der Indikatoren keinen geografischen Bezug aufweisen. 
+				Das ist grundsätzlich problematisch, da Indikatoren die keinen geografischen Bezug aufweisen eine Georeferenz zugeordnet wird. 
+				Dies kann bei der Georeferenzierung zu Fehlern führen.
 				Es sollte entschieden werden können ob es sich um einen geografischen Indikator handelt oder nicht. 
 
 				Des weiteren können zu einem Referenzwert beliebig viele Datensätze existieren, selbst wenn diese auf denselben Ort verweisen. 
-				Bei einer Abfrage an die Datenbank werden potenziell große Mengen an Datensätzen zurückgeliefert die zunächst keine eindeutige Georeferenz liefern.
+				Bei einer Abfrage an die Datenbank werden potenziell große Mengen an Datensätzen zurückgeliefert die alle auf dieselbe Georeferenz verweisen.
 
 		\subsection{Häufigkeistwert}
 
@@ -923,7 +947,7 @@
 
 			Hier soll nun ein Überblick über das gesamte Verfahren zum einlernen der Georeferenz-Basis gegeben werde.
 			In Abbildung \ref{img:lernVerfahren} ist das Lernverfahren dargestellt.
-			Zunächst werden die einzelnen Vorverarbeitungsschritte für den Nutzer-Stadort und die Nutzer-Zeitzone durchgeführt.
+			Zunächst werden die einzelnen Vorverarbeitungsschritte für den Nutzer-Standort und die Nutzer-Zeitzone durchgeführt.
 			Parallel kann der Längen- und Brietengrad aufgelöst werden.
 			Die dadurch entstandenen potenziellen geografischen Indikatoren und die zugehörige Georeferenz wird nun in die Georeferenz-Basis gespeichert. 
 			Dabei wird überprüft ob dieser Datensatz bereits vorhanden ist. 
@@ -934,19 +958,22 @@
 
 	\section{Verfahren zu Georeferenzierung am Beispiel von Twitter}
 
-		Hier soll nun das Verfahren zu Georeferenzierung am Beispiel von Twitter vorgestellt werden.
+		Es soll hier das Verfahren zu Georeferenzierung am Beispiel von Twitter vorgestellt werden.
 		Die im letzten Abschnitt erarbeitete Georeferenz-Basis dient dabei als Grundlage.
 		Wie beim einlernen werden aus dem Nutzer-Standort und der Nutzer-Zeitzone potenzielle geografische Indikatoren erzeugt.
-		Nach diesen Indikatoren wird nun in der Georeferenz-Basis gesucht.
+		Diese Indikatoren werden in der Georeferenz-Basis nachgeschlagen.
 		Die daraus resultiernden Datensätze enthalten alle Informationen, die zu diesen Werten verfügbar sind.
-		Durch Analyse dieser Datensätze kann nun dem Nutzer eine Georeferenz zugewiesen werden.
+		Durch eine Analyse dieser Datensätze kann nun dem Nutzer eine Georeferenz zugewiesen werden.
+		Die Analyse soll einige der oben genannten Probleme bei der Verwendung des Nutzer-Standortes
 
 		In Abbildung \ref{img:GeorefTable} ist der Ablauf an einem Beispiel schematisch dargestellt.  
 
-		Es soll nun gezeigt werden wie mit Hilfe der Georeferenz-Basis und der erarbeiteten Struktur eine Georeferenz bestimmt werden kann.
-		Dabei soll erlöutert werden wie die Probleme aus Abschnitt  durch die Struktur
+		Es soll nun gezeigt werden wie mit Hilfe der Georeferenz-Basis und der erarbeiteten Struktur eine Georeferenzierung durchgeführt werden kann.
 
+		Es soll zunächst ein Verfahren zur Berechnung von Konfidenzen basierend auf den Häufigkeitswerten erarbeitet werden. 
+		Danach werden die noch bestehenden Probleme aufgelistet und es wird erläutert wie sich diese durch die Berechnung der Konfidenz lösen lassen. 
 
+		Danach wird erklärt wie die geografische Hierarchie genutzt werden kann um die Georeferenzierung zu verbessern.
 
 
 		Bei der Georeferenzierung soll einem Twitter-Nutzer, dessen geografische Position unbekannt ist, eine Georeferenz zugewiesen werden.
@@ -957,6 +984,11 @@
 
 		Die Probleme aus bei der Verwendung des Nutzer-Standortes und den darin enthaltenen Toponymen können durch eine Analyse der Datenbassi 
 
+
+
+\todo{Als Beispiel bei Analyse: Drittens: Die beiden Städte liegen im gleichen Land. 
+				Dann ist zumindest das Land, welches aus der Stadt ermittelt werden kann und man hat noch eine zusätzliche Information für die Landesebene gewonnen}  
+				 sind entweder beide Werte nicht korrekt, wenn der Nutzer sich nicht in einer der Städte aufgehalten hat
 
 
 
