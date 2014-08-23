@@ -873,20 +873,19 @@
 			Es soll nun ein Häufigkeitswert in der Georeferenz-Basis eingeführt werden.
 			Der Häufigkeitswert soll angeben wie oft eine Kombination aus Referenzwert und Georeferenz in der Georeferenz-Basis vorhanden ist.
 			Dadurch werden Duplikate in der Georeferenz-Basis vermieden.
+			Zusätzlich kann ermittelt werden ob ein Referenzwert an einer bestimmten Position gehäuft auftritt.
 
 			Beim abspeichern eines neuen Datensatzes soll nun zunächst geprüft werden ob dieser bereits in der Georeferenz-Basis vorhanden ist. 
 			Ist dies der Fall, so wird der Häufigkeitswert des entsprechenden Eintrags um 1 erhöht.
 			Ist der Datensatz noch nicht gespeichert so wird ein neuer Datnesatz angelegt und der Häufigkeitswert mit 1 initialisiert.
-			In Abbildung \ref{img:hauefigkeit} ist der Ablauf und die  dargestellt. 
 
 			Der Häufigkeitswert misst damit wie oft ein potenzieller geografischer Indikator an einer geografischen Position vorkommt.
-			Es ist zu erwarten, dass ein geografischer Indikator gehäuft an einer bestimmten geografischen Position oder Region auftritt.
-			Indikatoren die keinen geografischen Bezug haben treten hingegen sehr verteilt auf oder nur sehr selten. 
-			Durch die Struktur der Georeferenz-Basis kann dies analysiert werden.
+			Es ist zu erwarten, dass ein Indikatoren mit geografischem Bezug gehäuft an einer bestimmten geografischen Position oder Region auftritt.
+			Während Indikatoren die keinen geografischen Bezug haben sehr verteilt oder nur sehr selten auftreten. 
 
-			Die Georeferenz besteht momentan aus den geografischen Koordinaten des zugehörigen Tweets.
-			Die geografische Position wird zumeist mit Hilfe von GPS-Modulen in Smartphones bestimmt. 
-			Diese können eine Position auf wenige Meter genau bestimmen.
+			Die Georeferenz besteht aus den geografischen Koordinaten des zugehörigen Tweets.
+			Die geografische Position wird zumeist mit Hilfe von GPS-Modulen mobiler Endgeräte wie Smartphones bestimmt. 
+			Diese können eine Position oft auf wenige Meter genau bestimmen.
 			Das bedeutet, zwei Tweets die wenige Meter voneinander abgesetzt wurden haben unterschiedliche Werte für den Längen- und Breitengrad.
 			Dies kann für die Bestimmung der Häufigkeiten problematisch sein, da die Werte in der Regel nicht exakt übereinstimmen.
 			Um dies zu umgehen sollen die geografischen Koodinaten auf Städte abgebildet werden.
@@ -911,11 +910,11 @@
 
 			\todo{nearestNeighbourImage} 
 
-		\subsection{Finale Struktur der Georeferenz-Basis} 
+		\subsection{Finale Struktur der Georeferenz-Basis} \label{subsec:finaleStruktur} 
 
 			Hier soll nun die Finale Struktur der Georeferenz-Basis vorgestellt werden.
 			Mit dem Häufigkeitswert ist ein neuer Wert pro Datensatz hinzugekommen.
-			Des weiteren wurde die Georeferenz auf eine Stadt aufgelöst und damit implizit die Administartionsebene erster Ordnung (Adm1), die Adminstrationsebene zweiter Ordnung (Adm2) und das Land. 
+			Des weiteren wurde die Georeferenz auf eine Stadt aufgelöst und damit implizit die Administrationsebene erster Ordnung (Adm1), die Adminstrationsebene zweiter Ordnung (Adm2) und das Land. 
 			Neben der Stadt sollen auch die anderen Ebenen pro Datensatz hinterlegt sein.
 			Die daraus resultiernde Struktur der Georeferenz-Basis ist in \ref{tab:strukturMitHierarchie1} inklusive einiger Beispieleinträge dargestellt.
 
@@ -927,6 +926,8 @@
 					Referenzwert & Stadt & Adm2 & Adm1 & Land & Häufigkeit \\
 					\hline\hline
 					\textless Los+Angeles\textgreater   \textless USA\textgreater   & Los Angeles & Los Angeles County & California & United States of America & 30 \\
+					\hline
+					\textless Los+Angeles\textgreater   \textless USA\textgreater   & San Francisco & San Francisco County & California & United States of America & 3 \\
 					\hline
 					\textless Los+Angeles\textgreater   & Los Angeles & Los Angeles County & California & United States of America & 70\\
 					\hline
@@ -945,23 +946,160 @@
 
 		\subsection{Verfahren zum einlernen der Georeferenz-Basis}
 
-			Hier soll nun ein Überblick über das gesamte Verfahren zum einlernen der Georeferenz-Basis gegeben werde.
-			In Abbildung \ref{img:lernVerfahren} ist das Lernverfahren dargestellt.
+			Hier soll nun ein Überblick über das gesamte Verfahren zum einlernen der Georeferenz-Basis gegeben werden.
+		
 			Zunächst werden die einzelnen Vorverarbeitungsschritte für den Nutzer-Standort und die Nutzer-Zeitzone durchgeführt.
-			Parallel kann der Längen- und Brietengrad aufgelöst werden.
+			Parallel kann der Längen- und Breitengrad aufgelöst werden.
 			Die dadurch entstandenen potenziellen geografischen Indikatoren und die zugehörige Georeferenz wird nun in die Georeferenz-Basis gespeichert. 
 			Dabei wird überprüft ob dieser Datensatz bereits vorhanden ist. 
 			Ist dies der Fall, wird der Häufigkeistwert des entsprechenden Datensatzes inkrementiert.
 			Ist der Datensatz noch nicht vorhanden wird er angelegt und der Häufigkeitswert mit 1 initialisiert.
 
+			Die Vorverarbeitung extrahiert dabei zusätzliche Informationen aus dem Nutzer-Standort.
+			Durch die Bereiningung der Werte im Nutzer-Stadort, die alphanumerische Sortierung, das identifzieren von Toponymen mit mehreren Worten und die darauffoglende Erzeugung von N-Grammen werden zusätzliche Infomrationen aus jedem Nutzer-Standort gewonnen.
+			Die Nutzer-Zeitzone wird einbezogen um Doppeldeutigkeiten auflösen zu können.
+
+			Durch die neue Datenstruktur, mit dem Häufigkeitswert und der abgebildeten geografischen Hierarchie, lassen sich nun tiefergehende Analysen durchführen um eine robuste Georeferenzierung zu ermöglichen. 
+			Der Häufigkeitswert gibt dabei an wie oft ein Referenzwert in der Nähe einer Stadt vorkommt.
+
+			Durch dieses Verfahren lässt sich eine Datenbasis erzeugen die domänenspezifische Eigenheiten, in Bezug auf die Verwendung spezieller Begriffe oder Formulierungen, berücksichtigt.
+			Des weiteren werden Toponyme, die in Ortsverzeichnissen unter Umständen nicht hinterlegt sind, berücksichtigt.
+			Auch mittelbare geografische Indikatoren, zum Beispiel die Verwendung spezieller Begriffe in einer geografischen Region, können einbezogen werden.
+
 			Die so entstandene Georeferenz-Basis kann nun zur Georeferenzierung verwendet werden. 
 
 	\section{Verfahren zu Georeferenzierung am Beispiel von Twitter}
 
-		Es soll hier das Verfahren zu Georeferenzierung am Beispiel von Twitter vorgestellt werden.
-		Die im letzten Abschnitt erarbeitete Georeferenz-Basis dient dabei als Grundlage.
-		Wie beim einlernen werden aus dem Nutzer-Standort und der Nutzer-Zeitzone potenzielle geografische Indikatoren erzeugt.
+		Es soll nun das Verfahren zu Georeferenzierung am Beispiel von Twitter vorgestellt werden.
+		Die Georeferenz-Basis aus Unterkapitel \ref{subsec:finaleStruktur} dient dabei als Grundlage zur Ermittlung einer Georeferenz.
+
+		Einem Twitter-Nutzer, dessen geografische Position nicht bekannt ist, soll automatisch eine Georeferenz zugewiesen werden.
+		Die Georeferenz soll dabei einer der Ebenen der geografischen Hierarchie aus Abschnitt \ref{chp:Grundlagen} entsprechen. 
+		Wie beim einlernen der Georeferenz-Basis werden aus dem Nutzer-Standort und der Nutzer-Zeitzone zunächst potenzielle geografische Indikatoren erzeugt.
 		Diese Indikatoren werden in der Georeferenz-Basis nachgeschlagen.
+		Durch die Vorverarbeitung können mehrere potenzielle geografische Indikatoren entstehen. 
+		Zudem können zu jedem potenziellen geografischen Indikator mehrere Einträge in der Georeferenz-Basis vorhanden sein.
+		Bei einer Abfrage auf die Georeferenz-Basis ensteht somit eine Menge von Datensätzen.
+		Um eine Georeferenz zuweisen zu können müssen diese Datensätze ausgewertet werden.
+		
+		Im folgenden soll zunächst gezeigt werden wie mit Hilfe des Häufigkeitswertes geografische Indikatoren identifiziert werden können.
+		Danach sollen wiederum mit Hilfe des Häufigkeitswertes die Konfidenzen berechnet werden. 
+		Zum Schluss osll gezeigt werden wie unter Einbeziehung der geografischen Hierarchie die Georeferenzierung weiter verebessert werden kann.  
+		Es soll deshalb zunächst darauf eingegangen werden, wie mit Hilfe des Häufigkeitswertes allein 
+
+		\subsection{Identfizierung eines geografischen Indikators}
+			
+			Grundsätzlich ist die Frage zu beantworten: Wie kann ein geografischer Indikator identifiziert werden?
+			Die Frage kann auch anders gestellt werden: Wie kann vermieden werden, dass einem Indikator ohne geografischen Bezug eine Georeferenz zugewiesen wird?
+			Dies ist wichtig, denn durch eine solche Zuweisung kann es zu Fehlern in der Georeferenzierung kommen.
+			Dies wiederum führt zu schlechten und unzuverlässigen Ergebnissen.	
+			Die Identfizierung geografischer Indikatoren beinhaltet insbesondere die Identifizierung mittelbarer und unmittelbarer geografischer Indikatoren. 
+			Es wird nicht unterschieden ob es sich um einen mittelbaren oder unmittelbaren Indikator handelt, lediglich der geografische Bezug des Indikators soll vorhanden sein.
+
+			Die Zuordnung einer Georeferenz zu einem Indikator erfolgt grundsätzlich über die Referenzwerte in der Georeferenz-Basis.
+			Anhand dieser soll entschieden werden ob der Indikator geografischen Bezug hat oder nicht.
+			Das bedeutet mit einer Analyse, der aus einer Abfrage des Indikators resultierenden Datensätze, soll entschieden werden ob es sich um einen geografischen Indikator handelt.  
+			Das Problem kann damit auf die Referenzwerte der Georeferenz-Basis projiziert werden.
+
+			Anhand des Häufigkeitswertes zu einem Referenzwert kann entschieden werden, ob es sich um einen geografischen Indikator handelt oder nicht.
+			Der Häufigkeitswert gibt an wie oft ein Referenzwert in einer bestimmten Region, zunächst die Voronoi-Region der entsprechenden Stadt, vorkommt.			 
+			
+			Es ist zu erwarten, dass in der Nähe einer Stadt der Stadtname im Nutzer-Standort häufiger vorkommt als in der Nähe einer anderen Stadt.
+			In Abbildung \ref{img:ULNewYork} sind die vorkommen von "'New York"' im Nutzer-Stadort und den zugehörigen Positionen, von welchen der Tweet abgesetzt wurde aufgetragen.
+			Dabei wurde nur nach dem Teilstring "'New York"' im Nutzer-Stadort gesucht und keine weitere Verarbeitung vorgenommen.
+			Es ist deutlich eine Häufung um die Stadt und den Bundesstaat New York zu erkennen. 
+			Allgemein werden Referenzwerte mit einem geografischen Bezug in der Region, auf die sie Bezug nehmen, öfter vorkommen als anderswo.
+
+
+
+				Referenzwerte ohne geografischen Bezug
+
+
+
+
+
+			Es muss also die Frage beantwortet werden ob und vor allem wie geografische Indikatoren identifiziert werden können. 
+
+
+
+			Mit anderen Worten, handelt es sich bei einem gegebenen Indikator um einen geografischen Indikator oder nicht.
+			Ein geografischer Indikator weißt grundsätzlich einen geografischen Bezug auf. 
+
+			Dies kann mit Hilfe der Georeferenz-Basis geprüft werden.
+			Bei einer Abfrage eines potenziellen geografischen Indikators auf die Georeferenz-Basis erhält man eine Menge an Datensätzen welche den Referenzwert, den Häufigkeitswert und eine Georeferenz beinhalten.
+
+			Um zu entscheiden, ob ein potenzieller geografischer Indikator einen geografischen Bezug hat, kann nun einfach der Häufigkeitswert betrachtet werden.
+			Denn dieser gibt an wie häufig ein Referenzwert innerhalb einer geografischen Region aufgetaucht ist. 
+			Die geografische Region ist dabei die  
+
+
+			Diese Frage kann mit Hilfe der Häufigkeitswerte beantwortet werden.
+			Es ist zu erwarten, dass ein Refrenzwert mit geografischem Bezug in derjenigen geografischen Region zu der der geografische Bezug gehört öfter auftauch als anderswo.
+
+
+			Es ist insbesondere zu beachten, dass Referenzwerte ohne geografischen Bezug sehr verteilt oder nur sehr selten vorkommen. 
+
+			\todo{Bild the für verteilt und Beispiel für sehr selten} 
+
+			Der Häufigkeitswert gibt an wie oft ein  
+
+
+			\todo{Images ULNewYork ULThe}
+
+		\subsection{Berechnung der Konfidenz} 
+
+		\subsection{Einbeziehung der geografischen Hierarchiebene} 
+
+
+
+
+
+
+
+
+
+		\subsection{Berechnung von Konfidenzen}
+
+			Die Konfidenz setzt sich aus zwei Werten zusammen. 
+			Zum einen gibt der Häufigkeitswert
+
+			Die Konfidenzen lassen sich einfach über die Häufigkeitswerte berechnen. 
+			Dabei wird die Rückgabe aus der Georeferenz-Basis eingeteilt in die Ordnung der N-Gramme. 
+			Das bedeutet es werden Uni-, Bi- und Trigramme getrennt voneinander betrachtet.
+			Aus den zurückgegebenen Datensätzen entstehen so 3 Gruppen.
+
+			Innerhalb jeder Gruppe werden nun die 
+
+			Mit Hilfe der Häufigkeitswerte kann nun für die einzelnen Datensätze der Anteil berechnet werden. 
+			Dieser Anteil stellt die Konfidenz dar. 
+
+			Wie bereits erwähnt kann die Datenbasis auch als Hierarchiebaum dargestellt werden. 
+			Die erste fünf Ebenen bilden die geografische Hierarchie ab. 
+			Die Blätte des Baumes beinhalten den Referenzwert und den zugehörigen Häufigkeitswert.
+
+
+		Dies soll an einem Beispiel erläutert werden.
+
+		Der Nutzer-Standort beinhaltet den Wert "'Love Karlsruhe, Deutschland "' dieser wird in folgende potenzielle Indikatoren zerlegt.
+
+		\begin{multicols}{2}
+			\begin{enumerate}
+			   		\item Love
+			   		\item Karlsruhe
+			   		\item Deutschland
+			   		\item Love Karlsruhe
+			   		\item Karlsruhe Deutschland
+			   		\item Love Karlsruhe Deutschland
+			\end{enumerate}   	
+		\end{multicols}
+
+		Zu jedem dieser Indikatoren können mehrere Einträge in der Datenbasis vorhanden sein. 
+		Vor allem "'Love"' wird mehrere Einträge haben, da kein geografischer Bezug besteht und dieser Wert global auftritt.
+		Auch für Deutschland werden einige Einträge vorhanden sein "'"'    
+		
+		
+
+
 		Die daraus resultiernden Datensätze enthalten alle Informationen, die zu diesen Werten verfügbar sind.
 		Durch eine Analyse dieser Datensätze kann nun dem Nutzer eine Georeferenz zugewiesen werden.
 		Die Analyse soll einige der oben genannten Probleme bei der Verwendung des Nutzer-Standortes
