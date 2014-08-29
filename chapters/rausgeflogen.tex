@@ -771,3 +771,142 @@ Bei der Untersuchung durch Hecht et al haben zwei Mitarbeiter 10.000 Nutzer-Stan
 
 						Beide Fälle sind ein gutes Beispiel für partiellen geografischen Bezug, da nur Teile der Einträge tatsächlich geografischen Bezug haben. 
 
+
+
+
+
+\subsubsection{Bestimmung der wahrscheinlichsten Georeferenz} 
+
+				Nun liegt wiederum eine Menge an Datensätzen vor.
+				Jeder Referenzwert, und damit auch jeder potenzielle geografische Indikator, taucht nur noch ein mal auf. 
+				Aus diesen Datensätzen soll nun die Georeferenz gewählt werden. 
+
+				Die Referenzwerte stellen NGramme dar, wie in der Vorverarbeitung in Unterkapitel \ref{subsec:VorverarbeitungStandortZeitzone} erläutert wird.
+				Es geht hier also um einen Vergleich zwischen Uni-, Bi- und Trigrammen.
+				Es sollen nun zunächst die Uni-, Bi- und Trigramme und deren Eigenschaften genauer betrachtet werden.
+
+
+				\paragraph{Eigenschaften der NGramme in Bezug auf geografische Objekt}
+
+					Aus der Kombination Nutzer-Standort und Nutzer-Zetzone wird durch die Vorverarbeitung entweder kein oder mindestens zwei potenzielle geografische Indikatoren erzeugt.
+					Kein potenzieller geografischer Indikator wird erzeugt wenn der Nutzer-Standort nur Sonderzeichen enthält, diese werden entfernt und damit ist der Nutzer-Stdort leer.
+					Ist dies nicht der Fall besteht der Nutzer-Standort aus mindestens einem Element aus dem ein Unigramm erzeugt werden kann.
+					Zusätzlich wird mit der Zeitzone noch ein Bigramm erzeugt.
+
+					Im folgenden soll der Fall betrachtet werden, dass ein Nutzer-Stadort genau zwei Elemente A und B enthält.
+					Die Zeitzone wird mit \textit{TZ} bezeichnet.  
+					Damit werden zwei Unigramme, drei Bigramme und ein Trigramm erzeugt.
+
+					In Tabelle \ref{tab:BeispielNGramme} sind die erzeugten NGramme dargestellt.
+
+					\begin{table}[h]
+					\centering
+					\caption{"'Wales"'}
+					\label{tab:BeispielNGramme}
+					\begin{tabular}{|l|l|l|}
+					\hline
+					Unigramm & Bigramm 			& Trigramm  	  	\\ \hline \hline
+					A        & A B 				& A B \textit{TZ} 	\\ \hline
+					B        & A \textit{TZ}    & -			 	   	\\ \hline
+					- 		 & B \textit{TZ}   	& -					\\ \hline
+					\end{tabular}
+					\end{table}   
+
+					Anhand dieses Beispiels sollen nun die möglichen
+
+
+
+
+				Dabei können die folgenden Fälle unterschieden werden.
+
+				\begin{enumerate}
+				  	\item Der Wert bezeichnet ein geografisches Objekt in einer der Hierarchieebenen
+				  	\item Der Referenzwert hat geografischen Bezug zu mehreren geografischen Objekten in unterschiedlichen Hierarchieebenen
+				  	\begin{enumerate}
+				  		\item Der Referenzwert bezieht sich auf geografische Objekte in mehreren Teilbäumen
+				  		\item Der Referenzwert bezieht sich auf geografische Objekte in einem Teilbaum
+				  	\end{enumerate}
+				  \end{enumerate}  
+
+				Die Fälle sind in Abbildung \ref{img:umgekehrterGeogrBezug} 
+
+				Grundsätzlich können Referenzwerte in allen geografischen Hierarchieebenen genutzt werden. 
+				Im ersten Fall entstehen dadurch keine Effekte. 
+				Die Häufigkeitswerte werden lediglich in den höheren Ebenen verwendet.
+
+
+
+
+				Dazu werden die relativen Häufigkeiten verglichen.
+				Es wird der Datensatz mit der höchsten relativen Häufigkeit gewählt.
+				Die Georeferenz dieses Datensatzes wird dann dem Twitter-Nutzer zugewiesen. 
+				Damit wird der Referenzwert ausgewählt der die größte relative Häufigkeit aller untersuchten Referenzwerte aufweist. 
+
+				
+				Es werden hier also insbesondere auch Uni-, Bi- und Trigramme miteinander verglichen.
+				Darauf soll nun eingegangen werden.
+
+				\paragraph{Vergleich der relativen Häufigkeiten zu Uni- Bi- und Trigrammen}
+
+					Jedes Element eines Bi- oder Trigrammes kann potenziell einen geografischen Bezug haben. 
+					Umso mehr Elemente ein NGramm beinhaltet umso spezieller kann die Beschreibung des geografischen Objekts sein.
+					Deshalb können NGramme mit einem höheren Grad ein Objekt genauer beschreiben als NGramme mit einem niedrigeren Grad.
+
+					Allerdings können NGramme mit einem höheren Grad auch eine schlechtere Beschreibung darstellen. 
+					Beispielsweise wenn das zusätzliche Element keinen geografsichen Bezug hat.
+
+					Bei NGrammen mit einem Grad größer zwei können also zwei Fälle unterschieden werden.
+
+					\begin{enumerate}
+						\item Die Kombination aus den Elementen des NGrammes beschreibt einen Ort genauer
+						\item Die Kombination aus den Elementen des NGrammes beschreibt einen Ort nicht genauer
+					\end{enumerate}
+
+					\subparagraph{Fall1} 
+
+						Ein Beispiel für den ersten Fall ist der Nutzer-Standort "'york"' mit der Nutzer-Zeitzone "'eastern+time+us+canada"'. 
+						Durch die Vorverarbeitung werden folgende potenzielle geografische Indikatoren erzeugt.
+						\begin{enumerate}		
+							\item york
+							\item york \textit{eastern+time+us+canada}
+						\end{enumerate}		
+
+						Eine Stadt Namens York existiert sowohl in Grossbritannien als auch in den USA.
+						Fragt man nun die beiden Referenzwerte in der Georeferenz-Basis ab erhält man folgende Werte:
+
+							\begin{table}[h]
+								\centering
+									\caption{"'the"'}
+									\label{tab:the}
+									\begin{tabular}{|l|l|l|}
+									\hline
+									Referenzwert 				& Stadt  	& Häufigkeitswert & relative Häufigkeit in \% \\ \hline \hline
+									York          				& York (GB) & 97              & 48,3       \\ \hline
+									york eastern+time+us+canada & York (US) & 12              & 63,2        \\ \hline
+									\end{tabular}
+							\end{table}
+
+							Die realtive Häufigkeit für york in Kombination mit der Zeitzone ist höher. 
+							Die Zeitzone gibt zusätzliche Auskunft darüber welches York gemeint ist. 
+							Die Kombination ist spezieller, kommt deshalb seltener vor und potenziell eher dort wo sie zutrifft. 
+							In diesem Fall in York in den USA. 
+
+							In den meisten Fällen beschreibt einer der beiden Indikatoren eine größere geografische Region wie beispielsweise einen Bundesstaat der USA.
+							Wird ein weiterer Wert, beispielsweise ein Städtename hinzugenommen, wird die Angabe des Ortes genauer. 
+							Die Wahrscheinlichkeit, dass diese Kombination ausserhalb des Ortes auftritt wird geringer. 
+
+					\subparagraph{Fall 2}
+
+						Hier können wiederum 2 Fälle unterschieden werden.
+
+						\begin{enumerate}
+							\item Beide Elemente beziehen sich auf unterschiedliche geografische Objekte
+							\item Nur ein Element hat geografischen Bezug das andere nicht 
+						\end{enumerate}
+
+						Wenn zu einem Referenzwert mit geografischem Bezug ein Element hinzugefügt wird, welches keinen geografischen Bezug hat, beschreibt dies den Ort nicht genauer.
+						Es ist zu erwarten, dass die Kombination der Elemente sehr selten vorkommt oder sehr verteilt ist. 
+						Ist die Kombination verteilter, so ist der relative Wert geringer als der des einzelnen Referenzwertes mit geografischem Bezug.
+						Ist die Kombination seltener ist der Referenzwert bereits durch den Schwellwert $s_{abs}$ aussortiert.		
+
+						Wenn zu einem Referenzwert mit geografischem Bezug ein Element hinzugefügt wird, welches zwar geografischen Bezug hat, aber dieses sich auf ein anderes geografisches Objekt bezieht ist dasselbe Verhalten zu erwarten.
