@@ -1,0 +1,2825 @@
+name;NGramCount
+Jakarta;91
+Singapore;27
+Bekasi;25
+Philadelphia;23
+San Antonio;21
+Bandung;21
+Ciputat;20
+Washington, D. C.;20
+Depok;19
+Makati City;16
+Chicago;16
+Kalamazoo;15
+Atlanta;15
+Mount Pleasant;14
+Kuala Lumpur;14
+Bogor;13
+Long Island City;13
+Austin;13
+New Orleans;12
+Charlotte;12
+Toledo;12
+Makassar;12
+Toronto;12
+San Francisco;11
+Surabaya;11
+Gainesville;11
+Statesboro;11
+Drexel Hill;11
+Columbus;11
+Columbia;10
+Manhattan;10
+Tuscaloosa;10
+Tangerang;10
+Palembang;10
+Pamulang;9
+São Paulo;9
+Nassau;9
+Willow Grove;9
+Tempe Junction;9
+Houston;9
+Norfolk;8
+Morgantown;8
+Converse;8
+Athens;8
+Winston-Salem;8
+Borough of Bronx;8
+Redford;8
+Ypsilanti;8
+Grosse Pointe Woods;8
+Montgomery;8
+Tallahassee;8
+London;8
+Yogyakarta;8
+San Juan;8
+Bangkok;8
+Bagong Pagasa;8
+Manila;8
+San Jose;8
+Hollywood;8
+Denver;7
+Bethnal Green;7
+South Tangerang;7
+Imus;7
+Ipoh;7
+Petaling Jaya;7
+Dubai;7
+Manado;7
+Surakarta;7
+Glasgow;7
+Newark;7
+Minneapolis;7
+Omaha;7
+Evergreen Park;7
+New York City;7
+Rochester;7
+Easton;7
+Johnstown;7
+Durham;7
+Baltimore;7
+Salisbury;7
+Columbia;7
+Arlington;7
+Knoxville;7
+Denton;7
+Parkersburg;6
+Goose Creek;6
+Summerville;6
+Sumter;6
+Upper Arlington;6
+Hattiesburg;6
+Tampa;6
+Savannah;6
+Lawrenceville;6
+Broad Ripple;6
+Terre Haute;6
+Willingboro;6
+Cicero;6
+Danville;6
+Des Moines;6
+Brookline;6
+Boston;6
+Lincoln;6
+Grand Rapids;6
+Flint;6
+Trenton;6
+Novi;6
+Shelby;6
+Wilmington;6
+Fayetteville;6
+Santiago;6
+Tlalpan;6
+Bogotá;6
+Morón;6
+Edinburgh;6
+Semarang;6
+Malang;6
+Mueang Nonthaburi;6
+Gedangan;6
+Cileungsir;6
+Colomadu;6
+Riyadh;6
+Kuching;6
+Tokyo;6
+Teluknaga;6
+Johor Bahru;6
+Shah Alam;6
+Brixton;6
+Fort Bragg;6
+Los Angeles;6
+North Hollywood;6
+Northridge;6
+Ottawa;6
+Seattle;6
+Honolulu;6
+Portland;6
+North Las Vegas;5
+Paradise;5
+Kota Kinabalu;5
+Calumpang;5
+Iloilo;5
+Davao;5
+Dasmariñas;5
+Port Area;5
+Kampung Baru Subang;5
+Kampong Baharu Balakong;5
+Sheffield;5
+Northampton;5
+Medan;5
+Serang;5
+Taguig;5
+Cardiff;5
+Canterbury;5
+Dublin;5
+Quilmes;5
+Diadema;5
+Half Way Tree;5
+Villahermosa;5
+Huntsville;5
+Jacksonville;5
+Oak Ridge;5
+Sterling Heights;5
+Forest Hills;5
+Jackson;5
+Dearborn;5
+East Lansing;5
+Fort Lee;5
+South Bend;5
+Sioux City;5
+Champaign;5
+Shaker Heights;5
+Akron;5
+Kent;5
+Hazleton;5
+Pittsburgh;5
+North Kingstown;5
+State College;5
+Upper Saint Clair;5
+Milwaukee;5
+Wauwatosa;5
+Bakersfield;5
+Glendale;5
+Scottsdale;5
+Alameda;5
+Fontana;5
+Springfield;5
+Wichita;5
+Frankfort;5
+Owensboro;5
+Alexandria;5
+Albany;5
+East Point;5
+Gainesville;5
+Oxford;5
+Asheville;5
+Elizabeth City;5
+Havelock;5
+Roanoke Rapids;5
+Kansas City;5
+Ferguson;5
+New Iberia;5
+Ruston;5
+Chester;5
+Anderson;5
+Edmond;5
+Mount Juliet;5
+Murfreesboro;5
+Nashville;5
+Oak Ridge;5
+Corpus Christi;5
+Cypress;5
+Bellaire;5
+Beckley;5
+Lynchburg;5
+Newport News;5
+Danville;5
+Irving;5
+Mission Bend;5
+Missouri City;4
+League City;4
+Little Elm;4
+Dickinson;4
+Fort Worth;4
+Fresno;4
+Greenville;4
+San Marcos;4
+White Settlement;4
+Fredericksburg;4
+Chesapeake;4
+Fairmont;4
+Richmond;4
+Albertville;4
+Dallas;4
+College Station;4
+Aldine;4
+Beaumont;4
+Memphis;4
+Morristown;4
+Spartanburg;4
+Chattanooga;4
+Raleigh;4
+Bethany;4
+Broken Arrow;4
+Norman;4
+Conway;4
+York;4
+Reynoldsburg;4
+Pennsauken;4
+Pleasantville;4
+Shenandoah;4
+Bethesda;4
+Easton;4
+Laurel;4
+Florissant;4
+Suitland;4
+North Bethesda;4
+Wake Forest;4
+Goldsboro;4
+Greensboro;4
+Greenville;4
+Chapel Hill;4
+St. Louis;4
+Greenville;4
+Madison;4
+Dublin;4
+Columbus;4
+North Atlanta;4
+Smyrna;4
+Valdosta;4
+Lake Charles;4
+Bossier City;4
+Danville;4
+Lexington;4
+Lexington-Fayette;4
+Newburg;4
+Newport;4
+Lawrence;4
+Bloomington;4
+Charleston;4
+Lawrence;4
+Fairfield;4
+Hayward;4
+Concord;4
+Cupertino;4
+Phoenix;4
+Tucson;4
+Drexel Heights;4
+Reading;4
+Scranton;4
+Hermitage;4
+Lima;4
+Bowling Green;4
+Parma;4
+Mount Vernon;4
+South Euclid;4
+Paterson;4
+East New York;4
+Elmira;4
+Syracuse;4
+Jamaica;4
+Evanston;4
+Oak Park;4
+Blue Island;4
+Aurora;4
+Ames;4
+Ankeny;4
+Goshen;4
+Kokomo;4
+Fort Wayne;4
+Malden;4
+Bayonne;4
+La Vista;4
+Grand Forks;4
+Burton;4
+Holt;4
+Clinton;4
+Warren;4
+Daytona Beach;4
+Little Rock;4
+Pine Bluff;4
+Dothan;4
+Mérida;4
+Cancún;4
+Freeport;4
+Rio de Janeiro;4
+Amsterdam;4
+Coventry;4
+Birmingham;4
+Acton;4
+Hastings;4
+Ipswich;4
+San Pedro;4
+Banjarmasin;4
+Cibinong;4
+Balikpapan;4
+Cileunyi;4
+Margahayukencana;4
+Jambi City;4
+Kuta;4
+Serpong;4
+Samarinda;4
+Durban;4
+Jeddah;4
+İzmir;4
+Preston;4
+Sevilla;4
+Málaga;4
+Quezon City;4
+Cebu City;4
+Cainta;4
+El Paso;4
+Socorro;4
+Scottsbluff;4
+Auburn;4
+Anchorage;4
+Brampton;4
+Etobicoke;4
+Vaughan;4
+Isla Vista;4
+Walnut Creek;4
+Rialto;4
+Santa Monica;4
+Candler-McAfee;4
+Arden-Arcade;4
+Bahçelievler;4
+Pasig City;3
+Harringay;3
+Fairfield Heights;3
+Security-Widefield;3
+West Bloomfield Township;3
+Ataşehir;3
+Chapel Allerton;3
+Hornchurch;3
+Stanton;3
+Sun City;3
+Union City;3
+San Diego;3
+West Hollywood;3
+Golden;3
+Long Beach;3
+Madera;3
+Irvine;3
+Montebello;3
+Ontario;3
+Placentia;3
+Palmdale;3
+Riverside;3
+Winnipeg;3
+Mississauga;3
+Minot;3
+Hamilton;3
+Kitchener;3
+London;3
+University Place;3
+Pullman;3
+Oak Harbor;3
+Roseburg;3
+Murray;3
+North Salt Lake;3
+Salt Lake City;3
+Syracuse;3
+Lubbock;3
+Boise;3
+Whitney;3
+Cagayan de Oro;3
+Angono;3
+Batu Arang;3
+Semenyih;3
+Seremban;3
+Quiapo;3
+Naga;3
+Lipa City;3
+Kampung Baharu Nilai;3
+Kampung Sungai Ara;3
+Sungai Petani;3
+Seoul;3
+Sydney;3
+Stafford;3
+Ruislip;3
+Stirling;3
+South Shields;3
+Abu Dhabi;3
+Khobar;3
+Pretoria;3
+Karachi;3
+Sharjah;3
+Male;3
+Pekanbaru;3
+Padang;3
+Tomohon;3
+Bandarlampung;3
+Kebomas;3
+Lembang;3
+Depok;3
+Cimahi;3
+Denpasar;3
+Tarlac City;3
+Inverness;3
+Hayes;3
+Lincoln;3
+Kilmarnock;3
+Kettering;3
+Leeds;3
+Dagenham;3
+Beckenham;3
+Barking;3
+Colchester;3
+Bournemouth;3
+Cork;3
+Madrid;3
+Bridgetown;3
+Teresina;3
+Belém;3
+Aberdeen;3
+Gaillimh;3
+Santo André;3
+Mar del Plata;3
+La Plata;3
+Bella Vista;3
+Campinas;3
+Niterói;3
+Nilópolis;3
+Hamilton;3
+Castries;3
+Lucaya;3
+Birmingham;3
+Guadalupe;3
+Dover;3
+Talladega;3
+Tillmans Corner;3
+Brandon;3
+Coral Gables;3
+Dania Beach;3
+Ocala;3
+Kissimmee;3
+Miami Beach;3
+Saint Cloud;3
+Waterford;3
+Waverly;3
+Wayne;3
+Southfield;3
+Mount Clemens;3
+Hamtramck;3
+Lincoln Park;3
+Midland;3
+Canton;3
+Battle Creek;3
+Bay City;3
+Birmingham;3
+Detroit;3
+Milton;3
+Allendale;3
+Saginaw;3
+West Saint Paul;3
+Norfolk;3
+Manchester;3
+Mankato;3
+Roseville;3
+Saint Paul;3
+Newark;3
+Cliffside Park;3
+Garfield;3
+Hackensack;3
+Jamaica Plain;3
+Wheaton;3
+Granger;3
+Urbandale;3
+Naugatuck;3
+Waterbury;3
+Crest Hill;3
+Dolton;3
+Ottawa;3
+Palos Hills;3
+Normal;3
+Elmwood Park;3
+Jamestown;3
+Lackawanna;3
+West Albany;3
+Hicksville;3
+Eggertsville;3
+Buffalo;3
+Sandusky;3
+Allentown;3
+Westerville;3
+Cuyahoga Falls;3
+Alliance;3
+West Seneca;3
+Lorain;3
+Dublin;3
+McKeesport;3
+Plum;3
+Murrysville;3
+Harrisburg;3
+Williamsport;3
+North Providence;3
+Sioux Falls;3
+Bloomington;3
+Carson;3
+Newport;3
+Gilbert;3
+Alum Rock;3
+El Segundo;3
+Mesa;3
+Compton;3
+Glendale;3
+Garden Grove;3
+Carmel;3
+Bowling Green;3
+Laplace;3
+Monroe;3
+Baton Rouge;3
+Kenner;3
+Sugar Hill;3
+Suwanee;3
+Rome;3
+Forest Park;3
+La Grange;3
+Macon;3
+Carrollton;3
+Douglasville;3
+Augusta;3
+Kennesaw;3
+University Park;3
+Meridian;3
+Natchez;3
+Raytown;3
+Saint Joseph;3
+Jackson;3
+Starkville;3
+Fayetteville;3
+High Point;3
+West Raleigh;3
+Wilmington;3
+Sanford;3
+Shelby;3
+Parkville;3
+Gladstone;3
+Cape Girardeau;3
+Lees Summit;3
+Hillcrest Heights;3
+Camden;3
+Lindenwold;3
+Millville;3
+Norwood;3
+Florence;3
+Stillwater;3
+Tulsa;3
+Muskogee;3
+Trotwood;3
+El Reno;3
+Clarksville;3
+Bartlett;3
+Myrtle Beach;3
+Rock Hill;3
+Germantown;3
+Maryville;3
+Abilene;3
+DeSoto;3
+Brenham;3
+Cedar Hill;3
+Auburn;3
+Suffolk;3
+Winchester;3
+Bon Air;3
+Hampton;3
+Harrisonburg;3
+Highland Springs;3
+Radford;3
+Laurel;3
+Waco;3
+The Woodlands;3
+Seguin;3
+Pearland;3
+Pflugerville;3
+Richardson;3
+Humble;3
+Cloverleaf;3
+Laredo;3
+Marshall;2
+McKinney;2
+Mesquite;2
+Longview;2
+Huntsville;2
+Galveston;2
+Garland;2
+Farmers Branch;2
+Duncanville;2
+Round Rock;2
+New Territory;2
+Palestine;2
+San Benito;2
+South Houston;2
+Tyler;2
+University Park;2
+Victoria;2
+Spring;2
+Stephenville;2
+Wichita Falls;2
+Linton Hall;2
+Lorton;2
+Oakton;2
+Lake Ridge;2
+Salem;2
+Cherry Hill;2
+Fairfax;2
+Burke;2
+Culpeper;2
+Dale City;2
+West Lynchburg;2
+Huntington;2
+Charleston;2
+Virginia Beach;2
+Staunton;2
+Anniston;2
+Sherwood;2
+Revere;2
+Hartford;2
+Cinco Ranch;2
+Brownsville;2
+Corsicana;2
+Shelbyville;2
+Balch Springs;2
+Allen;2
+Hendersonville;2
+Collierville;2
+Cookeville;2
+East Brainerd;2
+East Ridge;2
+Farragut;2
+La Vergne;2
+Lebanon;2
+North Charleston;2
+Greenville;2
+Greenwood;2
+Hanahan;2
+Mauldin;2
+Jenks;2
+Lawton;2
+Mustang;2
+Chambersburg;2
+Easley;2
+Mayagüez;2
+Mount Laurel;2
+Pickerington;2
+Portsmouth;2
+White Oak;2
+Whitehall;2
+Zanesville;2
+Cherry Hill;2
+Glassboro;2
+Dayton;2
+Toms River;2
+Frederick;2
+Aspen Hill;2
+East Riverdale;2
+Cockeysville;2
+Cumberland;2
+Calverton;2
+Chillum;2
+Shreveport;2
+Slidell;2
+Fort Thomas;2
+Chesterfield;2
+Landover;2
+Blue Springs;2
+Grandview;2
+Independence;2
+Jefferson City;2
+Parole;2
+Owings Mills;2
+Randallstown;2
+Towson;2
+Lumberton;2
+Morrisville;2
+Hope Mills;2
+Fuquay-Varina;2
+Gastonia;2
+Eden;2
+Tupelo;2
+West Gulfport;2
+Ridgeland;2
+Olive Branch;2
+Concord;2
+Boone;2
+Warrensburg;2
+Saint Peters;2
+Wentzville;2
+West Little River;2
+Fruit Cove;2
+Weston;2
+Belvedere Park;2
+Conyers;2
+Marietta;2
+Martinez;2
+Mableton;2
+Milledgeville;2
+Riverdale;2
+North Decatur;2
+Peachtree City;2
+Stockbridge;2
+Woodstock;2
+Edwardsville;2
+Lafayette;2
+Natchitoches;2
+Okolona;2
+Hopkinsville;2
+Shawnee;2
+Topeka;2
+Fern Creek;2
+Burlington;2
+Covington;2
+Leavenworth;2
+Pittsburg;2
+Fishers;2
+Greenwood;2
+Carbondale;2
+Kansas City;2
+Lenexa;2
+Manhattan;2
+Clarksville;2
+New Albany;2
+Vincennes;2
+Derby;2
+Florin;2
+Gilroy;2
+Clovis;2
+Corona;2
+Downey;2
+American Canyon;2
+Antioch;2
+Surprise;2
+Casa Grande;2
+Chandler;2
+Castro Valley;2
+Ceres;2
+Chatsworth;2
+Chino;2
+Brentwood;2
+Berkeley;2
+Yuma;2
+West Warwick;2
+Appleton;2
+Eau Claire;2
+Greenfield;2
+Madison;2
+Menomonee Falls;2
+Mequon;2
+Middleton;2
+El Mirage;2
+Kenosha;2
+Racine;2
+Sun Prairie;2
+Providence;2
+Wilkinsburg;2
+Bethlehem;2
+Norristown;2
+Penn Hills;2
+East Cleveland;2
+Euclid;2
+Findlay;2
+Gahanna;2
+Maple Heights;2
+Boardman;2
+Hudson;2
+White Plains;2
+Defiance;2
+Canton;2
+Avon;2
+Wooster;2
+Baldwin;2
+Solon;2
+Wadsworth;2
+Warren;2
+Massillon;2
+Newark;2
+North Olmsted;2
+Perrysburg;2
+Oregon;2
+Painesville;2
+Central Islip;2
+Cheektowaga;2
+Brighton;2
+South Plainfield;2
+Tinton Falls;2
+Trenton;2
+Wayne;2
+Brooklyn;2
+Bensonhurst;2
+Utica;2
+Mount Vernon;2
+Borough of Queens;2
+Smithtown;2
+Oswego;2
+Greenburgh;2
+Kenmore;2
+Kiryas Joel;2
+Newburgh;2
+Mastic;2
+Elgin;2
+Oak Lawn;2
+Palatine;2
+DeKalb;2
+Galesburg;2
+Homewood;2
+West Torrington;2
+Plainville;2
+Shelton;2
+Stamford;2
+Storrs;2
+Meriden;2
+Norwalk;2
+Burlington;2
+Cedar Falls;2
+Iowa City;2
+Johnston;2
+Michigan City;2
+Mishawaka;2
+Portage;2
+Schererville;2
+West Lafayette;2
+Amherst Center;2
+Anderson;2
+Rockford;2
+Urbana;2
+Brockton;2
+Cambridge;2
+Dracut;2
+Huntington;2
+Ludlow;2
+Newton;2
+Brunswick;2
+Englewood;2
+Hoboken;2
+East Orange;2
+Elizabeth;2
+Portsmouth;2
+Asbury Park;2
+North Bergen;2
+Point Pleasant;2
+Rahway;2
+New Brunswick;2
+Montclair;2
+Jersey City;2
+Linden;2
+Saint Louis Park;2
+Ramsey;2
+Richfield;2
+Coon Rapids;2
+Edina;2
+New Brighton;2
+Dover;2
+East Concord;2
+Bellevue;2
+Ann Arbor;2
+South Boston;2
+Southbridge;2
+Springfield;2
+Taunton;2
+Eastpointe;2
+Monroe;2
+Livonia;2
+Marquette;2
+Holland;2
+Grandville;2
+Ferndale;2
+Norton Shores;2
+Owosso;2
+Pontiac;2
+Romulus;2
+Oak Park;2
+Westland;2
+Taylor;2
+Blaine;2
+Ham Lake;2
+Lakeside;2
+Pembroke Pines;2
+Pine Hills;2
+Tamarac;2
+South Miami Heights;2
+San Carlos Park;2
+Lake Butler;2
+Jacksonville Beach;2
+Deerfield Beach;2
+Brownsville;2
+Holiday;2
+Largo;2
+Enterprise;2
+Florence;2
+Gadsden;2
+Bear;2
+El Dorado;2
+West Memphis;2
+Morelia;2
+Saint John’s;2
+Bessemer;2
+Concepción;2
+San Luis;2
+Surco;2
+San Nicolás de los Garza;2
+Santiago de Querétaro;2
+Polanco;2
+Port-of-Spain;2
+Barranquilla;2
+Cartagena;2
+David;2
+Benito Juarez;2
+Pergamino;2
+Tegucigalpa;2
+Quito;2
+Eloy Alfaro;2
+Manaus;2
+Caxias do Sul;2
+Mauá;2
+Guarulhos;2
+Sorocaba;2
+New Kingston;2
+Brasília;2
+Dajabón;2
+Concepción de La Vega;2
+Colegiales;2
+Osasco;2
+Villa Lugano;2
+São Caetano do Sul;2
+Santos;2
+Barnet;2
+Kilkenny;2
+Navan;2
+Pozuelo de Alarcón;2
+Boiro;2
+Craigavon;2
+Bologna;2
+Carlow;2
+Guadalajara;2
+Milano;2
+Nijmegen;2
+Wiesbaden;2
+Korrewegwijk;2
+Saint-Ouen;2
+Gien;2
+Darlington;2
+Carlisle;2
+Brentwood;2
+Cambridge;2
+Burton upon Trent;2
+Hull;2
+Ellesmere Port;2
+Cheltenham;2
+Beverley;2
+Horgen;2
+Acocks Green;2
+Porto;2
+Utrecht;2
+'s-Hertogenbosch;2
+Fleet;2
+Grays;2
+Gloucester;2
+Halifax;2
+Liverpool;2
+Newry;2
+Newport;2
+Manchester;2
+Maltby;2
+Horsham;2
+Huyton;2
+Keighley;2
+Tanza;2
+Taipei;2
+Zamboanga;2
+Sexmoan;2
+Santa Rosa;2
+Banyumas;2
+Batu;2
+Blitar;2
+Ciampea;2
+Delanggu;2
+Curug;2
+Gampengrejo;2
+Driyorejo;2
+Kualatungkal;2
+Jember;2
+Kediri;2
+Ajman;2
+Sumber;2
+Sukabumi;2
+Sinjai;2
+Sidoarjo;2
+Bang Kruai;2
+Wanaraja;2
+Melati;2
+Mataram;2
+Palu;2
+Nabire;2
+Parepare;2
+Purwodadi;2
+Pontianak;2
+Gaborone;2
+Mumbai;2
+Bangalore;2
+Samut Prakan;2
+Phra Pradaeng;2
+Omsk;2
+Pavlodar;2
+İstanbul;2
+Şişli;2
+Bursa;2
+Nairobi;2
+Manama;2
+Bayān;2
+As Sālimīyah;2
+Al Finţās;2
+Antalya;2
+Adana;2
+Ar Rābiyah;2
+Rostov-na-Donu;2
+Totton;2
+Stowmarket;2
+Welling;2
+Wednesfield;2
+Tiverton;2
+Tipton;2
+Swansea;2
+Rutherglen;2
+Prestwick;2
+Rochford;2
+Salford;2
+Newcastle upon Tyne;2
+Portishead;2
+Poole;2
+York;2
+Whickham;2
+Wrexham;2
+Córdoba;2
+Dome;2
+Jerez de la Frontera;2
+Lagos;2
+Adelaide;2
+Cikupa;2
+Chōfugaoka;2
+Ciranjang-hilir;2
+Marrickville;2
+Brisbane;2
+Randwick;2
+Uijeongbu-si;2
+Bacolod City;2
+Lucban;2
+Malvar;2
+Muñoz;2
+Mantampay;2
+Mandaue City;2
+Bukit Mertajam;2
+George Town;2
+Donggongon;2
+Baguio;2
+Horizon City;2
+Reno;2
+Bozeman;2
+Boulder;2
+Fort Collins;2
+Beaverton;2
+Eugene;2
+Salem;2
+Rapid City;2
+Bellingham;2
+Fairwood;2
+Federal Way;2
+Ellensburg;2
+Markham;2
+Langford;2
+Tumwater;2
+Edmonton;2
+Oshawa;2
+Niagara Falls;2
+Campinas;2
+Milton;2
+Saint John;2
+Oakland;2
+Pasadena;2
+Redlands;2
+Pleasant Hill;2
+Norwalk;2
+Novato;2
+Moreno Valley;2
+Montclair;2
+Milpitas;2
+Modesto;2
+La Jolla;2
+Indio;2
+Inglewood;2
+Laguna;2
+Parker;2
+Las Cruces;2
+Santa Fe;2
+South San Francisco;2
+Woodland;2
+Aurora;2
+San Fernando;2
+Rio Linda;2
+Pinole;2
+San Carlos;2
+San Leandro;2
+Santa Ana;2
+Universal City;2
+Van Nuys;2
+Temple City;2
+Turlock;2
+Tustin;2
+Seal Beach;2
+South Croydon;2
+Becontree;2
+Sydney;2
+Villa Santa Rita;2
+Lytham St Annes;2
+Longsight;2
+Summerlin South;2
+Bryn Mawr-Skyway;2
+Bartley Green;2
+Marseille 09;2
+Colonia del Valle;2
+City of Balikpapan;2
+Shirley;1
+Ancaster;1
+Bridgewater;1
+Thornton-Cleveleys;1
+Deeside;1
+Karabağlar;1
+Masjid Jamie Baitul Muttaqien;1
+Balwyn North;1
+Booval;1
+Earlsfield;1
+Oak Hill;1
+North Ryde;1
+Logan City;1
+Budapest II. kerület;1
+La Defense;1
+Subang Jaya;1
+Centralniy;1
+Retreat;1
+Dixiana;1
+San Pedro Garza Garcia;1
+Cranberry Township;1
+Naucalpan de Juárez;1
+San Martín Azcatepec;1
+Florence-Graham;1
+La Crescenta-Montrose;1
+Schofield Barracks;1
+Cole Harbour;1
+West Whittier-Los Nietos;1
+Silver Firs;1
+Vineyard;1
+Bracken Ridge;1
+Blackheath;1
+Four Corners;1
+University;1
+Pasaia;1
+Donaghmede;1
+Hadley Wood;1
+Basauri;1
+Putrajaya;1
+merter keresteciler;1
+Eixample;1
+Ciutat Vella;1
+Bayswater;1
+Mitte;1
+Hale;1
+Surbiton;1
+Sherman Oaks;1
+South El Monte;1
+South Lake Tahoe;1
+South Pasadena;1
+Twentynine Palms;1
+Victorville;1
+Vincent;1
+Visalia;1
+Vista;1
+Walnut;1
+Santa Clara;1
+Santa Clarita;1
+Santa Cruz;1
+San Luis Obispo;1
+San Pedro;1
+San Rafael;1
+San Gabriel;1
+Brighton;1
+Cañon City;1
+Centennial;1
+Colorado Springs;1
+Columbine;1
+Woodland Hills;1
+Yorba Linda;1
+Yuba City;1
+South San Jose Hills;1
+South Whittier;1
+West Covina;1
+West Puente Valley;1
+West Sacramento;1
+Wildomar;1
+South Valley;1
+Enterprise;1
+Rio Rancho;1
+Dodge City;1
+Garden City;1
+Albuquerque;1
+Farmington;1
+Grand Junction;1
+Highlands Ranch;1
+Lakewood;1
+Louisville;1
+Montrose;1
+Northglenn;1
+Laguna Niguel;1
+Lawndale;1
+Lennox;1
+Lincoln;1
+Live Oak;1
+Lodi;1
+Lomita;1
+La Cañada Flintridge;1
+La Palma;1
+La Verne;1
+Los Altos;1
+Monrovia;1
+Marina;1
+Mead Valley;1
+Los Banos;1
+Lynwood;1
+National City;1
+Newark;1
+Norco;1
+North Glendale;1
+North Highlands;1
+Monterey;1
+Moorpark;1
+Moraga;1
+Oakdale;1
+Orange;1
+Oxnard;1
+Pacifica;1
+Pacific Grove;1
+Port Hueneme;1
+Porterville;1
+Poway;1
+Rancho Cordova;1
+Rancho Cucamonga;1
+Rancho Mirage;1
+Redwood City;1
+Patterson;1
+Perris;1
+Oakley;1
+Paramount;1
+Rohnert Park;1
+Rosamond;1
+Rosemont;1
+Roseville;1
+Sacramento;1
+San Bernardino;1
+San Bruno;1
+Saint-Léonard;1
+Thorold;1
+Thunder Bay;1
+White Rock;1
+Windsor;1
+Trois-Rivières;1
+Alafaya;1
+Pinar de Chamartín;1
+Halifax;1
+Yorkton;1
+Rotorua;1
+Stadt Winterthur (Kreis 1);1
+Zürich (Kreis 2);1
+North Bay;1
+North York;1
+Orangeville;1
+Moncton;1
+Mont-Royal;1
+Owen Sound;1
+Penticton;1
+Prince George;1
+Regina;1
+Richmond;1
+Rouyn-Noranda;1
+Saint-Jérôme;1
+Fredericton;1
+Brossard;1
+Calgary;1
+Cornwall;1
+Cranbrook;1
+Dartmouth;1
+Lloydminster;1
+Kamloops;1
+Midland;1
+Miramichi;1
+Magog;1
+Everett;1
+Renton;1
+Shoreline;1
+South Hill;1
+Spanaway;1
+Spokane;1
+Sunnyside;1
+Tacoma;1
+Walla Walla;1
+Wenatchee;1
+West Lake Stevens;1
+Bainbridge Island;1
+Pearl City;1
+Waipahu;1
+Ajax;1
+Barrie;1
+Graham;1
+Hazel Dell;1
+Lacey;1
+Maple Valley;1
+Mercer Island;1
+Moses Lake;1
+Camas;1
+Des Moines;1
+Bellevue;1
+Olympia;1
+Orchards;1
+Pasco;1
+Draper;1
+Herriman;1
+Highland;1
+Kearns;1
+Logan;1
+West Valley City;1
+South Jordan Heights;1
+South Jordan;1
+Payson;1
+Provo;1
+Four Corners;1
+Gresham;1
+Hillsboro;1
+Lents;1
+McMinnville;1
+Milwaukie;1
+Bend;1
+Bethany;1
+Windsor;1
+Pampa;1
+Bismarck;1
+Dickinson;1
+Coeur d'Alene;1
+Sunrise Manor;1
+Amarillo;1
+Eagle Pass;1
+West Odessa;1
+Saint George;1
+Anthem;1
+Apache Junction;1
+Avondale;1
+Eureka;1
+Redding;1
+Susanville;1
+Bacoor;1
+Calamba;1
+Angeles City;1
+Kampung Pasir Gudang Baru;1
+Skudai;1
+Cabanatuan City;1
+Butuan;1
+Binonga;1
+Binangonan;1
+Cogan;1
+Carcar;1
+Capas;1
+Putatan;1
+Victoria;1
+Keningau;1
+Kertih;1
+Kulim;1
+Bagan Serai;1
+Kuala Kangsar;1
+Serendah;1
+Rawang;1
+Papar;1
+Mandaluyong City;1
+Meycauayan;1
+Mendez-Nuñez;1
+Pulong Santa Cruz;1
+Pulilan;1
+Puerto Princesa;1
+Panalanoy;1
+Noveleta;1
+Nasugbu;1
+Malolos;1
+Dapitan;1
+Guiset East;1
+General Santos;1
+Gapan;1
+Dumaguete City;1
+Los Baños;1
+Loma de Gato;1
+Laur;1
+Lapu-Lapu City;1
+La Paz;1
+Kalibo (poblacion);1
+Kampung Ayer Keroh;1
+Banting;1
+Kangar;1
+Alor Setar;1
+Kota Bharu;1
+Miri;1
+Tanjung Tokong;1
+Klebang Besar;1
+Kampung Bukit Baharu;1
+Kuantan;1
+Gurun;1
+Tuen Mun;1
+Ulsan;1
+Okinawa;1
+Tokushima-shi;1
+Ōsaka-shi;1
+Musashino;1
+Fukuoka-shi;1
+Songwon;1
+Gyeongsan-si;1
+Guri-si;1
+Incheon;1
+Yorii;1
+Yao;1
+Utsunomiya-shi;1
+Grand Dakar;1
+Ramada;1
+Queluz;1
+Câmara de Lobos;1
+Abidjan;1
+Teshi Old Town;1
+Tafo;1
+Sekondi-Takoradi;1
+Nungua;1
+Medina Estates;1
+Kumasi;1
+Koforidua;1
+Ballarat;1
+Wellington;1
+Invercargill;1
+Christchurch;1
+Auckland;1
+Liverpool;1
+Greensborough;1
+Granville;1
+Earlwood;1
+Castle Hill;1
+Morioka-shi;1
+Mito-shi;1
+Melbourne;1
+Gamping Lor;1
+Kartasura;1
+Port Hedland;1
+Perth;1
+Morphett Vale;1
+Fremantle;1
+Armadale;1
+Kano;1
+Iperu;1
+Ikeja;1
+Gbongan;1
+Awka;1
+Abuja;1
+Cotonou;1
+Libreville;1
+Zafra;1
+Vélez-Málaga;1
+Valencia;1
+Torrox;1
+Torrent;1
+Toledo;1
+Talavera de la Reina;1
+Huelva;1
+Granada;1
+Elche;1
+Accra;1
+Owerri;1
+Makoko;1
+Santomera;1
+Santa Pola;1
+San Juan de Aznalfarache;1
+Ribarroja;1
+Palma;1
+Pájara;1
+Osuna;1
+Motril;1
+Molina de Segura;1
+Mislata;1
+Marratxí;1
+Conil de la Frontera;1
+Ciudad Real;1
+Cieza;1
+Xirivella;1
+Chipiona;1
+Cehegín;1
+Cartagena;1
+Altea;1
+Almoradí;1
+Almansa;1
+Algeciras;1
+Alcalá la Real;1
+Sciacca;1
+Barcellona Pozzo di Gotto;1
+Rabat;1
+Holstebro;1
+Århus;1
+Worthing;1
+Worksop;1
+Workington;1
+Woking;1
+Witham;1
+Winchester;1
+Wigston Magna;1
+Wigan;1
+Whitley Bay;1
+Weymouth;1
+West Bromwich;1
+West Bridgford;1
+Welwyn Garden City;1
+Yeovil;1
+Las Palmas de Gran Canaria;1
+Pontefract;1
+Plymouth;1
+Paisley;1
+Paignton;1
+Oswestry;1
+Nuneaton;1
+Nottingham;1
+Musselburgh;1
+Moreton;1
+Merthyr Tydfil;1
+Melton Mowbray;1
+Market Harborough;1
+Mangotsfield;1
+Portsmouth;1
+Portslade;1
+Newton-le-Willows;1
+Saint Helens;1
+Saint Albans;1
+Spennymoor;1
+Spalding;1
+Seaford;1
+Scarborough;1
+Salisbury;1
+Renfrew;1
+Redcar;1
+Reading;1
+Rugby;1
+Royal Tunbridge Wells;1
+Swadlincote;1
+Sutton Coldfield;1
+Sunbury-on-Thames;1
+Thornaby-on-Tees;1
+Thetford;1
+Teignmouth;1
+Taunton;1
+Wednesbury;1
+Watford;1
+Waterlooville;1
+Washington;1
+Warrington;1
+Walsall;1
+Wallsend;1
+Stourport-on-Severn;1
+Stockton-on-Tees;1
+Stockport;1
+Tonbridge;1
+Stevenage;1
+South Ockendon;1
+Southend-on-Sea;1
+Southampton;1
+Solihull;1
+Slough;1
+Sittingbourne;1
+Shrewsbury;1
+Perm;1
+Menzelinsk;1
+Kupchino;1
+Kozeyevo;1
+Kostomuksha;1
+Kaliningrad;1
+Izhevsk;1
+Il’skiy;1
+Dorogomilovo;1
+Sabunçu;1
+Varkaus;1
+Lohja;1
+Kirkkonummi;1
+Kuusamo;1
+Janakkala;1
+Plovdiv;1
+Cherven Bryag;1
+Umraniye;1
+Trabzon;1
+Tekirdağ;1
+Şabāḩ as Sālim;1
+Batikent;1
+Tukums;1
+Riga;1
+Rēzekne;1
+Cēsis;1
+Yaroslavl;1
+Taganskiy;1
+Semënovskoye;1
+Saratov;1
+Tanda;1
+Al Khānkah;1
+Alexandria;1
+Foça;1
+Eskişehir;1
+Edremit;1
+Al Aḩmadī;1
+Ad Dasmah;1
+As Sīb al Jadīdah;1
+Ar Rayyān;1
+Medina;1
+Rishon LeẔiyyon;1
+Ramat Gan;1
+Bené Beraq;1
+Ashdod;1
+Uşak;1
+Selçuk;1
+Manisa;1
+Kütahya;1
+Kiambu;1
+Eldoret;1
+Kireka;1
+Kampala;1
+Saḩāb;1
+Aydūn;1
+Výronas;1
+Pátra;1
+Agía Varvára;1
+Tripoli;1
+Djounie;1
+Ḩawallī;1
+Al Hufūf;1
+Ad Dilam;1
+Magomeni;1
+Sanaa;1
+Benghazi;1
+Kirkuk;1
+Şāmitah;1
+Mecca;1
+Bağcılar;1
+Akçaabat;1
+Warsaw;1
+Radom;1
+Mokotów;1
+Strumica;1
+Skopje;1
+Belgrade;1
+Lilongwe;1
+Rize;1
+Mudanya;1
+Maltepe;1
+Malkara;1
+Luleburgaz;1
+Çanakkale;1
+Ar Ruways;1
+Islamabad;1
+Faisalābād;1
+Percut;1
+Pematangsiantar;1
+Padangsidempuan;1
+Polokwane;1
+Nigel;1
+Johannesburg;1
+Grahamstown;1
+Brakpan;1
+Boksburg;1
+Midrand;1
+Ban Talat Yai;1
+Thoen;1
+Surat Thani;1
+Phunphin;1
+Lampang;1
+Chiang Mai;1
+Rawalpindi;1
+Thành Phố Phủ Lý;1
+Hanoi;1
+Surin;1
+Su-ngai Kolok;1
+Si Racha;1
+Kamyshlov;1
+Kamensk-Ural’skiy;1
+Chelyabinsk;1
+Phitsanulok;1
+Pak Kret;1
+Roi Et;1
+Khon Buri;1
+Kaset Wisai;1
+Kaeng Khoi;1
+Kaeng Khro;1
+Ban Lam Luk Ka;1
+Anantnāg;1
+Roodepoort;1
+Soweto;1
+Bīrganj;1
+Yekaterinburg;1
+Tomsk;1
+Kandy;1
+Ooty;1
+Sūrat;1
+Phagwāra;1
+New Delhi;1
+Nāgercoil;1
+Mānsa;1
+Leh;1
+Borivli;1
+Polewali;1
+Purwakarta;1
+Pare;1
+Pandaan;1
+Pasarkemis;1
+Rengasdengklok;1
+Rantepao;1
+Rajapolah;1
+Purwokerto;1
+Sawangan;1
+Muntilan;1
+Mranggen;1
+Mertoyudan;1
+Palopo;1
+Pamanukan;1
+Ngawi;1
+Lubuklinggau;1
+Loa Janan;1
+Ungaran;1
+Weru;1
+Watampone;1
+Ban Bang Kadi Pathum Thani;1
+Nong Phai;1
+Nakhon Ratchasima;1
+Tegal;1
+Tarakan;1
+Tanjungpinang;1
+Ubud;1
+Tulangan Utara;1
+Tondano;1
+Sewon;1
+Singosari;1
+Sengkang;1
+Srandakan;1
+Solok;1
+Sleman;1
+Sokaraja;1
+Sungai Penuh;1
+Tabanan;1
+Grogol;1
+Godean;1
+Jatibarang;1
+Kuningan;1
+Klangenan;1
+Kendari;1
+Kedungwaru;1
+Labuan;1
+Kutoarjo;1
+Citeureup;1
+Cirebon;1
+Cikarang;1
+Cikampek;1
+Galesong;1
+Dumai;1
+Boyolali;1
+Bontang;1
+Bojonegoro;1
+Caringin;1
+Banyuwangi;1
+Balaipungut;1
+Ambon;1
+Silang;1
+San Pablo;1
+San Mateo;1
+San Antonio;1
+Roxas City;1
+Vigan;1
+Banjar;1
+Bangkalan;1
+Tanjay;1
+Tanauan;1
+Islington;1
+Irvine;1
+Irlam;1
+Huntingdon;1
+Hove;1
+Houghton-le-Spring;1
+Horsforth;1
+Horley;1
+Hoddesdon;1
+Hinckley;1
+High Wycombe;1
+Haverhill;1
+Havant;1
+Hatfield;1
+Luton;1
+Derry;1
+City of London;1
+New Milton;1
+Llanelli;1
+Livingston;1
+Littlehampton;1
+Leighton Buzzard;1
+Leicester;1
+Kenilworth;1
+Kendal;1
+Great Yarmouth;1
+Great Sankey;1
+Great Malvern;1
+Harpenden;1
+Harlow;1
+Hamilton;1
+Glossop;1
+Fleetwood;1
+Gosforth;1
+Lancaster;1
+Falkirk;1
+Exmouth;1
+Evesham;1
+Emsworth;1
+Cwmbran;1
+Crewe;1
+Cowes;1
+Eccles;1
+Eastleigh;1
+East Grinstead;1
+Eastbourne;1
+Dunstable;1
+Dundee;1
+Dudley;1
+Dronfield;1
+Dewsbury;1
+Derby;1
+Darwen;1
+Scheveningen;1
+Rotterdam;1
+Ridderkerk;1
+Purmerend;1
+Oss;1
+Oisterwijk;1
+Zwolle;1
+Zeist;1
+Wijk bij Duurstede;1
+Veenendaal;1
+Veendam;1
+Accrington;1
+Bebington;1
+Batley;1
+Carouge;1
+Visby;1
+Växjö;1
+Skövde;1
+Örebro;1
+Nacka;1
+Göteborg;1
+Gävle;1
+Bentley;1
+Bellshill;1
+Billericay;1
+Biggleswade;1
+Banbridge;1
+Atherton;1
+Ashton in Makerfield;1
+Andover;1
+Chelmsford;1
+Castlereagh;1
+Carmarthen;1
+Coulsdon;1
+Consett;1
+Coity;1
+Coatbridge;1
+Coalville;1
+Clydach;1
+Clevedon;1
+Cleethorpes;1
+Cleckheaton;1
+Cirencester;1
+Chippenham;1
+Chester-le-Street;1
+Buckhaven;1
+Brownhills;1
+Broadstairs;1
+Brighton;1
+Bridlington;1
+Bradford;1
+Borehamwood;1
+Bolton;1
+Blackburn;1
+Bishop Auckland;1
+Douai;1
+Dijon;1
+Créteil;1
+Courbevoie;1
+Coulommiers;1
+Clamart;1
+Charleville-Mézières;1
+Castres;1
+Bron;1
+Bonneuil-sur-Marne;1
+Bobigny;1
+Bayonne;1
+Bastia;1
+Angoulême;1
+Douglas;1
+Łódź;1
+Vilagarcía de Arousa;1
+Viladecans;1
+Vigo;1
+Vic;1
+Sant Pere de Ribes;1
+Sanxenxo;1
+Sant Celoni;1
+Saint-Maur-des-Fossés;1
+Saint-Louis;1
+Saint-Denis;1
+Saint-Cyr-l'École;1
+Paris;1
+Palaiseau;1
+Octeville;1
+Niort;1
+Neuilly-sur-Seine;1
+Narbonne;1
+Montpellier;1
+Montceau-les-Mines;1
+Mandelieu-la-Napoule;1
+Maisons-Alfort;1
+Lingolsheim;1
+Lille;1
+Le Mans;1
+Le Kremlin-Bicêtre;1
+Lagny-sur-Marne;1
+Illkirch-Graffenstaden;1
+Haubourdin;1
+Hoge Vucht;1
+Hoensbroek;1
+Hengelo;1
+Heesch;1
+Heerlen;1
+Heerenveen;1
+Heemskerk;1
+Gouda;1
+Goes;1
+Emmen;1
+Driebergen-Rijsenburg;1
+Den Helder;1
+Delft;1
+Delfshaven;1
+Cuijk;1
+Capelle aan den IJssel;1
+Bussum;1
+Brummen;1
+Borger;1
+Assen;1
+Saarbrücken;1
+Kreuzberg;1
+Karlsruhe;1
+Hummelsbüttel;1
+Bernau bei Berlin;1
+Tralee;1
+Middelburg;1
+Lindenholt;1
+Leiderdorp;1
+Leeuwarden;1
+Amersfoort;1
+Alphen aan den Rijn;1
+Vienna;1
+Schwechat;1
+Zele;1
+Zaventem;1
+Vilvoorde;1
+Brussels;1
+Antwerpen;1
+Aarschot;1
+Maddaloni;1
+Lucca;1
+Lido di Ostia;1
+Follonica;1
+Civitavecchia;1
+Getafe;1
+Castro-Urdiales;1
+Drogheda;1
+Blanchardstown;1
+Vanves;1
+Toulon;1
+Torcy;1
+Sevran;1
+Illescas;1
+Hortaleza;1
+Getxo;1
+Aosta;1
+Velenje;1
+Sarajevo;1
+Blackwood;1
+Camden Town;1
+Telford;1
+Malmesbury;1
+Ananindeua;1
+Satuba;1
+São Lourenço da Mata;1
+Recife;1
+Petrolina;1
+Paulista;1
+Parnamirim;1
+Fortaleza;1
+Eusébio;1
+Benavente;1
+Barcelona;1
+Badalona;1
+Amposta;1
+Moss;1
+Drammen;1
+Bergen;1
+Vignola;1
+Venezia;1
+Udine;1
+Treviglio;1
+Trento;1
+Teramo;1
+Rome;1
+Pavia;1
+Montevarchi;1
+Pontevedra;1
+Parla;1
+Pamplona;1
+Oviedo;1
+Oleiros;1
+Navalcarnero;1
+Móstoles;1
+Mejorada del Campo;1
+Majadahonda;1
+An Muileann gCearr;1
+Luimneach;1
+Lugano;1
+Finglas;1
+Dún Laoghaire;1
+Santo Antônio de Jesus;1
+Santo Ângelo;1
+São Bernardo do Campo;1
+Villa Gesell;1
+Retiro;1
+Posadas;1
+Pontevedra;1
+Orlândia;1
+Santa Maria;1
+Rio Grande;1
+Rio das Ostras;1
+Piúma;1
+Paulínia;1
+Pará de Minas;1
+Ciudad del Este;1
+Salto;1
+Maldonado;1
+Fray Bentos;1
+Vila Velha;1
+Viamão;1
+Venâncio Aires;1
+Vacaria;1
+Uberlândia;1
+Ubatuba;1
+Tubarão;1
+Torres;1
+Teófilo Otoni;1
+Telêmaco Borba;1
+Taboão da Serra;1
+Philipsburg;1
+Álvaro Obregón;1
+Villa Consuelo;1
+Tamboril;1
+Santiago de los Caballeros;1
+Moca;1
+La Romana;1
+Belo Horizonte;1
+Avaré;1
+Armação de Búzios;1
+Além Paraíba;1
+Adamantina;1
+Cambé;1
+Caieiras;1
+Guaratuba;1
+Governador Valadares;1
+Ferraz de Vasconcelos;1
+Louveira;1
+Jundiaí;1
+Itapecerica da Serra;1
+Itanhaém;1
+Itaboraí;1
+Cassilândia;1
+Mongaguá;1
+Curitiba;1
+Cotia;1
+Cosmópolis;1
+Contagem;1
+Boa Vista;1
+Ubaté;1
+Soledad;1
+Riosucio;1
+Bahía de Caráquez;1
+Playas;1
+Managua;1
+San Diego;1
+Aserrí;1
+Valera;1
+San Cristóbal;1
+Mérida;1
+Caracas;1
+Cantaura;1
+Baruta;1
+Barcelona;1
+Laboulaye;1
+Valparaíso;1
+Valdivia;1
+Talagante;1
+Cuauhtémoc;1
+Villa Dolores;1
+Villa Carlos Paz;1
+Thomazeau;1
+Delmas 73;1
+Cali;1
+Tocumen;1
+San Miguelito;1
+Las Cumbres;1
+Chaguanas;1
+Tunapuna;1
+Cockburn Town;1
+Kingstown;1
+Baie-Mahault;1
+Sonzacate;1
+Puerto Barrios;1
+Pachuca de Soto;1
+Nuevo Laredo;1
+Naucalpan de Juárez;1
+Minatitlán;1
+Azcapotzalco;1
+Ciudad López Mateos;1
+Linares;1
+Xalapa de Enríquez;1
+Coyoacán;1
+Ciudad Valles;1
+Ciudad Nezahualcóyotl;1
+Ciudad del Carmen;1
+Cárdenas;1
+Gustavo A. Madero;1
+Tuxtla Gutiérrez;1
+Toluca;1
+Tlalnepantla;1
+Cuautitlán Izcalli;1
+San Juan del Río;1
+Reynosa;1
+Puerto Vallarta;1
+San Luis Potosí;1
+Torreón;1
+Tijuana;1
+Rawson;1
+Chillán;1
+Cartagena;1
+Antofagasta;1
+San Javier;1
+Quilpué;1
+Punta Arenas;1
+Iquique;1
+Curicó;1
+East Florence;1
+Center Point;1
+Daphne;1
+Decatur;1
+Monterrey;1
+Mexicali;1
+León;1
+La Paz;1
+Hermosillo;1
+Ciudad Obregón;1
+Celaya;1
+Arandas;1
+Apodaca;1
+Yigo Village;1
+Hot Springs;1
+Springdale;1
+Texarkana;1
+Van Buren;1
+Middletown;1
+Allapattah;1
+Altamonte Springs;1
+Apopka;1
+Boca Del Mar;1
+Boca Raton;1
+Hoover;1
+Fairhope;1
+Opelika;1
+Phenix City;1
+Prichard;1
+Selma;1
+Trussville;1
+Madison;1
+Mobile;1
+Benton;1
+Blytheville;1
+Conway;1
+Lauderdale Lakes;1
+Lealman;1
+Lutz;1
+Lynn Haven;1
+Meadow Woods;1
+Melbourne;1
+Merritt Island;1
+Miami;1
+Hollywood;1
+Homestead;1
+Ives Estates;1
+DeLand;1
+Golden Glades;1
+Greenacres City;1
+Buenaventura Lakes;1
+Cape Coral;1
+Casselberry;1
+Clearwater;1
+Cocoa;1
+Coconut Creek;1
+Cooper City;1
+Deltona;1
+Egypt Lake-Leto;1
+Florida Ridge;1
+Fort Walton Beach;1
+Fountainebleau;1
+Davie;1
+Coral Terrace;1
+Cutler Ridge;1
+Lakeland;1
+Navarre;1
+New Smyrna Beach;1
+Norland;1
+North Fort Myers;1
+Ocoee;1
+Opa-locka;1
+Orlando;1
+Ormond Beach;1
+Palm Beach Gardens;1
+Palm Coast;1
+Palm Harbor;1
+Palm Springs;1
+Parkland;1
+Sebastian;1
+Seminole;1
+South Bradenton;1
+Spring Hill;1
+Sunrise;1
+Plantation;1
+Poinciana;1
+Port Charlotte;1
+Rockledge;1
+Safety Harbor;1
+Land O' Lakes;1
+Saint Petersburg;1
+Hastings;1
+Hibbing;1
+Lakeville;1
+Burnsville;1
+Apple Valley;1
+Austin;1
+Troy;1
+Wyoming;1
+Okemos;1
+Rochester Hills;1
+Roseville;1
+Royal Oak;1
+Southgate;1
+Port Huron;1
+Portage;1
+Muskegon;1
+Kentwood;1
+Lansing;1
+Farmington Hills;1
+Watertown;1
+Augusta;1
+Auburn Hills;1
+New Bedford;1
+West Fargo;1
+White Bear Lake;1
+Winona;1
+Kirksville;1
+Fargo;1
+Nashua;1
+Concord;1
+New Hope;1
+Northfield;1
+Moorhead;1
+Forest Lake;1
+Maplewood;1
+Rochester;1
+Saint Cloud;1
+Saint Michael;1
+Stillwater;1
+Long Branch;1
+Lakewood;1
+Morristown;1
+Ridgewood;1
+South Orange;1
+Paramus;1
+North Arlington;1
+Bloomfield;1
+Carteret;1
+Elmwood Park;1
+Cranford;1
+Irvington;1
+Iselin;1
+Fair Lawn;1
+Hillside;1
+Lewiston;1
+Saco;1
+Waterville;1
+West Scarborough;1
+Westbrook;1
+Adrian;1
+Allen Park;1
+Norton;1
+Quincy;1
+Rockland;1
+Shrewsbury;1
+Mansfield;1
+Easthampton;1
+Everett;1
+Fairhaven;1
+Fitchburg;1
+Franklin;1
+Hanover;1
+Holden;1
+Chicopee;1
+Danvers;1
+Lawrence;1
+Lowell;1
+Villa Park;1
+Wasco;1
+Washington;1
+Waukegan;1
+Roselle;1
+Round Lake Beach;1
+Shorewood;1
+Skokie;1
+South Holland;1
+Tinley Park;1
+Crown Point;1
+East Chicago;1
+Elkhart;1
+Woodridge;1
+Woodstock;1
+Gary;1
+Arlington;1
+Attleboro;1
+Valparaiso;1
+Muncie;1
+Noblesville;1
+Highland;1
+Marion;1
+Merrillville;1
+Marshalltown;1
+Newton;1
+Cedar Rapids;1
+Coralville;1
+Council Bluffs;1
+Waterloo;1
+Dubuque;1
+Fort Dodge;1
+Bellwood;1
+Belvidere;1
+Berwyn;1
+Norwich;1
+Middletown;1
+Milford;1
+New Britain;1
+New Haven;1
+New London;1
+Wethersfield;1
+Windsor;1
+West Hartford;1
+Joliet;1
+Lansing;1
+Lisle;1
+Lombard;1
+Macomb;1
+Matteson;1
+Melrose Park;1
+Morton;1
+Naperville;1
+Downers Grove;1
+Buffalo Grove;1
+Orland Park;1
+Oswego;1
+Park Forest;1
+Pekin;1
+Peoria;1
+Plainfield;1
+North Chicago;1
+North Peoria;1
+Elk Grove Village;1
+Medford;1
+Middletown;1
+Mineola;1
+Niagara Falls;1
+North Massapequa;1
+Ossining;1
+Johnson City;1
+Lynbrook;1
+Mamaroneck;1
+Pearl River;1
+Plainview;1
+Plattsburgh;1
+Rome;1
+Rotterdam;1
+Saratoga Springs;1
+Sayville;1
+Shirley;1
+New Rochelle;1
+Watertown;1
+West Babylon;1
+Brentwood;1
+Woodbridge;1
+Amherst;1
+Beacon;1
+West Orange;1
+Union City;1
+Summit;1
+Teaneck;1
+Plainfield;1
+East Northport;1
+Eastchester;1
+Cohoes;1
+Coney Island;1
+Coram;1
+Holbrook;1
+Irondequoit;1
+Islip;1
+Ithaca;1
+Elmont;1
+Freeport;1
+Glen Cove;1
+Sidney;1
+Piqua;1
+Rocky River;1
+North Royalton;1
+Norwalk;1
+North Canton;1
+Medina;1
+New Philadelphia;1
+Troy;1
+Sylvania;1
+Tallmadge;1
+Bethel Park;1
+Youngstown;1
+Allison Park;1
+Altoona;1
+Back Mountain;1
+Avon Lake;1
+Barberton;1
+Berea;1
+Cleveland;1
+Yonkers;1
+Westbury;1
+Ashland;1
+Ashtabula;1
+Austintown;1
+Lakewood;1
+Marysville;1
+Mansfield;1
+Garfield Heights;1
+Green;1
+Hilliard;1
+Radnor;1
+Monroeville;1
+Erie;1
+Lancaster;1
+Lansdale;1
+Lebanon;1
+Limerick;1
+West Mifflin;1
+Wilkes-Barre;1
+Warwick;1
+Portsmouth;1
+Bristol;1
+Coventry;1
+Cranston;1
+Wausau;1
+Stevens Point;1
+La Crosse;1
+Neenah;1
+Flagstaff;1
+Fortuna Foothills;1
+Wheeling;1
+Buckeye;1
+Bullhead City;1
+Janesville;1
+Fitchburg;1
+Germantown;1
+Beloit;1
+Cudahy;1
+Woonsocket;1
+Burlington;1
+Rutland;1
+South Burlington;1
+Beaumont;1
+Bellflower;1
+Beverly Hills;1
+Brawley;1
+Burbank;1
+Campbell;1
+Canoga Park;1
+Chula Vista;1
+Prescott Valley;1
+Marana;1
+Maricopa;1
+Tanque Verde;1
+Tempe;1
+Avocado Heights;1
+Dublin;1
+East Rancho Dominguez;1
+Elk Grove;1
+Escondido;1
+Cypress;1
+Danville;1
+Delano;1
+Dinuba;1
+Coronado;1
+Costa Mesa;1
+Culver City;1
+Corcoran;1
+Hermosa Beach;1
+Hollister;1
+Glendora;1
+Greenfield;1
+Hacienda Heights;1
+Hawthorne;1
+Folsom;1
+Gardena;1
+Fountain Valley;1
+Fremont;1
+Fresno;1
+Gardner;1
+New Castle;1
+Plainfield;1
+Seymour;1
+Shelbyville;1
+Evansville;1
+Decatur;1
+Newton;1
+Olathe;1
+Salina;1
+Leawood;1
+Florence;1
+Georgetown;1
+Highview;1
+Erlanger;1
+Independence;1
+Jeffersontown;1
+Madisonville;1
+Meads;1
+Murray;1
+Marrero;1
+Bayou Cane;1
+Estelle;1
+Hammond;1
+Harvey;1
+Houma;1
+Saint Matthews;1
+Valley Station;1
+Winchester;1
+Jacksonville;1
+Marion;1
+Mattoon;1
+Mount Vernon;1
+Belleville;1
+Cahokia;1
+Snellville;1
+Tucker;1
+Union City;1
+Redan;1
+North Druid Hills;1
+Saint Marys;1
+McDonough;1
+Decatur;1
+Canton;1
+Kingsland;1
+Griffin;1
+Duluth;1
+Evans;1
+Wright;1
+Acworth;1
+The Crossings;1
+Alpharetta;1
+Americus;1
+West Melbourne;1
+West Palm Beach;1
+West Pensacola;1
+West and East Lealman;1
+Vero Beach;1
+Wellington;1
+Wesley Chapel;1
+Columbus;1
+Greenwood;1
+Ocean Springs;1
+Sedalia;1
+Spanish Lake;1
+Springfield;1
+University City;1
+Webster Groves;1
+Burlington;1
+Carrboro;1
+Laurel;1
+Albemarle;1
+Indian Trail;1
+Jacksonville;1
+Kannapolis;1
+Kernersville;1
+Kinston;1
+Lenoir;1
+New Bern;1
+Atlantic City;1
+Wilson;1
+Matthews;1
+Monroe;1
+Henderson;1
+Hickory;1
+Statesville;1
+Waldorf;1
+Arnold;1
+Ballwin;1
+Takoma Park;1
+Seabrook;1
+Severn;1
+Rossville;1
+Saint Charles;1
+Oxon Hill;1
+Perry Hall;1
+Pikesville;1
+Potomac;1
+Joplin;1
+Lemay;1
+Maryland Heights;1
+Poplar Bluff;1
+Raymore;1
+Kirkwood;1
+East Independence;1
+Farmington;1
+Opelousas;1
+Sulphur;1
+Terrytown;1
+Arbutus;1
+Cloverly;1
+Clinton;1
+Camp Springs;1
+Carney;1
+Bowie;1
+Ballenger Creek;1
+Damascus;1
+College Park;1
+Crofton;1
+Elkton;1
+Elkridge;1
+Gaithersburg;1
+Germantown;1
+Hagerstown;1
+Hanover;1
+Hunt Valley;1
+Hyattsville;1
+Lochearn;1
+North Bel Air;1
+Athens;1
+Centerville;1
+Cincinnati;1
+Fairfield;1
+Huber Heights;1
+Lebanon;1
+Middletown;1
+Maple Shade;1
+Sicklerville;1
+South Vineland;1
+Ada;1
+Altus;1
+Bartlesville;1
+Xenia;1
+Riverside;1
+Springfield;1
+Ocean Acres;1
+Oxford;1
+Ponce;1
+Aiken;1
+Charleston;1
+Aguadilla;1
+Candelaria;1
+Cataño;1
+Guayama;1
+Manatí;1
+Hanover;1
+Springfield;1
+West Chester;1
+Oklahoma City;1
+Chickasha;1
+Del City;1
+Midwest City;1
+Moore;1
+Bixby;1
+Cleveland;1
+Brentwood;1
+Brentwood Estates;1
+Lexington;1
+Simpsonville;1
+Socastee;1
+New South Memphis;1
+Franklin;1
+Jackson;1
+Kingsport;1
+Angleton;1
+Atascocita;1
+Bedford;1
+Springfield;1
+Tullahoma;1
+Alice;1
+Colleyville;1
+Conroe;1
+Corinth;1
+Carrollton;1
+Benbrook;1
+Cleburne;1
+Cedar Park;1
+Channelview;1
+Killingly Center;1
+Madison;1
+Manchester;1
+Danbury;1
+Cleveland Heights;1
+East Hartford;1
+Glastonbury;1
+Franklin;1
+Chillicothe;1
+Glendale Heights;1
+North Andover;1
+Sterling;1
+Rose Hill;1
+Waynesboro;1
+Tuckahoe;1
+Clarksburg;1
+Martinsburg;1
+West Springfield;1
+Woodlawn;1
+Saint Croix;1
+Colonial Heights;1
+Centreville;1
+Charlottesville;1
+Bristol;1
+East Hampton;1
+Hopewell;1
+Hybla Valley;1
+Short Pump;1
+South Suffolk;1
+Springfield;1
+Reston;1
+Petersburg;1
+Portsmouth Heights;1
+Montclair;1
+Wylie;1
+Alexandria;1
+Baileys Crossroads;1
+Watauga;1
+Weatherford;1
+Weslaco;1
+Sugar Land;1
+Texarkana;1
+Stafford;1
+Universal City;1
+Southlake;1
+Pecan Grove;1
+Paris;1
+Pasadena;1
+North Richland Hills;1
+Saginaw;1
+Euless;1
+Flower Mound;1
+Frisco;1
+Grapevine;1
+Haltom City;1
+Harker Heights;1
+Hurst;1
+Lufkin;1
+Mansfield;1
+Jollyville;1
+Keller;1
+Killeen;1
+La Porte;1
+Lancaster;1
+Nacogdoches;1
+McAllen;1
