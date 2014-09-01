@@ -1,0 +1,46 @@
+\subsubsection{Zuverlässigkeit des Nutzer-Standortes}
+
+				Es soll die Frage beantwortet werden ob der Nutzer-Standort mit dem tatsächlichen Aufenthaltsort des Nutzers übereinstimmt.
+				Diese Frage ist schwierig und nicht mit absoluter Sicherheit zu beantworten.
+
+				Vergleicht man den aufgelösten Nutzer-Standort mit den geografischen Koordinaten in einem Tweet können folgende Problem auftreten:
+
+				Betrachtet man den Nutzer-Standort, so ist es schwierig diesen korrekt auf eine Georeferenz aufzulösen. 
+				Zudem ist nicht klar ob der Nutzer-Standort tatsächlich dem
+
+				Es müssen hierzu einige Annahmen getroffen werden.
+
+
+				Um diese Frage beantworten zu können sollen die geografischen Koordinaten eines Tweets mit den 
+
+				Zunächst ist der Nutzer-Standort als solcher unsicher. 
+				Selbst wenn er richtig aufgelöst werden würde, kann der Nutzer sich zum Zeitpunkt des Absendens eines Tweets an einer anderen Position befunden haben.
+				Befindet sich der Nutzer auf Reisen oder arbeitet er in einer anderen Stadt, stimmen die geografischen Koordinaten des Tweets nicht mit den Koordinaten des angegebenen Ortes überein.
+
+				Der Nutzer kann aber auch absichtlich einen falschen Standort angeben oder bei einem Umzug schlicht vergessen haben den Nutzer-Standort anzupassen.
+
+				Zuletzt kann die manuell bestimmte Position fehlerhaft sein.
+				Bei Doppeldeutigkeiten oder ähnlichem ist es schwierig zu entscheiden welche Georeferenz gewählt werden soll.
+
+				In der durchgeführten Untersuchung wurde auch die Entfernung der manuell bestimmten Stadt zu den tatsächlichen Tweet Koordinaten bestimmt.
+				Auf Städteebene wurden 60\% der Tweets in weniger als 24 Kilometern Entfernung von der manuell ermittelten Stadt abgesetzt.
+				25\% der Tweets sind aber mehr als 239 Kilometer von der manuell ermittelten Stadt entfernt. 
+				Der Median liegt bei 11 Kilometern.
+				In Tabelle \ref{tab:distancesP} sind weitere Informationen über die Distanzen zusammengetragen.
+
+				\begin{table}[h]
+				\centering
+				\caption{Distanzen}
+				\label{tab:distancesP}
+				\begin{tabular}{|l|l|}
+				\hline
+				Wert 		 & Entfernung in km \\ \hline \hline
+				Median       & 11,5  \\ \hline
+				0,25 Quantil & 3,1   \\ \hline
+				0,50 Quantil & 11,5  \\ \hline
+				0,60 Quantil & 24,3  \\ \hline
+				0,75 Quantil & 239,0 \\ \hline
+				\end{tabular}
+				\end{table}
+
+				%6625.059088      11491.29743       24281.1066      106942.0694

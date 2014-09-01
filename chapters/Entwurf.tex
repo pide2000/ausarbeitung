@@ -4,10 +4,11 @@
 	Es soll nun ein Verfahren zur Geolokalisierung von Twitter-Nutzern vorgestellt werden.
 	Dabei soll der Standort des Nutzers aus Informationen des Nutzer-Profils bestimmt werden.
 
-	Im ersten Kapitel wird ganz allgemein auf die Geolokalisierung eingegangen und die nötigen Komponenten werden identifiziert und benannt.
+	Im ersten Kapitel wird ganz allgemein auf die Geolokalisierung eingegangen.
+	Es werden die benötigten Komponenten für eine Geolokalisierung identifiziert und benannt.
 	Hierzu wird betrachtet was eine Geolokalisierung leisten muss.
 	Danach wird darauf eingegangen wie dies mit Hilfe einer geeigneten Datenbasis umgesetzt werden kann.
-	Zum Schluss wird die Geolokalisierung unter Zuhilfenahme einer Datenbasis an einem Beispiel erläutert.
+	Zum Schluss wird ein generelles Vorgehen zur Geolokalisierung, unter Zuhilfenahme einer Datenbasis, an einem Beispiel erläutert.
 
 	Für die Geolokalisierung eines Twitter-Nutzers werden die Datenwerte des Nutzer-Standortes und der Nutzer-Zeitzone verwendet.
 	Diese werden eingehend untersucht.
@@ -176,44 +177,42 @@
 
 			Sollte es sich bei dem eingegebenen Wert um Toponyme handeln, sind alle in Kapitel \ref{sec:ToponymeInGeografischenIndikatoren} erwähnten Probleme zu erwarten.
 			Durch die unkontrollierte Eingabe sind tatsächlich alle möglichen Toponyme denkbar.
-			Durch die unkontrollierte Eingabe im Nutzer-Standort können auch geografische Indikatoren mit mittelbarem geografischen Bezug auftauchen.
+			Des weiteren können auch geografische Indikatoren mit mittelbarem geografischen Bezug auftauchen.
 			Aber auch Werte die keinen geografischen Bezug aufweisen sind möglich.	
 
-			Hier soll nun der Nutzer-Standort genauer betrachtet werden.
-			Erst sollen einige allgemeine Kennzahlen zum Nutzer-Standort betrachtet werden.
-			Hecht et al. haben in \cite{Hecht2011} den Nutzer-Standort eingehend untersucht, die Ergebnisse sollen hier aufgegriffen werden.
-			Neben den Ergebnissen von Hecht et al. werden aber auch eigene Ergebnisse präsentiert.
-			Danach wird der Inhalt des Nutzer-Standortes genauer betrachtet werden.
+			Zuerst sollen einige allgemeine Kennzahlen zum Nutzer-Standort betrachtet werden.
+			Hecht et al. haben in \cite{Hecht2011} den Nutzer-Standort von 10000 Twitter-Nutzern manuell untersucht.
+			Um zu bestimmen ob ein Nutzer-Standort geografischen Bezug hat, wurden alle zur Verfügung stehenden Hilfsmittel verwendet.
+			Dabei wurden allerdings nur Nutzer aus den USA betrachtet.
+
+			Im Zuge der vorliegenden Arbeit wurde eine eigene Untersuchung von 1000 Nutzer-Standorten verschiedener Nutzer vorgenommen.
+			Dazu wurden 1000 Tweets untersucht.
+			Die Tweets haben eine zusätzliche Georeferenz in Form von geografischen Koordinaten.
+			Diese geben die Position an, von der eine Tweet versendet wurde.
+			Für jeden Tweet wurde bestimmt ob der Nutzer-Standort einen geografischen Bezug hat, und darauf basierend eine Georeferenz zugewiesen.
+			Als Hilfsmittel hierfür wurden die Ortsverzeichnisse von Google-Map und Geonames.org verwendet.
+			Es wurde keinerlei Einschränkung bezüglich der Herkunft des Twitter-Nutzers oder der verwendeten Sprache und des verwendeten Alphabets gemacht.
+
+			Zum Schluss werden die Datenwerte im Nutzer-Standort anhand von Beispielen betrachtet.
+
 
 			\subsubsection{Geografischer Bezug des Nutzer-Standorts} 
 				
 				Hecht et al. konnten den Datenwerten in den Nutzer-Standorten in 80\% Prozent der Fälle einen geografischen Bezug feststellen.
 				In den restlichen 20\% der Fälle konnte im Nutzer-Standort kein geografischer Bezug festgestellt werden. 
-				Die Untersuchung wurde manuell vorgenommen und es durften alle zur Verfügung stehenden Mittel zur Analyse der Daten verwendet werden. 
-				Hecht et al. haben allerdings ausschließlich Daten untersucht die nachweislich aus den USA stammten. 
-				Es wurden dazu 10000 Nutzer-Standorte analysiert.
 
-				Im Rahmen der vorliegenden Arbeit wurde der Nutzer-Standort von 1000 Twitter-Nutzern ebenfalls manuell untersucht. 
-				Dabei wurde keinerlei Einschränkung zur Herkunft der Twitter-Nutzer gemacht.
-				Um zu prüfen ob ein geografischer Bezug vorliegt wurden Ortsverzeichnisse von Google-Maps und Geonames.org verwendet.
-				Mit Hilfe des geonames.org Datensatzes wurde dann eine Georeferenz zugeordnet.
-				Sowohl Google-Maps als auch geonames.org liefern Ergebnisse zu Nutzer-Standorten in verschiedenen Alphabeten und Sprachen.
-				Nutzer-Standorte in unbekannten Alphabeten oder Sprachen konnten somit ebenfalls untersucht werden.
-				Es konnte dabei in 76\% der Fälle ein geografischer Bezug nachgewiesen werden. 
+				In den eigenen Untersuchungen konnten 76\% der Nutzer-Standorte ein geografischer Bezug nachgewiesen werden. 
 
-				In den restlichen 24\% der Fälle konnte kein geografischer Bezug mit Hilfe der Datenbanken nachgewiesen werden. 
+				In den restlichen 24\% der Fälle konnte kein geografischer Bezug mit Hilfe der Ortsverzeichnisse nachgewiesen werden. 
 				Dies bedeutet nicht, dass grundsätzlich kein geografischer Bezug vorhanden ist. 
 				Es konnte lediglich anhand der genutzten Quellen kein geografischer Bezug hergeleitet werden.
 				Beispielsweise wurde "'Swag City"' nicht zugewiesen, denn der Spitzname für die Stadt "'Ann Arbor"' war in den Datenbanken nicht hinterlegt. 
 
 				
 			\subsubsection{Genauigkeit der geografischen Angaben}
-
-				In ca. 80\% der Fälle kann bei einer Angabe des Nutzer-Standortes davon ausgegangen werden, dass dieser unmittelbaren geografischen Bezug hat.
-				Da der Nutzer beliebige Eingaben machen kann, ist nicht sicher wie genau ein solcher unmittelbarer geografischer Bezug ist. 
 				
 				Hecht et al. analysierten ihre Daten darauf wie genau die Nutzer ihren Standort angeben.
-				Dabei ist wiederum zu beachten, dass die Daten aus den USA stammen und deshalb die Verwaltungseinheiten der USA zugrunde gelegt wurden.
+				Dabei ist zu beachten, dass die Daten aus den USA stammen und deshalb die Verwaltungseinheiten der USA zugrunde gelegt wurden.
 				
 				Die Genauigkeiten der Standortangabe nach Hecht et al. sind in \ref{tab:genauigkeitenHecht} angegeben. 
 
@@ -263,62 +262,20 @@
 				\label{tab:genauigkeitenEigene} 
 				\end{table} 
 
-
-				Es ist also nicht sicher welche geografische Hierarchieebene im Nutzer-Standort angegeben wird. 
+				Es ist nicht sicher welche geografische Hierarchieebene im Nutzer-Standort angegeben wird. 
 
 				Die unterschiedlichen Ergebnisse zwischen der eigenen Untersuchung und den Ergebnissen von Hecht et al. können dadurch Zustande kommen, dass in der vorliegenden Arbeit Twitter-Nutzer aus der ganzen Welt untersucht wurden.
 				Aber auch der zeitliche Abstand zwischen den beiden Untersuchungen kann dafür verantwortlich sein.  
 
-			\subsubsection{Stimmt der tatsächliche Standort mit dem angegeben überein?}
-
-				Diese Frage ist grundsätzlich nur schwer zu beantworten.
-				Die einzige Möglichkeit besteht darin Tweets mit geografischen Angaben zu untersuchen.
-				Dabei können aber Probleme auftreten. 
-				
-				Der Nutzer-Standort gibt oft nicht den Aufenthaltsort sondern den Heimatort an. 
-				Befindet sich der Nutzer auf Reisen oder arbeitet er in einer anderen Stadt, stimmen die geografischen Koordinaten des Tweets nicht mit den Koordinaten des angegebenen Ortes überein.
-				Dies könnte in einige Fällen gelöst werden indem mehrere Tweets desselben Nutzers über einen längeren Zeitraum untersucht werden. 
-				Um den eigentlichen Wohnort sollte dadurch eine Häufung an abgesetzten Tweets auftreten.
-				Damit kann ein genauerer Standort bestimmt werden.
-
-				Der Nutzer kann aber auch absichtlich einen falschen Standort angeben oder bei einem Umzug schlicht vergessen haben den Nutzer-Standort anzupassen.
-
-				In der durchgeführten Untersuchung wurde auch die Entfernung der manuell bestimmten Stadt zu den tatsächlichen Tweet Koordinaten bestimmt.
-				Auf Städteebene wurden 60\% der Tweets in weniger als 24 Kilometern Entfernung von der manuell ermittelten Stadt abgesetzt.
-				25\% der Tweets sind aber mehr als 239 Kilometer von der manuell ermittelten Stadt entfernt. 
-				Der Median liegt bei 11 Kilometern.
-				In Tabelle \ref{tab:distancesP} sind weitere Informationen über die Distanzen zusammengetragen.
-
-				\begin{table}[h]
-				\centering
-				\caption{Distanzen}
-				\label{tab:distancesP}
-				\begin{tabular}{|l|l|}
-				\hline
-				Median       & 11,5  \\ \hline
-				0,25 Quantil & 3,1   \\ \hline
-				0,50 Quantil & 11,5  \\ \hline
-				0,60 Quantil & 24,3  \\ \hline
-				0,75 Quantil & 239,0 \\ \hline
-				\end{tabular}
-				\end{table}
-
-				%6625.059088      11491.29743       24281.1066      106942.0694
 
 
 			\subsubsection{Partieller geografischer Bezug des Datenwertes im Nutzer-Standort} \label{subsec:partiellerGeografischerBezug} 
 
-				In einigen Nutzer-Standorten konnte festgestellt werden, dass nur Teile der Einträge geografischen Bezug haben. 
-				Die Nutzer geben weitere Informationen an, diese haben aber keinen geografischen Bezug. 
-				In der folgenden Liste sind einige Einträge von Nutzer-Standorten aufgelistet. 
-
-				\begin{enumerate}
-					\item 11th Dimension | California
-					\item between here and there - Miami
-				\end{enumerate}
-
+				In einigen Nutzer-Standorten konnte festgestellt werden, dass nur Teile des eingegebenen Datenwertes geografischen Bezug haben. 
+				Es werden oft weitere Informationen angegeben die keinen geografischen Bezug haben. 
+				Als Beispiel hierfür sollen "'11th Dimension | California"' und "'between here and there - Miami"' betrachtet werden.
 				Im ersten Fall kann für "'California"' ein unmittelbarer geografischer Bezug festgestellt werden.
-				"'11th"' Dimension hat hier offensichtlich keinen geografischen Bezug.
+				"'11th Dimension"' hat hier offensichtlich keinen geografischen Bezug.
 				Im zweiten Fall ist die Aussage "'between here and there"' ohne geografischen Bezug.
 				"'Miami"' kann jedoch als Bezug zur Stadt Miami in Florida gebracht werden.
 				
@@ -326,8 +283,8 @@
 
 			\subsubsection*{Widersprüchliche Datenwerte im Nutzer-Standort} \label{subsec:wiederspruechlicheBezuege} 
 
-				Es existieren auch Einträge für Nutzer-Standorte welche mehrere widersprüchliche Angaben machen.
-				Dies bedeutet es werden zwei oder mehr Datenwerte mit geografischem Bezug angegeben, die auf unterschiedliche Georeferenzen verweisen.
+				Es existieren auch Datenwerte in denen mehrere widersprüchliche Angaben gemacht werden.
+				Dies bedeutet es werden zwei oder mehr Datenwerte mit geografischem Bezug angegeben, die auf unterschiedliche geografische Objekte verweisen.
 
 				Auch hier sollen einige Beispiele genannt werden:
 
@@ -421,20 +378,28 @@
 				Der Nutzer könnte eine bewusste Fehleingabe machen oder aber die Zeitzone nicht wählen.
 				Der Standardwert der Nutzer-Zeitzone ist "'Pacific Time (US and Canada)"'.
 
-				In Abbildung \ref{img:gephiTimezones} wurden Tweets anhand ihres Längen- und Breitengrades platziert.
+				In Abbildung \ref{img:usTimezones} wurden Tweets anhand ihres Längen- und Breitengrades platziert.
 				Jeder Punkt in der Abbildung entspricht einem Tweet.
 				Es wurden nur Tweets aus den USA ausgewählt.
 				Anhand der Nutzer-Zeitzone zu jedem Tweet wurden die Punkte eingefärbt.
 				Folgende Farben wurden gewählt:
 
 				\begin{itemize}
-				 	\item Pacific Time Blau
-				 	\item Eastern Time	Rot
-				 	\item Central Time Grün
+				 	\item Pacific Time Rot
+				 	\item Eastern Time	Grün/Gelb
+				 	\item Central Time Blau
 				 	\item Mountain Time Pink 
 				 \end{itemize} 
 
-				 Die Zeitzonen sind durch die Farben gut zu erkennen. 
+				 \begin{figure}[h!]
+					\begin{center}
+						\includegraphics[scale=0.5]{usTimezones.pdf}
+						\caption{Tweets, abhängig der Zeitzone eingefärbt}
+						\label{img:usTimezones}
+					\end{center}
+				\end{figure}	
+
+				 Die Zeitzonen sind an den Farben gut zu erkennen. 
 				 Lediglich die dünn besiedelte Region der Mountain Time kann nur an einigen Ballungszentren erkannt werden. 
 				 Grundsätzlich scheint der Großteil der Angaben aber korrekt zu sein.
 
@@ -450,48 +415,45 @@
 
 			\todo{Fazit checken: HIER} 
 			In ca. 80\% der Fälle kann der Nutzer-Standort tatsächlich einen Hinweis auf eine Georeferenz liefern.
-			Der Nutzer-Standort kann also in vielen Fällen einen Hinweis auf die Herkunft des Twitter-Nutzers geben.
-			Der Nutzer-Standort eignet sich somit gut als geografischer Indikator. Allerdings sind die Eingaben nicht standardisiert und können somit nicht ohne Vorverarbeitung verwendet werden.
-			Wie oben dargestellt kann der Nutzer-Standort nur partiellen geografischen Bezug haben oder mehrere Informationen verschiedener geografischer Hierarchieebenen beinhalten. 
-			Auch können die Datenwerte im Nutzer-Standort keinerlei geografischen Bezug aufweisen.
+			Die Eingaben sind allerdings nicht standardisiert und können somit nicht ohne Vorverarbeitung verwendet werden.
+			Wie oben dargestellt kann der Nutzer-Standort nur partiellen geografischen Bezug haben.
+			Es können mehrere Informationen verschiedener geografischer Hierarchieebenen im Datenwert auftauchen. 
+			Und die Datenwerte im Nutzer-Standort können keinerlei geografischen Bezug aufweisen.
 			Dies macht es grundsätzlich schwierig die Datenwerte im Nutzer-Standort direkt als geografischen Indikator zu verwenden.
 			
 			Ist ein geografischer Bezug des Nutzer-Standortes nachzuweisen, handelt es sich bei dem Eintrag in den meisten Fällen um ein Toponym.
-			Durch die durchgeführte Untersuchung konnte gezeigt werden, dass ca. 76\% der Nutzer-Standorte mit einem geografischen Bezug, auf Toponyme zurückzuführen sind.
+			Bei der durchgeführten Untersuchung wurden nur Ortsverzeichnisse zur Bestimmung eines geografischen Bezugs verwendet.
+			In Ortsverzeichnissen sind nur Toponyme hinterlegt es kann deshalb davon ausgegangen werden, dass ca. 76\% der Nutzer-Standorte auf Toponyme zurückzuführen sind.
 
-			Zusammenfassend kann gesagt werden, dass der Nutzer-Standort häufig einen geografischen Bezug aufweist und es sich in diesen Fällen um Toponyme handelt.
-			Aufgrund der völlig freien Eingabe durch den Nutzer ergeben sich bei der Auswertung der Nutzer-Standorte jedoch einige Probleme die gelöst werden müssen.
+			Widersprüchliche Angaben, geografische Hierarchien und partieller geografischer Bezug können bei der Geolokalisierung zu Problemen führen.
+			Diese entstehen meist dadurch, dass der Datenwert nicht nur eine konkrete, sondern mehrere Angaben beinhaltet.
+			
+			Um den Problemen zu begegnen sollen die Datenwerte im Nutzer-Standort einer Vorverarbeitung unterzogen werden. 
+			Dadurch sollen möglichst viele einzelne Informationen aus dem Nutzer-Standort extrahiert werden.
 
-			Grundsätzlich kann der Nutzer-Standort als geografischer Indikator genutzt werden. 
-			Durch die freie Eingabe ist allerdings nicht sicher ob die Datenwerte des Nutzer-Standorts geografischen Bezug aufweisen oder nicht.
-			Es ist möglich das diese sowohl unmittelbaren als auch mittelbaren geografischen Bezug aufweisen.
-			Hinzu kommen die Probleme bei der Verwendung von Toponymen als geografische Indikatoren aus Kapitel \ref{sec:ToponymeInGeografischenIndikatoren}.
-			Durch die mögliche Angabe von mehreren geografischen Indikatoren in einem Nutzer-Standort ist es sinnvoll vor der Geolokalisierung eine Vorverarbeitung durchzuführen welche den Nutzer-Standort in mehrere potenzielle geografische Indikatoren aufteilt. 
-			Dadurch sollen möglichst viele zusätzliche Informationen aus dem Nutzer-Standort extrahiert werden.
-			Zudem können so Datenwert mit geografischem Bezug von Datenwerten ohne geografischen Bezug getrennt untersucht werden.
+			Es können Beispielsweise Datenwerte mit geografischem Bezug von Datenwerten ohne geografischen Bezug getrennt untersucht werden.
+
 			Sollten Mehrdeutigkeiten im Nutzer-Standort auftauchen können diese teilweise durch die Hinzunahme der Nutzer-Zeitzone aufgelöst werden.
-
-			Eine Lösung besteht darin die im Twitter-Umfeld genutzten Datenwerte für den Nutzer-Standort zu lernen.
-			Damit ist man nicht abhängig von Ortsverzeichnissen, welche potenziell unvollständig sind oder in denen domänenspezifische Begriffe fehlen.
-			Auch geografische Indikatoren mit mittelbarem geografischen Bezug könnten dadurch eingelernt werden.
 
 	\section{Verfahren zum einlernen geografischer Indikatoren am Beispiel von Twitter} 
 
-		Aus einer Tweet-Sammlung sollen die genutzten geografischen Indikatoren und deren Zuordnung zu einer Georeferenz automatisch gelernt werden.
-		Es soll eine Georeferenz-Basis erzeugt werden, welche es ermöglicht dem genutzten geografischen Indikatoren eine Georeferenz zuzuweisen. 
+		Die Probleme bei der Nutzung von Ortsverzeichnissen sind meist auf deren Unvollständigkeit zurückzuführen. 
+		Um dies zu umgehen sollen die verwendeten Datenwerte aus dem Nutzer-Standort automatisch eingelernt werden.
+		Es soll hier eine Georeferenz-Basis erzeugt werden, welche es ermöglicht den genutzten Datenwerten im Nutzer-Standort eine Georeferenz zuzuweisen. 
 
 		Der Vorteil besteht darin, dass eine domänenspezifische Georeferenz-Basis geschaffen wird welche potenziell mehr geografische Indikatoren zuordnen kann als ein normales Ortsverzeichnis.
-		Es können dadurch domänenspezifische Eigenheiten berücksichtigt werden. 
-		Auch domäneninterne Begriffe sollen hierdurch gelernt werden können. 
+		Es können dadurch domänenspezifische Eigenheiten bei der Verwendung von Toponymen berücksichtigt werden. 
+		Auch domäneninterne Begriffe sollen hierdurch gelernt werden können.
 
-		Es ist zunächst nötig die genutzten geografischen Indikatoren einer Vorverarbeitung zu unterziehen. 
-		Insbesondere aus dem Nutzer-Standort können durch eine Vorverarbeitung weitere Informationen extrahiert werden.
-		Des weiteren wird die in Abschnitt \ref{sec:generelleStruktur} vorgestellte Struktur der Georeferenz-Basis angepasst und erweitert. 
-		Dabei wird am grundsätzlichen Prinzip nichts geändert, es wird nach wie vor einem Referenzwert eine Georeferenz zugewiesen.
-		Die Referenzwerte leiten sich dabei aus den geografischen Indikatoren ab. 
+		In einem ersten Unterkapitel soll der Ablauf und die nötigen Daten zur Umsetzung eines solchen Lernverfahrens erläutert werden.
+
+		Danach wird auf die Vorverarbeitung des Nutzer-Standortes eingegangen.
+		Es werden basierend auf den erzeugten Referenzwerten und den zugeordneten Georeferenzen absolute Häufigkeiten bestimmt.
+		Des weiteren wird die in Abschnitt \ref{sec:generelleStruktur} vorgestellte Struktur der Georeferenz-Basis angepasst und erweitert.
+		Dabei wird am grundsätzlichen Prinzip nichts geändert, es wird nach wie vor einem Referenzwert eine Georeferenz zugewiesen. 
 
 		\subsection{Vorverarbeitung des Nutzer-Standortes und der Nutzer-Zeitzone} \label{subsec:VorverarbeitungStandortZeitzone} 
-			
+			Es ist zunächst nötig die genutzten geografischen Indikatoren einer Vorverarbeitung zu unterziehen. 
 			Ziel ist es aus dem Nutzer-Standort möglichst viele Informationen zu extrahieren und etwaige Probleme zu beseitigen.
 			In der folgenden Liste sind einige Nutzer-Standorte angegeben. 
 			Anhand dieser Liste sollen die Vorverarbeitungsschritte demonstriert werden.
