@@ -30,7 +30,7 @@
 		Im Gegensatz zu Abbildung \ref{img:geogIndi} ist kein direkter Verweis vom geografischen Objekt zu einer Georeferenz vorhanden. 
 		Stattdessen wird mit Hilfe der geografischen Indikatoren a und b durch die Geolokalisierung eine Georeferenz zugeordnet.
 
-		\begin{figure}[h!]
+		\begin{figure}[!ht]
 		\begin{center}
 		\includegraphics[scale=1.0]{geolokalisierung.pdf}
 		\caption{Geografische Hierarchieebenen}
@@ -73,7 +73,7 @@
 		Der Datenwert "'Karlsruhe"' wird dabei auf eine Georeferenz aufgelöst indem eine Abfrage an die Georeferenz-Basis durchgeführt wird.
 		Die zurückgelieferte Georeferenz wird dem Datensatz zugeordnet.
 
-		\begin{figure}[h!]
+		\begin{figure}[!ht]
 		\begin{center}
 		\includegraphics[scale=1.0]{geolokalisierungBsp.pdf}
 		\caption{Geolokalisierung mit Referenz-Basis}
@@ -87,7 +87,7 @@
 	\section{Minimale Struktur einer Georeferenz-Basis zur Geolokalisierung} \label{sec:generelleStruktur} 
 		
 		Nach Abbildung \ref{img:geolokalisierung} wird bei der Geolokalisierung einem oder mehreren geografischen Indikatoren eine Georeferenz zugewiesen.
-		In der einfachsten Variante wird lediglich ein einziger geografischer Indikator an die Georeferenzierung übergeben, und genau eine Georeferenz zurückgegeben.
+		In der einfachsten Variante wird lediglich ein einziger geografischer Indikator an die Geolokalisierung übergeben, und genau eine Georeferenz zurückgegeben.
 		Die Geolokalisierung muss also zu einem gegebenen geografischen Indikator eine Georeferenz bestimmen können.
 		Dies führt zu einer ersten einfachen Struktur für die Georeferenz-Basis.	
 
@@ -174,6 +174,19 @@
 			Es ist naheliegend, dass der Nutzer seinen Standort mit Hilfe eines Toponyms angibt.
 			Der Nutzer-Standort wird jedoch über ein Freitext-Feld abgefragt und direkt abgespeichert.
 			Dieser muss also nicht zwangsweise Werte mit geografischem Bezug enthalten. 
+			In Abbildung \ref{img:twitterLocation} ist der Dialog zur Nutzer-Standort Eingabe in den Twitter-Profil Einstellungen abgebildet.
+
+
+			\begin{figure}[!ht]
+					\begin{center}
+						\includegraphics[scale=0.5]{twitterUL.png}
+						\caption{Eingabe des Nutzer-Standortes}
+						\label{img:twitterLocation}
+					\end{center}
+				\end{figure}	
+				%Quelle: http://www.twitter.com
+
+
 
 			Sollte es sich bei dem eingegebenen Wert um Toponyme handeln, sind alle in Kapitel \ref{sec:ToponymeInGeografischenIndikatoren} erwähnten Probleme zu erwarten.
 			Durch die unkontrollierte Eingabe sind tatsächlich alle möglichen Toponyme denkbar.
@@ -279,7 +292,7 @@
 				Im zweiten Fall ist die Aussage "'between here and there"' ohne geografischen Bezug.
 				"'Miami"' kann jedoch als Bezug zur Stadt Miami in Florida gebracht werden.
 				
-				Es können also auch nur Teile des Nutzer-Standorts für eine Georeferenzierung von Nutzen sein.
+				Es können also auch nur Teile des Nutzer-Standorts für eine Geolokalisierung von Nutzen sein.
 
 			\subsubsection*{Widersprüchliche Datenwerte im Nutzer-Standort} \label{subsec:wiederspruechlicheBezuege} 
 
@@ -361,7 +374,7 @@
 				Dabei entsprechen die Grenzen der Region nicht unbedingt den Landesgrenzen oder den Grenzen sonstiger Verwaltungseinheiten. 
 				In Abbildung \ref{img:timezones} sind die Zeitzonen der Erde dargestellt.
 
-				\begin{figure}[h!]
+				\begin{figure}[!ht]
 					\begin{center}
 						\includegraphics[scale=0.5]{zeitzonen_weltkarte.jpg}
 						\caption{Zeitzonen der Erde.}
@@ -373,6 +386,17 @@
 				Die Nutzer-Zeitzone kann in Twitter über eine Liste gewählt werden.
 				Der Wert der Nutzer-Zeitzone stellt deshalb garantiert eine Zeitzone dar.
 				Es ist dem Nutzer nicht möglich einen Wert einzugeben der nicht einer Zeitzone entspricht.
+				In Abbildung \ref{img:twitterTZ} ist der Auswahldialog in den Twitter-Profil Einstellungen zu sehen.
+
+
+				\begin{figure}[!ht]
+					\begin{center}
+						\includegraphics[scale=0.5]{tz.png}
+						\caption{Zeitzonen Auswahldialog}
+						\label{img:twitterTZ}
+					\end{center}
+				\end{figure}	
+				%Quelle: http://www.twitter.com
 
 				Allerdings ist nicht gesichert, das der angegebene Wert auch der Zeitzone entspricht in der sich der Nutzer aufhält.
 				Der Nutzer könnte eine bewusste Fehleingabe machen oder aber die Zeitzone nicht wählen.
@@ -381,17 +405,24 @@
 				In Abbildung \ref{img:usTimezones} wurden Tweets anhand ihres Längen- und Breitengrades platziert.
 				Jeder Punkt in der Abbildung entspricht einem Tweet.
 				Es wurden nur Tweets aus den USA ausgewählt.
-				Anhand der Nutzer-Zeitzone zu jedem Tweet wurden die Punkte eingefärbt.
-				Folgende Farben wurden gewählt:
+				Anhand der Nutzer-Zeitzone wurde jedem Tweet eine Farbe zugeordnet.
+				In Tabelle \ref{tab:timezoneColors} sind die Farbzuordnungen aufgelistet. 
 
-				\begin{itemize}
-				 	\item Pacific Time Rot
-				 	\item Eastern Time	Grün/Gelb
-				 	\item Central Time Blau
-				 	\item Mountain Time Pink 
-				 \end{itemize} 
+				\begin{table}[h]
+				\centering
+				\caption{Zeitzonen Farben}
+				\label{tab:timezoneColors}
+					\begin{tabular}{|l|l|}
+						\hline
+						Zeitzone      & Farbe     \\ \hline \hline
+						Pacific Time  & Rot       \\ \hline
+						Eastern Time  & Grün/Gelb \\ \hline
+						Central Time  & Blau      \\ \hline
+						Mountain Time & Pink      \\ \hline
+					\end{tabular}
+				\end{table}
 
-				 \begin{figure}[h!]
+				 \begin{figure}[!ht]
 					\begin{center}
 						\includegraphics[scale=0.5]{usTimezones.pdf}
 						\caption{Tweets, abhängig der Zeitzone eingefärbt}
@@ -413,7 +444,6 @@
 
 		\subsection{Fazit} 
 
-			\todo{Fazit checken: HIER} 
 			In ca. 80\% der Fälle kann der Nutzer-Standort tatsächlich einen Hinweis auf eine Georeferenz liefern.
 			Die Eingaben sind allerdings nicht standardisiert und können somit nicht ohne Vorverarbeitung verwendet werden.
 			Wie oben dargestellt kann der Nutzer-Standort nur partiellen geografischen Bezug haben.
@@ -435,7 +465,7 @@
 
 			Sollten Mehrdeutigkeiten im Nutzer-Standort auftauchen können diese teilweise durch die Hinzunahme der Nutzer-Zeitzone aufgelöst werden.
 
-	\section{Verfahren zum einlernen geografischer Indikatoren am Beispiel von Twitter} 
+	\section{Verfahren zum einlernen geografischer Indikatoren am Beispiel von Twitter} \label{sec:einlernen}  
 
 		Die Probleme bei der Nutzung von Ortsverzeichnissen sind meist auf deren Unvollständigkeit zurückzuführen. 
 		Um dies zu umgehen soll die Georeferenz-Basis automatisch eingelernt werden. 
@@ -474,7 +504,7 @@
 
 			In Abbildung \ref{img:EinlernenAllg} ist das Verfahren zum einlernen einer Georeferenz-Basis an einem Beispiel dargestellt.
 
-			\begin{figure}[h!]
+			\begin{figure}[!ht]
 					\begin{center}
 						\includegraphics[scale=0.5]{einlernenAllg.pdf}
 						\caption{Verfahren zum einlernen einer Georeferenz-Basis}
@@ -504,7 +534,7 @@
 				\item Nottingham\textbackslash/London
 				\item Los Angeles, USA
 				\item I $\heartsuit$ New York 
-				\item $\dagger\textasciitilde$ Los Angeles$\textasciitilde\dagger$
+				\item $\dagger$\textasciitilde Los Angeles\textasciitilde$\dagger$
 				\item earth-sea
 				\item In front of the computer
 				\item 11th Dimension | California
@@ -525,7 +555,7 @@
 				Es ist also insbesondere nicht klar welcher Zusammenhang zwischen den Datenwerten, die durch ein Sonder- oder Satzzeichen getrennt sind, besteht. 
 
 				Bei "'I $\heartsuit$ New York "' werden Sonderzeichen zum ausdrücken von Emotionen genutzt.
-				In "'$\dagger\textasciitilde$ Los Angeles$\textasciitilde\dagger$"' werden Sonderzeichen als Dekoration genutzt.
+				In "'$\dagger$\textasciitilde Los Angeles\textasciitilde$\dagger$"' werden Sonderzeichen als Dekoration genutzt.
 				Einige Nutzer-Standorte bestehen ausschließlich aus Sonder- und Satzzeichen.
 				
 				Grundsätzlich ist es aufgrund schwierig zu entscheiden ob Satz- und Sonderzeichen einen Mehrwert bieten um einen Nutzer-Stadort genauer zu bestimmen.
@@ -595,7 +625,7 @@
 					\end{enumerate}
 				\end{multicols}
 
-				In diesem Schritt wird insbesondere keine Georeferenzierung vorgenommen. 
+				In diesem Schritt wird insbesondere keine Geolokalisierung vorgenommen. 
 				Er dient dazu möglichst früh vorhandenes Wissen über Toponyme einzubeziehen und somit eine unnötige Fragmentierung zu vermeiden.
 				Im wesentlichen sollen die Werte hiermit für die nächsten Verarbeitungsschritte vorbereitet werden.
 
@@ -687,7 +717,7 @@
 				In diesem Schritt werden aus dem Nutzer-Standort mehrere potenzielle geografische Indikatoren erzeugt die als Referenzwerte genutzt werden können.
 				Bevor diese als Referenzwerte genutzt werden soll aber noch die Nutzer-Zeitzone einbezogen werden.
 
-			\subsubsection{Hinzufügen der Zeitzone}
+			\subsubsection{Hinzufügen der Nutzer-Zeitzone}
 
 				Die Zeitzone stellt eine begrenzte Anzahl an Werten dar.
 				Diese werden vom Nutzer nicht frei eingegeben. 
@@ -864,26 +894,36 @@
 		\subsection{Überblick}
 
 			Hier soll nun ein Überblick über das gesamte Verfahren zum einlernen der Georeferenz-Basis gegeben werden.
-		
+
+			In Abbildung \ref{img:einlernenAblauf} ist der Gesamtablauf des Einlernens dargestellt.  
 			Zunächst werden die einzelnen Vorverarbeitungsschritte für den Nutzer-Standort und die Nutzer-Zeitzone durchgeführt.
 			Parallel kann der Längen- und Breitengrad auf eine Stadt aufgelöst werden.
 			Die dadurch entstandenen potenziellen geografischen Indikatoren und die zugehörige Georeferenz wird nun in die Georeferenz-Basis gespeichert. 
 			Dabei wird überprüft ob dieser Datensatz bereits vorhanden ist. 
-			Ist dies der Fall, wird der Häufigkeistwert des entsprechenden Datensatzes inkrementiert.
+			Ist dies der Fall, wird der Häufigkeitswert des entsprechenden Datensatzes inkrementiert.
 			Ist der Datensatz noch nicht vorhanden wird er angelegt und die absolute Häufigkeiten mit 1 initialisiert.
+
+			 \begin{figure}[!ht]
+					\begin{center}
+						\includegraphics[scale=0.5]{einlernenAblauf.pdf}
+						\caption{Ablaufplan einlernen}
+						\label{img:einlernenAblauf}
+					\end{center}
+				\end{figure}
+
 
 			Die Vorverarbeitung extrahiert dabei zusätzliche Informationen aus dem Nutzer-Standort.
 			Durch die Bereiningung der Werte im Nutzer-Standort, die alphanumerische Sortierung, das identifzieren von Toponymen mit mehreren Worten und die darauffolgende Erzeugung von N-Grammen werden zusätzliche Informationen aus jedem Nutzer-Standort gewonnen.
 			Die Nutzer-Zeitzone wird einbezogen um Doppeldeutigkeiten auflösen zu können.
 
-			Durch die neue Datenstruktur, mit den absoluten Häufigkeiten und der abgebildeten geografischen Hierarchie, lassen sich nun tiefergehende Analysen durchführen um eine robuste Georeferenzierung zu ermöglichen. 
+			Durch die neue Datenstruktur, mit den absoluten Häufigkeiten und der abgebildeten geografischen Hierarchie, lassen sich nun tiefergehende Analysen durchführen um eine robuste Geolokalisierung zu ermöglichen. 
 			Die absoluten Häufigkeiten geben dabei an wie oft ein Referenzwert in einer bestimmten Region vorkommt.
 
 			Durch dieses Verfahren lässt sich eine Datenbasis erzeugen die domänenspezifische Eigenheiten, in Bezug auf die Verwendung spezieller Begriffe oder Formulierungen, berücksichtigt.
 			Des weiteren werden Toponyme, die in Ortsverzeichnissen unter Umständen nicht hinterlegt sind, berücksichtigt.
 			Auch geografische Indikatoren mit mittelbarem geografischen Bezug, zum Beispiel die Verwendung spezieller Begriffe in einer geografischen Region, können einbezogen werden. 
 
-	\section{Geografischer Bezug der eingelernten Referenzwerte}
+	\section{Geografischer Bezug der eingelernten Referenzwerte} \label{sec:geografischerBezug} 
 			
 		Die eingelernten Referenzwerte beinhalten alle Werte aus den Nutzer-Standorten der Tweet-Sammlung.
 		Es sind also auch Referenzwerte vorhanden die keinen geografischen Bezug haben.
@@ -914,10 +954,10 @@
 			In den Nutzer-Standorten der Tweets rund um Istanbul taucht "'Istanbul"' tatsächlich 972 mal auf.
 			Damit kann eine Gewisse Relevanz für den Referenzwert "'Istanbul"' zur Stadt Istanbul abgeleitet werden.
 
-			\begin{figure}[h!]
+			\begin{figure}[!ht]
 					\begin{center}
 						\includegraphics[scale=0.5]{ulIstanbulWalesZoom.pdf}
-						\caption{rot: Tweets mit Nutzer-Standort "'Istanbul"'\\ grün: Tweets mit Nutzer-Stadort "'Wales"'}
+						\caption{}
 						\label{img:ulIstanbulWalesZoom}
 					\end{center}
 			\end{figure}	
@@ -967,14 +1007,14 @@
 				Im Gegensatz dazu tritt "'La Plata"' in den Nutzer-Standorten sehr konzentriert auf.
 				In Abbildung \ref{img:ULlaPlata} wird die Verteilung von Tweets deren Verfasser "'La Plata"' im Nutzer-Standort enthalten dargestellt. 
 				Es ist deutlich eine Häufung um die Stadt La Plata in Argentien zu erkennen, weltweit tritt der Referenzwert aber sehr selten auf.
-
+\begin{figure} 
 					\begin{center}
 						\includegraphics[scale=0.5]{ulTheG.pdf}
 						\caption{Tweets mit Nutzer-Standort "'The"'}
 						\label{img:ULThe}
 					\end{center}
 			\end{figure}
-
+\begin{figure}
 				\begin{center}
 						\includegraphics[scale=0.5]{ulLaPlataG.pdf}
 						\caption{Tweets mit Nutzer-Standort "'La Plata"'}
@@ -1047,7 +1087,7 @@
 
 		\subsection{Geografischer Bezug der Referenzwerte zu Verwaltungseinheiten und Ländern} 
 
-			Beim einlernen der Georeferenz-Basis werden durch die absolute Häufigkeit die Vorkommen pro Stadt gespeichert.
+			Beim einlernen der Georeferenz-Basis werden durch die absoluten Häufigkeiten die Vorkommen pro Stadt gespeichert.
 			Mit den daraus errechneten relativen Häufigkeiten kann nicht entschieden werden, ob für den Referenzwert eine globale Verteilung vorliegt oder ob der Referenzwert unter Umständen nur regional begrenzt, zum Beispiel in einem Land, auftritt.
 			Für Referenzwerte die ein Land oder eine Verwaltungseinheit bezeichnen ist auf Städteebene eine geringe relative Häufigkeit zu erwarten.
 			Diese Referenzwerte treten in einer größeren geografischen Region als der Voronoi-Region einer Stadt auf.
@@ -1059,7 +1099,7 @@
 			
 			Am folgenden Beispiel soll dieser Sachverhalt erläutert werden.
 
-			In Abbildung \ref{img:ULIstanbulWales} sind in grün Tweets dargestellt, welche im Nutzer-Standort "'Wales"' enthalten.
+			In Abbildung \ref{img:ulIstanbulWalesZoom} sind in grün Tweets dargestellt, welche im Nutzer-Standort "'Wales"' enthalten.
 			Wales entspricht einer Verwaltungseinheit erster Ordnung und gehört zu Großbritannien.
 			Die Tweets sind in der gesamten geografischen Region, über die sich Wales erstreckt, verteilt.
 			Außerhalb von Wales tritt "'Wales"' im Nutzer-Standort sehr selten auf.
@@ -1140,10 +1180,11 @@
 
 	\section{Verfahren zur Geolokalisierung am Beispiel von Twitter}
 
-		\todo{HIER WEITERMACHEN} 
+		In Kapitel \ref{sec:einlernen} wurde ein Verfahren zum einlernen der Georeferenz-Basis vorgestellt. 
+		Im darauffolgenden Kapitel \ref{sec:geografischerBezug} wurde eine Möglichkeit vorgestellt wie der geografische Bezug der Referenzwerte untersucht werden kann.
+		Dies soll hier genutzt werden um eine Georeferenz zu bestimmen. 
 
-		Im vorhergehenden Abschnitt wurde ein Verfahren zum einlernen der Georeferenz-Basis vorgestellt. 
-		Hier soll nun das Verfahren zur Geolokalisierung eines Twitter-Nutzers vorgestellt werden.
+		Es soll nun das Verfahren zur Geolokalisierung eines Twitter-Nutzers vorgestellt werden.
 		Dabei dient die Georeferenz-Basis und die in ihr abgelegten Werte als Basis für die Zuweisung einer Georeferenz.
 
 		Zunächst werden aus dem Nutzer-Standort und der Nutzer-Zeitzone potenzielle geografische Indikatoren erzeugt.
@@ -1159,12 +1200,13 @@
 		Die absoluten und relativen Häufigkeiten werden für jeden Referenzwert separat analysiert.
 		Das Ziel der Analyse ist es, die wahrscheinlichste Georeferenz zu ermitteln.
 
-		In Abbildung \ref{img:AblaufGeoref} ist der gesamte Ablauf an einem Beispiel dargestellt.
+		In Abbildung \ref{img:ablaufGeolok} ist der gesamte Ablauf an einem Beispiel dargestellt.
 		In den folgenden Abschnitten soll nun die Analyse genauer betrachtet werden.
 
+			\begin{figure} 
 			\begin{center}
-						\includegraphics[scale=0.5]{ablaufGeolok.pdf}
-						\caption{Ablauf der Geolokalisierung}
+						\includegraphics[scale=0.5]{geolokalisierungAllg.pdf}
+						\caption{Ablauf der Geolokalisierung mit Beispiel}
 						\label{img:ablaufGeolok}
 					\end{center}
 			\end{figure}	
@@ -1231,8 +1273,8 @@
 
 							\begin{table}[h]
 								\centering
-									\caption{"'the"'}
-									\label{tab:the}
+									\caption{"'york"'}
+									\label{tab:york}
 									\begin{tabular}{|l|l|l|l|}
 									\hline
 									Referenzwert 				& Stadt  	& abs. Häufigkeit & rel. Häufigkeit in \% \\ \hline \hline
