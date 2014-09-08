@@ -1,39 +1,45 @@
 %!TEX root = ../document.tex
 \chapter{Implementierung} 
-Im Rahmen dieser Diplomarbeit ist eine Referenzimplementierung des vorgestellten Verfahrens entstanden.
-In Auszügen soll die Referenzimplementierung hier vorgestellt werden. 
-Hierbei sollen insbesondere Probleme bei der Umsetzung betrachtet werden, und wie diese gelöst wurden. 
-Damit soll die Möglichekit gegeben werden, in eigenen Implementierungungen die Probleme frühzeitig zu erkennen und zu vermeiden. 
-Des weiteren soll ein Überblick über die genutzten Datensätze und API's gegeben werden. \todo{Datensätze in Grundlagen?} 
-
-\section{Komponenten der Referenzimplementierung}
-
-	\subsection{Architektur}
-	Allgemeine Architektur der Refernzimplementierung 
-
-	\subsection{Präprozessorverarbeitung - Erzeugung der N-Gramme}
-	Warum Präprozessoren -> schnelleres ändern der Vorverarbeitung.
+	
+	\todo{chap:Implementierung} 
+	Im Rahmen dieser Diplomarbeit ist eine Referenzimplementierung des vorgestellten Verfahrens entstanden.
+	In Auszügen soll die Referenzimplementierung hier vorgestellt werden. 
+	Hierbei sollen insbesondere Probleme bei der Umsetzung betrachtet werden, und wie diese gelöst wurden. 
+	Damit soll die Möglichkeit gegeben werden, in eigenen Implementierungen die Probleme frühzeitig zu erkennen und zu vermeiden.  
 
 
 
-\section{Datenbank}
+	\section{Verwendete System}
+		\todo{chap:Implementierung sec: Verwendete Systeme}
+		CSharp, SQL Server, IIS Server 
 
-\subsection{}
+	\section{Architektur}
+		
+		\todo{chap:Implementierung sec: Architektur}
+		Allgemeine Architektur der Referenzimplementierung.
+		Klassnediagramm
+		Sequenzdiagramm
 
-\todo{Eventuell was über die Geo Indexe in der Datenbank und die Nearest Neighbour Berechnungen.} 
+		\subsection{Präprozessorverarbeitung}
+			
+			\todo{chap:Implementierung sec: Architektur subsec: Präprozessorverarbeitung}
+			Warum Präprozessoren -> schnelleres ändern der Vorverarbeitung.
+			Durchreichen des Tweets und Verarbeitung durch Präprozessoren.
+
+	\section{Datenbank}
+		
+		\todo{chap:Implementierung sec: Datenbank}
+		Datenbankschema.
+		Geography Datatypes and Methods.
+		Nearest Neighbour search SQL Server
+
+	\section{Oberfläche zur manuellen Zuordnung von Georeferenzen}
+
+		\todo{chap:Implementierung sec: Oberfläche zur manuellen Zuordnung von Georeferenzen}
+		Kurz Oberfläche vorstellen plus verwendete Technologien. 
+
+	\section{Probleme und Fallstricke} 
+
+		\todo{chap:Implementierung sec: Probleme und Fallstricke}
 
 
-
-\section{Geografie Daten} \todo{in Implementierung verschieben} 
-
-\section{Data Sample}
-	Beschreibung wie Daten erzeugt wurden, Zeiträume, Analysen
-
-\section{geonames.org}	
-Allgemeines zu geonames.org, was ist geonames.org. 
-			\begin{enumerate}
-				\item Woher stammen die Daten?
-				\item Umfang und Informationen
-				\item Aktualität
-				\item Hierarchiebeziehungen im geonames.org Datensatz
-			\end{enumerate}	

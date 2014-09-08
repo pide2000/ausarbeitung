@@ -3,6 +3,7 @@
 
 	\section{Motivation und Hintergründe}
 
+		\todo{Überarbeiten chap:Einleitung sec: Motivation und Hintergründe} 
 		Über den Mikroblogging-Dienst Twitter lassen sich in Echtzeit 140 Zeichen lange Textnachrichten veröffentlichen.
 		Seit dem Start des Mikroblogging-Dienstes im Jahr 2006 sind die Nutzerzahlen kontinuierlich angestiegen.
 		2010 konnte Twitter 75 Millionen aktive Nutzer verzeichnen \cite{Cheng2010}.
@@ -62,36 +63,44 @@
 
 
 	\section{Problembeschreibung} 
+
+		\todo{Überarbeiten chap:Einleitung sec: Problembeschreibung} 
 		Um gewinnbringende Informationen aus den Tweets erzeugen zu können, ist es wichtig Twitter-Nutzern eine geografischen Ort zuordnen zu können.
 		Die Anzahl der Twitter-Kurznachrichten die mit Hilfe von Längen- und Breitengrad unmittelbar einem geografischen Ort zugeordnet werden können ist sehr gering. 
 		 
 		Mit Hilfe der in einem Tweet vorhandenen Daten sollte eine möglichst genaue Position bestimmt werden. 
 		Dies soll auch möglich sein, wenn keine konkrete geografische Angabe in Form von Längen- und Breitengrad vorliegt. 
 
-	\section{Fragestellungen und Anforderungen}\label{sec:fragestellung}
+	\section{Fragestellungen}\label{sec:fragestellung}
+		
+		\todo{Überarbeiten chap:Einleitung sec: Fragestellungen} 
 		Die folgenden Fragestellungen sollen beantwortet: 
 		\begin{enumerate}
 			\item[Q1] Wie kann Twitter-Nutzern eine Georeferenz zugeordnet werden?
 		\end{enumerate}
 		  	
 	\subsection{Anforderungen}\label{sec:Anforderungen}
-	Das erarbeitete verfahren soll folgende Anforderungen erfüllen.
-		\begin{enumerate}
-			\item[R1] Zuordnung einer Georefrenz zu einem Twitter-Nutzer. (R1) 
-			\item[R2] Unabhängig von kommerziellen Anbietern geografischer Informationen, oder sonstiger benötigter Daten. (R2)
-			\item[R3] Das Ergebnis ist eine Georeferenz welche einer geografischen Hierarcheiebene enstpricht. Folgende Hierarcheiebenen werden angeboten (R3): 
+		
+		\todo{Überarbeiten chap:Einleitung sec: Anforderungen} 
+		
+		Das erarbeitete verfahren soll folgende Anforderungen erfüllen.
 			\begin{enumerate}
-			 	\item Land oder Staat
-			 	\item Administartionsebene erster Ordnung \footnote{in D Bundesländer, bspsw. Baden-Württemberg, Bayern usw. }
-			 	\item Administartionsebene zweiter Ordnung \footnote{in D Regierungsbezirke bspsw. Regierungsbezirk Stuttgart, Regierungsbezirk Karlsruhe usw.}
-			 	\item Stadt
-			 \end{enumerate} 
-			\item[R4] Es soll möglich sein eine Mindestanforderung für die Konfidenz, mit welcher die Georeferenz bestimmt wurde, anzugeben.  
-			\item[R5] Verfahren unabhängig von Sprache und Schriftzeichen weltweit einsetzbar.
-		\end{enumerate}
+				\item[R1] Zuordnung einer Georefrenz zu einem Twitter-Nutzer. (R1) 
+				\item[R2] Unabhängig von kommerziellen Anbietern geografischer Informationen, oder sonstiger benötigter Daten. (R2)
+				\item[R3] Das Ergebnis ist eine Georeferenz welche einer geografischen Hierarcheiebene enstpricht. Folgende Hierarcheiebenen werden angeboten (R3): 
+				\begin{enumerate}
+				 	\item Land oder Staat
+				 	\item Administartionsebene erster Ordnung \footnote{in D Bundesländer, bspsw. Baden-Württemberg, Bayern usw. }
+				 	\item Administartionsebene zweiter Ordnung \footnote{in D Regierungsbezirke bspsw. Regierungsbezirk Stuttgart, Regierungsbezirk Karlsruhe usw.}
+				 	\item Stadt
+				 \end{enumerate} 
+				\item[R4] Es soll möglich sein eine Mindestanforderung für die Konfidenz, mit welcher die Georeferenz bestimmt wurde, anzugeben.  
+				\item[R5] Verfahren unabhängig von Sprache und Schriftzeichen weltweit einsetzbar.
+			\end{enumerate}
 		
 	\section{Gliederung der Arbeit}
 
+		\todo{chap: Einleitung sec Gliederung der Arbeit} 
 		\subsection*{Abschnitt 2: Grundlagen}
 			In diesem Abschnitt sollen die Grundlagen für die entwickelte Methode vermittelt werden. 
 			Es wird auf den Mikroblogging-Dienst Twitter eingegangen und es werden grundsätzliche Methoden und Verfahren vorgestellt welche zum Verständnis der entwickelten Methode benötigt werden. 
@@ -102,32 +111,16 @@
 			Es werden sowohl die Verfahren zur '"Analyse'" und Zuordnung als auch die Verfahren zum abbilden der geografischen Einheiten untersucht und eingeordnet. 
 
 		\subsection*{Abschnitt 4: Lösungsansatz}
-			In diesem Kapitel wird, unter Berücksichtigung der gegebenen Anforderungen, ein Verfahren zur Lösung der Fragestellungen entwickelt. 
+			In diesem Abschnitt wird, unter Berücksichtigung der gegebenen Anforderungen, ein Verfahren zur Lösung der Fragestellungen entwickelt. 
 			Um einen Überblick zu gewährleisten, wird das Verfahren zunächst allgemein betrachtet, danach wird jeder Verfahrensschritt dargelegt.
 			Es wird gezeigt wie aus Tweet-Daten der Standort eines Twitter-Nutzers bestimmen werden kann.
 			Dabei werden Methoden der Sprachverarbeitung, Statistik und geografische Hierarchien eingesetzt. 
-
-			Bottom-Up:
-
-			\begin{enumerate}
-				\item NGramme aus Indikatoren erzeugen
-				\item Geomapping
-				\item Datenstruktur
-				\item Treffer zählen (NGramm + Geoid gleich usw.)
-				\item Geografische Hierarchiebene
-				\item Unsicherheit bei Lokalisierung messen (neuer Daten) 
-				\item Justierung der Lokalisierungsunsicherheit auf geografischen Hierarchiebenen
-			\end{enumerate}
 
 		\subsection*{Abschnitt 5: Referenzimplementierung der entwickelten Methode}
 			Es werden ausgewählte Auszüge, Probleme und Fallstricke der Referenzimplementierung erläutert und erklärt. 
 
 		\subsection*{Abschnitt 6: Leistungsbewertung der entwickelten Methode}
-			In diesem Kapitel werden die Ergebnisse der Refernzimplementierung bewertet und, soweit sinnvoll, gegenüber bestehenden Ansätze einer kritischen Betrachtung unterzogen. 
+			In diesem Abschnitt werden die Ergebnisse der Referenzimplementierung bewertet und, soweit sinnvoll, gegenüber bestehenden Ansätze einer kritischen Betrachtung unterzogen. 
 
-		\subsection*{Abschnitt 7: Schlussfolgerungen}
-			Unter besonderer Berücksichtigung der Ergebnisse des letzten Kapitels werden Schlussfolgerungen gezogen. 
-			Der Beitrag und nutzen der entwickelten Methode soll kritisch hinterfragt werden.
-
-		\subsection*{Abschnitt 8: Zusammenfassung und Ausblick}
+		\subsection*{Abschnitt 7: Zusammenfassung und Ausblick}
 			Zusammenfassung der Arbeit und kritischer Rückblick. Im Ausblick werden mögliche Verbesserungen und Ideen zur Weiterentwicklung gegeben.  

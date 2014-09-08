@@ -174,19 +174,6 @@
 			Es ist naheliegend, dass der Nutzer seinen Standort mit Hilfe eines Toponyms angibt.
 			Der Nutzer-Standort wird jedoch über ein Freitext-Feld abgefragt und direkt abgespeichert.
 			Dieser muss also nicht zwangsweise Werte mit geografischem Bezug enthalten. 
-			In Abbildung \ref{img:twitterLocation} ist der Dialog zur Nutzer-Standort Eingabe in den Twitter-Profil Einstellungen abgebildet.
-
-
-			\begin{figure}[!ht]
-					\begin{center}
-						\includegraphics[scale=0.5]{twitterUL.png}
-						\caption{Eingabe des Nutzer-Standortes}
-						\label{img:twitterLocation}
-					\end{center}
-				\end{figure}	
-				%Quelle: http://www.twitter.com
-
-
 
 			Sollte es sich bei dem eingegebenen Wert um Toponyme handeln, sind alle in Kapitel \ref{sec:ToponymeInGeografischenIndikatoren} erwähnten Probleme zu erwarten.
 			Durch die unkontrollierte Eingabe sind tatsächlich alle möglichen Toponyme denkbar.
@@ -211,7 +198,7 @@
 
 			\subsubsection{Geografischer Bezug des Nutzer-Standorts} 
 				
-				Hecht et al. konnten den Datenwerten in den Nutzer-Standorten in 80\% Prozent der Fälle einen geografischen Bezug feststellen.
+				Hecht et al. konnten den Datenwerten in den Nutzer-Standorten in 80\% der Fälle einen geografischen Bezug feststellen.
 				In den restlichen 20\% der Fälle konnte im Nutzer-Standort kein geografischer Bezug festgestellt werden. 
 
 				In den eigenen Untersuchungen konnten 76\% der Nutzer-Standorte ein geografischer Bezug nachgewiesen werden. 
@@ -386,21 +373,6 @@
 				Die Nutzer-Zeitzone kann in Twitter über eine Liste gewählt werden.
 				Der Wert der Nutzer-Zeitzone stellt deshalb garantiert eine Zeitzone dar.
 				Es ist dem Nutzer nicht möglich einen Wert einzugeben der nicht einer Zeitzone entspricht.
-				In Abbildung \ref{img:twitterTZ} ist der Auswahldialog in den Twitter-Profil Einstellungen zu sehen.
-
-
-				\begin{figure}[!ht]
-					\begin{center}
-						\includegraphics[scale=0.5]{tz.png}
-						\caption{Zeitzonen Auswahldialog}
-						\label{img:twitterTZ}
-					\end{center}
-				\end{figure}	
-				%Quelle: http://www.twitter.com
-
-				Allerdings ist nicht gesichert, das der angegebene Wert auch der Zeitzone entspricht in der sich der Nutzer aufhält.
-				Der Nutzer könnte eine bewusste Fehleingabe machen oder aber die Zeitzone nicht wählen.
-				Der Standardwert der Nutzer-Zeitzone ist "'Pacific Time (US and Canada)"'.
 
 				In Abbildung \ref{img:usTimezones} wurden Tweets anhand ihres Längen- und Breitengrades platziert.
 				Jeder Punkt in der Abbildung entspricht einem Tweet.
@@ -488,7 +460,7 @@
 			Nach der Struktur aus Kapitel \ref{sec:generelleStruktur} besteht eine Georeferenz-Basis zumindest aus Referenzwerten und einer zugeordneten Georeferenz.
 			Die Referenzwerte sollen aus dem Nutzer-Standort und der Nutzer-Zeitzone erzeugt werden.
 			Um eine Georeferenz zuordnen zu können muss zu jedem Tupel aus Nutzer-Standort und Nutzer-Zeitzone eine Georeferenz vorliegen.
-			Als Basis für das Lernverfahren wird eine Tweet-Sammlung genutzt.
+			Als Basis für das Lernverfahren werden die Tweet-Lerndaten genutzt.
 			Jeder Tweet enthält dabei neben dem Nutzer-Standort und der Nutzer-Zeitzone eine Georeferenz in Form von Längen- und Breitengrad. 
 			Die Tweets sollen mit Hilfe des Längen- und Breitengrades der nächstgelegenen Stadt zugeordnet werden. 
 			Dadurch kann jedem Referenzwert in der Georeferenz-Basis später eine Stadt als Georeferenz zugeordnet werden.
@@ -799,8 +771,8 @@
 			Es ist zu erwarten, dass ein Referenzwert mit geografischem Bezug gehäuft an einer bestimmten geografischen Position oder in einer Region auftritt.
 			Während Referenzwerte die keinen geografischen Bezug haben sehr verteilt oder nur sehr selten auftreten. 
 
-			Betrachtet man die Tweet-Sammlung kann beim Vergleich der Georeferenzen ein Problem entstehen.
-			Die Georeferenz aus der Tweet-Sammlung besteht aus den geografischen Koordinaten des zugehörigen Tweets.
+			Betrachtet man die Tweet-Lerndaten kann beim Vergleich der Georeferenzen ein Problem entstehen.
+			Die Georeferenz aus den Tweet-Lerndaten besteht aus den geografischen Koordinaten des zugehörigen Tweets.
 			Die geografische Position wird zumeist mit Hilfe von GPS-Modulen mobiler Endgeräte wie Smartphones bestimmt. 
 			Diese können eine Position oft auf wenige Meter genau bestimmen.
 			Das bedeutet, zwei Tweets die wenige Meter voneinander abgesetzt wurden haben unter Umständen unterschiedliche Werte für den Längen- und Breitengrad.
@@ -925,7 +897,7 @@
 
 	\section{Geografischer Bezug der eingelernten Referenzwerte} \label{sec:geografischerBezug} 
 			
-		Die eingelernten Referenzwerte beinhalten alle Werte aus den Nutzer-Standorten der Tweet-Sammlung.
+		Die eingelernten Referenzwerte beinhalten alle Werte aus den Nutzer-Standorten der Tweet-Lerndaten.
 		Es sind also auch Referenzwerte vorhanden die keinen geografischen Bezug haben.
 		Es ist die Frage zu beantworten: Wie kann bestimmt werden ob ein Referenzwert geografischen Bezug hat oder nicht?
 		Oder: Wie kann vermieden werden, dass ein Referenzwert, der keinen geografischen Bezug hat, zur Geolokalisierung genutzt wird?
@@ -1085,7 +1057,7 @@
 				Dies ist ein hoher Wert.
 				Da der Referenzwert aber nur einmal vorkam, ist es sehr unwahrscheinlich das er einen geografischen Bezug hat.   
 
-		\subsection{Geografischer Bezug der Referenzwerte zu Verwaltungseinheiten und Ländern} 
+		\subsection{Geografischer Bezug zu Verwaltungseinheiten und Ländern} 
 
 			Beim einlernen der Georeferenz-Basis werden durch die absoluten Häufigkeiten die Vorkommen pro Stadt gespeichert.
 			Mit den daraus errechneten relativen Häufigkeiten kann nicht entschieden werden, ob für den Referenzwert eine globale Verteilung vorliegt oder ob der Referenzwert unter Umständen nur regional begrenzt, zum Beispiel in einem Land, auftritt.

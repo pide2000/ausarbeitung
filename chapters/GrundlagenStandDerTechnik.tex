@@ -1,14 +1,11 @@
 %!TEX root = ../document.tex
 \chapter{Grundlagen} \label{chp:Grundlagen}  
-In den folgenden Abschnitten werden eine Reihe von Begriffen und Verfahren genutzt, die hier eingeführt werden sollen.     
+In den folgenden Abschnitten wird eine Reihe von Begriffen und Verfahren genutzt, die hier eingeführt werden sollen.     
 Dies ermöglicht dem Leser die Beantwortung der Fragestellungen aus Abschnitt \ref{chp:Loesungsansatz} nachzuvollziehen.    
  
-Zunächst werden einige geografische Grundbegriffe eingeführt. 
-Danach wird auf die Verwendung von Toponymen als geografische Indikatoren eingegangen und welche Probleme damit verbunden sind.
-In einem weiteren Kapitel wird Twitter allgemein vorgestellt.
-Insbesondere wird betrachtet welche Daten in einem Tweet versendet werden und welche sich zur Georeferenzierung eignen. 
-
-Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutzten Sampling-Strategie vorgestellt und erläutert.
+Zunächst werden geografische Grundlagen und Begriffe eingeführt. 
+Danach wird auf Twitter eingegangen.   
+Zum Schluss werden die genutzten Tweet-Sammlungen vorgestellt.
 
 \newpage
 
@@ -180,9 +177,9 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		\subsection{Geografische Indikatoren}
 
 			Liefert ein Datensatz Informationen zu einem Objekt, dessen Georeferenz unbekannt ist, kann aus diesen Daten möglicherweise eine Georeferenz abgeleitet werden. 
-			Dies ist genau dann der Fall wenn in dem Datensatz Datenwerte enthalten sind, die mittelbaren oder unmittelbaren geografischen Bezug aufweisen.
+			Dies ist genau dann der Fall, wenn in dem Datensatz Datenwerte enthalten sind, die mittelbaren oder unmittelbaren geografischen Bezug aufweisen.
 			Diese Datenwerte können als Hinweis auf die Georeferenz des Datensatzes genutzt werden.
-			Sie werden hier als geografische Indikatoren bezeichnet.
+			Diese werden hier als geografische Indikatoren bezeichnet.
 
 			In Abbildung \ref{img:geogIndi} ist der Zusammenhang zwischen geografischen Indikatoren, geografischem Bezug, geografischem Objekt und einer Georeferenz dargestellt. 
 			Das geografische Objekt A hat eine zugewiesene Georeferenz G.
@@ -264,7 +261,7 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 					Es werden allerdings auch Einträge von Nutzern erstellt. 
 					Mittlerweile hat sich eine aktive Community rund um das Projekt entwickelt. 
 
-					Das Ortsverzeichnis beinhaltet ca. 8,8 Millionen Toponyme und zugehörige Informationen. \footnote{Stand Dez. 2013, die Daten unterliegen ständiger Bearbeitung, die Anzahl der Einträge kann deshalb schwanken} 
+					Das Ortsverzeichnis beinhaltet ca. 8,8 Millionen Toponyme und zugehörige Informationen. \footnote{Stand Dez. 2013, die Daten unterliegen ständiger Bearbeitung, die Anzahl der Einträge kann deshalb variieren} 
 					Hinzu kommen ca. 8 Millionen alternative Toponyme.
 					Geonames.org ist damit eine der umfangreichsten frei erhältlichen Ortsverzeichnisse.
 
@@ -327,283 +324,330 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 				Voronoi-Regionen zu Städten die in der Nähe einer Landesgrenze liegen können über die Landesgrenzen hinausgehen. 
 				Damit werden geografische Positionen unter Umständen dem falschen Land zugeordnet.
 				Auch dies ist in Abbildung \ref{img:voronoi} an den Landesgrenzen zu erkennen. 
-				Umso größer allerdings die Anzahl der Städte ist, umso genauer wird die Approximation.
+				Umso größer allerdings die Anzahl der Städte ist, umso genauer wird die Approximation. 
 
-	\section{Toponyme in geografischen Indikatoren} \label{sec:ToponymeInGeografischenIndikatoren}
+		\subsection{Toponyme in geografischen Indikatoren} \label{sec:ToponymeInGeografischenIndikatoren}
 
-		In einem Datensatz zu einem geografischen Objekt können als Datenwerte Toponyme auftauchen.
-		Toponyme eignen sich grundsätzlich gut als geografische Indikatoren.
-		Sie geben den Namen eines geografischen Objekts an und haben unmittelbaren geografischen Bezug. 
-		Mit Hilfe von Ortsverzeichnissen kann Toponymen eine Georeferenz zugeordnet werden.
-		
-		Bei der Verwendung von Toponymen als geografische Indikatoren können allerdings auch  Probleme auftreten.
-		Toponyme sind nicht standardisiert.
-		Es können dadurch beispielsweise mehrere Toponyme zu einem geografischen Objekt existieren.
-		Es entsteht eine enorme Vielfalt an Toponymen. 
-		Daneben können Toponyme auch Mehrdeutig sein.
-		Das bedeutet: Ein Toponym kann sich auf zwei oder mehr unterschiedliche geografische Objekte beziehen.
-
-		Im folgenden werden die Probleme genauer betrachtet.
-
-		\subsection{Vielfalt der Toponyme}
-
-			In Ortsverzeichnissen kann eine große Anzahl an Toponymen hinterlegt werden.
-			Aufgrund der immensen Vielfalt an Toponymen ist es aber nahezu unmöglich alle existierenden Toponyme abzudecken. 
-
-			Neben den offiziellen Namen für Städte, Länder usw. existieren eine Reihe von alternativen Toponymen.
-			Auch Toponyme die spezielle geografische Objekte bezeichnen sind möglich.
-			Grundsätzlich sind der Vielfalt von Toponymen keine Grenzen gesetzt.  
-
-			Ein Beispiel für alternative Toponyme sind Spitznamen für Städte.
-			In Wikipedia sind für die Stadt Detroit, im US-Bundesstaat Michigan, folgende Spitznamen angegeben: 
-
-			 "'The Motor City"', "'Motown"', "'Hockeytown"', "'Rock City"', "'The D"'.
-
-			Die ersten zwei dürften weltweit einen gewissen Bekanntheitsgrad haben. 
-			"'Hockeytown"', "'Rock City"' und "'The D"' dürften allerdings weniger bekannt sein.
-			Tatsächlich beinhaltet die geonames.org Datenbank keinen dieser Spitznamen.
-			Durch eine Abfrage an dieses Ortsverzeichnis könnte somit keine Georeferenz bestimmt werden.
-			Eine Abfrage in Google Maps hingegen bietet bei Eingabe der oben genannten Spitznamen Detroit als Vorschlag an. \footnote{http://de.wikipedia.org/wiki/Detroit (abgerufen Juli 2014)} 
-
-		\subsection{Mehrdeutigkeiten von Toponymen} 
-
-			Toponyme sind oft Doppel- oder Mehrdeutig und verweisen somit auf mehrere Georeferenzen.
+			In einem Datensatz zu einem geografischen Objekt können als Datenwerte Toponyme auftauchen.
+			Toponyme eignen sich grundsätzlich gut als geografische Indikatoren.
+			Sie geben den Namen eines geografischen Objekts an und haben unmittelbaren geografischen Bezug. 
+			Mit Hilfe von Ortsverzeichnissen kann Toponymen eine Georeferenz zugeordnet werden.
 			
-			Es gibt zahlreiche Städte-Namen, die in mehreren Ländern verwendet werden.
-			Ein gutes Beispiel hierfür sind US-Städte. 
-			Da die USA ein Einwanderungsland ist, übernahmen viele Einwanderer bei der Gründung neuer Städte die Namen aus der alten Heimat. 
-			So finden sich in den USA zahlreiche Städte deren Namen exakt den deutschen Städtenamen entsprechen. 
-			In Tabelle \ref{tab:usCitiesGermanNames} sind einige Städte-Namen und die Vorkommen in den USA aufgelistet.
-			
-			\begin{table}[htpb]
-				\caption{Häufige deutsche Städtenamen in den USA} 
-				\centering
-				\begin{tabular}{|c|c|}
-					\hline
-					Name & Anzahl in den USA \\
-					\hline\hline
-					Hannover & 40 \\
-					\hline
-					Berlin & 39 \\
-					\hline
-					Hamburg & 30 \\
-					\hline
-				\end{tabular}
-				\label{tab:usCitiesGermanNames} 
-			\end{table}
+			Bei der Verwendung von Toponymen als geografische Indikatoren können allerdings auch  Probleme auftreten.
+			Toponyme sind nicht standardisiert.
+			Es können dadurch beispielsweise mehrere Toponyme zu einem geografischen Objekt existieren.
+			Es entsteht eine enorme Vielfalt an Toponymen. 
+			Daneben können Toponyme auch Mehrdeutig sein.
+			Das bedeutet: Ein Toponym kann sich auf zwei oder mehr unterschiedliche geografische Objekte beziehen.
 
-			Als Ergebnis einer Abfrage auf ein Ortsverzeichnis für das Toponym "'Hamburg"' würden 31 Georeferenzen in den USA und eine in Deutschland zurückgegeben werden. 
+			Im folgenden werden die Probleme genauer betrachtet.
 
-			Diese Mehrdeutigkeit stellt ein Problem dar.
-			Es kann durch eine Abfrage an ein Ortsverzeichnis keine eindeutige Entscheidung getroffen werden welche Georeferenz dem Toponym zugewiesen werden soll. 
+			\subsubsection{Vielfalt der Toponyme}
 
-		\subsubsection{Fazit}
+				In Ortsverzeichnissen kann eine große Anzahl an Toponymen hinterlegt werden.
+				Aufgrund der immensen Vielfalt an Toponymen ist es aber nahezu unmöglich alle existierenden Toponyme abzudecken. 
 
-			Es existieren sehr umfangreiche Datenbasen um Toponymen eine Georeferenz zuzuweisen. 
-			Toponyme unterliegen grundsätzlich keiner Kontrolle und sind nicht standardisiert womit der Vielfalt keine Grenzen gesetzt sind.
-			Es ist schwer, wenn nicht sogar unmöglich, das Wissen über geografische Objekte und deren zugehörige Toponyme in Ortsverzeichnissen vollständig zu erfassen.
+				Neben den offiziellen Namen für Städte, Länder usw. existieren eine Reihe von alternativen Toponymen.
+				Auch Toponyme die spezielle geografische Objekte bezeichnen sind möglich.
+				Grundsätzlich sind der Vielfalt von Toponymen keine Grenzen gesetzt.  
+
+				Ein Beispiel für alternative Toponyme sind Spitznamen für Städte.
+				In Wikipedia sind für die Stadt Detroit, im US-Bundesstaat Michigan, folgende Spitznamen angegeben: 
+
+				 "'The Motor City"', "'Motown"', "'Hockeytown"', "'Rock City"', "'The D"'.
+
+				Die ersten zwei dürften weltweit einen gewissen Bekanntheitsgrad haben. 
+				"'Hockeytown"', "'Rock City"' und "'The D"' dürften allerdings weniger bekannt sein.
+				Tatsächlich beinhaltet die geonames.org Datenbank keinen dieser Spitznamen.
+				Durch eine Abfrage an dieses Ortsverzeichnis könnte somit keine Georeferenz bestimmt werden.
+				Eine Abfrage in Google Maps hingegen bietet bei Eingabe der oben genannten Spitznamen Detroit als Vorschlag an. \footnote{http://de.wikipedia.org/wiki/Detroit (abgerufen Juli 2014)} 
+
+			\subsubsection{Mehrdeutigkeiten von Toponymen} 
+
+				Toponyme sind oft Doppel- oder Mehrdeutig und verweisen somit auf mehrere Georeferenzen.
+				
+				Es gibt zahlreiche Städte-Namen, die in mehreren Ländern verwendet werden.
+				Ein gutes Beispiel hierfür sind US-Städte. 
+				Da die USA ein Einwanderungsland ist, übernahmen viele Einwanderer bei der Gründung neuer Städte die Namen aus der alten Heimat. 
+				So finden sich in den USA zahlreiche Städte deren Namen exakt den deutschen Städtenamen entsprechen. 
+				In Tabelle \ref{tab:usCitiesGermanNames} sind einige Städte-Namen und die Vorkommen in den USA aufgelistet.
+				
+				\begin{table}[htpb]
+					\caption{Häufige deutsche Städtenamen in den USA} 
+					\centering
+					\begin{tabular}{|c|c|}
+						\hline
+						Name & Anzahl in den USA \\
+						\hline\hline
+						Hannover & 40 \\
+						\hline
+						Berlin & 39 \\
+						\hline
+						Hamburg & 30 \\
+						\hline
+					\end{tabular}
+					\label{tab:usCitiesGermanNames} 
+				\end{table}
+
+				Als Ergebnis einer Abfrage auf ein Ortsverzeichnis für das Toponym "'Hamburg"' würden 31 Georeferenzen in den USA und eine in Deutschland zurückgegeben werden. 
+
+				Diese Mehrdeutigkeit stellt ein Problem dar.
+				Es kann durch eine Abfrage an ein Ortsverzeichnis keine eindeutige Entscheidung getroffen werden welche Georeferenz dem Toponym zugewiesen werden soll. 
+
+			\subsubsection{Fazit}
+
+				Es existieren sehr umfangreiche Datenbasen um Toponymen eine Georeferenz zuzuweisen. 
+				Toponyme unterliegen grundsätzlich keiner Kontrolle und sind nicht standardisiert womit der Vielfalt keine Grenzen gesetzt sind.
+				Es ist schwer, wenn nicht sogar unmöglich, das Wissen über geografische Objekte und deren zugehörige Toponyme in Ortsverzeichnissen vollständig zu erfassen.
 
 	\section{Twitter} 
 	
-		In diesem Kapitel werden grundlegende Begriffe rund um das Twitter-Netzwerk erläutert. 
+		In diesem Kapitel werden einige grundlegende Begriffe rund um das Twitter-Netzwerk erläutert. 
+		Zunächst wird kurz die Entstehungsgeschichte von Twitter angerissen.
+		Danach wird die Frage geklärt wie Twitter einzuordnen ist.
 		Weiter werden die Mechanismen in Twitter erläutert und an praktischen Beispielen erklärt. 
 		Zum Schluss wird aufgezeigt welche Informationen pro Tweet übermittelt werden und welche Daten zur Lokalisierung verwendet werden können.
 
-			\subsection{Geschichtliches}
+		\subsection{Geschichtliches}
+			
 			Twitter wurde 2006 von Jack Dorsey, Biz Stone, Noah Glass und Evan Williams gegründet.
 			Ursprünglich war Twitter zur internen Kommunikation innerhalb der Firma Odeo geplant.
-			Schnell wurde allerdings klar, dass in dem Dienst mehr potenzial steckt und so wurde Twitter öffentlich gemacht.
+			Schnell wurde allerdings klar, dass in dem Dienst mehr Potenzial steckt und so wurde Twitter öffentlich gemacht.
 			Seitdem erfreut sich der Dienst einer wachsenden Nutzer-Gemeinde.
 			Die Twitter-Gründer haben von Anfang an keine exakten Nutzer-Zahlen oder die Anzahl der versendeten Twitter-Kurznachrichten bekanntgegeben.
-			Dies geschah einerseits, weil die Gründer davon überzeugt sind, dass anhand der reinen Nutzer-Zahlen und gesendeten Twitter-Kurznachrichten nicht die '"Gesundheit"' des Twitter-Netzwerks nachvollzogen werden kann, andererseits werden durch diese Massnahme auch strategische Ziele verfolgt.  \footnote{http://www.pbs.org/mediashift/2007/05/twitter-founders-thrive-on-micro-blogging-constraints137}
+			Die Gründer sind davon überzeugt sind, dass anhand der reinen Nutzer-Zahlen und gesendeten Twitter-Kurznachrichten nicht die "'Gesundheit"' des Twitter-Netzwerks nachvollzogen werden.
+			Andererseits werden durch diese Maßnahme auch strategische Ziele verfolgt.  \footnote{http://www.pbs.org/mediashift/2007/05/twitter-founders-thrive-on-micro-blogging-constraints137}
 			2013 ging Twitter an die Börse und vermeldete 100 Millionen täglich aktive Nutzer und über 500 Millionen Twitter-Kurznachrichten, die täglich über den Dienst versendet werden. 
 
-			\subsection{Was ist Twitter?}
-			Twitter wird als Kurznachrichten-Dienst, Mikroblogging-Dienst oder auch als soziales-Netzwerk bezeichnet. 
-			Twitter Geschäftsführer Kevin Thau hat 2010 auf dem Nokia-World Kongress öffentlich bestritten, dass Twitter ein Soziales-Netzwerk ist. 
+		\subsection{Was ist Twitter?}
+		
+			Twitter wird als Kurznachrichten-Dienst, Mikroblogging-Dienst oder auch als Soziales-Netzwerk bezeichnet. 
+
+			Twitter Geschäftsführer Kevin Thau hat 2010 auf dem Nokia-World-Congress öffentlich bestritten, dass Twitter ein Soziales-Netzwerk ist. 
 			Laut Thau handelt es sich um ein Nachrichten-, Inhalts- und Informations-Netzwerk. 
-			Er begründete dies damit, dass Twitter die Art und Weise wie Nachrichten verteilt werden geändert hat und praktisch jeder zum Journalisten werden kann. 
+			Er begründete dies damit, dass Twitter die Art und Weise wie Nachrichten verbreitet werden geändert hat.
+			Thaus Meinung nach kann durch Twitter praktisch jeder zum Journalisten werden kann. 
 			Als Beispiel nennt er die Landung des Fluges 1549 auf dem Hudson River. 
 			Die Augenzeugen hätten damals keine Mails versendet um die Nachricht zu verbreiten, sondern die Nachricht via Twitter weitergegeben.
-			Es lassen sich eine Reihe weitere Beispiele derselben Art finden. 
+			Es lassen sich eine Reihe weiterer Beispiele derselben Art finden. 
+
 			In \cite{Petrovic2013} wird ein Vergleich zwischen sogenannten Newswire anbietern und Twitter gezogen. \footnote{Newswire stellt eine Art Nachrichtenaggregator dar, über welchen Nachrichten aus verscheidenen Quellen aggregiert und weitergegeben werden. In deutschland kommt die Deutsche Presse agentur diesem Konzept am nächsten.}
-			Es stellte sich heraus, dass über nahezu alle Nachrichten, welche in den Newswires verbreitet wurden auch im Twitter-Netzwerk berichtet wird.
-			Nachrichten zu bestimmten, vermutlich sehr speziellen Themen oder Auslandsnachrichten wurden ausschliesslich in Twitter gefunden. 
-			Diese Erkenntnisse decken sich mit der Einschätzung von Kevin Thau. 
+			Petrovic et al. fanden heraus, das nahezu über alle Nachrichten, welche in den Newswires verbreitet wurden, auch im Twitter-Netzwerk berichtet wird.
+			Nachrichten zu bestimmten, vermutlich sehr speziellen Themen oder Auslandsnachrichten, wurden ausschließlich in Twitter gefunden. 
+			Diese Erkenntnisse decken sich mit der Einschätzung von Kevin Thau.
+
 			In \cite{Kwak2010} wird die Einschätzung, bei Twitter handele es sich nicht um ein soziales Netzwerk, wissenschaftlich bestätigt.
 			Kwak et al überprüfen die in \cite{Newman2003} beschriebenen Eigenschaften sozialer Netzwerke und kommen zu dem Schluss, dass Twitter diese Eigenschaften nicht erfüllt.	
 
-			Die Bezeichnung Kurznachrichten-Dienst ist irreführend, da dieser mit sms (small messeneger service) in Verbindung gebracht werden kann. 
+			Die Bezeichnung Kurznachrichten-Dienst ist irreführend, da dieser mit sms \footnote{small messeneger service} in Verbindung gebracht werden kann. 
 			Tatsächlich galt der sms in der Anfangsphase von Twitter als Vorbild für den Dienst.
 			In Twitter werden Nachrichten allerdings standardmäßig allen Benutzern zur Verfügung gestellt und können eingesehen werden. 
 			Des weiteren wird eine Liste der Nachrichten, welche von einem Nutzer verfasst wurden, als Liste in umgekehrter chronologischer Reihenfolge auf dessen Profil dargestellt.
 			Damit ähnelt das Twitter-Profil einem Blog mit Einträgen deren Länge 140 Zeichen nicht überschreiten darf. 
-			Die Darstellung als Liste, und die Funktion einen Tweet standardmäßig allen Nutzern freizugeben unterscheidet sich grundlegend von der Funktion des sms, bei dem eine Nachricht direkt an einen Empfänger gesendet wird und nicht öffentlich ist.
-			Im sms steht die Konversation zweier Nutzer im Vordergrund, wohingegen Nachrichten im Twitter-Netzwerk einen Brodcast an alle Nutzer darstellen.
+			Die Darstellung als Liste, und die Funktion einen Tweet standardmäßig allen Nutzern freizugeben, unterscheidet sich grundlegend von der Funktion des sms.
+			Beim sms wird eine Nachricht direkt an einen Empfänger gesendet und nicht öffentlich verbreitet.
+			Im sms steht die Konversation zweier Nutzer im Vordergrund, wohingegen Nachrichten im Twitter-Netzwerk einen Broadcast an alle Nutzer darstellen.
 
 			Die 140 Zeichen langen Nachrichten in Twitter werden als Tweets bezeichnet.
-			Tweet bedeutet übersetzt Zwitschern, womit die Redenwendung '"Die Spatzen zwitschern es von den Dächern"' auch im Twitter-Netzwerk zu einer passenden Redenwendung  wird.  
+			Tweet bedeutet übersetzt "'Zwitschern"', womit die Redenwendung '"Die Spatzen zwitschern es von den Dächern"' auch im Twitter-Netzwerk zu einer passenden Redewendung wird.  
 			In der vorliegenden Arbeit wird Twitter deshalb als Mikroblogging-Dienst bezeichnet.
-		
-			\subsection{Funktionen von Twitter}
+	
+		\subsection{Funktionen von Twitter}
+			
 			Der Mikroblogging-Dienst Twitter bietet neben dem Profil, auf dem die Tweets des Nutzers angezeigt werden, noch eine Reihe weiterer Funktionen. 
 			Im folgenden soll das Twitter-Profil und die Timeline kurz erläutert werden. 
-			Eine der zentralen Funktionen von Twitter ist das sogennante Folgen, womit sich Nutzer win Netzwerk aufbauen können aus dem sie Twitter Nachrichten erhalten.
+			Eine der zentralen Funktionen von Twitter ist das sogennante "'Folgen"'.
 			Danach werden Funktionen wie das weitergeben eines Tweets, Favorisieren und Antworten erklärt. 
-			Zum Schluss wird auf den gesendeten Tweet Inhalt eingenagen und der Netzwerk-Charakter von Twitter untersucht.
+			Zum Schluss wird auf den gesendeten Tweet-Inhalt eingegangen.
 
 			\begin{figure}[h!]
 			\begin{center}
 			\includegraphics[scale=0.4]{profile.png}
-			\caption{Die Twitter-Timeline auf einem Twitter Profil. 1: Nutzername und Informationen über den Nutzer. 2: Profilbild
-			3: Allgemeine Informationen über den Benutzer und dessen Netzwerk
-			4: Nutzer-Timeline: Tweets des Nutzer in umgekehrter chronologischer Reihenfolge 
-			5: Button zum Folgen}
+			\caption{Die Tweet-Timeline}
 			\label{img:twitterProfile}
 			\end{center}
 			\end{figure}	
 
 
-				\paragraph{Das Nutzer-Profil und die Nutzer-Timeline}
-					Das Nutzer-Profil kann über die Url http://twitter.com/BENUTZERNAME abgerufen werden und bietet neben der Nutzer-Timeline, in der die Tweets des Nutzers angezeigt werden, eine Reihe an weiteren Informationen.
-					In Abbildung \ref{img:twitterProfile} ist in der Mitte die Timeline des Benutzers dargestellt in der dei Tweets zu sehen sind. 
-					Unter dem Profilbild links sind Informationen des Nutzers aufgelistet.
-					Diese Informationen kann der Nutzer selbst einstellen und entscheiden welche er angeben möchte.   
+			\paragraph{Das Nutzer-Profil und die Nutzer-Timeline}
+				Das Nutzer-Profil kann über die Url http://twitter.com/BENUTZERNAME abgerufen werden und bietet neben der Nutzer-Timeline, in der die Tweets des Nutzers angezeigt werden, eine Reihe an weiteren Informationen.
+				In Abbildung \ref{img:twitterProfile} ist in der Mitte die Timeline des Benutzers dargestellt in der die Tweets zu sehen sind. 
+				Folgende Bereiche können unterschieden werden.
+				\begin{enumerate}
+					\item Nutzername und Informationen über den Nutzer. 
+					\item Profilbild
+					\item Allgemeine Informationen über den Benutzer und dessen Netzwerk
+					\item Nutzer-Timeline: Tweets des Nutzers in umgekehrter chronologischer Reihenfolge 
+					\item Button zum Folgen
+				\end{enumerate}
+				
+				Unter dem Profilbild links sind Informationen des Nutzers aufgelistet.
+				Diese Informationen kann der Nutzer selbst einstellen.   
 
 
-				\paragraph{Folgen (Following/Follower/Tweeps)}
-					Diese Funktion erlaubt es Tweets eines bestimmten Nutzers zu abonnieren. 
-					Im Twitter-Umfeld spricht man von '"following"' oder '"folgen"', wenn man die Tweets eines bestimmten Nutzers abonniert.
-					Hat man Tweets eines bestimmten Nutzers abonniert so wird man als dessen '"Follower"' bezeichnet. 
-					Das englische Wort '"Follower"' hat sich im Twitter-Umfeld und darüber hinaus eingebürgert und wird selten übersetzt. 
-					Auch auf der Twitter Website wird '"Follower"' nicht ins deutsche übersetzt.
-					In der vorliegenden Arbeit wird deshalb auch auf eine Übersetzung verzichtet. 
+			\paragraph{Folgen (Following/Follower)}
+				
+				Diese Funktion erlaubt es Tweets eines bestimmten Nutzers zu abonnieren. 
+				Im Twitter-Umfeld spricht man von "'following"' oder "'folgen"', wenn man die Tweets eines bestimmten Nutzers abonniert.
+				Hat man Tweets eines bestimmten Nutzers abonniert so wird man als dessen "'Follower"' bezeichnet. 
+				Das englische Wort "'Follower"' hat sich im Twitter-Umfeld auch im deutschsprachigen Raum etabliert. 
+				Auch auf der Twitter Website wird '"Follower"' nicht ins deutsche übersetzt.
+				In der vorliegenden Arbeit wird ebenfalls auf eine Übersetzung verzichtet. 
 
-					In Abbildung \ref{img:twitterProfile} an Position 3 wird unter '"Folge ich"' die Anzahl der Twitter-Nutzer angezeigt denen der Beispielnutzer folgt. 
-					Neben dem Feld '"Folge ich"' wird unter '"Follower"' angezeigt wieviele Nutzer dem Beispielnutzer folgen.
+				In Abbildung \ref{img:twitterProfile} an Position 3 wird unter '"Folge ich"' die Anzahl der Twitter-Nutzer angezeigt denen der Beispielnutzer folgt. 
+				Neben dem Feld '"Folge ich"' wird unter '"Follower"' angezeigt wieviele Nutzer dem Beispielnutzer folgen.
 
-				\paragraph{Persönliche Timeline}
-					Jeder Twitter-Nutzer hat seine persönliche Timeline, auf dieser werden die Tweets derjenigen Nutzer angezeigt, denen er folgt. 
-					Die Timeline kann als Aggregation von Tweets betrachtet werden.
-					Diese Timeline ist die zentrale Stelle, an der die Nutzer Tweets anderer Nutzer empfangen und lesen.
-					Auch hier werden die Tweets in umgekehrter chronologischer Reihenfolge angezeigt.  
+			\paragraph{Persönliche Timeline}
+				Jeder Twitter-Nutzer hat seine persönliche "'Timeline"'.
+				In dieser werden die Tweets derjenigen Nutzer angezeigt, denen er folgt. 
+				Die "'Timeline"' kann als Aggregation von Tweets betrachtet werden.
+				Diese "'Timeline"' ist die zentrale Stelle, an der ein Twitte-Nutzer Tweets anderer Nutzer empfangen und lesen kann.
+				Auch hier werden die Tweets in umgekehrter chronologischer Reihenfolge angezeigt.  
 
-				\paragraph{Weiterleiten eines Tweets (Retweet)}
-					Unter einem Retweet versteht man das weiterleiten eines Tweets den man nicht selbst verfasst hat an die eigenen Follower.
-					Genauer gesagt wird der Tweet übernommen und ein Hinweis hinzugefügt, dass es sich um einen sogenannten Retweet handelt, und nicht einen vom Nutzer selbst verfassten Tweet.
-					Diese Funktion wird hauptsächlich genutzt um Nachrichten schnell zu verbreiten ohne diese neu eingeben zu müssen. 
-					Die Weitergabe an die eigenen Follower impliziert einen gewissen Grad an Kontrolle und Filterfunktion. 
-					Der weitergebende Nutzer kontrolliert und filtert die Nachrichten die er erhält und gibt diejenigen weiter, denen er eine Gewisse Relevanz beimisst, oder von denen er erwartet, dass sie seine Follower interessieren. \todo{1 retweet Reichweite 1000 Nutzer}
-					Mit dieser Funktion können einzelne Nutzer eine Art Filterfunktion übernehmen, welche früher Journalisten vorbehalten war. 
-					Es darf jedoch nicht vergessen werden, dass der Nutzer nur im Rahmen seiner eigenen Möglichkeiten einen Tweet verifizieren kann und Nachrichten in Twitter keinesfalls gesicherte Fakten darstellen.
-					Auch können Nutzer durch diese Funktion zu Tweet-Aggregatoren werden, welche Tweets von mehreren Nutzern erhalten oder sammeln, aber nur relevante oder themenspezifische Tweets weitergeben.
+			\paragraph{Weiterleiten eines Tweets (Retweet)}
+				Unter einem "'Retweet"' versteht man das weiterleiten eines Tweets den man nicht selbst verfasst hat.
+				Genauer gesagt wird der Tweet übernommen und ein Hinweis hinzugefügt, dass es sich um einen sogenannten "'Retweet"' handelt.
+				Es wird damit gekennzeichnet, dass dieser Tweet nicht von dem Nutzer selbst verfasst wurde.
+				Diese Funktion wird hauptsächlich genutzt um Nachrichten schnell zu verbreiten ohne diese neu eingeben zu müssen. 
+				Die Weitergabe an die eigenen Follower impliziert einen gewissen Grad an Kontrolle und Filterfunktion. 
+				Der weitergebende Nutzer kontrolliert und filtert die Nachrichten die er erhält.
+				Ein Nutzer gibt nur diejenigen Tweets weiter denen er eine Gewisse Relevanz beimisst.
+				Oder von denen er erwartet, dass sie seine Follower interessieren könnten. 
+				Mit dieser Funktion können einzelne Nutzer eine Art Filterfunktion übernehmen, welche früher Journalisten vorbehalten war. 
+				Es darf jedoch nicht vergessen werden, dass der Nutzer nur im Rahmen seiner eigenen Möglichkeiten einen Tweet verifizieren kann.
+				Nachrichten in Twitter stellen keinesfalls gesicherte Fakten dar.
+				Auch eine große Verbreitung durch viele Retweets ändert daran nichts.
+				Durch diese Funktion können Nutzer zu Tweet-Aggregatoren werden.
+				Der Nutzer abonniert viele Nutzer, aber gibt nur relevante oder themenspezifische Tweets an seine Follower weiter.
 
-					\todo{Diagramm Retweet, Filterfunktion} 
+		\subsection{Die Twitter Streaming API}
 
-				\paragraph{Hashtags}
-					Hashtags werden genutzt um Tweet Nachrichten zu kategorisieren oder Metag Informationen zu liefern. 
-					Ein Hashtag kann vom verfasser selbst als solches ausgezeichnet werden indem ein \# vor das gewünschte Wort, welches als Hashtag fungieren soll, gesetzt wird. 
-					Hahstags ermöglichen es Tweets nach Stichworten zu filtern. 
-					Anhand der Hashtags werden auch die Twitter-Trends analysiert.
-					Twitter Trends 
-					
-				\paragraph{Antworten und direktes ansprechen eines Nutzers}
-					Twitter bietet die Möglichkeit einzelne Nutzer direkt anzusprechen. 
-					Mit Hilfe des @-Symbols kann ein Nutzer referenziert werden. 
-					Der referenzierte Nutzer, besipielsweise @alfred, wird dann benachrichtigt, dass er in einem Tweet erwähnt wurde. 
-					Der erwähnte Nutzer muss dabei nicht Follower des Verfassers sein. \todo{siehe Bild ref1} 
-					Eine weitere Funktion im Twitter-Netzwerk ist das Antworten auf einen Tweet.
-					Über eine Schaltfläche wird es ermöglicht auf einen Tweet zu Antworten. 
-					Das @-Symbol und der Nutzername des Verfassers werden automatisch eingetragen, womit eine Benachrichtigung an den Verfasser des Ursprungstweets erfolgt. \todo{siehe Bild ref2}
-					Es ist möglich, das auf einen Antwort-Tweet wiederum geantwortet wird, wodurch ein sogenannter Thread oder Konversation entsteht. \todo{siehe Bild ref3}
-					Auch ist es möglich, dass an einer solchen Konversation mehrere Twitter-Nutzer beteiligt sind. 
-					Dies ist dann der Fall, wenn im ursprünglichen Tweet, auf weitere User referenziert wurde. 
-					Aber auch wenn ein Nutzer auf eine bestehende Konversation antwortet, werden alle beteiligtien Nutzer referenziert. \todo{siehe Bild ref4}
-					\todo{Diagramm Antwort, Antwort Thread, Bild Antworten Button, Referenzieren}     
+			Die Twitter Streaming API \footnote{Application Programming Interface} ermöglicht es Tweets programmatisch abzurufen.
+			Dabei wird von Twitter ein Sample aller aktuell erstellten Tweets zur Verfügung gestellt.  
+			Das Sample beinhaltet maximal 1\% aller aktuell erstellten Tweets.
+			Die Streaming API ermöglicht es ebenfalls nach bestimmten Eigenschaften der Tweets zu suchen.
+			Beispielsweise lassen sich bestimmte Stichworte angeben anhand derer die Ergebnisse gefiltert werden sollen.
+			Es können auch ausschließlich Tweets abgefragt werden welche eine Georeferenz in Form von Längen- und Breitengrad aufweisen. 
+
+			Durch eine programmatische Abfrage an die Streaming Api können automatisiert große Datensätze zu Analysezwecken erstellt werden. 
 
 
-				\paragraph{Favorisieren}
-					Mit dieser Funktion lässt sich ausdrücken, dass man einen Tweet interessant oder gut findet.
-					Auch Zustimmung wird durch favorisieren ausgedrückt.  
-					Einen Tweet zu favorisieren kann aber auch bedeuten '"ich habe deine Reaktion registriert"', oft um einen Antwort-Thread nicht abrupt abzubrechen sondern eine zustimmende Rückmeldung zu geben ohne extra einen Tweet zu verfassen.
-
-			\subsection{Daten einer Twitter-Nachricht}
-				Neben den direkt sichtbaren Informationen enthält ein Tweet eine Reihe weiterer Daten.
-				Betrachtet man einen einzelnen Tweet, beispielsweise auf twitter.com, wird der Tweet-Text, der Verfasser und die Zeit, wann der Tweet verfasst wurde, mitgeteilt. \todo{siehe Bild} 
-				Die Gesamtheit der Daten die in einem Tweet enthalten sind werden hier allgemein als Tweet-Daten bezeichnet.
-
-				\begin{figure}[h!]
-				\begin{center}
-				\includegraphics[scale=0.8]{tweetFinal.png}
-				\caption{Was ist zu sehen?}
-				\label{tweet}
-				\end{center}
-				\end{figure}	
-
-
-				\paragraph{Koordinaten}
-					In den Tweet-Daten können geografische Koordinaten in Form von Längen- und Breitengrad angegeben sein. 
-					Diese Koordinaten zeigen an wo sich der Verfasser befand als er den Tweet abgesetzt hat.
-					Wenn diese Koordinaten angegeben sind hat der Nutzer explizit zugestimmt, dass die Koordinaten seines aktuellen Aufenthaltsortes dem Tweet angehängt werden. 
-					Die Bestimmung der Koordinaten und das anhängen der Koordinaten an einen Tweet werden vollautomatisch durch das Programm übernommen mit welchem der Tweet verfasst wurde.
-					Auf Smartphones wird meist das integrierte GPS-Modul genutzt um die Koordinaten zu bestimmen. 
-					Bei der Nutzung an einem PC wird der Tweet häufig über den Browser verfasst und die Position mit Hilfe von GeoIp ermittelt.
-
-
-			 	\paragraph{Daten}
-			 		Neben den sichtbaren Daten, welche in der Timeline angezeigt werden, enthält ein Tweet eine Reihe weiterer interessanter Informationen. 	
-
-
+		\subsection{Daten einer Twitter-Nachricht}
 			
+			Neben den direkt sichtbaren Informationen enthält ein Tweet eine Reihe weiterer Daten.
+			Betrachtet man einen einzelnen Tweet, beispielsweise auf twitter.com erscheint dieser wie in Abbildung \ref{img:tweet}.
+			Folgende Bereiche sind zu sehen:
 
-		 	\subsection{Geoinformationen in Twitter Daten}
-		 		\todo{Überarbeiten subsec:Geoninformationen in Twitter Daten} 
-		 		\subsubsection{Welche Tweet-Daten können zur Georeferenzierung herangezogen werden} \todo{Nur optional} 
-
-					Um diese Frage zu beantworten, müssen die Tweet-Daten eingehend untersucht werden. 
-					Dabei spielt nicht nur die reine Information die den Daten entnommen werden kann eine Rolle, sondern auch wie die Daten generietr oder eingegeben wurden.
-					Beispielsweise kann bei einem Tweet, dem ein Längen- und Breitengrad mit einer Genauigkeit von 14 Nachkommastellen zugeordnet ist, davon ausgegangen werden, dass die geografische Position der tatsächlichen geografischen Position, von welcher der Tweet abgesetzt wurde, entspricht. 
-					Es liegt hier die Vermutung nahe, dass diese Werte durch ein mobiles GPS \footnote{Global Positioning System} erfasst worden sind. 
-					Anders verhält sich dies beispielsweise beim Tweet-Text, eine Erwähnung der Stadt New York, muss nicht bedeuten, dass der Tweet aus dieser Stadt stammt. 
-					Es impliziert nicht einmal, dass der Verfasser jemals in dieser Stadt war.  
-					Im folgenden werden einige Datenfelder, welche mit jedem Tweet versandt werden, untersucht.
-					Dabei wird die Eignung dieser Daten als geografischer Indikatoren bewertet.
-					Währenddessen werden anhand geeigneter Beispiele die Bergiffe gesicherter -, ungesicherter -, mittelbarer - und unmittelbarer geografischer Indikator eingeführt.  
-
-				\subsubsection{mögliche geografische Indikatoren} 
-
-					\paragraph{Nutzer-Standort} 
-						
-						Der Nutzer-Standort ist ein unmittelbarer geografischer Indikator.  
-						Als Nutzer-Standort kann der Twitter-Nutzer eine beliebige Zeichenfolge eingeben. 
-						Es handelt sich beim Nutzer-Standort deshalb um einen ungesicherten geografischen Indikator, es ist deshalb damit zu rechnen, dass unter Umständen keine geografische Position angegeben ist und andererseits keine einheitliche Angabe bezüglich des selben Standorts erwartet werden kann.
-						Beispielsweise beschreiben die Zeichenketten "'Karlsruhe, Deutschland"' und "'Baden-Württemberg, Karlsruhe"' den selben Ort.
-						Noch deutlicher wird dieser Umstand, wenn man alternative Namen oder umgangssprachliche Namen für Städte betrachtet. 
-						Mit "'The Big Apple"' und "'New York, USA"' oder mit "'Motown"' und "'Detroit, MI"' sind dieselben Orte gemeint.   
-						Auch die Genauigkeit bezüglich der geografischen Position ist nicht zuverlässig vorhersagbar, sehr konkrete geografische Positionen, wie die Angabe einer Stadt oder eines Stadtteils, oder aber eine geografische Region wie beispielsweise ein Land oder ein Kontinent, sind möglich. 
+			\begin{enumerate}
+				\item Profilbild des Verfassers
+				\item Name, Benutzername und Zeit
+				\item Der Tweet-Text
+				\item Optionen
+			\end{enumerate}
 
 
-					\paragraph{Nutzer-Zeitzone} 
+			\begin{figure}[h!]
+			\begin{center}
+			\includegraphics[scale=0.8]{tweet.pdf}
+			\caption{Ein Tweet}
+			\label{img:tweet}
+			\end{center}
+			\end{figure}	
 
-						Die Nutzer-Zeitzone stellt dagegen einen gesicherten, unmittelbaren geografischen Indikator dar.
-						Bei der Nutzer-Zeitzone kann aus einer Liste möglicher Werte gewählt werden, womit keine Ungenauigkeiten bezüglich der Eingabe besteht und eine definierte Zeichenkette erwartete werden kann, deren geografische Region klar definiert ist. 
-						Die Nutzer-Zeitzone beschreibt allerdings in jedem Fall eine größere geografische Region, die nicht immer mit den konventionellen Ländergrenzen korrespondiert und somit eine Bestimmung der geografischen Position nahezu unmöglich macht.
-						\todo{Irgendwo auf den Umstand eingehen, dass Timezone nicht angegeben werden wird und dann der Standard gewählt wird der us central pacific time ist? .......} 
 
-						Bei beiden Indikatoren besteht natürlich die Möglichkeit der Falscheingabe durch den Benutzer. Dieser Umstand wird jedoch durch die Analyse der Daten ausgemerzt. \todo{Umschreiben und woanders darauf eingehen!} 
+			Erfasst man einen Tweet allerdings über die Streaming API wird eine Reihe weiterer Daten mitgeliefert.
+			Mit jedem Tweet werden auch Daten aus dem Twitter-Profil des Verfassers versendet.
+			Für die vorliegende Arbeit sind vor allem der Nutzer-Stadort und die Nutzer-Zeitzone von Interesse. 
+			Der Inhalt dieser Felder können als geografische Indikatoren genutzt werde.
+			Zudem werden konkrete geografische Koordinaten geliefert.
+			Dies ist aber nur dann der Fall wenn der Verfasser dies zulässt. 
+
+			\paragraph{Geografische Koordinaten}
+				
+				In den Tweet-Daten können geografische Koordinaten in Form von Längen- und Breitengrad angegeben sein. 
+				Diese Koordinaten zeigen an wo sich der Verfasser befand als er den Tweet abgesetzt hat.
+				Wenn diese Koordinaten angegeben sind hat der Nutzer explizit zugestimmt, dass die Koordinaten seines aktuellen Aufenthaltsortes dem Tweet angehängt werden. 
+				Die Bestimmung der Koordinaten erfolgt über ein GPS-Modul in einem Smartphone oder mit Hilfe von GeoIp an einem PC.
+				Das Anhängen der Koordinaten an einen Tweet wird vollautomatisch durch das Programm übernommen, mit welchem der Tweet verfasst wurde.
+
+			\paragraph{Nutzer-Standort} 
+				
+				Der Nutzer-Standort wird vom Benutzer in den Profil Einstellungen eingegeben.
+				In Abbildung \ref{img:twitterLocation} ist der Dialog zur Nutzer-Standort Eingabe in den Twitter-Profil Einstellungen abgebildet.
+
+
+				\begin{figure}[!ht]
+						\begin{center}
+							\includegraphics[scale=0.5]{twitterUL.png}
+							\caption{Eingabe des Nutzer-Standortes}
+							\label{img:twitterLocation}
+						\end{center}
+					\end{figure}	
+				%Quelle: http://www.twitter.com
+
+				Der Nutzer-Standort wird direkt übernommen und unterliegt keiner weiteren Verarbeitung seitens Twitter.
+				Dies bedeutet der Nutzer-Standort wird übernommen wie er vom Nutzer eingegeben wird.
+				Das Dialogfeld ist lediglich auf ein Maximum von 30 Zeichen beschränkt. 
+
+
+			\paragraph{Nutzer-Zeitzone} 
+
+				Die Nutzer-Zeitzone kann vom Benutzer in den Profil Einstellungen aus einer Liste gewählt werden.
+				Die Werte in dieser Liste stellen Zeitzonen dar.
+				Der Datenwert der Nutzer-Zeitzone stellt also garantiert eine Zeitzone dar. 
+				In Abbildung \ref{img:twitterTZ} ist der Auswahldialog in den Twitter-Profil Einstellungen zu sehen.
+
+
+				\begin{figure}[!ht]
+					\begin{center}
+						\includegraphics[scale=0.5]{tz.png}
+						\caption{Zeitzonen Auswahldialog}
+						\label{img:twitterTZ}
+					\end{center}
+				\end{figure}	
+				%Quelle: http://www.twitter.com
+
+				Es wird allerdings nicht geprüft ob der Nutzer sich auch in dieser Zeitzone befindet.
+				Der Nutzer könnte eine bewusste Fehleingabe machen oder aber die Zeitzone nicht wählen.
+				Der Standardwert der Nutzer-Zeitzone ist "'Pacific Time (US and Canada)"'.
 
 	\section{Tweet-Sammlung} 
 		
+		In der vorliegenden Arbeit werden zwei verschiedene Tweet-Sammlungen benutzt.
+		Eine Tweet-Sammlung wird zum einlernen des Verfahrens genutzt.
+		Diese Tweet-Sammlung die Daten sollen als Tweet-Lerndaten bezeichnet werden.
+		Die andere Tweet-Sammlung beinhaltet eine Menge an Tweets um das Verfahren zu verifizieren.
+		Diese werden Tweet-Kontrolldaten genannt.
+
+		Im folgenden werden einige Kennzahlen zu den beiden Datensätzen aufgeführt.
+
+		\paragraph{Tweet-Lerndaten} 
+
+			Die Tweet-Lerndaten bestehen aus 383222 Datensätzen.
+			Jeder Datensatz repräsentiert einen Tweet. 
+			Die Datensätze beinhalten neben der Georeferenz in Form von Längen- und Breitengrad auch den Nutzer-Standort und die Nutzer-Zeitone des Verfassers.
+			Die Tweets wurden im Zeitraum von 23.01.2014 bis 04.02.2014 über die Twitter Streaming Api gesammelt.
+
+			Es wurden keine Tweets verwendet die vom selben Nutzer erstellt wurden. 
+			Alle xyz Tweets in dieser Datenbasis stammen von unterschiedlichen Nutzern. 
+			Damit soll eine Verzerrung der Ergebnisse vermieden werden.
+
+		\paragraph{Tweet-Kontrolldaten}
+
+			Diese Datenbasis beinhaltete 89692 Datensätze.
+			Es sind dieselben Daten wie in der Tweet-Lerndaten Datenbasis vorhanden.
+			Die Tweets wurden im Zeitraum vom 21.06.2013 bis 06.09.2013 über die Twitter Streaming Api gesammelt.
+
+			Die Nutzer sind ebenfalls unterschiedlich und keiner der Nutzer kommt in der Tweet-Lerndaten Datenbasis vor.
 
 			
 \chapter{Stand der Technik} 
-	Die Georeferenzierung von Tweets oder Twitter-Nutzern ist ein Feld an dem nach wie vor aktiv geforscht wird.
+	Die Geolokalisierung von Tweets oder Twitter-Nutzern ist ein Feld an dem nach wie vor aktiv geforscht wird.
 	Nicht zuletzt trägt auch die große Verfügbarkeit an Twitter-Daten zu dem Umstand bei, dass Twitter in den letzten Jahren Forschungsgegenstand zahlreicher Publikationen war. 
 	
-	In diesem Abschnitt sollen bestehende Ansätze zur Georeferenzierung im Twitter-Umfeld untersucht werden. 
+	In diesem Abschnitt sollen bestehende Ansätze zur Geolokalsierung im Twitter-Umfeld untersucht werden. 
 	Es werden Kriterien zur Einordnung der bestehenden Ansätze erarbeitet und erläutert.   
 	Die Arbeiten werden mit Hilfe der Kriterien schematisch eingeordnet um einen Überblick zu erhalten. 
-	Zum Schluss wird untersucht ob die Arbeiten die bereits formulierten Anforderungen aus \ref{sec:Anforderungen} erfüllen, und wie sich die vorliegende Arbeit von den bestehenden Ansätzen abgrenzt.    
 
 		\section{Kategorisierung bestehender Ansätze}
 
@@ -616,28 +660,33 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		Dies lässt darauf schliessen, dass sich vor den Jahren 2010/2011 nur wenige Arbeiten mit der Lokalisierung im Twitter-Umfeld beschäftigt haben.  
 		
 		\subsubsection{Kategorisierung über die untersuchte Ressource}
-		\cite{Hecht2011} nimmt deshalb eine Kategorisierung anhand der untersuchten Ressource vor. 
-		Es wird unterschieden zwischen Forschungen zur "'Lokalisierung von Microblogging-Seiten und deren Inhalten"' und der "'Lokalisierung von Nutzern, welche Inhalte zu Web 2.0 Seiten beisteuern"'. 
-		Zusätzlich wird in dieser Arbeit das "'Verhalten der Nutzer im Umgang mit der Veröffentlichung ihres aktuellen Standorts"' und die "'Vorhersage privater Informationen"' betrachtet. Darauf soll hier allerdings nicht weiter eingegangen werden.      
+		
+			\cite{Hecht2011} nimmt deshalb eine Kategorisierung anhand der untersuchten Ressource vor. 
+			Es wird unterschieden zwischen Forschungen zur "'Lokalisierung von Microblogging-Seiten und deren Inhalten"' und der "'Lokalisierung von Nutzern, welche Inhalte zu Web 2.0 Seiten beisteuern"'. 
+			Zusätzlich wird in dieser Arbeit das "'Verhalten der Nutzer im Umgang mit der Veröffentlichung ihres aktuellen Standorts"' und die "'Vorhersage privater Informationen"' betrachtet. Darauf soll hier allerdings nicht weiter eingegangen werden.      
 
 		\subsubsection{Kategorisierung über die verwendete Methode}
 
-		\cite{Cheng2010} klassifiziert die vorgestellten Arbeiten anhand der verwendeteten Methodik. 
-		Es wird auf Arbeiten zur Lokalisierung von Webseiten, Web-Logs, Suchanfragen und Web-Nutzern verwiesen. 
-		Diese werden in die folgenden drei Kategorien eingeteilt.
+			\cite{Cheng2010} klassifiziert die vorgestellten Arbeiten anhand der verwendeteten Methodik. 
+			Es wird auf Arbeiten zur Lokalisierung von Webseiten, Web-Logs, Suchanfragen und Web-Nutzern verwiesen. 
+			Diese werden in die folgenden drei Kategorien eingeteilt.
 
 		\paragraph*{"'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis (Content analysis with terms in a gazetteer)"'}  
-		Es wird darunter eine einfache Datenbanksuche verstanden. 
-		Es werden einzelne Wörter in einer Datenbank nachgeschlagen um diese einem konkreten geografischen Ort zuweisen zu können.
-		Dabei kann sowohl lokal auf eine Geo-Datenbank als auch auf Internet Ressourcen zurückgegriffen werden.  
-		In der Regel durchläuft der untersuchte Text eine manuelle oder automatische Vorverarbeitung um potenziell geografische Begriffe, sogenannte Toponyme, herauszufiltern. 
+	
+			Es wird darunter eine einfache Datenbanksuche verstanden. 
+			Es werden einzelne Wörter in einer Datenbank nachgeschlagen um diese einem konkreten geografischen Ort zuweisen zu können.
+			Dabei kann sowohl lokal auf eine Geo-Datenbank als auch auf Internet Ressourcen zurückgegriffen werden.  
+			In der Regel durchläuft der untersuchte Text eine manuelle oder automatische Vorverarbeitung um potenziell geografische Begriffe, sogenannte Toponyme, herauszufiltern. 
 
 		\paragraph*{"'Inhaltsanalyse mit probabilistischen Sprachmodellen (Content analysis with probabilistic language models)"'}
-		Dabei werden Texte oder Textteile einer Twitter-Kurznachricht zu vordefinierten geografischen Regionen wie Ländern oder Städten zugeordnet. 
-		Nach einer Vorverarbeitung des Textes erfolgt eine statistische Auswertung, um danach den Text oder einzelne Textteile, wie beispielsweise Wörter, einer geografischen Region zuzuordnen. 
-		Eine unbekannter Text kann dann mit Hilfe der zuvor gelernten Zuordnung einer geografischen Region zugeordnet werden.
+		
+			Dabei werden Texte oder Textteile einer Twitter-Kurznachricht zu vordefinierten geografischen Regionen wie Ländern oder Städten zugeordnet. 
+			Nach einer Vorverarbeitung des Textes erfolgt eine statistische Auswertung, um danach den Text oder einzelne Textteile, wie beispielsweise Wörter, einer geografischen Region zuzuordnen. 
+			Eine unbekannter Text kann dann mit Hilfe der zuvor gelernten Zuordnung einer geografischen Region zugeordnet werden.
 
-		\paragraph*{"'Schlussfolgerungen durch soziale Verbindungen (Inference via social relations)"'} es werden soziale Verbindungen, die in Netzwerken abgebildet sind, herangezogen um Rückschlüsse auf den geografischen Ort des untersuchten Inhaltes oder einer Person ziehen zu können.
+		\paragraph*{"'Schlussfolgerungen durch soziale Verbindungen (Inference via social relations)"'} 
+
+			Es werden soziale Verbindungen, die in Netzwerken abgebildet sind, herangezogen um Rückschlüsse auf den geografischen Ort des untersuchten Inhaltes oder einer Person ziehen zu können.
 
 		Preidhorsky et al. schlagen in \cite{Priedhorsky2013} eine weitere Einteilung anhand der Methodik vor. 
 		Allerdings werden hier ausschließlich Arbeiten im Twitter-Umfeld betrachtet. 
@@ -705,7 +754,7 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 		\cite{Priedhorsky2013} verweist ausschliesslich auf Arbeiten im Twitter-Umfeld und kategorisiert diese anhand der verwendeten Methodik. 
 		Die Methodeneinteilung ist aufgrund der Begriffswahl missverständlich und kann somit zu Problemen führen. 
 
-		\subsection{ttt<sss}
+		\subsection{Erweiterter Kategorisierungsansatz}
 		In \cite{Schulz2013} werden die folgenden Dimensionen zur Abgrenzung herangezogen.
 
 		\todo{Indikatoren aus \cite{Schulz2013}}
@@ -732,33 +781,6 @@ Zum Schluss wird die genutzte Datenbasis und der Einfluss der von Twitter genutz
 
 
 		\todo{Tabelle einfügen, bereits fertig, nur noch Format anpassen (Lesbarkeit)}
-		\todo{Requirements Tabelle einfügen}
-
-		
-
-		\begin{enumerate}
-			\item Naiver Ansatz -> Geocoding mit Google Maps API V3, nur Indikatoren die geografische Namen enthalten. 
-					Prinzipiell einfache Datenbankabfrage mit ein wenig semantik. 
-					Keine Jargon Namen wie Big Apple etc.
-				\begin{enumerate}
-					\item Funktion der GMaps Api V3
-					\item Einschränkungen der GMaps Api V3
-					\item zurückgelieferte Daten der GMaps Api V3
-					\item Kurze Beschreibung wie ich die API genutzt habe
-				\end{enumerate}
-			\item aktuelle Ansätze
-				\begin{enumerate}
-					\item Verfahren mit Inhaltsanalysen
-					\item Verfahren mit Indikatoren einzelne oder mehrere
-					\item Welche Verfahren kommen beim mapping auf \todo{geografische Entität definieren} geografische Entitäten zum Einsatz
-				\end{enumerate}
-		\end{enumerate}
-
-		\subsection{Probleme früherer Ansätze}
-			\begin{enumerate}
-				\item{Genutzte API's und Indikatoren nur in bestimmten Sprachen verfügbar}
-				\item{keine Schätzung für Genauigkeit auf verschiedenen geografischen Hierarchieebenen verfügbar}  
-			\end{enumerate}
 
 	
 	
