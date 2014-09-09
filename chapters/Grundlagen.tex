@@ -16,33 +16,23 @@ Zum Schluss werden die genutzten Tweet-Sammlungen vorgestellt.
 		Um Missverständnissen vorzubeugen wird hier definiert was in der vorliegenden Arbeit unter den einzelnen Begriffen zu verstehen ist.
 		Eine Reihe von Begriffen wird selbst definiert um bestimmte Sachverhalte im Kontext dieser Arbeit klarer ausdrücken zu können. 
 
-		\subsection{Geografische Koordinaten}
-			
-			Geografische Koordinaten bestehen aus zwei Werten, einem Wert für den sogenannten Längengrad und einem Wert für den sogenannten Breitengrad.
-			Mit diesen zwei Werten kann eine Position auf dem Globus exakt bestimmt werden.  
-			
-			Die Längen- und Breitengrade beschreiben ein imaginäres Netz auf dem Globus. 
-			Dabei ziehen sich die Breitengrade wie ein Gürtel um den Globus.
-			Der Breitengrad mit dem Wert 0 verläuft entlang des Äquators.
+		\subsection{Geografische Koordinaten} 
 
-			Die Längengrade hingegen verlaufen vom Nord- zum Südpol. 
-			Vertikal des Globus verläuft keine natürliche Marke. 
-			Der Längengrad mit dem Wert 0 wurde deshalb 1884 durch ein Konsortium festgelegt.
-			Die Längengrade werden auch als Meridiane bezeichnet.
-			
-			Die Werte liegen im IT-Umfeld meist als Fließkommazahlen vor und beschreiben jeweils einen Winkel.
-			In Abbildung \ref{img:lnglat}, auf der linken Seite, sind die Längen- und Breitengrade auf einem Globus aufgetragen.
+			Eine Position auf dem Globus wird mit zwei Werten beschrieben, dem sogenannten Längengrad und dem sogenannten Breitengrad.
+			Diese beiden Werte werden als geografische Koordinaten bezeichnet. 
+			Mit diesen zwei Werten und einem geodätischen Referenzsystemsystem kann die Position auf dem Globus exakt bestimmt werden.  
+			Die geografischen Angaben in Twitter liegen bezüglich des geodätischen Referenzsystems WGS84 vor und sind nur für dieses gültig.
+			Werden diese bezüglich eines anderen geodätischen Referenzsystems ausgewertet ist die Position auf dem Globus nicht korrekt.
+			Es ist dann eine Transformation der Werte erforderlich.
+			Heutzutage ist das Referenzsystem WGS84 weit verbreitet.
 
-		\subsection{Geodätisches Referenzsystem} 
-			
-			Ein geodätisches Referenzsystem dient als einheitliche Grundlage zur Angabe einer Position auf dem Globus. 
+			Ein geodätisches Referenzsystem besteht aus einem kartesischen Rechtssystem mit definierter Lage und Ausrichtung, einem Referenzellipsoid und einer Festlegung zur Messung der Winkel.
 
-			Es wird ein kartesisches Rechtssystem mit definierter Lage und Ausrichtung festgelegt.
-			Die Lage und Ausrichtung erfolgt relativ zur Erde. 
-			Der Ursprung des Koordinatensystems liegt im Zentrum des Globus, meist im Masseschwerpunkt der Erde.
-			Die Z-Achse zeigt dabei in Richtung Nordpol und die X-Achse in Richtung 0 Grad Länge und 0 Grad Breite. 
+			Die Lage und Ausrichtung des kartesische Rechtssystems erfolgt relativ zur Erde. 
+			Der Ursprung des Koordinatensystems liegt im Zentrum des Globus.
+			Die Z-Achse zeigt dabei in Richtung Nordpol und die X-Achse in Richtung 0 Grad Länge (Nullmeridian) und 0 Grad Breite (Äquator). 
 			Mit diesen zwei Werten ist die Lage eines kartesischen Rechtssystem eindeutig definiert.
-			In Abbildung \ref{img:lnglat}, auf der rechten Seite, ist die Lage des kartesischen Koordinatensystems dargestellt.
+			In Abbildung \ref{img:lnglat} sind sowohl die Lage des Nullmeridian und des Äquators sowie die Lage des kartesischen Referenzsystems dargestellt. 
 
 			In diesem Koordinatensystem sind zusätzlich Referenzpunkte festgelegt.
 			Diese Referenzpunkte werden benötigt um einen Referenzellipsoid zu verankern. 
@@ -55,31 +45,27 @@ Zum Schluss werden die genutzten Tweet-Sammlungen vorgestellt.
 
 			Durch den Punkt P auf dem Ellipsoid und den Ursprung z des Koordinatensystems wird eine Gerade g gezogen. 
 			Der Wert für den Breitengrad ist nun der Winkel $\phi$ zwischen g und der Äquatorebene.
-			Nun wird der Punkt P auf die Äquatorebene projiziert.
+			Nun wird der Punkt P auf einen Punkt Q auf der Äquatorebene projiziert.
 			Zwischen z und dem projizierten Punkt Q kann nun wiederum eine Gerade h gezogen werden.
-			Der Wert für den Längengrad ist der Winkel $\lambda$ zwischen der X-Achse und der Gerade h. 
-			In Abbildung \ref{img:lnglat}, auf der rechten Seite, ist dies dargestellt.
-			Durch eine Projektion der Punkte auf den Ellipsoid können diese Punkte beispielsweise auf einer Karte dargestellt werden.
-			Einfach gesprochen wird der Referenzellipsoid "'aufgeklappt"'. 
-			Durch die Referenzpunkte kann dann eine Karte auf dem Ellipsoid abgebildet werden.
+			Der Wert für den Längengrad ist der Winkel $\lambda$ zwischen der X-Achse und der Gerade h (Abbildung \ref{img:lnglat}).
 			\footnote{Vergleiche Geoinformatik Lexikon der Universität Rostock (abgerufen Juli 2014): http://www.geoinformatik.uni-rostock.de/lexikon.asp \\ Vorlesungen zur Geo-Informatik von Prof. Dr.-Ing. Ralf Bill (abgerufen Juli 2014): http://www.geoinformatik.uni-rostock.de/vorlesungsthem.asp \label{ft:geoinfolex}  Juli 2014}
 
-			Heutzutage ist das Referenzsystem WGS84 weit verbreitet.
+
 
 			\begin{figure}[h!]
 			\begin{center}
 				\includegraphics[scale=0.5]{globuseMitLngLat.pdf}
-				\caption{Längen- und Breitengrade}
+				\caption{Nullmeridian und Äquator (linke Bildseiten);Lage des kartesischen Rechtssystems(rechte Bildseite)}
 				\label{img:lnglat}
 			\end{center}
 			\end{figure}	
+			\todo{Referenzen Bild} 
 			%vgl. http://de.wikipedia.org/wiki/Meridian_(Geographie)#mediaviewer/Datei:Meridian-International.PNG
 			%vgl. http://en.wikipedia.org/wiki/Geodetic_datum#mediaviewer/File:ECEF_ENU_Longitude_Latitude_relationships.svg
 
 		\subsection{Georeferenz} 
 			
-			Eine Georeferenz (engl. Spatial Reference) wird auch als Raumbezug bezeichnet. 
-			Ist einem Datensatz, einem Datum oder einem Objekt eine geografische Lage oder Position zugeordnet so wird diese als Georeferenz bezeichnet.1 
+			Ist einem Datensatz, einem Datum oder einem Objekt eine geografische Lage oder Position zugeordnet so wird diese als Georeferenz (auch Raumbezug genannt) bezeichnet.
 			Eine Georeferenz kann auf verschiedene Arten und mit unterschiedlicher Genauigkeit angegeben werden.
 			Dies hängt von den Anforderungen ab, die an die Georeferenz gestellt werden. 
 			Beispielsweise stellen die in Kapitel \ref{chp:Einleitung} erwähnten Anwendungen unterschiedliche Anforderungen an die Genauigkeit der Georeferenz. \footref{ft:geoinfolex} 
@@ -88,11 +74,11 @@ Zum Schluss werden die genutzten Tweet-Sammlungen vorgestellt.
 		
 			\begin{description}
 
-	 			\item[Direkte Georeferenz (direkter Raumbezug)] 
+	 			\item[Direkte Georeferenz (Direkter Raumbezug)] 
 	 				
 	 				Unter einer direkten Georeferenz versteht man die Angabe einer konkreten Koordinate bezüglich eines geeigneten geodätischen Referenzsystems. \footref{ft:geoinfolex} 
 
-	 			\item[Indirekte Georeferenz (indirekter Raumbezug) ] 
+	 			\item[Indirekte Georeferenz (Indirekter Raumbezug)] 
 	 				
 	 				Unter indirektem Raumbezug werden alle Angaben verstanden die eine ungenaue Position bezüglich eines beliebigen Referenzysystems bestimmen.
 		 			Ungenau ist in dem Sinne zu verstehen, dass die Angabe der Position auch eine Fläche beschreiben kann.
@@ -114,15 +100,15 @@ Zum Schluss werden die genutzten Tweet-Sammlungen vorgestellt.
 			Beispiele für geografische Objekte sind: Städte, Länder, Häuser oder auch Fahrzeuge.
 			Insbesondere sind auch Menschen geographische Objekte, da sie zu jeder Zeit einen Bezug zur Erde haben.
 
-		\subsection{Toponyme}  
-			
-			Toponyme sollen hier Namen für geografische Objekte mit unveränderlicher geografischer Position sein.
-			Beispiele für Toponyme sind Städtenamen, Ländernamen oder Landschaftsnamen.  
-			Ein Toponym muss nicht eindeutig sein. 
 
 		\subsection{Geografische Position}
 		
-			Unter einer geografischen Position soll hier eine Position auf dem Globus verstanden werden deren Wert durch geografische Koordinaten angegeben wird.
+			Unter einer geografischen Position wird in dieser Arbeit eine Position auf dem Globus verstanden die durch geografische Koordinaten bestimmt.
+
+		\subsection{Toponyme}  
+			
+			Toponyme werden in der vorliegenden Arbeit definiert als, Namen für geografische Objekte mit unveränderlicher geografischer Position sein.
+			Beispiele für Toponyme sind Städtenamen, Ländernamen oder Landschaftsnamen.  
 
 		\subsection{Geografische Region} 
 			
