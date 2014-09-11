@@ -1,0 +1,56 @@
+DIVERSES
+
+
+\subsection{Bestimmung der geografischen Hierarchieebenen zu einer geografischen Position} 
+			
+			Jede der geografischen Hierarchieebenen beschreibt eine geografische Region.
+			Liegt eine geografische Position beispielsweise innerhalb der geografischen Region eines Landes soll das zugehörige Land bestimmt werden können.
+
+			Im Ortsverzeichnis von geonames.org sind die geografischen Regionen allerdings nicht hinterlegt.
+			Jedes geografische Objekt wird hier durch eine geografische Position beschrieben.
+			Es kann zu einer geografischen Position also nicht direkt bestimmt werden in welcher geografischen Region diese liegt.
+
+			Es soll nun ein Vorgehen vorgestellt werden, welches es trotzdem ermöglicht für eine beliebige geografische Position alle geografischen Hierarchieebenen zu bestimmen.
+			
+			\subsubsection{Verfahren zur Bestimmung der geografischen Hierarchieebenen}
+
+				In der geografischen Hierarchie wird der Globus am genauesten durch die geografischen Regionen der Städte eingeteilt.
+				Durch die Teilmengenbeziehung der geografischen Hierarchie sind mit der Stadt implizit alle anderen Hierarchieebenen bestimmt.
+
+				Deshalb soll eine geografische Position der am nächsten liegenden Stadt zugeordnet werden.
+				Dadurch wird der Globus auf Städteebene in geografische Regionen eingeteilt. 
+				Eine geografische Region zu einer Stadt S umfasst dann genau die Fläche, innerhalb der keine andere Stadt näher liegt als S.
+
+				Diese Flächen werden auch Voronoi-Regionen genannt.
+
+
+
+
+\section{Tweet-Sammlung} 
+		
+		In der vorliegenden Arbeit werden zwei verschiedene Tweet-Sammlungen benutzt.
+		Eine Tweet-Sammlung wird zum einlernen des Verfahrens genutzt.
+		Diese Tweet-Sammlung die Daten sollen als Tweet-Lerndaten bezeichnet werden.
+		Die andere Tweet-Sammlung beinhaltet eine Menge an Tweets um das Verfahren zu verifizieren.
+		Diese werden Tweet-Kontrolldaten genannt.
+
+		Im folgenden werden einige Kennzahlen zu den beiden Datensätzen aufgeführt.
+
+		\paragraph{Tweet-Lerndaten} 
+
+			Die Tweet-Lerndaten bestehen aus 383222 Datensätzen.
+			Jeder Datensatz repräsentiert einen Tweet. 
+			Die Datensätze beinhalten neben der Georeferenz in Form von Längen- und Breitengrad auch den Nutzer-Standort und die Nutzer-Zeitone des Verfassers.
+			Die Tweets wurden im Zeitraum von 23.01.2014 bis 04.02.2014 über die Twitter Streaming Api gesammelt.
+
+			Es wurden keine Tweets verwendet die vom selben Nutzer erstellt wurden. 
+			Alle xyz Tweets in dieser Datenbasis stammen von unterschiedlichen Nutzern. 
+			Damit soll eine Verzerrung der Ergebnisse vermieden werden.
+
+		\paragraph{Tweet-Kontrolldaten}
+
+			Diese Datenbasis beinhaltete 89692 Datensätze.
+			Es sind dieselben Daten wie in der Tweet-Lerndaten Datenbasis vorhanden.
+			Die Tweets wurden im Zeitraum vom 21.06.2013 bis 06.09.2013 über die Twitter Streaming Api gesammelt.
+
+			Die Nutzer sind ebenfalls unterschiedlich und keiner der Nutzer kommt in der Tweet-Lerndaten Datenbasis vor.

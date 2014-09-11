@@ -1,45 +1,23 @@
 %!TEX root = ../document.tex
 \chapter{Einleitung}\label{chp:Einleitung}
 
-	\section{Motivation und Hintergründe}
+	\section{Motivation}
 
-		\todo{Überarbeiten chap:Einleitung sec: Motivation und Hintergründe} 
-		Über den Mikroblogging-Dienst Twitter lassen sich in Echtzeit 140 Zeichen lange Textnachrichten veröffentlichen.
-		Seit dem Start des Mikroblogging-Dienstes im Jahr 2006 sind die Nutzerzahlen kontinuierlich angestiegen.
-		2010 konnte Twitter 75 Millionen aktive Nutzer verzeichnen \cite{Cheng2010}.
-		Im Jahr 2013 wird Twitter täglich von zirka 100 Millionen Menschen weltweit aktiv genutzt.
-		Dies berichtete Twitter 2013 in seinem Prospekt zum Börsengang \cite{twitterinc2013}.  
-		Zur Gesamtanzahl der Nutzer-Konten gibt es von Twitter keine Informationen. 
-		Dies kann mitunter damit begründet werden, dass die Gesamtanzahl der Nutzer-Konten auch inaktive Nutzer einschliesst und somit keine Informationen über die tatsächliche Aktivität im Netzwerk liefert. 
-		Auch andere soziale Netzwerke ziehen die aktiven Nutzer als Metrik heran, des weiteren wird die Metrik vom Interactive Advertising Bureau (IAB) empfohlen. \cite{IAB}
-		
-		Die Twitter-Nutzer verfassen täglich mehr als 500 Millionen Nachrichten, sogenannte Tweets \cite{twitterinc2013}. \footnote{Im Abschnitt Grundlagen wird der Begriff Tweet genauer untersucht, für den Moment sollen darunter die Nachrichten verstanden werden, welche von den Twitter-Nutzern verfasst werden}
-		Die meisten dieser Tweets sind öffentlich zugänglich und können von allen Twitter-Nutzern uneingeschränkt betrachtet werden. 
-		Twitter bietet zusätzlich eine sogenannte Streaming-API an, welche es ermöglicht Tweets programmatisch zu empfangen. \footnote{API: Application Programming Interface oder auch Programmierschnittstelle}
-		Die Streaming-API stellt ein Echtzeit-Sample der aktuell versendeten Tweets bereit und liefert maximal 1\% aller Tweets die zum aktuellen Zeitpunkt verfasst wurden \cite{Morstatter2013}. 
-		Über die sogenannte Filter-API lassen sich die Tweets nach bestimmten Kriterien wie Nutzer-ID, geografischer Region oder Schlüsselwörtern filtern.
-		 \footnote{https://dev.twitter.com/docs/streaming-apis} 
-
-		Ein Tweet besteht aus einer Reihe von Informationen.
-		Neben dem Verfasser, ist der Tweet-Text die wichtigste Information die in einem Tweet enthalten ist.  
-		Der Tweet-Text wird vom Nutzer verfasst und abgesendet, er beinhaltet die zentrale Information eines Tweets. 
-		In den 140 Zeichen des Tweet-Textes teilen Twitter-Nutzer Informationen unterschiedlicher Ausprägung aus.
-		Unter anderem wird über privates, Sportergebnisse, Großereignisse, persönliche Erfahrungen oder persönliche Meinungen berichtet. 
-		Auch Bilder und Web-Links können in einem Tweet-Text enthalten sein. 
-
-		Mit Hilfe der Streaming-API ist es erstmals möglich, große Mengen nutzergenerierter Informationen unterschiedlichster Ausprägung direkt zu erhalten. 
+		Die Verbreitung von Nachrichten und Informationen findet immer stärker auch in sozialen Netzwerken wie Twitter statt.
+		Twitter ist ein Microblogging-Dienst über den Nutzer 140 Zeichen lange Nachrichten, sogenannte "'Tweets"', erstellen und veröffentlichen können.
+		Längst ist Twitter zu einem Massenphänomen geworden und übernimmt die Rolle eines Nachrichtenmediums \cite{Petrovic2013}.
+		Die Twitter-Nutzer verfassen täglich mehr als 500 Millionen Tweets \cite{twitterinc2013}. 
 		Durch die Möglichkeiten die Twitter bietet kann theoretisch jeder Mensch Nachrichten und Informationen über das Twitter-Netzwerk verbreiten und weitergeben. 
-		Diese Masse an nutzergenerierten Informationen bietet Wissenschaftlern in verschiedenen Bereichen zahlreiche neue Möglichkeiten.
+		In den Tweets wird unter anderem über Großereignisse, persönliche Erfahrungen oder Erlebnisse berichtet. 
+		Die Tweets sind zum Größtenteil öffentlich zugänglich, was es ermöglicht große Mengen nutzergenerierter Informationen unterschiedlichster Ausprägung direkt zu erhalten. 
+		Einige Tweets beinhalten geografische Koordinaten. 
+		Dadurch ist den Informationen im Tweet eine geografische Position zugeordnet.
 
-		Sakaki et al interpretieren die Twitter-Kurznachrichten beispielsweise als Sensor-Daten \cite{Sakaki2010}.
-		Der Twitter-Nutzer fungiert dabei als Sensor, der ein beliebiges Ereignis erfährt oder erlebt.
-		Möglicherweise berichtet der Twitter-Nutzer im Tweet-Text über dieses Ereignis. 
-		Damit kann der Text als Sensor-Datum interpretiert werden, wenn auch erhebliches Rauschen in der Gesamtheit der Tweets zu erwarten ist.    
-		Sakaki et al zeigen aber, dass mit diesem Vorgehen, Erdbebenzentren lokalisiert oder die Trajektorie eines Typhoons vorhergesagt werden können.  \todo{Bild Twitter-Nutzer als sensor} 
-		
-		Auch die Sozialwissenschaften und die Meinungsforschung profitieren von dem enormen Informationsfundus der durch Twitter geboten wird.  
-		Tumasjan et al. untersuchen in \cite{Tumasjan2011} wie sich die politische Landschaft im Twitter-Netzwerk wiederspiegelt. 
-		Die Wissenschaftler haben zur Bundestagswahl 2009 100.000 Tweets analysiert und stellten fest, dass die Erwähnungen von Parteien und Politikern in Twitter, den Wahlausgang sehr genau wiederspiegelten.  
+		Durch eine Analyse dieser Informationen und der zugeordneten Position können beispielsweise Ereignisse lokalisiert werden.
+
+		Sakaki et al zeigen, dass mit Hilfe von Tweets mit geografischen Koordinaten Erdbebenzentren lokalisiert oder die Trajektorie eines Typhoons vorhergesagt werden können \cite{Sakaki2010}.  
+		Tumasjan et al. untersuchen in \cite{Tumasjan2011} wie sich die politische Landschaft im Twitter-Netzwerk widerspiegelt. 
+		Die Wissenschaftler haben zur Bundestagswahl 2009 100.000 Tweets analysiert und stellten fest, dass die Anzahl der Erwähnungen von Parteien und Politikern in Twitter, den Wahlausgang sehr genau abbildeten.  
 		
 		Die Kommunikation innerhalb des Twitter-Netzwerks kann aber auch neue Einsichten über die globale Kommunikation oder die Ausbreitung von Nachrichten liefern.
 		Garcia-Gavilanes et al. erforschen in \cite{Garcia-Gavilanes2014} die Kommunikation zwischen Ländern. 
@@ -48,60 +26,68 @@
 		Selbst die Epidemieforschung kann von den Daten des Twitter-Netzwerks profitieren. 
 		So zeigten Szomsor et al. in \cite{Szomszor2011}, dass die Vorhersage der Schweinegrippe im Jahr 2009 durch die Analyse von Tweets eine Woche früher möglich gewesen wäre als dies mit konventionellen Frühwarnsystemen der Fall war. 
 
-		Diese Erkenntnisse und Informationen sind allerdings nur gewinnbringend einzusetzen, wenn der Standort des Twitter-Nutzers bekannt ist. 
-		Die Information, dass eine Krankheit ausgebrochen ist, ist mit einer exakten Georeferenz wertvoller als ohne diese. 
-		Auch die Arbeit von Sakaki et al. ist auf eine Georeferenz angewiesen, wobei die Wissenschaftler angeben, dass die ungefähre Position für ihre Anwendung ausreichend ist.
-		Bei der Untersuchung internationaler Kommunikation wiederum, ist es wichtig zu Wissen in welchem Land ein Tweet verfasst wurde.
-		In diesem Fall kann die Georefrenz eine größere Region umfassen und muss nicht GPS-Genauigkeit aufweisen.  
-		Wohingegen eine detaillierte Untersuchung des politischen Klimas innerhalb Deutschlands eine Auflösung auf Bundesländer-Ebene erforderlich machen würde. 
-
- 		Twitter bietet seinen Nutzern die Möglichkeit ihren Standort im Nutzerprofil anzugeben. 
- 		Hecht et al. stellen in \cite{Hecht2011} eine erste ausführliche Analyse der eingegebenen Standort-Daten bereit.  
- 		Ab 2009 ermöglichte Twitter ein "'per-tweet geo-tagging"' \cite{Cheng2010}.
- 		Dadurch können Anwendungen, auf Endgeräten mit GPS, Längen- und Breitengrad des aktuellen Standorts als Georeferenz an den Tweet anhängen.    
-		Nur ca. 1,7\% der Twitter-Kurznachrichten enthalten allerdings eine konkrete Georeferenz in dieser Form. \footnote{Prüfung durch Datensatz XYZ was sich mit den Ergebnissen von \cite{Priedhorsky2013} und \cite{Schulz2013}}
-
-
+ 		Diese wichtigen Erkenntnisse und Vorhersagen konnten nur aufgrund von Tweets mit geografischen Koordinaten ermittelt werden.
+ 		Allerdings weisen nur ca. 1\% der Twitter-Kurznachrichten geografische Koordinaten auf \cite{Schulz2013}.
+ 		Dies ist ein sehr geringer Wert, wenn mehr Tweets mit einer zugeordneten geografischen Position zur Verfügung stehen würden, könnten diese Verfahren effizienter genutzt werden.
+ 		
 	\section{Problembeschreibung} 
 
-		\todo{Überarbeiten chap:Einleitung sec: Problembeschreibung} 
-		Um gewinnbringende Informationen aus den Tweets erzeugen zu können, ist es wichtig Twitter-Nutzern eine geografischen Ort zuordnen zu können.
-		Die Anzahl der Twitter-Kurznachrichten die mit Hilfe von Längen- und Breitengrad unmittelbar einem geografischen Ort zugeordnet werden können ist sehr gering. 
-		 
-		Mit Hilfe der in einem Tweet vorhandenen Daten sollte eine möglichst genaue Position bestimmt werden. 
-		Dies soll auch möglich sein, wenn keine konkrete geografische Angabe in Form von Längen- und Breitengrad vorliegt. 
+ 		Wie kann es ermöglicht werden, dass Tweets ohne geografische Koordinaten eine geografische Position zugeordnet werden kann?
 
-	\section{Fragestellungen}\label{sec:fragestellung}
+ 		Twitter bietet seinen Nutzern diverse Möglichkeiten persönliche Angaben zu machen.
+		Unter anderem kann im Nutzerprofil ein Standort angegeben werden. 
+		Bei der Eingabe des Nutzer-Standortes wird vom Twitter-Nutzer abgefragt, wo dieser sich befindet. 
+		Die Intention der Abfrage zielt also darauf ab, dass der Nutzer einen Wert eingibt, der auf ein geografisches Objekt verweist. 
+		Dieses Feld eignet sich deshalb gut um daraus eine geografische Position abzuleiten.
+		Betrachtet man den Nutzer-Standort jedoch genauer fällt auf, dass dieser nicht ohne weiteres zur Bestimmung einer geografischen Position verwendet werden kann.
 		
-		\todo{Überarbeiten chap:Einleitung sec: Fragestellungen} 
-		Die folgenden Fragestellungen sollen beantwortet: 
-		\begin{enumerate}
-			\item[Q1] Wie kann Twitter-Nutzern eine Georeferenz zugeordnet werden?
-		\end{enumerate}
-		  	
-	\subsection{Anforderungen}\label{sec:Anforderungen}
+		Naheliegend ist, dass der Nutzer im Nutzer-Standort einen Ortsnamen (Toponym) verwendet um seinen Standort anzugeben.
+		Der Nutzer-Standort wird jedoch über ein Freitext-Feld eingegeben und direkt abgespeichert.
+		Durch die freie Eingabe werden unter anderem Abkürzungen, größere geografische Regionen oder spezielle Bei- und Spitznamen im Nutzer-Standort eingegeben. 
+		Wenn der Nutzer-Standort ein Toponym darstellt, können zudem Probleme wie Mehr- und Doppeldeutigkeiten auftreten.
+
+		Der Nutzer-Standort muss aber nicht zwangsweise Werte mit geografischem Bezug enthalten. 
+
+		Zudem gibt der Nutzer-Standort nicht unbedingt den Ort an, von dem der Tweet versendet wurde. 
+		Tweets mit geografischen Koordinaten werden zumeist von mobilen Endgeräten versendet. 
+		Der Nutzer muss sich also zum Zeitpunkt des Absendens eines Tweets nicht an dem im Nutzer-Standort angegeben Ort aufhalten.
+
+		Der Nutzer-Standort ist eine freiwillige Angabe des Twitter-Nutzers im Nutzer-Profil. 
+		Von Hecht et al. \cite{Hecht2011} wird der Inhalt der Nutzer-Standorte von 100.000 Nutzer-Profilen manuell analysiert.
+	    Ca. 66\% aller analysierten Nutzer-Standorte enthalten demnach einen Wert mit geografischem Bezug.
+	    Es könnten somit zusätzlich 66\% der Twitter-Nutzer eine geografische Position zugeordnet. 
+
+	    Der Nutzer-Standort bietet somit ein großes Potenzial um weiteren Twitter-Nutzern eine geografische Position zuzuordnen.
+	    Um eine Geolokalisierung von Tweets mit Hilfe des Nutzer-Standortes realisieren zu können, müssen die oben genannten Probleme bezüglich der angegebenen Werte im Nutzer-Standort gelöst werden.
+	    Zusätzlich muss verifiziert werden, dass der Nutzer-Standort den Ort des Absendens eines Tweets hinreichend genau beschreibt.
+
+	    Abhängig von der Anwendung sind zudem die Anforderungen bezüglich der Genauigkeit, Trefferquote und der gewünschten Zuordnung des Ergebnisses zu einer geografischen Region unterschiedlich. 
+
+	    \newpage
+
+	  \section{Fragestellungen}
+
+	  	Aus der Problembeschreibung ergeben sich folgende Fragestellungen:  
+
+	  	\begin{itemize}
+	  		\item Wie können die oben genannten Probleme, der eingegebenen Werte im Nutzer-Standort, weitestgehend eliminiert werden?
+	  		\item Wie genau kann aus dem Nutzer-Standort die Position, von der ein Tweet abgesendet wurde, bestimmt werden? 
+			\item Ist es möglich die Ergebnisse bezüglich Genauigkeit und Trefferquote zu justieren?
+	  	\end{itemize}
 		
-		\todo{Überarbeiten chap:Einleitung sec: Anforderungen} 
-		
-		Das erarbeitete verfahren soll folgende Anforderungen erfüllen.
-			\begin{enumerate}
-				\item[R1] Zuordnung einer Georefrenz zu einem Twitter-Nutzer. (R1) 
-				\item[R2] Unabhängig von kommerziellen Anbietern geografischer Informationen, oder sonstiger benötigter Daten. (R2)
-				\item[R3] Das Ergebnis ist eine Georeferenz welche einer geografischen Hierarcheiebene enstpricht. Folgende Hierarcheiebenen werden angeboten (R3): 
-				\begin{enumerate}
-				 	\item Land oder Staat
-				 	\item Administartionsebene erster Ordnung \footnote{in D Bundesländer, bspsw. Baden-Württemberg, Bayern usw. }
-				 	\item Administartionsebene zweiter Ordnung \footnote{in D Regierungsbezirke bspsw. Regierungsbezirk Stuttgart, Regierungsbezirk Karlsruhe usw.}
-				 	\item Stadt
-				 \end{enumerate} 
-				\item[R4] Es soll möglich sein eine Mindestanforderung für die Konfidenz, mit welcher die Georeferenz bestimmt wurde, anzugeben.  
-				\item[R5] Verfahren unabhängig von Sprache und Schriftzeichen weltweit einsetzbar.
-			\end{enumerate}
-		
+	\section{Zielsetzung} 
+
+		Das übergeordnete Ziel dieser Arbeit besteht darin, Tweets mit Hilfe des angegebenen Nutzer-Standortes einer geografischen Position zuzuordnen.
+		Dadurch soll die Position von der ein Tweet versendet wurde möglichst genau bestimmt werden.
+
+		Es soll dazu ein Verfahren zur Geolokalisierung entwickelt werden, welches die Probleme der angegebenen Werte im Nutzer-Standort so weit wie möglich eliminiert.
+		Das Verfahren soll es ermöglichen, durch eine Vorgabe die Genauigkeit und die Trefferquote der Ergebnisse zu bestimmen.
+		Twitter wird weltweit genutzt, das Verfahren soll deshalb auch unabhängig von unterschiedlichen Sprachen und Schriftzeichen funktionieren.
+
+
 	\section{Gliederung der Arbeit}
 
-		\todo{chap: Einleitung sec Gliederung der Arbeit} 
-		\subsection*{Abschnitt 2: Grundlagen}
+			In Kapitel 2 
 			In diesem Abschnitt sollen die Grundlagen für die entwickelte Methode vermittelt werden. 
 			Es wird auf den Mikroblogging-Dienst Twitter eingegangen und es werden grundsätzliche Methoden und Verfahren vorgestellt welche zum Verständnis der entwickelten Methode benötigt werden. 
 			Ebenso werden häufig genutzte geografische Grundbegriffe vermittelt.
