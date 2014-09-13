@@ -23,35 +23,7 @@ DIVERSES
 
 				Diese Flächen werden auch Voronoi-Regionen genannt.
 
-			\subsubsection{Voronoi-Diagramme} 
-
-				Sei eine Menge von Punkten $Z = {z_1,z_2,...,z_n}$ auf einer Ebene verteilt.
-				Eine Voronoi-Region $V^i$ zu einem Punkt $z_i$ beinhaltet dann alle Punkte $P^i={p_1,p_2,...,p_n}$ die näher an $z_i$ liegen als an allen anderen Punkten $Z_j={z_j in Z|z_j!=z_i}$.
-				Alle Voronoi-Regionen zu allen Punkten in Z bilden ein Voronoi-Diagramm.
-
-				Dieses Konzept kann zur Bestimmung der nächstgelegenen Stadt verwendet werden. 
-				Die geografischen Positionen der Städte bilden dabei die Punkte $Z$.
-				Zu jeder Stadt wird nun die Voronoi-Region erzeugt. 
-				Anhand der Voronoi-Region in der ein Punkt p liegt kann nun bestimmt werden welche Stadt am nächsten zu p liegt.
-
-				Jeder Punkt auf dem Globus kann so einer Stadt zugeordnet werden.
-				Insbesondere wird der Globus auf Städteebene in geografische Regionen eingeteilt.
-				In Abbildung \ref{img:voronoi} ist ein Voronoi-Diagramm einiger deutscher Städte dargestellt.
-
-				\begin{figure}[h!]
-				\begin{center}
-				\includegraphics[scale=0.5]{voronoi.png}
-				\caption{Vornoi-Diagramm Deutschland}
-				\label{img:voronoi}
-				\end{center}
-				\end{figure}	
-
-				Durch die Teilmengenbeziehung ist es nun nicht mehr nötig die geografischen Regionen der anderen Hierarchieebenen zu bestimmen.
-				Es ist zu beachten, dass durch die Erzeugung der Vornoi-Regionen Ländergrenzen nur approximiert werden können. 
-				Voronoi-Regionen zu Städten die in der Nähe einer Landesgrenze liegen können über die Landesgrenzen hinausgehen. 
-				Damit werden geografische Positionen unter Umständen dem falschen Land zugeordnet.
-				Auch dies ist in Abbildung \ref{img:voronoi} an den Landesgrenzen zu erkennen. 
-				Umso größer allerdings die Anzahl der Städte ist, umso genauer wird die Approximation. 
+			
 
 
 
