@@ -453,8 +453,16 @@
   Timestamp                = {2014.03.04}
 }
 
-@Article{,
-  Owner                    = {ry29},
-  Timestamp                = {2014.09.09}
+@Article{Woodruff1994,
+  Title                    = {GIPSY: Automated Geographic Indexing of Text Documents},
+  Author                   = {Woodruff, Allison Gyle and Plaunt, Christian},
+  Journal                  = {Journal of the American Society for Information Science},
+  Year                     = {1994},
+  Pages                    = {1-21},
+  Volume                   = {45},
+
+  ISBN                     = {0002-8231},
+  ISSN                     = {0002-8231},
+  Mendeley-groups          = {closely related work}
 }
 

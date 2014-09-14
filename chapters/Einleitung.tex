@@ -59,13 +59,12 @@
 	    Ca. 66\% aller analysierten Nutzer-Standorte enthalten demnach einen Wert mit geografischem Bezug.
 	    Es könnten somit zusätzlich 66\% der Twitter-Nutzer eine geografische Position zugeordnet. 
 
-	    Der Nutzer-Standort bietet somit ein großes Potenzial um weiteren Twitter-Nutzern eine geografische Position zuzuordnen.
+	    Der Nutzer-Standort bietet somit ein großes Potenzial um weiteren Tweets eine geografische Position zuzuordnen.
 	    Um eine Geolokalisierung von Tweets mit Hilfe des Nutzer-Standortes realisieren zu können, müssen die oben genannten Probleme bezüglich der angegebenen Werte im Nutzer-Standort gelöst werden.
 	    Zusätzlich muss verifiziert werden, dass der Nutzer-Standort den Ort des Absendens eines Tweets hinreichend genau beschreibt.
 
 	    Abhängig von der Anwendung sind zudem die Anforderungen bezüglich der Genauigkeit, Trefferquote und der gewünschten Zuordnung des Ergebnisses zu einer geografischen Region unterschiedlich. 
-	    
-	    
+
 	    \newpage
 
 	  \section{Fragestellungen}
@@ -76,18 +75,26 @@
 	  		\item Wie können die oben genannten Probleme, der eingegebenen Werte im Nutzer-Standort, weitestgehend eliminiert werden?
 	  		\item Wie genau kann aus dem Nutzer-Standort die Position, von der ein Tweet abgesendet wurde, bestimmt werden? 
 			\item Ist es möglich die Ergebnisse bezüglich Genauigkeit und Trefferquote zu justieren?
+			\item Ausnutzen einer geografischen Hierarchie zur besseren Bestimmung des geografischen Standortes? 
 	  	\end{itemize}
-		
+
 	\section{Zielsetzung} 
 
 		Das übergeordnete Ziel dieser Arbeit besteht darin, Tweets mit Hilfe des angegebenen Nutzer-Standortes einer geografischen Position zuzuordnen.
 		Dadurch soll die Position von der ein Tweet versendet wurde möglichst genau bestimmt werden.
 
 		Es soll dazu ein Verfahren zur Geolokalisierung von Tweets entwickelt werden, welches die Probleme der angegebenen Werte im Nutzer-Standort so weit wie möglich eliminiert.
-		Das Verfahren soll es ermöglichen, durch eine Vorgabe die Genauigkeit und die Trefferquote der Ergebnisse zu bestimmen.
+		Es sollen Vorgaben bezüglich der Güte und der Trefferquote der Ergebnisse gemacht werden können.
+		Das Verfahren soll abhängig von dieser Vorgabe justiert werden können.
+
+		Die Zuordnung von geografischen Positionen erfolgt in der Regel durch geografische Koordinaten.
+		Exakte geografische Positionen in Form von Lägen- und Breitengrad sind aber nicht immer erforderlich. 
+		Für einige Anwendungen sind zwar exakte geografische Zuordnungen notwendig, vielfach ist jedoch eine flächige Zuordnung ausreichend. 
+		Es soll dazu eine geeignete Einteilung des Globus in geografische Regionen mit unterschiedlichen Hierarchieebenen vorgenommen werden.
+		Für jede Hierarchieebene soll eine separate Evaluierung der Ergebnisse möglich sein.
+
 		Twitter wird weltweit genutzt, das Verfahren soll deshalb auch unabhängig von unterschiedlichen Sprachen und Schriftzeichen funktionieren.
-
-
+	
 	\section{Gliederung der Arbeit}
 
 			In Kapitel 2 

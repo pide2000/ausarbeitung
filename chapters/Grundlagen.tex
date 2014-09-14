@@ -135,7 +135,7 @@ Danach werden geografische Begriffe und Verfahren, sowie Verfahren z
 
 			Durch eine programmatische Abfrage an die Streaming Api können automatisiert große Datensätze zu Analysezwecken erstellt werden. 
 
-		\subsection{Daten einer Twitter-Nachricht}
+		\subsection{Daten einer Twitter-Nachricht} \label{sub:DatenInTwitterNachricht} 
 			
 			Neben den direkt sichtbaren Informationen enthält ein Tweet eine Reihe weiterer Daten.
 			Betrachtet man einen einzelnen Tweet, beispielsweise auf twitter.com erscheint dieser wie in Abbildung \ref{img:tweet}.
@@ -304,8 +304,72 @@ Danach werden geografische Begriffe und Verfahren, sowie Verfahren z
 
 		\subsection{Toponyme}  
 			
-			Toponyme werden in der vorliegenden Arbeit definiert als, Namen für geografische Objekte mit unveränderlicher geografischer Position sein.
-			Beispiele für Toponyme sind Städtenamen, Ländernamen oder Landschaftsnamen.  
+			Im deutschen werden Eigennamen für geografische Objekte als Ortsnamen bezeichnet. 
+			Dies ist insofern missverständlich, da Ortsnamen nicht nur Namen für Orte im Sinne von Ortschaften sind, sondern auch Namen für andere geografische Objekte.
+			In der vorliegenden Arbeit wird deshalb der Begriff Toponym verwendet. 
+
+		\subsection{Zuordnung von Toponymen zu geografischen Objekten} \label{sec:zuordnungToponymeGeogObj}
+
+			Wird ein Toponym als Angabe für eine geografische Position verwendet, muss dieses einem konkreten geografischen Objekt zugeordnet werden. 
+			Die Zuordnung von Toponymen zu geografischen Objekten kann allerdings problematisch sein.
+			In Woodruff et al. \cite{Woodruff1994} wird auf die Probleme bei der Zuordnung von Toponymen zu geografischen Objekten eingegangen.
+			Es lassen sich daraus folgende Hauptproblemfelder ableiten:
+
+			\begin{description}
+
+				\item[Mehrdeutigkeiten von Toponymen]
+
+					Toponyme sind oft Doppel- oder Mehrdeutig und verweisen somit auf mehrere geografische Objekte.
+				
+					Es gibt zahlreiche Städte-Namen, die in mehreren Ländern verwendet werden.
+					Ein gutes Beispiel hierfür sind US-Städte. 
+					In Tabelle \ref{tab:usCitiesGermanNames} sind einige Städte-Namen und die Vorkommen in den USA aufgelistet.
+					
+					\begin{table}[htpb]
+						\caption{Häufige deutsche Städtenamen in den USA} 
+						\centering
+						\begin{tabular}{|c|c|}
+							\hline
+							Name & Anzahl in den USA \\
+							\hline\hline
+							Hannover & 40 \\
+							\hline
+							Berlin & 39 \\
+							\hline
+							Hamburg & 30 \\
+							\hline
+						\end{tabular}
+						\label{tab:usCitiesGermanNames} 
+					\end{table}
+					%QUELLE ??? 
+
+					Diese Mehrdeutigkeiten stellen ein Problem dar, da ohne zusätzliche Informationen nicht mit Sicherheit bestimmt werden kann welches geografische Objekt gemeint ist.
+					
+				\item [Verschiedene Schreibweisen]
+
+					Zu einem Toponyme können verschiedene Schreibweisen existieren. 
+					Dies kann beispielsweise durch die verwendete Sprache bedingt sein.
+					Im englischen wird für München auch Munich verwendet.
+					Es kann aber auch zu alternativen Schreibweisen kommen durch die Verwendung eines Alphabets, welches nicht den benötigten Zeichensatz zur Verfügung stellt.
+					Existiert beispielsweise in einem Alphabet kein ü würde München als Muenchen geschrieben.  
+
+			  	\item [Alternative Toponyme]
+
+			  		Woodruff et al. beschreiben das Problem der Neologismen bei Toponymen. 
+			  		Mit Neologismen werden Wortneuschöpfungen in Sprachgemeinschaften bezeichnet, die zunächst nicht allgemein bekannt sind. 
+			  		Dies kann auf Namen geografischer Objekte derart übertragen werden, dass für geografische Objekte lokal begrenzte oder in einem gewissen Kontext gebräuchliche Toponyme verwendet werden.
+
+			  		Als Beispiel sollen hier alternative Toponyme in Form von Bei- und Spitznamen für Städte dienen.
+					Neben den offiziellen Namen für Städte kann eine Reihe von alternativen Toponymen existieren.
+					In Wikipedia sind für die Stadt Detroit, im US-Bundesstaat Michigan, folgende Beinamen angegeben: 
+
+					 "'The Motor City"', "'Motown"', "'Hockeytown"', "'Rock City"', "'The D"'.
+
+					Die ersten zwei dürften weltweit einen gewissen Bekanntheitsgrad haben. 
+					"'Hockeytown"', "'Rock City"' und "'The D"' dürften allerdings weniger bekannt sein.
+					Es ist deshalb schwer diesen Toponymen ein geografisches Objekt zuzuordnen oder diese überhaupt als Toponym zu identifizieren.
+
+			\end{description}  
 
 		\subsection{Geografische Region} 
 			
@@ -320,7 +384,6 @@ Danach werden geografische Begriffe und Verfahren, sowie Verfahren z
 		\subsection{Geografischer Bezug} 
 
 			Kann einem Datenwert in irgendeiner Weise eine Georeferenz zugeordnet werden hat dieser Datenwert geografischen Bezug.
-
 			Datenwerte mit geografischem Bezug können weiter unterteilt werden in Datenwerte mit unmittelbarem geografischen Bezug oder mittelbarem geografischen Bezug. 
 
 			\begin{description}
@@ -453,93 +516,7 @@ Danach werden geografische Begriffe und Verfahren, sowie Verfahren z
 			In der vorliegenden Arbeit wird die geonames.org Datenbank mit Stand Dezember 2013 als Basis für geografische Informationen genutzt.
 			Auch die verwendete geografische Hierarchie lässt sich aus der Datenbank gewinnen.
 
-		\subsection{Toponyme in geografischen Indikatoren} \label{sec:ToponymeInGeografischenIndikatoren}
-
-			In einem Datensatz zu einem geografischen Objekt können als Datenwerte Toponyme auftauchen.
-			Toponyme eignen sich grundsätzlich gut als geografische Indikatoren.
-			Sie geben den Namen eines geografischen Objekts an und haben unmittelbaren geografischen Bezug. 
-			Mit Hilfe von Ortsverzeichnissen kann Toponymen eine Georeferenz zugeordnet werden.
-			
-			Ein Problem kann allerdings darstellen, dass Toponyme nicht standardisiert sind.
-			Im folgenden werden die Probleme genauer betrachtet.
-
-			\subsubsection{Alternative Toponyme}
-
-				In Ortsverzeichnissen kann eine große Anzahl an Toponymen hinterlegt werden.
-				Aufgrund der immensen Vielfalt an Toponymen ist es aber nahezu unmöglich alle existierenden Toponyme abzudecken. 
-
-				Neben den offiziellen Namen für Städte, Länder usw. existieren eine Reihe von alternativen Toponymen.
-				Auch Toponyme die spezielle geografische Objekte bezeichnen sind möglich.
-
-				Ein Beispiel für alternative Toponyme sind Bei- und Spitznamen für Städte.
-				In Wikipedia sind für die Stadt Detroit, im US-Bundesstaat Michigan, folgende Beinamen angegeben: 
-
-				 "'The Motor City"', "'Motown"', "'Hockeytown"', "'Rock City"', "'The D"'.
-
-				Die ersten zwei dürften weltweit einen gewissen Bekanntheitsgrad haben. 
-				"'Hockeytown"', "'Rock City"' und "'The D"' dürften allerdings weniger bekannt sein.
-				Tatsächlich beinhaltet die geonames.org Datenbank keinen dieser Bei- und Spitznamen.
-				Durch eine Abfrage an dieses Ortsverzeichnis könnte somit keine Georeferenz bestimmt werden.
-				Eine Abfrage in Google Maps hingegen bietet bei Eingabe der oben genannten Bei- und Spitznamen Detroit als Vorschlag an. \footnote{http://de.wikipedia.org/wiki/Detroit (abgerufen Juli 2014)} 
-
-			\subsubsection{Mehrdeutigkeiten von Toponymen} 
-
-				Toponyme sind oft Doppel- oder Mehrdeutig und verweisen somit auf mehrere Georeferenzen.
-				
-				Es gibt zahlreiche Städte-Namen, die in mehreren Ländern verwendet werden.
-				Ein gutes Beispiel hierfür sind US-Städte. 
-				Da die USA ein Einwanderungsland ist, übernahmen viele Einwanderer bei der Gründung neuer Städte die Namen aus der alten Heimat. 
-				So finden sich in den USA zahlreiche Städte deren Namen exakt den deutschen Städtenamen entsprechen. 
-				In Tabelle \ref{tab:usCitiesGermanNames} sind einige Städte-Namen und die Vorkommen in den USA aufgelistet.
-				
-				\begin{table}[htpb]
-					\caption{Häufige deutsche Städtenamen in den USA} 
-					\centering
-					\begin{tabular}{|c|c|}
-						\hline
-						Name & Anzahl in den USA \\
-						\hline\hline
-						Hannover & 40 \\
-						\hline
-						Berlin & 39 \\
-						\hline
-						Hamburg & 30 \\
-						\hline
-					\end{tabular}
-					\label{tab:usCitiesGermanNames} 
-				\end{table}
-				%QUELLE
-
-				Bei einer Abfrage des Toponyms  "'Hamburg"' auf ein Ortsverzeichnis, wie geonames.org, würden somit mindestens 31 Georeferenzen als Ergebnis erscheinen.
-				Tatsächlich liefert geonames.org folgendes Ergebnis:
-
-
-				\begin{table}[htpb]
-					\caption{Abfrage an geonames.org für Hamburg} 
-					\centering
-					\begin{tabular}{|c|c|}
-						\hline
-						Land & Anzahl\\
-						\hline\hline
-						USA & 29 \\
-						\hline
-						Süd Afrika & 2 \\
-						\hline
-						Deutschland & 1 \\
-						\hline
-						Kanada & 1 \\
-						\hline
-						Surinam & 1 \\
-						\hline
-					\end{tabular}
-					\label{tab:usCitiesGermanNames} 
-				\end{table}
-
-				Diese Mehrdeutigkeit stellt ein Problem dar.
-				Es kann durch eine Abfrage an ein Ortsverzeichnis keine eindeutige Entscheidung getroffen werden welche Georeferenz dem Toponym zugewiesen werden soll. 
-
-
-
+		
 
 	
 

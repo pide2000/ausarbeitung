@@ -159,5 +159,46 @@
 
 
 
-	
+	\section{GAZZETEER UND NACHTEILE}
+
+		Bei einer Abfrage des Toponyms "'Hamburg"' auf ein Ortsverzeichnis, wie geonames.org, würden somit mindestens 31 Georeferenzen als Ergebnis erscheinen.
+		Tatsächlich liefert geonames.org folgendes Ergebnis:
+
+		\begin{table}[htpb]
+			\caption{Abfrage an geonames.org für Hamburg} 
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				Land & Anzahl\\
+				\hline\hline
+				USA & 29 \\
+				\hline
+				Süd Afrika & 2 \\
+				\hline
+				Deutschland & 1 \\
+				\hline
+				Kanada & 1 \\
+				\hline
+				Surinam & 1 \\
+				\hline
+			\end{tabular}
+			\label{tab:usCitiesGermanNames} 
+		\end{table} 
+
+		Dies basiert auf Mehrdeutigkeiten aus dem Ergebnis muss eine Auswahl getroffen werden ohne zusätzliches Wissen über den Ort zu haben getroffen werden.
+
+
+		Tatsächlich beinhaltet die geonames.org Datenbank keinen dieser Bei- und Spitznamen.
+		Durch eine Abfrage an dieses Ortsverzeichnis könnte somit keine Georeferenz bestimmt werden.
+		Eine Abfrage in Google Maps hingegen bietet bei Eingabe der oben genannten Bei- und Spitznamen Detroit als Vorschlag an. \footnote{http://de.wikipedia.org/wiki/Detroit (abgerufen Juli 2014)} 
+
+
+		\textit{Probleme früherer Ansätze auf Gazetteer Basis, es wird für ein Land kein Polygon zurückgegeben sondern ein konkreter Punkt. 
+		Messung der Genauigkeit bei Evaluierung auf Länderebene nicht möglich.  
+		Ich kann das tun da ich alle test tweets auf eine Stadt abbilde, somit zusätzliche Information über Stadt, Adm1 usw bekomme und somit evaluieren kann ob sich ein Tweet in einem Land befindet, denn auch die ergebnisse haben implizit auch alle anderen geografsichen Hierarchieebenen.
+		}
+
+
+
+
 	
