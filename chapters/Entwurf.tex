@@ -3,9 +3,7 @@
 	
 	\section{Überblick} 
 
-		Die Bestimmung der geografischen Position, von der ein Tweet abgesetzt wurde, soll durch die Auswertung des Nutzer-Standortes erfolgen. 
-		Das Wissen zur Auflösung des Nutzer-Standortes soll dabei durch die Analyse von Tweets aufgebaut werden.
-		
+		Die Bestimmung der geografischen Position, von der ein Tweet abgesetzt wurde, soll durch die Auswertung des Nutzer-Standortfeldes erfolgen. 
 		Der Lösungsansatz besteht aus den folgenden zwei Teilen:
 
 		\begin{enumerate}
@@ -13,12 +11,11 @@
 			\item Geolokalisierung: Auflösen des Nutzer-Standortes durch die Verarbeitung der Informationen aus der Wissensdatenbank
 		\end{enumerate}
 
-		Beim Training soll aus einer Menge an Trainingsdaten eine Wissensdatenbank (im folgenden Georeferenz-Basis) generiert werden.
+		Beim Training soll aus einer Menge an Trainingsdaten eine Wissensdatenbank (im folgenden Georeferenz-Basis genannt) generiert werden.
 		Es soll dabei die quantitative Verteilung der Werte des Nutzer-Standortes erfasst werden.
-		Um dies leisten zu können werden Trainingsdatensätze benötigt. 
 		Jeder Trainingsdatensatz repräsentiert einen Tweet, der den Nutzer-Standort, die Nutzer-Zeitzone und geografische Koordinaten beinhaltet.
+		Die Nutzer-Zeitzone wird verwendet um Doppel- und Mehrdeutigkeiten bezüglich der Werte im Nutzer-Standort auflösen zu können. 
 		Aus diesen Trainingsdatensätzen kann durch die Untersuchung der Nutzer-Standorte und der zugehörigen geografischen Koordinaten bestimmt werden wie oft ein Wert an einer bestimmten geografischen Position vorkommt.
-		Die Nutzer-Zeitzone wird verwendet um Doppel- und Mehrdeutigkeiten bezüglich der Werte im Nutzer-Standort auflösen zu können.  
 
 		Bei der Geolokalisierung soll ein gegebener Nutzer-Standort auf eine Georeferenz aufgelöst werden. 
 		Dies geschieht durch eine Abfrage der Werte im Nutzer-Standort an die Georeferenz-Basis.
@@ -38,6 +35,7 @@
 		Dabei werden Schwellwerte zur Justierung der Güte und Trefferquote eingeführt.
 		Im letzten Abschnitt \ref{sec:ausnutzenDerGeografischenHierarchie} wird vorgestellt wie die geografische Hierarchie einbezogen wird.
 
+		\textit{Stand der Technik} 
 
 	\section{Verwendete Datenbasis}
 
@@ -133,25 +131,25 @@
 			Diese Ergebnisse decken sich mit den eigenen Untersuchungen. 
 			Es ist allerdings zu beachten, dass Hecht et al. ausschließlich Tweets aus den USA verwendet haben und die Nutzer-Standorte nur in englischer Sprache verfasst waren. 
 					
-	\section{Herausforderungen bei der Verwendung des Nutzer-Standortes} 
+	\section{Herausforderungen bei der Verwendung des Nutzer-Standortes als geografischen Indikator} \label{sec:HerausforderungenBeiDerVerwendungDesNutzerStadortes}  
 
-		Hier sollen nun die Werte des Nutzer-Standortes eingehender untersucht werden. 
 		Neben den in Kapitel \ref{sec:zuordnungToponymeGeogObj} erwähnten Problemen bei der Zuordnung von Toponymen zu geografischen Objekten sind noch weitere Probleme zu erwarten.
 		Diese sind hauptsächlich bedingt durch die freie Eingabe des Nutzer-Standortes.
 		Es wurden dabei folgende Klassen identifiziert in die die Werte eingeteilt werden können:
 
-			\begin{enumerate}	
-			 	\item Partieller geografischer Bezug des Wertes
-			 	\item Widersprüchliche Datenwerte Werte
-			 	\item Geografische Hierarchien
-			 	\item Domänenspezifische Toponyme im Nutzer-Standort (Neologismen)
-			 	\item Toponyme unterschiedlicher Hierarchieebenen
-			 \end{enumerate}	 
+		\begin{enumerate}	
+		 	\item Partieller geografischer Bezug des Wertes
+		 	\item Widersprüchliche Werte 
+		 	\item Geografische Hierarchien
+		 	\item Domänenspezifische Toponyme (Neologismen)
+		 	\item Toponyme unterschiedlicher Hierarchieebenen
+		 	\item Keiner oder mittelbarer geografischer Bezug
+		\end{enumerate}	 
 
-		\subsection{Partieller geografischer Bezug des Datenwertes im Nutzer-Standort} \label{subsub:partiellerGeografischerBezug} 
+		\subsection{Partieller geografischer Bezug des Datenwertes im Nutzer-Standort} \label{sub:partiellerGeografischerBezug} 
 
 			Hierbei haben nur Teile des Wertes im Nutzer-Standort geografischen Bezug. 
-			Es werden oft weitere Informationen angegeben die keinen geografischen Bezug haben. 
+			Im Nutzer-Standort werden oft weitere Informationen angegeben die keinen geografischen Bezug haben. 
 			Im folgenden einige Beispiele.
 
 			\begin{table}[h]
@@ -171,7 +169,7 @@
 			Es können also auch nur Teile des Nutzer-Standorts für eine Geolokalisierung von Nutzen sein.
 			Diese Informationen müssen extrahiert werden um einen Nutzen aus ihnen ziehen zu können. 
 
-		\subsection{Widersprüchliche Toponyme im Nutzer-Standort} \label{subsub:wiederspruechlicheBezuege} 
+		\subsection{Widersprüchliche Toponyme im Nutzer-Standort} \label{sub:wiederspruechlicheBezuege} 
 
 			Es existieren auch Datenwerte in denen mehrere widersprüchliche Angaben gemacht werden.
 			Dies bedeutet es werden zwei oder mehr Datenwerte mit geografischem Bezug angegeben, die auf unterschiedliche geografische Objekte verweisen.
@@ -198,7 +196,7 @@
 
 			Es kann hier nicht eindeutig entschieden werden in welcher Stadt sich der Nutzer aufhält.
 
-		\subsection{Geografische Hierarchien im Nutzer-Standort} \label{subsub:geografischeHierarchienImNutzerStandort} 
+		\subsection{Geografische Hierarchien im Nutzer-Standort} \label{sub:geografischeHierarchienImNutzerStandort} 
 
 			Es ist auch möglich, dass im Nutzer-Standort teile einer geografischen Hierarchie angegeben sind.
 			Beispielsweise die Angabe einer Stadt in Kombination mit einem Land.
@@ -214,250 +212,184 @@
 			\begin{tabular}{|l|c|c|c|c|}
 			\hline
 			\multicolumn{1}{|c|}{Wert} & Stadt       & \multicolumn{1}{l|}{Adm2} & Adm1 & \multicolumn{1}{l|}{Land} \\ \hline
-			Los Angeles, California    & Los Angeles & Los Angeles (County)                                  & California                      & -                         \\ \hline
+			Orange County, USA 		   & - 			 & Orange County										 & - 							   & USA    					\\ \hline
+			Las Vegas, USA 		       & Las Vegas   & - 												     &								   & USA 					    \\ \hline
 			Mato Grosso, Brazil        & -           & -                                                     & Mato Rrosso                     & Brazil                    \\ \hline
 			West Sussex, England       & -           & -                                                     & West Sussex                     & England                   \\ \hline
 			\end{tabular}
 			\end{table}
-
-
-			Aus diesen Werten kann spezielleres Wissen abgeleitet werden, da der Standort detaillierter beschrieben wird.
-			Ein Sonderfall bildet das erste Beispiel, es handelt sich entweder um die Stadt Los Angeles oder um das Los Angeles County.
-			Dies ist ein gutes Beispiel für die Doppeldeutigkeit eines Toponyms.
-			Trotzdem wird durch die Angabe California der Standort genau genug spezifiziert. 
-			Wenn man die Anfrage "'Los Angeles"' an das geonames.org Ortsverzeichnis sendet erhält man 91 Treffer. 
-			Filtert man die Ergebnisse und überprüft ob "'California"' als Verwaltungsebene erster Ordnung eingetragen ist so erhält man lediglich einen Datensatz.  
-			Durch die Kombination mehrere Toponyme unterschiedlicher geografischer Hierarchieebenen wird die geografische Position näher beschrieben.
+ 
+			Durch die Kombination mehrerer Toponyme unterschiedlicher geografischer Hierarchieebenen wird die geografische Position näher beschrieben.
+			Umso genauer eine geografische Position mit Toponymen beschrieben wird umso geringer ist die Gefahr von Doppel- und Mehrdeutigkeiten.  
 			Diese Information sollte bei einer Untersuchung erhalten bleiben.
 			
-		\subsection{Domänenspezifische Toponyme im Nutzer-Standort} 
+		\subsection{Domänenspezifische Toponyme im Nutzer-Standort (Neologismen)} \label{sub:domaenenspezBezug} 
 
 			In sozialen Netzwerken können sich eigene Begriffe und Formulierungen etablieren. 
 			Diese sind im allgemeinen nicht bekannt.
+
 
 			Im Twitter-Umfeld haben sich in den letzten Jahren einige spezielle Begriffe und Formulierungen zur Verwendung in Tweet-Texten etabliert. 
 			Das im Twitter-Umfeld auch spezielle Toponyme im Nutzer-Standort verwendet werden, kann nicht gänzlich ausgeschlossen werden. 
 
 			Ein Beispiel hierfür ist "'Bieberville"', welches in den untersuchten Daten von Hecht et al. öfter vorkommt.
 			"'Bieberville"' wird abgeleitet von dem Pop-Star Justin Bieber.	
-			Twitter wird oft als "'Bieberville"' bezeichnet.
 			Da der Pop-Star in Twitter sehr aktiv ist und deshalb viele seiner Fans auch in Twitter aktiv sind hat sich dieser Name etabliert.
 			Unter diesem Gesichtspunkt hätte "'Bieberville"' keinen geografischen Bezug.
-			Sucht man allerdings im Internet nach "'Bieberville"' stößt man auf einen Imbiss in Groß-Bieberau.
+			Sucht man im Internet nach "'Bieberville"' stößt man auf einen Imbiss in Groß-Bieberau.
 			"'Bieberville"' kann also durchaus einen geografischen Bezug haben, wenngleich es im Twitter-Umfeld nicht als solcher benutzt wird. 
-			Ein Nutzer-Standort der in einem Land kein Toponym darstellt, kann in einem anderen durchaus ein Toponym sein.
 			Ist in einem Ortsverzeichnis beispielsweise "'Bierberville"' als Bezeichnung für den Imbiss in Groß-Bieberau hinterlegt, würde dieser als Georeferenz zugeordnet werden, was im Umfeld von Twitter in einem Großteil der Fälle falsch wäre.
 
-			Solche Begriffe und Formulierungen können nur sehr schlecht mit einem Ortsverzeichnis zu Georeferenzen zugeordnet werden. 
+			Das Wissen über die Verwendung domänenspezifischer Toponyme kann nur aus der Domäne selbst generiert.
+		
+		\subsection{Kein geografischer oder mittelbar geografischer Bezug} \label{sub:keinGeogOdMittelBarereBezug}
 
-		\subsection{Qualitative } 
+			Im Nutzer-Standortfeld können auch Werte auftauchen die keinen geografischen Bezug aufweisen.
+			Beispiele hierfür sind:
+
+			\begin{table}[h]
+			\centering
+			\caption{My caption}
+			\label{my-label}
+			\begin{tabular}{|l|}
+			% hline
+			Werte                      	\\ \hline
+			In the middle of nowhere   	\\ \hline
+			95                         	\\ \hline
+			Highsociety                	\\ \hline
+			cold	                 	\\ \hline
+			rabbit     					\\ \hline
+			\end{tabular}
+			\end{table}
+
+			Diese Werte haben auf den ersten Blick keinen geografischen Bezug.
+			Es ist jedoch nicht auszuschließen, dass einige dieser Begriffe in bestimmten Regionen gehäuft auftreten.
+			Damit hätten diese Begriffe geografischen Bezug.
+			Dies kann bedingt durch die Landessprache oder Dialekte der Fall sein.
+
+	\section{Verfahren zum Einlernen der Georeferenz-Basis} \label{sec:VefrahrenZumEinlernen} 	
 			
-			Es ist zunächst nötig die genutzten geografischen Indikatoren einer Vorverarbeitung zu unterziehen. 
-			Ziel ist es aus dem Nutzer-Standort möglichst viele Informationen zu extrahieren und etwaige Probleme zu beseitigen.
-			In der folgenden Liste sind einige Nutzer-Standorte angegeben. 
-			Anhand dieser Liste sollen die Vorverarbeitungsschritte demonstriert werden.
+			In Abbildung \ref{img:einlernenAblauf} ist der Gesamtablauf des Einlernens dargestellt. 
+			Die Werte im Nutzer-Standortfeld werden zuerst einer Vorverarbeitung unterzogen. 
+			Durch die Vorverarbeitung werden die Datenwerte im Nutzer-Standort vorbereitet um weitere Informationen zu extrahieren.
+			Es wird danach eine Zerlegung der Werte im Nutzer-Standortfeld vorgenommen.
+			Die Zerlegung extrahiert dabei zusätzliche Informationen aus dem Nutzer-Standort.
+			DDie Nutzer-Zeitzone wird hinzugezogen um bei der Geolokalisierung etwaige Doppel- und Mehrdeutigkeiten von Toponymen erkennen zu können.
+			Das Ergebnis dieser Schritte ist eine Menge an Referenzwerten.
 
-			\begin{multicols}{2}
-			\begin{enumerate}
-				\item Bélem-PA
-				\item West Sussex, England
-				\item South Florida
-				\item Pitmedden,  Scotland, UK
-				\item Mato Grosso \& Rio de Janeiro
-				\item -****-
-				\item USA \textbackslash/ Los Angeles
-				\item Nottingham\textbackslash/London
-				\item Los Angeles, USA
-				\item I $\heartsuit$ New York 
-				\item $\dagger$\textasciitilde Los Angeles\textasciitilde$\dagger$
-				\item earth-sea
-				\item In front of the computer
-				\item 11th Dimension | California
-				\item York
-				\item York
-			\end{enumerate}
-			\end{multicols}
+			Parallel dazu werden die geografischen Koordinaten des Tweets auf eine diskrete geografische Position aufgelöst.
+			Dies erfolgt durch die Zuordnung der geografischen Koordinaten zu der nächstgelegenen Stadt.
 
-		\subsection{Zusammenfassung der quantitativen Erhebungen ----- BIS HIER --------} 
-
-			In ca. 80\% der Fälle kann der Nutzer-Standort tatsächlich einen Hinweis auf eine Georeferenz liefern.
-			Die Eingaben sind allerdings nicht standardisiert und können somit nicht ohne Vorverarbeitung verwendet werden.
-			Wie oben dargestellt kann der Nutzer-Standort nur partiellen geografischen Bezug haben.
-			Es können mehrere Informationen verschiedener geografischer Hierarchieebenen im Datenwert auftauchen. 
-			Und die Datenwerte im Nutzer-Standort können keinerlei geografischen Bezug aufweisen.
-			Dies macht es grundsätzlich schwierig die Datenwerte im Nutzer-Standort direkt als geografischen Indikator zu verwenden.
+			Die Kombinationen aus Referenzwerten und diskreten geografischen Positionen werden in der Georeferenz-Basis gespeichert.
+			Es wird dabei die quantitative Verteilung der Referenzwerte über den Globus erfasst.
 			
-			Ist ein geografischer Bezug des Nutzer-Standortes nachzuweisen, handelt es sich bei dem Eintrag in den meisten Fällen um ein Toponym.
-			Bei der durchgeführten Untersuchung wurden nur Ortsverzeichnisse zur Bestimmung eines geografischen Bezugs verwendet.
-			In Ortsverzeichnissen sind nur Toponyme hinterlegt es kann deshalb davon ausgegangen werden, dass ca. 76\% der Nutzer-Standorte auf Toponyme zurückzuführen sind.
-
-			Widersprüchliche Angaben, geografische Hierarchien und partieller geografischer Bezug können bei der Geolokalisierung zu Problemen führen.
-			Diese entstehen meist dadurch, dass der Datenwert nicht nur eine konkrete, sondern mehrere Angaben beinhaltet.
-			
-			Um den Problemen zu begegnen sollen die Datenwerte im Nutzer-Standort einer Vorverarbeitung unterzogen werden. 
-			Dadurch sollen möglichst viele einzelne Informationen aus dem Nutzer-Standort extrahiert werden.
-
-			Es können Beispielsweise Datenwerte mit geografischem Bezug von Datenwerten ohne geografischen Bezug getrennt untersucht werden.
-
-			Sollten Mehrdeutigkeiten im Nutzer-Standort auftauchen können diese teilweise durch die Hinzunahme der Nutzer-Zeitzone aufgelöst werden.
-
-			\textit{Dieser Teil zu Begründung warum Ortsverzichnis Abfrage schlecht} 
-			In Ortsverzeichnissen kann eine große Anzahl an Toponymen hinterlegt werden.
-			Aufgrund der immensen Vielfalt an Toponymen ist es aber nahezu unmöglich alle existierenden Toponyme abzudecken. 
-
-	\section{Verfahren zum Einlernen der Georeferenz-Basis} \label{sec:VefrahrenZumEinlernen} 
-
-		Beim e
-
-
-		\textit{EINLEITUNG ALT} 
-
-			Die Probleme bei der Nutzung von Ortsverzeichnissen sind meist auf deren Unvollständigkeit zurückzuführen. 
-
-			Der Vorteil besteht darin, dass eine domänenspezifische Georeferenz-Basis geschaffen wird.
-			Diese kann potenziell mehr geografische Indikatoren zuordnen als ein normales Ortsverzeichnis.
-			Denn es können dadurch domänenspezifische Eigenheiten bei der Verwendung von Toponymen berücksichtigt werden. 
-			Auch domäneninterne Begriffe sollen hierdurch gelernt werden können.
-
-			Im ersten Unterkapitel soll der Ablauf und die nötigen Daten zur Umsetzung eines solchen Lernverfahrens erläutert werden.
-
-			Danach wird auf die Vorverarbeitung des Nutzer-Standortes eingegangen.
-			Es werden basierend auf den erzeugten Referenzwerten und den zugeordneten Georeferenzen absolute Häufigkeiten bestimmt.
-			Des weiteren wird die in Abschnitt \ref{sec:generelleStruktur} vorgestellte Struktur der Georeferenz-Basis angepasst und erweitert.
-			Dabei wird am grundsätzlichen Prinzip nichts geändert, es wird nach wie vor einem Referenzwert eine Georeferenz zugewiesen. 
-
-			Die eingelernte Georeferenz-Basis soll es ermöglichen durch die Datenwerte im Nutzer-Standort und der Nutzer-Zeitzone eine Georeferenz zu bestimmen.
-			Nach der Struktur aus Kapitel \ref{sec:generelleStruktur} besteht eine Georeferenz-Basis zumindest aus Referenzwerten und einer zugeordneten Georeferenz.
-			Die Referenzwerte sollen aus dem Nutzer-Standort und der Nutzer-Zeitzone erzeugt werden.
-			Um eine Georeferenz zuordnen zu können muss zu jedem Tupel aus Nutzer-Standort und Nutzer-Zeitzone eine Georeferenz vorliegen.
-			Als Basis für das Lernverfahren werden die Tweet-Lerndaten genutzt.
-			Jeder Tweet enthält dabei neben dem Nutzer-Standort und der Nutzer-Zeitzone eine Georeferenz in Form von Längen- und Breitengrad. 
-			Die Tweets werden mit Hilfe des Längen- und Breitengrades der nächstgelegenen Stadt zugeordnet werden. 
-			Dadurch kann jedem Referenzwert in der Georeferenz-Basis später eine Stadt als Georeferenz zugeordnet werden.
-			Es entstehen somit Tupel aus einem Referenzwert und einer zugehörigen Georeferenz.
-			Diese sollen in der Georeferenz-Basis gespeichert werden.
-
-			Zusätzlich soll ein neues Feld in der Georeferenz-Basis eingeführt werden.
-			Dieses soll angeben, wie oft die Kombination aus einem Referenzwert und einer Stadt vorgekommen ist. 
-			Das Feld gibt also die absolute Häufigkeit der Vorkommen an.
-			Nachdem die Georeferenz-Basis eingelernt ist liegen somit für jeden Referenzwert eine Georeferenz und die absolute Häufigkeit vor.
-			Basierend darauf können dann die relativen Häufigkeiten für jedes paar aus Referenzwert und Stadt berechnet werden.
-			Bei der Geolokalisierung werden diese Werte genutzt um die wahrscheinlichste Georeferenz für einen gegebenen Nutzer-Standort und Nutzer-Zeitzone zu bestimmen.
-
-			In Abbildung \ref{img:EinlernenAllg} ist das Verfahren zum einlernen einer Georeferenz-Basis an einem Beispiel dargestellt.
-
-			\begin{figure}[!ht]
-					\begin{center}
-						\includegraphics[scale=0.5]{einlernenAllg.pdf}
-						\caption{Verfahren zum einlernen einer Georeferenz-Basis}
-						\label{img:EinlernenAllg}
-					\end{center}
-			\end{figure}	
-
-			In den nächsten Unterkapiteln sollen nun die einzelnen Schritte des Verfahrens genauer betrachtet werden. 
-			Zudem wird die Erweiterung der Datenbasis erläutert.
-	           
-			Als Referenzwerte sollen die Informationen aus dem Nutzer-Standort verwendet werden 
-			Bei der Verwendung des Nutzer-Standort als Referenzwert können Probleme auftreten. 
-			Die 
-			Um die Informationen aus dem Nutzer-Standort als Referenzwert nutzen zu können 
-
-			muss deshalb eine Vorverarbeitung stattfinden. 
-
-			Der Nutzer-Standort soll zunächst eingehender betrachtet werden.
-
-		\textit{SUMMARY ALT} 
-			
-			In Abbildung \ref{img:einlernenAblauf} ist der Gesamtablauf des Einlernens dargestellt.  
-			Zunächst werden die einzelnen Vorverarbeitungsschritte für den Nutzer-Standort und die Nutzer-Zeitzone durchgeführt.
-			Parallel kann der Längen- und Breitengrad auf eine Stadt aufgelöst werden.
-			Die dadurch entstandenen potenziellen geografischen Indikatoren und die zugehörige Georeferenz wird nun in die Georeferenz-Basis gespeichert. 
-			Dabei wird überprüft ob dieser Datensatz bereits vorhanden ist. 
-			Ist dies der Fall, wird der Häufigkeitswert des entsprechenden Datensatzes inkrementiert.
-			Ist der Datensatz noch nicht vorhanden wird er angelegt und die absolute Häufigkeiten mit 1 initialisiert.
-
 			 \begin{figure}[!ht]
-					\begin{center}
-						\includegraphics[scale=0.6]{einlernenAblauf.pdf}
-						\caption{Ablaufplan einlernen}
-						\label{img:einlernenAblauf}
-					\end{center}
-				\end{figure}
+				\begin{center}
+					\includegraphics[scale=0.6]{einlernenAblauf.pdf}
+					\caption{Ablaufplan einlernen}
+					\label{img:einlernenAblauf}
+				\end{center}
+			\end{figure}
 
+			Die Datenstruktur der Georeferenz-Basis beinhaltet die Referenzwerte, die zugeordnete Stadt, und die übergeordneten Hierarchieebenen. 
+			Zusätzlich wird das vorkommen eines Referenzwertes in einer Stadt als absolute Häufigkeit gespeichert. 
 
-			Die Vorverarbeitung extrahiert dabei zusätzliche Informationen aus dem Nutzer-Standort.
-			Durch die Bereiningung der Werte im Nutzer-Standort, die alphanumerische Sortierung, das identifzieren von Toponymen mit mehreren Worten und die darauffolgende Erzeugung von N-Grammen werden zusätzliche Informationen aus jedem Nutzer-Standort gewonnen.
-			Die Nutzer-Zeitzone wird einbezogen um Doppeldeutigkeiten auflösen zu können.
-
-			Durch die neue Datenstruktur, mit den absoluten Häufigkeiten und der abgebildeten geografischen Hierarchie, lassen sich nun tiefergehende Analysen durchführen um eine robuste Geolokalisierung zu ermöglichen. 
-			Die absoluten Häufigkeiten geben dabei an wie oft ein Referenzwert in einer bestimmten Region vorkommt.
-
-			Durch dieses Verfahren lässt sich eine Datenbasis erzeugen die domänenspezifische Eigenheiten, in Bezug auf die Verwendung spezieller Begriffe oder Formulierungen, berücksichtigt.
+			Durch dieses Verfahren lässt sich eine Datenbasis erzeugen die auch domänenspezifische Eigenheiten, in Bezug auf die Verwendung spezieller Begriffe oder Formulierungen, berücksichtigt.
 			Des weiteren werden Toponyme, die in Ortsverzeichnissen unter Umständen nicht hinterlegt sind, berücksichtigt.
-			Auch geografische Indikatoren mit mittelbarem geografischen Bezug, zum Beispiel die Verwendung spezieller Begriffe in einer geografischen Region, können einbezogen werden. 
+			Auch geografische Indikatoren mit mittelbarem geografischen Bezug, zum Beispiel die Verwendung spezieller Begriffe in einer geografischen Region, können einbezogen werden.
 
+			In Tabelle \ref{tab:strukturMitHierarchie1} ist die Struktur der Georeferenz-Basis dargestellt.
+
+			\begin{table}[htpb]
+				\caption{Struktur der Georeferenz-Basis mit geografischer Hierarchie} 
+				\centering
+				\tiny
+				\begin{tabular}{|c|c|c|c|c|c|}
+					\hline
+					Referenzwert & Stadt & Adm2 & Adm1 & Land & abs. Häufigkeit \\
+					\hline\hline
+					 "'LA"' & Los Angeles & LA County & CA & USA & 30 \\
+					\hline
+					 "'San Francisco"'   & San Francisco & SF County & CA & USA & 3 \\
+					\hline
+					 "'Los Angeles"'   & Los Angeles & LA County & CA & USA & 70 \\
+					\hline
+					 "'Stuttgart"'   & Stuttgart & Regierungsbezirk Stuttgart & BaWü & BRD & 80 \\
+					\hline
+					 "'London City"'   & London & City London & Greater London & GB & 90\\
+					\hline
+				\end{tabular}
+				\label{tab:strukturMitHierarchie1} 
+			\end{table}  		
 		
+		\subsection{Schritte zur Vorverarbeitung der Werte des Nutzer-Standortfeldes}
 
-		
-		\subsection{Vorverarbeitungsschritte des Nutzer-Standortes}
+			Die Werte des Nutzer-Standortfeldes wird einer Vorverarbeitung unterzogen.
+			In Abbildung \ref{img:vorverarbeitung} sind die einzelnen Schritte dargestellt.
+			Die Vorverarbeitung ist notwendig um die Werte auf die Extrahierung weiterer Daten vorzubereiten.
+			Die einzelnen Worte im Nutzer-Stadort werden als Token bezeichnet. 
+			
+			Es sollen zunächst Sonder- und Satzzeichen entfernt werden, diesen kann in der Regel kein geografischer Bezug nachgewiesen werden.
+			In einem weiteren Schritt werden mit Hilfe eines Ortsverzeichnisses zwei oder mehr Token, die gemeinsam ein Toponym darstellen, zusammengefasst.
+			Danach wird eine alphanumerische Sortierung der Token durchgeführt.
 
-			\subsubsection{Bereinigung des Nutzer-Standortes}
+			In Tabelle \ref{tab:VorverarbeitungBsp1} sind einige Werte von Nutzer-Standortfeldern aufgeführt.
+			Diese sollen in den folgenden Abschnitten als durchgängiges Beispiel verwendet werden.
 
-				\textit{Eliminierung von Sonder- und Satzzeichen} 
+			\begin{table}[h]
+				\centering
+				\caption{Beispielwerte}
+				\label{tab:VorverarbeitungBsp1}
+				\begin{tabular}{|l|l|}
+				\hline 
+				\multicolumn{2}{|c|}{\textbf{Werte Nutzer-Standortfeld}} \\ \hline \hline
+				1&Mato Grosso \& Rio de Janeiro                      			\\ \hline
+				2&\_***\_                                         			\\ \hline
+				3&USA\textbackslash /Los Angeles                  			\\ \hline
+				4&Los Angeles, USA                                			\\ \hline
+				5&$\dagger$\textasciitilde York \textasciitilde$\dagger$      \\ \hline
+				6&Nottingham\textbackslash /London                			\\ \hline
+				7&York                                            			\\ \hline
+				8&11th Dimension | California 					\\ \hline	
+				\end{tabular}
+			\end{table} 
+			 
+			\subsubsection{Eliminierung von Sonder- und Satzzeichen} 
+
 				Es werden oft Sonder- und Satzzeichen im Nutzer-Standort verwendet. 
 				Beispielsweise als Trenner zwischen Toponymen unterschiedlicher geografischer Hierarchieebenen.
-				Beispiele hierfür sind "'West Sussex, England"', "'USA \textbackslash/ Los Angeles"' oder "'Bélem-PA"'.
-				Das Trennzeichen wird dabei nicht einheitlich verwendet.  
-				Es kann deshalb nicht entschieden werden ob ein Satzzeichen als Trenner zweier Hierarchieebenen genutzt wird oder nicht.
-				Bei "'USA \textbackslash/ Los Angeles"' wird \textbackslash/ als Trenner für Hierarchieebenen verwendet.
-				Bei "'Nottingham\textbackslash/London"' hingegen werden zwei Städte angegeben.
-				Es ist also insbesondere nicht klar welcher Zusammenhang zwischen den Datenwerten, die durch ein Sonder- oder Satzzeichen getrennt sind, besteht. 
+				Beispiele hierfür sind die Zeilen 1,3 und 6 in Tabelle \ref{tab:VorverarbeitungSonder}. 
+				Die Trennzeichen werden nicht einheitlich verwendet.
+				Weder die Rangfolge der Hierarchieebene noch das verwendete Satzzeichen sind einheitlich.  
+				Es ist also nicht klar welcher Zusammenhang zwischen den Datenwerten, die durch ein Sonder- oder Satzzeichen getrennt werden, besteht. 
 
-				Bei "'I $\heartsuit$ New York "' werden Sonderzeichen zum ausdrücken von Emotionen genutzt.
-				In "'$\dagger$\textasciitilde Los Angeles\textasciitilde$\dagger$"' werden Sonderzeichen als Dekoration genutzt.
-				Einige Nutzer-Standorte bestehen ausschließlich aus Sonder- und Satzzeichen.
-				
-				Grundsätzlich ist es aufgrund schwierig zu entscheiden ob Satz- und Sonderzeichen einen Mehrwert bieten um einen Nutzer-Stadort genauer zu bestimmen.
-				Dies ist immer dann der Fall, wenn die Sonder- und Satzzeichen Bestandteil eines Toponyms sind. 
-				Es gibt tatsächlich Fälle in denen Sonder- oder Satzzeichen Bestandteil eines Toponyms sind.
-				Ein Beispiel hierfür wäre "'3. Arrondisement Paris"'.
-				Das weggelassen des Punktes hätte allerdings keinen Einfluss auf die gelieferte Information.
-
+				Auch werden Sonder- und Satzzeichen ausschließlich oder als Dekoration verwendet Beispiele hierfür sind die Zeilen 2 und 5 in Tabelle \ref{tab:VorverarbeitungSonder}.
 				In den oben genannten Fällen bringen Sonder- und Satzzeichen keine zusätzlichen Informationen.
 				Es sollen deshalb in einem ersten Vorverarbeitungsschritt alle Sonder- und Satzzeichen entfernt werden. 
 
 				Liste nach dem entfernen von Sonder- und Satzzeichen:
 
-				\begin{multicols}{2}
-					\begin{enumerate}
-						\item Bélem PA
-						\item West Sussex England
-						\item South Florida
-						\item Pitmedden Scotland UK
-						\item Mato Grosso Rio de Janeiro
-						\item 
-						\item USA Los Angeles
-						\item Nottingham London
-						\item Los Angeles USA
-						\item I New York 
-						\item Los Angeles
-						\item earth sea
-						\item In front of the computer
-						\item 11th Dimension California
-						\item York
-						\item York
-					\end{enumerate}
-				\end{multicols}
+				\begin{table}[h]
+				\centering
+				\caption{Eliminierung von Sonder- und Satzzeichen}
+				\label{tab:VorverarbeitungSonder}
+				\begin{tabular}{|l|l|l|}
+				\hline \hline
+				  & \multicolumn{1}{c|}{\textbf{Vorher}} & \multicolumn{1}{c|}{\textbf{Nachher}} \\ \hline
+				1 & Mato Grosso \& Rio de Janeiro        & Mato Grosso Rio de Janeiro            \\ \hline
+				2 & \_***\_                              &                                       \\ \hline
+				3 & USA\textbackslash /Los Angeles       & USA Los Angeles                       \\ \hline
+				4 & Los Angeles, USA                     & Los Angeles USA                       \\ \hline
+				5 & $\dagger$\textasciitilde York \textasciitilde$\dagger$                             & York                                  \\ \hline
+				6 & Nottingham\textbackslash /London     & Nottingham London                     \\ \hline
+				\end{tabular}
+				\end{table}
 
 				Der Wert 6 existiert nun nicht mehr, der Wert ist leer und wird somit nicht weiter betrachtet.
 
-				Unnötige Sonder- und Satzzeichen wurden entfernt und die entstandenen Werte können nun einfacher weiterverarbeitet werden.
-
 			\subsubsection{Zusammenfassen von Toponymen mit Hilfe von a priori Wissen aus einem Ortsverzeichnis}
 
-				\textit{Zusammenfassen von Toponymen}
-
-				Oft bestehen Toponyme aus zwei oder mehr Worten.
+				Oft bestehen Toponyme aus zwei oder mehr Token.
 				Diese sollen mit Hilfe eines Ortsverzeichnisses zusammengefasst werden. 
 				Dies kann selbstverständlich nur für bekannte Toponyme durchgeführt werden.
 				
@@ -466,71 +398,94 @@
 
 				Daraus resultiert:
 
-				\begin{multicols}{2}
-					\begin{enumerate}
-						\item Bélem PA
-						\item West+Sussex England
-						\item South Florida
-						\item Pitmedden Scotland UK
-						\item Mato+Grosso Rio+de+Janeiro
-						\item USA Los+Angeles
-						\item Nottingham London
-						\item Los+Angeles USA
-						\item I New+York 
-						\item Los+Angeles
-						\item earth sea
-						\item In front of the computer
-						\item 11th Dimension California
-						\item York
-						\item York
-					\end{enumerate}
-				\end{multicols}
+				\begin{table}[h]
+				\centering
+				\caption{Zusammenfassen von Toponymen}
+				\label{tab:VorverarbeitungZusammen}
+				\begin{tabular}{|l|l|l|}
+				\hline
+				  & \multicolumn{1}{c|}{\textbf{Vorher}} & \multicolumn{1}{c|}{\textbf{Nachher}} \\ \hline \hline
+				1 & Mato Grosso Rio de Janeiro           & Mato+Grosso Rio+de+Janeiro            \\ \hline
+				2 &                                      &                                       \\ \hline
+				3 & USA Los Angeles                      & USA Los+Angeles                       \\ \hline
+				4 & Nottingham London                    & Nottingham London                     \\ \hline
+				5 & Los Angeles USA                      & Los+Angeles USA                       \\ \hline
+				6 & York                                 & York                                  \\ \hline
+				7 & 11th Dimension California            & 11th Dimension California             \\ \hline
+				\end{tabular}
+				\end{table}
 
-				In diesem Schritt wird insbesondere keine Geolokalisierung vorgenommen. 
-				Er dient dazu möglichst früh vorhandenes Wissen über Toponyme einzubeziehen und somit eine unnötige Fragmentierung zu vermeiden.
-				Im wesentlichen sollen die Werte hiermit für die nächsten Verarbeitungsschritte vorbereitet werden.
+				In diesem Schritt wird keine Geolokalisierung vorgenommen es werden lediglich Toponyme die aus zwei oder mehr Token bestehen identifiziert.
+				Er dient dazu möglichst früh vorhandenes Wissen über Toponyme einzubeziehen und zusammengehörige Toponyme in den nächsten Schritten als ein Token zu behandeln.
 
 			\subsubsection{Angleichung durch alphanumerische Sortierung}
 
-				\textit{Alphanumerische Sortierung}
+				In diesem Schritt sollen die Token alphanumerisch sortiert werden. 
+				Wenn Toponyme unterschiedlicher geografischer Hierarchieebenen angegeben sind spielt es keine Rolle mehr in welcher Reihenfolge diese angegeben werden.
 
-				In diesem Schritt sollen die Werte alphanumerisch sortiert werden. 
+				\begin{table}[h]
+				\centering
+				\caption{Alphanumerische Sortierung}
+				\label{tab:VorverarbeitungAlpha}
+				\begin{tabular}{|l|l|l|}
+				\hline
+				  & \multicolumn{1}{c|}{\textbf{Vorher}} & \multicolumn{1}{c|}{\textbf{Nachher}} \\ \hline
+				1 & Mato+Grosso Rio+de+Janeiro           & Mato+Grosso Rio+de+Janeiro            \\ \hline
+				2 &                                      &                                       \\ \hline
+				3 & USA Los+Angeles                      & Los+Angeles USA                       \\ \hline
+				4 & Nottingham London                    & London Nottingham                     \\ \hline
+				5 & Los+Angeles USA                      & Los+Angeles USA                       \\ \hline
+				6 & York                                 & York                                  \\ \hline
+				7 & 11th Dimension California            & 11th California Dimension             \\ \hline
+				\end{tabular}
+				\end{table}
 
-				Nach der Sortierung liegt folgende Tabelle vor:
-
-				\begin{multicols}{2}
-					\begin{enumerate}
-						\item Bélem PA
-						\item England West+Sussex
-						\item Florida South
-						\item Pitmedden Scotland UK
-						\item Mato+Grosso Rio+de+Janeiro
-						\item Los+Angeles USA
-						\item London Nottingham
-						\item Los+Angeles USA
-						\item I New+York 
-						\item Los+Angeles
-						\item earth sea
-						\item computer front In of the 
-						\item 11th California Dimension 
-						\item York
-						\item York
-					\end{enumerate}
-				\end{multicols}
-
-				Die Werte 6 und 8 sind nun gleich. 
-				Durch die Sortierung werden Werte mit gleichem Inhalt aber unterschiedlicher Reihenfolge angeglichen.
-				Durch das zusammenfassen der Toponyme im vorherigen Schritt werden bekannte Toponyme nicht getrennt.
-
-				Dieser Schritt stellt allerdings einen Kompromiss dar.
+				In den Zeilen 3 und 5 in Tabelle \ref{tab:VorverarbeitungAlpha} ist nun die Reihenfolge der Toponyme angeglichen. 
+				
+				Dieser Schritt stellt einen Kompromiss dar.
 				Es werden zwar Werte mit gleichem Inhalt und unterschiedlicher Reihenfolge angeglichen.
-				Aber es werden auch potenzielle Toponyme, die aus mehreren Teilen bestehen, auseinandergezogen.
-				Aus "'Motor City Michigan USA"' würde "'City Michigan Motor USA"' entstehen.
-				Der Zusammenhang zwischen Motor und City wäre nicht mehr vorhanden und könnte auch nicht wiedergewonnen werden.
+				Aber es werden auch potenzielle Toponyme, die aus mehreren Token bestehen, auseinandergezogen.
+				Als Beispiel soll hier "'Motor City Michigan USA"' betrachtet werden.
+				Wenn "'Motor City"' nicht im Ortsverzeichnis hinterlegt ist entsteht durch die alphanumerische Sortierung "'City Michigan Motor USA"'.
+				Der Zusammenhang zwischen Motor und City wäre nicht mehr vorhanden und kann nicht wiedergewonnen werden.
 
-		\subsection{Fragmentierung zur Extraktion potenziell geografischer Indikatoren} 
+		\subsection{Zerlegung der Werte im Nutzer-Standortfeld zur Extrahierung von Informationen} 
 
-				\textit{Erzeugung von N-Grammen}
+				Die Zerlegung der Werte soll es ermöglichen Informationen aus dem Nutzer-Standortfeld zu extrahieren.
+				Die Zerlegung soll mit Hilfe sogenannter N-Gramme erfolgen.
+
+				\subsubsection{N-Gramme}
+
+				\subsubsection{Vorteile bei der Zerlegung durch N-Gramme}   
+
+
+				\begin{table}[h]
+				\centering
+				\caption{tab:NGramme}
+				\label{Zerlegung in N-Gramme}
+				\begin{tabular}{|l|l|l|}
+				\hline 
+				\multicolumn{1}{|c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Vorher}}        & \multicolumn{1}{c|}{\textbf{Nachher}}                                                    \\ \hline \hline
+				\multirow{3}{*}{1}              & \multirow{3}{*}{Mato+Grosso Rio+de+Janeiro} & \textless Mato+Grosso\textgreater\textless Rio+de+Janeiro\textgreater                     \\ \cline{3-3} 
+				                                &                                             & \textless Mato+Grosso\textgreater                                                         \\ \cline{3-3} 
+				                                &                                             & \textless Rio+de+Janeiro\textgreater                                                     \\ \hline \hline
+				2                               &                                             &                                                                                          \\ \hline \hline
+				\multirow{3}{*}{3}              & \multirow{3}{*}{Los+Angeles USA}            & \textless Los+Angeles\textgreater\textless USA\textgreater                                 \\ \cline{3-3} 
+				                                &                                             & \textless Los+Angeles\textgreater                                                         \\ \cline{3-3} 
+				                                &                                             & \textless USA\textgreater                                                                 \\ \hline \hline
+				\multirow{3}{*}{4}              & \multirow{3}{*}{London Nottingham}          & \textless London\textgreater\textless Nottingham\textgreater                               \\ \cline{3-3} 
+				                                &                                             & \textless London\textgreater                                                              \\ \cline{3-3} 
+				                                &                                             & \textless Nottingham\textgreater                                                          \\ \hline \hline
+				5                               & Los+Angeles USA                             &                                                                                          \\ \hline \hline
+				6                               & York                                        & \textless York\textgreater                                                                \\ \hline \hline
+				\multirow{6}{*}{7}              & \multirow{6}{*}{11th Dimension California}  & \textless 11th\textgreater\textless California\textgreater\textless Dimension\textgreater \\ \cline{3-3} 
+				                                &                                             & \textless 11th\textgreater                                                                \\ \cline{3-3} 
+				                                &                                             & \textless California\textgreater                                                         \\ \cline{3-3} 
+				                                &                                             & \textless Dimension\textgreater                                                          \\ \cline{3-3} 
+				                                &                                             & \textless 11th\textgreater\textless California\textgreater                                 \\ \cline{3-3} 
+				                                &                                             & \textless California\textgreater\textless Dimension\textgreater                           \\ \hline
+				\end{tabular}
+				\end{table}
 
 				Es sollen nun N-Gramme bis zum Grad 3 erzeugt werden. 
 				Dieses Vorgehen löst gleich mehrere Probleme.
@@ -556,28 +511,6 @@
 
 				Dieser Schritt soll nur an einigen ausgewählten Beispielen aus der Liste erfolgen.
 				Die Bestandteile der N-Gramme werden zur Verdeutlichung mit \textless \textgreater gekennzeichnet in späteren Beispielen wird dies weggelassen, da durch das zusammenfassen von Werten mit einem plus klar ist welches die Elemente des NGramms darstellen
-
-				\begin{multicols}{2}
-					\begin{enumerate}
-						\item \textless England\textgreater   \textless West+Sussex\textgreater  
-						\item \textless England\textgreater  
-						\item \textless West+Sussex\textgreater  
-						\item \textless Mato+Grosso\textgreater   \textless Rio+de+Janeiro\textgreater  
-						\item \textless Rio+de+Janeiro\textgreater  
-						\item \textless Mato+Grosso\textgreater  
-						\item \textless 11th\textgreater   \textless California\textgreater   \textless Dimension\textgreater   
-						\item \textless 11th\textgreater   \textless California\textgreater  
-						\item \textless California\textgreater   \textless Dimension\textgreater   
-						\item \textless 11th\textgreater  
-						\item \textless California\textgreater  
-						\item \textless Dimension\textgreater   
-						\item \textless York\textgreater  
-						\item \textless York\textgreater  
-					\end{enumerate}
-				\end{multicols}
-				Der Wert 7 ist ein Trigramm.
-				Bei den Werten 1,4,8 und 9 handelt es sich um Bigramme. 
-				Die Werte von 2,3,5,6,10,11 und 12 sind Unigramme.				
 
 				In diesem Schritt werden aus dem Nutzer-Standort mehrere potenzielle geografische Indikatoren erzeugt die als Referenzwerte genutzt werden können.
 				Bevor diese als Referenzwerte genutzt werden soll aber noch die Nutzer-Zeitzone einbezogen werden.

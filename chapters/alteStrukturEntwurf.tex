@@ -1,4 +1,17 @@
-		
+			
+
+			
+\textit{Dieser Teil zu Begründung warum Ortsverzichnis Abfrage schlecht} 
+			In Ortsverzeichnissen kann eine große Anzahl an Toponymen hinterlegt werden.
+			Aufgrund der immensen Vielfalt an Toponymen ist es aber nahezu unmöglich alle existierenden Toponyme abzudecken. 
+
+
+		Diese kann potenziell mehr geografische Indikatoren zuordnen als ein normales Ortsverzeichnis.
+
+			Denn es können dadurch domänenspezifische Eigenheiten bei der Verwendung von Toponymen berücksichtigt werden. 
+			Auch domäneninterne Begriffe sollen hierdurch gelernt werden können.
+
+
 		\section{NAIVER ANSATZ ALT} \label{sec:ueberblick} 
 
 		\todo{chap: Lsgansatz section: Naiver Ansatz --> Mergen nach Lösungsansatz Einführung} 
@@ -152,31 +165,17 @@
 			Diese sollen nun zusätzlich in der Struktur hinterlegt werden.
 			Die daraus resultierende Struktur der Georeferenz-Basis ist in \ref{tab:strukturMitHierarchie1} inklusive einiger Beispieleinträge dargestellt.
 
-			\begin{table}[htpb]
-				\caption{Struktur der Georeferenz-Basis mit geografischer Hierarchie} 
-				\centering
-				\tiny
-				\begin{tabular}{|c|c|c|c|c|c|}
-					\hline
-					Referenzwert & Stadt & Adm2 & Adm1 & Land & abs. Häufigkeit \\
-					\hline\hline
-					 Los+Angeles    USA   & Los Angeles & LA County & CA & USA & 30 \\
-					\hline
-					 Los+Angeles    USA   & San Francisco & SF County & CA & USA & 3 \\
-					\hline
-					 Los+Angeles   & Los Angeles & LA County & CA & USA & 70 \\
-					\hline
-					 USA   & Los Angeles & LA County & CA & USA & 80 \\
-					\hline
-					 Heilbronn   & Heilbronn & Regierungsbezik Stuttgart & BaWü & BRD & 90\\
-					\hline
-				\end{tabular}
-				\label{tab:strukturMitHierarchie1} 
-			\end{table} 
+
+				\begin{figure}[!ht]
+					\begin{center}
+						\includegraphics[scale=0.5]{einlernenAllg.pdf}
+						\caption{Verfahren zum einlernen einer Georeferenz-Basis}
+						\label{img:EinlernenAllg}
+					\end{center}
+			\end{figure}
 
 
-
-
+			
 
 \subsubsection{Genauigkeit der geografischen Angaben}
 				
@@ -236,6 +235,34 @@
 				Die unterschiedlichen Ergebnisse zwischen der eigenen Untersuchung und den Ergebnissen von Hecht et al. können dadurch Zustande kommen, dass in der vorliegenden Arbeit Twitter-Nutzer aus der ganzen Welt untersucht wurden.
 				Aber auch der zeitliche Abstand zwischen den beiden Untersuchungen kann dafür verantwortlich sein.  
 			
+
+
+			\subsection{Zusammenfassung der quantitativen Erhebungen ----- BIS HIER --------} 
+
+			In ca. 80\% der Fälle kann der Nutzer-Standort tatsächlich einen Hinweis auf eine Georeferenz liefern.
+			Die Eingaben sind allerdings nicht standardisiert und können somit nicht ohne Vorverarbeitung verwendet werden.
+			Wie oben dargestellt kann der Nutzer-Standort nur partiellen geografischen Bezug haben.
+			Es können mehrere Informationen verschiedener geografischer Hierarchieebenen im Datenwert auftauchen. 
+			Und die Datenwerte im Nutzer-Standort können keinerlei geografischen Bezug aufweisen.
+			Dies macht es grundsätzlich schwierig die Datenwerte im Nutzer-Standort direkt als geografischen Indikator zu verwenden.
+			
+			Ist ein geografischer Bezug des Nutzer-Standortes nachzuweisen, handelt es sich bei dem Eintrag in den meisten Fällen um ein Toponym.
+			Bei der durchgeführten Untersuchung wurden nur Ortsverzeichnisse zur Bestimmung eines geografischen Bezugs verwendet.
+			In Ortsverzeichnissen sind nur Toponyme hinterlegt es kann deshalb davon ausgegangen werden, dass ca. 76\% der Nutzer-Standorte auf Toponyme zurückzuführen sind.
+
+			Widersprüchliche Angaben, geografische Hierarchien und partieller geografischer Bezug können bei der Geolokalisierung zu Problemen führen.
+			Diese entstehen meist dadurch, dass der Datenwert nicht nur eine konkrete, sondern mehrere Angaben beinhaltet.
+			
+			Um den Problemen zu begegnen sollen die Datenwerte im Nutzer-Standort einer Vorverarbeitung unterzogen werden. 
+			Dadurch sollen möglichst viele einzelne Informationen aus dem Nutzer-Standort extrahiert werden.
+
+			Es können Beispielsweise Datenwerte mit geografischem Bezug von Datenwerten ohne geografischen Bezug getrennt untersucht werden.
+
+			Sollten Mehrdeutigkeiten im Nutzer-Standort auftauchen können diese teilweise durch die Hinzunahme der Nutzer-Zeitzone aufgelöst werden.
+
+			\textit{Dieser Teil zu Begründung warum Ortsverzichnis Abfrage schlecht} 
+			In Ortsverzeichnissen kann eine große Anzahl an Toponymen hinterlegt werden.
+			Aufgrund der immensen Vielfalt an Toponymen ist es aber nahezu unmöglich alle existierenden Toponyme abzudecken. 
 
 	
 
