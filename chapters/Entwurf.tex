@@ -77,7 +77,7 @@
 				\end{tabular}
 				\end{table}
 
-	\section{Quantitative Bewertung des Nutzer-Standortes}
+	\section{Bewertung des Nutzer-Standortes}
 
 		In diesem Abschnitt soll untersucht werden in wie vielen Fällen dem Nutzer-Standort geografischer Bezug nachgewiesen werden kann.
 		Dabei werden zum Nutzer-Standort quantitative Daten erhoben um die Eignung des Nutzer-Standortes zur Geolokalisierung zu überprüfen.
@@ -336,23 +336,23 @@
 			In Tabelle \ref{tab:VorverarbeitungBsp1} sind einige Werte von Nutzer-Standortfeldern aufgeführt.
 			Diese sollen in den folgenden Abschnitten als durchgängiges Beispiel verwendet werden.
 
-			\begin{table}[h]
-				\centering
-				\caption{Beispielwerte}
-				\label{tab:VorverarbeitungBsp1}
-				\begin{tabular}{|l|l|}
-				\hline 
-				\multicolumn{2}{|c|}{\textbf{Werte Nutzer-Standortfeld}} \\ \hline \hline
-				1&Mato Grosso \& Rio de Janeiro                      			\\ \hline
-				2&\_***\_                                         			\\ \hline
-				3&USA\textbackslash /Los Angeles                  			\\ \hline
-				4&Los Angeles, USA                                			\\ \hline
-				5&$\dagger$\textasciitilde York \textasciitilde$\dagger$      \\ \hline
-				6&Nottingham\textbackslash /London                			\\ \hline
-				7&York                                            			\\ \hline
-				8&11th Dimension | California 					\\ \hline	
-				\end{tabular}
-			\end{table} 
+				\begin{table}[h]
+					\centering
+					\caption{Beispielwerte}
+					\label{tab:VorverarbeitungBsp1}
+					\begin{tabular}{|l|l|}
+					\hline 
+					\multicolumn{2}{|c|}{\textbf{Werte Nutzer-Standortfeld}} \\ \hline \hline
+					1&Mato Grosso \& Rio de Janeiro                      			\\ \hline
+					2&\_***\_                                         			\\ \hline
+					3&USA\textbackslash /Los Angeles                  			\\ \hline
+					4&Los Angeles, USA                                			\\ \hline
+					5&$\dagger$\textasciitilde York \textasciitilde$\dagger$      \\ \hline
+					6&Nottingham\textbackslash /London                			\\ \hline
+					7&York                                            			\\ \hline
+					8&11th Dimension | California 					\\ \hline	
+					\end{tabular}
+				\end{table} 
 			 
 			\subsubsection{Eliminierung von Sonder- und Satzzeichen} 
 
@@ -449,87 +449,116 @@
 				Wenn "'Motor City"' nicht im Ortsverzeichnis hinterlegt ist entsteht durch die alphanumerische Sortierung "'City Michigan Motor USA"'.
 				Der Zusammenhang zwischen Motor und City wäre nicht mehr vorhanden und kann nicht wiedergewonnen werden.
 
-		\subsection{Zerlegung der Werte im Nutzer-Standortfeld zur Extrahierung von Informationen} 
+		\subsection{Zerlegung der Werte im Nutzer-Standortfeld} 
 
-				Die Zerlegung der Werte soll es ermöglichen Informationen aus dem Nutzer-Standortfeld zu extrahieren.
-				Die Zerlegung soll mit Hilfe sogenannter N-Gramme erfolgen.
+			Als Eingabe wird in diesem Schritt das Ergebnis der Vorverarbeitung genutzt. 
+			Pro Nutzer-Standortfeld existieren ein oder mehrere Token. 
+			Ist nur ein Token vorhanden so wird dieser direkt weiter verarbeitet.
+			Sind mehrere Token vorhanden so können diese partiellen geografischen Bezug aufweisen (siehe Abschnitt \ref{sub:partiellerGeografischerBezug}) oder eine Hierarchie darstellen (siehe Abschnitt \ref{sub:geografischeHierarchienImNutzerStandort}).
+			Durch die Zerlegung sollen einzelne Token für die Weiterverarbeitung extrahiert werden.
+			Im diesem Fall soll es ermöglicht werden Token mit geografischem Bezug von solchen ohne geografischen Bezug zu trennen um diese separat weiterverarbeiten zu können.
+			Um allerdings die zusätzlichen Informationen, die durch die Angabe einer geografischen Hierarchie entstehen zu erhalten, sollen auch mehrere Token gemeinsam weiterverarbeitet werden können.
+			Das bedeutet, der Zusammenhang mehrere Token die in einer gewissen Reihenfolge auftreten soll erhalten bleiben. 
+			Um dies zu erzielen werden die Token in sogenannte N-Gramme zerlegt. 
 
-				\subsubsection{N-Gramme}
+			\subsubsection{N-Gramme}
 
-				\subsubsection{Vorteile bei der Zerlegung durch N-Gramme}   
+				Eine Gruppe von Token soll derart zerlegt werden, dass sowohl einzelne Token betrachtet werden können als auch der Zusammenhang zwischen den Token, der durch ihre Reihenfolge  besteht, erhalten bleibt.
+				Um dies umzusetzen soll eine Menge von Token in N-Gramme zerlegt werden.
 
+				Die Zerlegung in N-Gramme findet unter anderem Anwendung in der Computerlinguistik und quantitativen Linguistik.
+				N-Gramme bestehen aus ein oder mehreren Wörtern, die aus einem Text extrahiert werden. 
+				Im vorliegenden Fall sollen die Token aus dem Nutzer-Standortfeld betrachtet werden.
+				Die Extrahierung erfolgt dabei derart, dass immer zwei oder mehr aufeinanderfolgende Token zusammengefasst werden.    
+				Ein Spezialfall sind Uni-Gramme, hierbei wird die Menge an Token in die einzelnen Token zerlegt.
+				Bi-Gramme bestehen aus jeweils zwei aufeinanderfolgenden Token.
+				Tri-Gramme bestehen aus drei aufeinanderfolgenden Token. 
+				Die Anzahl der Token aus der ein N-Gramm besteht, wird auch Grad des N-Grammes genannt.
+
+				In Tabelle \ref{tab:ngramize} wird der Ablauf zur Erzeugung von N-Grammen bis zum Grad 3 Schrittweise dargestellt.
+				In Schritt 1,2 und 3 werden Uni-Gramme erzeugt. 
+				Diese bestehen jeweils aus einem Token.
+				In den Zeilen 4 und 5 sind die beiden Bi-Gramme dargestellt.
+				In Zeile 6 schließlich wird das Tri-Gramm dargestellt. 
 
 				\begin{table}[h]
 				\centering
-				\caption{tab:NGramme}
-				\label{Zerlegung in N-Gramme}
-				\begin{tabular}{|l|l|l|}
-				\hline 
-				\multicolumn{1}{|c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Vorher}}        & \multicolumn{1}{c|}{\textbf{Nachher}}                                                    \\ \hline \hline
-				\multirow{3}{*}{1}              & \multirow{3}{*}{Mato+Grosso Rio+de+Janeiro} & \textless Mato+Grosso\textgreater\textless Rio+de+Janeiro\textgreater                     \\ \cline{3-3} 
-				                                &                                             & \textless Mato+Grosso\textgreater                                                         \\ \cline{3-3} 
-				                                &                                             & \textless Rio+de+Janeiro\textgreater                                                     \\ \hline \hline
-				2                               &                                             &                                                                                          \\ \hline \hline
-				\multirow{3}{*}{3}              & \multirow{3}{*}{Los+Angeles USA}            & \textless Los+Angeles\textgreater\textless USA\textgreater                                 \\ \cline{3-3} 
-				                                &                                             & \textless Los+Angeles\textgreater                                                         \\ \cline{3-3} 
-				                                &                                             & \textless USA\textgreater                                                                 \\ \hline \hline
-				\multirow{3}{*}{4}              & \multirow{3}{*}{London Nottingham}          & \textless London\textgreater\textless Nottingham\textgreater                               \\ \cline{3-3} 
-				                                &                                             & \textless London\textgreater                                                              \\ \cline{3-3} 
-				                                &                                             & \textless Nottingham\textgreater                                                          \\ \hline \hline
-				5                               & Los+Angeles USA                             &                                                                                          \\ \hline \hline
-				6                               & York                                        & \textless York\textgreater                                                                \\ \hline \hline
-				\multirow{6}{*}{7}              & \multirow{6}{*}{11th Dimension California}  & \textless 11th\textgreater\textless California\textgreater\textless Dimension\textgreater \\ \cline{3-3} 
-				                                &                                             & \textless 11th\textgreater                                                                \\ \cline{3-3} 
-				                                &                                             & \textless California\textgreater                                                         \\ \cline{3-3} 
-				                                &                                             & \textless Dimension\textgreater                                                          \\ \cline{3-3} 
-				                                &                                             & \textless 11th\textgreater\textless California\textgreater                                 \\ \cline{3-3} 
-				                                &                                             & \textless California\textgreater\textless Dimension\textgreater                           \\ \hline
+				\caption{Beispiel zur Erzeugung von N-Grammen}
+				\label{tab:ngramize}
+				\begin{tabular}{|c||l|l|l||l|}
+				\hline
+				 & \multicolumn{1}{c|}{0}    & \multicolumn{1}{c|}{1}         & \multicolumn{1}{c|}{2}          & Ordnung \\ \hline \hline
+				0       & 11th                      & Dimension                      & California                      & -       \\ \hline
+				1       & \textless 11th \textgreater &                                &                                 & 1       \\ \hline
+				2       &                           & \textless Dimension\textgreater &                                 & 1       \\ \hline
+				3       &                           &                                & \textless California\textgreater & 1       \\ \hline
+				4       & \textless 11th\textgreater & \textless Dimension\textgreater &                                 & 2       \\ \hline
+				5       &                           & \textless Dimension\textgreater & \textless California\textgreater & 2       \\ \hline
+				6       & \textless 11th\textgreater & \textless Dimension\textgreater & \textless Calforinia\textgreater & 3       \\ \hline
 				\end{tabular}
 				\end{table}
 
-				Es sollen nun N-Gramme bis zum Grad 3 erzeugt werden. 
-				Dieses Vorgehen löst gleich mehrere Probleme.
+				 
+				
+				In Tabelle \ref{tab:NGramme} sind alle N-Gramme zu den Beispielen aus Tabelle \ref{tab:VorverarbeitungAlpha} dargestellt.
 
-				Zum ersten können sowohl geografische Indikatoren als auch Werte die kein geografischen Indikator darstellen in den Nutzer-Standorten vorhanden sein.
-				Durch die Erzeugung von N-Grammen können diese getrennt voneinander betrachtet werden.
-				Es löst das Problem des partiellen geografischen Bezugs des Nutzer-Standortes aus \ref{subsec:partiellerGeografischerBezug} in der Hinsicht, dass die Werte für die weitere Verarbeitung getrennt betrachtet werden können.
+					\begin{table}[h]
+					\centering
+					\caption{Zerlegung in N-Gramme}
+					\label{tab:NGramme}
+					\begin{tabular}{|l|l|l|}
+					\hline 
+					\multicolumn{1}{|c|}{\textbf{}} & \multicolumn{1}{c|}{\textbf{Vorher}}        & \multicolumn{1}{c|}{\textbf{Nachher}}                                                    \\ \hline \hline
+					\multirow{3}{*}{1}              & \multirow{3}{*}{Mato+Grosso Rio+de+Janeiro} & \textless Mato+Grosso\textgreater\textless Rio+de+Janeiro\textgreater                     \\ \cline{3-3} 
+					                                &                                             & \textless Mato+Grosso\textgreater                                                         \\ \cline{3-3} 
+					                                &                                             & \textless Rio+de+Janeiro\textgreater                                                     \\ \hline \hline
+					2                               &                                             &                                                                                          \\ \hline \hline
+					\multirow{3}{*}{3}              & \multirow{3}{*}{Los+Angeles USA}            & \textless Los+Angeles\textgreater\textless USA\textgreater                                 \\ \cline{3-3} 
+					                                &                                             & \textless Los+Angeles\textgreater                                                         \\ \cline{3-3} 
+					                                &                                             & \textless USA\textgreater                                                                 \\ \hline \hline
+					\multirow{3}{*}{4}              & \multirow{3}{*}{London Nottingham}          & \textless London\textgreater\textless Nottingham\textgreater                               \\ \cline{3-3} 
+					                                &                                             & \textless London\textgreater                                                              \\ \cline{3-3} 
+					                                &                                             & \textless Nottingham\textgreater                                                          \\ \hline \hline
+					5                               & Los+Angeles USA                             &                                                                                          \\ \hline \hline
+					6                               & York                                        & \textless York\textgreater                                                                \\ \hline \hline
+					\multirow{6}{*}{7}              & \multirow{6}{*}{11th Dimension California}  & \textless 11th\textgreater\textless California\textgreater\textless Dimension\textgreater \\ \cline{3-3} 
+					                                &                                             & \textless 11th\textgreater                                                                \\ \cline{3-3} 
+					                                &                                             & \textless California\textgreater                                                         \\ \cline{3-3} 
+					                                &                                             & \textless Dimension\textgreater                                                          \\ \cline{3-3} 
+					                                &                                             & \textless 11th\textgreater\textless California\textgreater                                 \\ \cline{3-3} 
+					                                &                                             & \textless California\textgreater\textless Dimension\textgreater                           \\ \hline
+					\end{tabular}
+					\end{table}
 
-				Zum zweiten können in einem Nutzer-Standort mehrere geografische Indikatoren enthalten sein.  
-				Der Wert "'Pitmedden Scotland UK"' enthält mit "'UK"' das Land, mit "'Scottland"' den Landesteil und mit "'Pitemedden"' eine Stadt. 
-				Mit dem Längen- und Breitengrad aus dem zugehörigen Tweet kann nun allen drei Werten eine Georeferenz zugeordnet werden.
+				Mit diesem Vorgehen können aus einer Menge Token, bei denen nur einzelne geografischen Bezug aufweisen, extrahiert werden.
+				In Tabelle \ref{tab:NGramme} in Zeile 7 ist dies beispielsweise der Wert "'California"'. 
+				Dieser kann im weiteren einzeln verarbeitet werden. 
+				In Zeile 3 und 5 bleibt die Hierarchiebeziehung der Token im Bi-Gramm erhalten.
+				Aber es können auch die einzelnen Werte mit geografischem Bezug weiter verarbeitet werden, da aus den Toponymen "'Los+Angeles"' und "'USA"' auch Uni-Gramme erzeugt werden.
+				Der Vorteil der Zerlegung durch N-Gramme besteht darin, dass Token einzeln oder im Zusammenhang betrachtet werden können. 
+				Somit kann aus einer Menge Token mehr Information extrahiert werden, als wenn diese gemeinsam oder ausschließlich einzeln betrachtet werden.
 
-				Aber auch zwei verschiedene Städte wie "'Nottingham\textbackslash/London"' können in einem Wert vorkommen.
-				Diese werden zu "'Nottingham\textbackslash/London"', "'Nottingham"' und "'London"'.
-				Wird hier wiederum beiden Werten die geografische Koordinate zugeordnet können drei Fälle auftreten.
-				Erstens: Der Nutzer war in keiner der beiden Städte als er den Tweet abgesetzt hat. 
-				Damit sind beide Zuordnungen unbrauchbar.
-				Zweitens: Er war in einer der beiden Städte, dann ist zumindest einer der entstandenen Datensätze brauchbar.
-				Dies löst das Problem aus \ref{subsec:wiederspruechlicheBezuege} in der Hinsicht, dass die Werte für die weitere Verarbeitung getrennt betrachtet werden können.
+			\subsubsection{Weitere Verwendung der entstandenen N-Gramme} 
 
-				Besteht allerdings eine Beziehung der Werte zueinander, kann diese durch Bi- und Trigramme abgebildet werden.
-				Aus "'Pitmedden Scotland UK"' wird "'Pitmedden Scotland"', "'Scotland UK"' und "'Pitmedden Scotland UK"' erzeugt.
-
-				Dieser Schritt soll nur an einigen ausgewählten Beispielen aus der Liste erfolgen.
-				Die Bestandteile der N-Gramme werden zur Verdeutlichung mit \textless \textgreater gekennzeichnet in späteren Beispielen wird dies weggelassen, da durch das zusammenfassen von Werten mit einem plus klar ist welches die Elemente des NGramms darstellen
-
-				In diesem Schritt werden aus dem Nutzer-Standort mehrere potenzielle geografische Indikatoren erzeugt die als Referenzwerte genutzt werden können.
-				Bevor diese als Referenzwerte genutzt werden soll aber noch die Nutzer-Zeitzone einbezogen werden.
-
-
+				Da hier maschinell keine Entscheidung getroffen werden kann welche Uni-, Bi- oder Tri-Gramme einen geografischen Bezug aufweisen, werden alle N-Gramme in die weitere Verarbeitung einbezogen. 			
+				Es werden somit keine Token verworfen denen aufgrund von unzureichenden Informationen, beispielsweise durch ein unvollständiges Ortsverzeichnis, keine Georeferenz zugeordnet werden kann.
+				Auch werden Werte mit mittelbarem geografischen Bezug in die weitere Verarbeitung einbezogen.
+				Token mit und ohne geografischen Bezug werden weiter verarbeitet.
+				Eine Entscheidung über den geografischen Bezug wird erst während der Geolokalsierung getroffen.
 
 		\subsection{Eliminierung von Mehr- und Doppeldeutigkeiten}
 
-				In Kapitel \ref{sec:ToponymeInGeografischenIndikatoren} wurde auf die Probleme bei der Verwendung von Toponymen als geografische Indikatoren eingegangen.
-				Dabei wurde die Doppel- und Mehrdeutigkeit von Toponymen betrachtet.
-				Bei der Verwendung des Nutzer-Standortes als geografischen Indikator kann dieses Problem auch auftauchen. 
+				In Kapitel \ref{sec:zuordnungToponymeGeogObj} wurde auf die Probleme bei der Zuordnung von Toponymen zu geografischen Objekten eingegangen.
+				Dabei wurde die Mehr- und Doppeldeutigkeit von Toponymen betrachtet.
+				In den N-Grammen kann dieses Problem nach wie vor auftauchen.
+				Dies ist genau dann der Fall wenn ein N-Gramm ein Toponym darstellt.
 
 				Um diesem Problem zu begegnen soll die Nutzer-Zeitzone als weiterer geografischer Indikator hinzugezogen werden.
-				Zunächst sollen die generellen Eigenschaften der Nutzer-Zeitzone erläutert werden bevor erklärt wird wie die Nutzer-Zeitzone das Problem der Mehrdeutigkeit von Toponymen beheben kann.
+				Zunächst sollen die generellen Eigenschaften der Nutzer-Zeitzone erläutert werden bevor erklärt wird wie die Nutzer-Zeitzone das Problem der Mehr- und Doppeldeutigkeit von Toponymen beheben kann.
 
-				\textit{Eigenschaften der Nutzer-Zeitzone}
+				\subsubsection{Eigenschaften der Nutzer-Zeitzone}
 
-					Die Nutzer-Zeitzone stellt einen geografischen Indikator dar.
-					Sie beschreibt eine eindeutige geografische Region auf dem Globus und somit hat direkten geografischen Bezug.
+					Eine Zeitzone beschreibt eine eindeutige geografische Region auf dem Globus und hat somit unmittelbaren geografischen Bezug.
 					Dabei entsprechen die Grenzen der Region nicht unbedingt den Landesgrenzen oder den Grenzen sonstiger Verwaltungseinheiten. 
 					In Abbildung \ref{img:timezones} sind die Zeitzonen der Erde dargestellt.
 
@@ -542,9 +571,7 @@
 					\end{figure}	
 					%Quelle: http://www.zeitzonen.de/images/frontend/mod\_tz\_map/zeitzonen\_weltkarte.gif
 
-					Die Nutzer-Zeitzone kann in Twitter über eine Liste gewählt werden.
-					Der Wert der Nutzer-Zeitzone stellt deshalb garantiert eine Zeitzone dar.
-					Es ist dem Nutzer nicht möglich einen Wert einzugeben der nicht einer Zeitzone entspricht.
+				\subsubsection{Eignung der Nutzer-Zeitzone zur Eliminierung von Mehr- und Doppeldeutigkeiten}
 
 					In Abbildung \ref{img:usTimezones} wurden Tweets anhand ihres Längen- und Breitengrades platziert.
 					Jeder Punkt in der Abbildung entspricht einem Tweet.
@@ -574,200 +601,172 @@
 						\end{center}
 					\end{figure}	
 
-					 Die Zeitzonen sind an den Farben gut zu erkennen. 
-					 Lediglich die dünn besiedelte Region der Mountain Time kann nur an einigen Ballungszentren erkannt werden. 
-					 Grundsätzlich scheint der Großteil der Angaben aber korrekt zu sein.
+					Lediglich die dünn besiedelte Region der Mountain-Time kann nur an einigen Ballungszentren erkannt werden. 
+					Grundsätzlich scheint der Großteil der Angaben aber korrekt zu sein.
 
 					Ist ein Toponym Doppel- oder Mehrdeutig kann nicht entschieden werden welches geografische Objekt zugeordnet werden soll.
-					Liegen die beiden geografischen Objekte allerdings in zwei unterschiedlichen Zeitzonen und der Nutzer hat eine Nutzer-Zeitzone angegeben kann die Doppeldeutigkeit aufgelöst werden.
-					Es muss lediglich die Nutzer-Zeitzone betrachtet werden.
-					Somit kann dem Nutzer eine korrekte Georeferenz zugewiesen werden.
-					Voraussetzung hierfür ist natürlich, dass die geografischen Objekte in zwei unterschiedlichen Zeitzonen liegen und die Nutzer-Zeitzone angegegeben ist.
+					Liegen die beiden geografischen Objekte allerdings in zwei unterschiedlichen Zeitzonen und der Nutzer hat die Nutzer-Zeitzone korrekt angegeben kann die Doppeldeutigkeit aufgelöst werden.
+					Voraussetzung hierfür ist natürlich, dass die geografischen Objekte in zwei unterschiedlichen Zeitzonen liegen und die Nutzer-Zeitzone angegeben ist.
 
 				\textit{Hinzufügen der Nutzer-Zeitzone}
 
-					Die Zeitzone stellt eine begrenzte Anzahl an Werten dar.
-					Diese werden vom Nutzer nicht frei eingegeben. 
-					Es wird hier hier deshalb keine weitere Vorverarbeitung vorgenommen.
-
 					An die Referenzwerte, die aus dem Nutzer-Standort erzeugt wurden soll nun die Zeitzone angehängt werden.
 					Jeder Referenzwert soll einmal mit und einmal ohne Zeitzone existieren. 
-					Damit wird garantiert, dass eingelernte Referenzwerte die eine falsche Zeitzone aufweisen, trotzdem berücksichtigt werden können. 
-					Beispielsweise ist die Nutzer-Zeitzone "'Pacific Time (US \& Canada)"' für den Nutzer-Standort "'Jakarta"' nicht korrekt.
-					Aus dieser Kombination würden die Referenzwerte "'Jakarta Pacific Time (US \& Canada)"' und "'Jakarta"' entstehen. 
-					Bei einer Abfrage von "'Jakarta"' kann dann trotzdem der Referenzwert "'Jakarta"' genutzt werden. 
-					Würde allerdings nur die Kombination "'Jakarta Pacific Time (US \& Canada)"' als Referenzwert existieren würde keine Georeferenz zurückgeliefert werden können.
+					Damit wird garantiert, dass eingelernte Referenzwerte, die eine falsche Zeitzone aufweisen, trotzdem berücksichtigt werden können. 
 
-					Die Elemente der Zeitzonen werden wiederum mit einem Plus zusammengefasst um deutlich zu machen, dass es sich um ein Element eines NGramms handelt.
 					Um die Nutzer-Zeitzone von den aus dem Nutzer-Standort generierten Elementen unterscheiden zu können, wird die Nutzer-Zeitzone kursiv geschrieben.
 					Auch hier wird die Liste weiter eingeschränkt und es werden lediglich noch zwei Beispiele betrachtet.
-					\begin{multicols}{2}
-						\begin{enumerate}
-							\item England West+Sussex
-							\item  England  
-							\item  West+Sussex  
-							\item  England    West+Sussex   \textit{London}
-							\item  England   \textit{London}
-							\item  West+Sussex   \textit{London}
-							\item  11th    California    Dimension    
-							\item  11th    California  
-							\item  California    Dimension   
-							\item  11th  
-							\item  California  
-							\item  Dimension   
-							\item  11th  California    Dimension   \textit{Pacific+Time+US+Canada}
-							\item  11th    California   \textit{Pacific+Time+US+Canada}
-							\item  California    Dimension   \textit{Pacific+Time+US+Canada}
-							\item  11th   \textit{Pacific+Time+US+Canada}
-							\item  California   \textit{Pacific+Time+US+Canada}
-							\item  Dimension   \textit{Pacific+Time+US+Canada}
-							\item York
-							\item  York   \textit{London}
-							\item York
-							\item  York   \textit{Eastern+Time}
-						\end{enumerate}	
-					\end{multicols}
-					Mit Hilfe der Zeitzone können nun auch die beiden letzten Einträge unterschieden werden. 
-					Zum einen "'York"' in England zum anderen "'York"' in den USA. 
-					Dies löst das Problem der Mehrdeutgkeiten von Toponymen. 
-					Mit Hilfe der zusätzlichen Zeitzone können geografische Objekte, zumindest wenn sie in zwei verschiedenen Zeitzonen liegen, unterschieden werden.
+					
+					\begin{table}[h]
+					\centering
+					\caption{Hinzufügen der Zeitzone}
+					\label{tab:ngramsWithTZ}
+					\begin{tabular}{|l|l|}
+					\hline
+					  & \textbf{Referenzwerte}                                                                     \\ \hline
+					1 & \textless Los+Angeles\textgreater\textless USA\textgreater                                   \\ \hline
+					2 & \textless Los+Angeles\textgreater                                                           \\ \hline
+					3 & \textless USA\textgreater                                                                   \\ \hline
+					4 & \textless Los+Angeles\textgreater\textless USA\textgreater\textless \textit{Pacific+Times}\textgreater \\ \hline
+					5 & \textless Los+Angeles\textgreater\textless \textit{Pacific+Times}\textgreater               \\ \hline
+					6 & \textless USA\textgreater\textless \textit{Pacific+Times}\textgreater                       \\ \hline
+					7 & \textless York\textgreater                                                                  \\ \hline
+					8 & \textless York\textgreater\textless \textit{London+Time}\textgreater                        \\ \hline
+					\end{tabular}
+					\end{table}
+
+					Ein Beispiel für eine Auflösung der Doppeldeutigkeit ist in Tabelle \ref{tab:ngramsWithTZ} für das Token \textless York\textgreater  angegeben.
+					Zum einen existiert "'York"' in England zum anderen in den USA.  
+					Mit Hilfe der zusätzlichen Zeitzone können geografische Objekte, wenn sie in verschiedenen Zeitzonen liegen, unterschieden werden.
 
 		\subsection{Quantitative Betrachtung der Referenzwerte bezüglich der geografischen Position}
 
-			\todo{chap: Lösungsansatz sec: einlernen subsec quantitative betrachtung ---- mergen und splitten komplett überarbeiten ---} 
+			Die Referenzwerte die in den letzten Schritten erzeugt wurden, sollen nun einer quantitativen Betrachtung unterzogen werden.
+			Dabei sollen die Vorkommen eines Referenzwertes an einer geografischen Position gezählt werden.
+			Dieser Wert wird als absolute Häufigkeit bezeichnet.
 
-			\subsubsection{Zählen}
+			Im folgenden werden die Ergebnisse der vorhergehenden Schritte genutzt.
+			Jedes N-Gramm und die Kombinationen aus N-Grammen und Zeitzonen wird als einzelner Wert betrachtet. 
+			Diesen werden als geografische Koordinaten die Koordinaten desjenigen Tweets zugeordnet aus dem das N-Gramm erzeugt wurde.
+			Zur Verdeutlichung ist in Tabelle \ref{tab:bspWerteAusEinemTweet} das Ergebnis der oben genannten Schritte an einem Beispiel dargestellt. 
 
-				\textit{Absolute Häufigkeiten}
+				\begin{table}[h]
+				\centering
+				\label{tab:bspWerteAusEinemTweet}
+				\begin{tabular}{|l|l|l|}
+				\hline
+				\multicolumn{1}{|c|}{\textbf{Ursprung}} & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Nutzer-Standortfeld:    love Los Angeles \\                Nutzer-Zeitzone:           Pacific-Time\\                geog. Koordinaten:       (33.78, 118.29)\end{tabular}} \\ \hline \hline
+				                                        & \multicolumn{1}{c|}{\textbf{Referenzwert}}                                                                       & \multicolumn{1}{c|}{\textbf{geografische Koordinaten}}                          \\ \hline
+				1                                       & \textless Los+Angeles\textgreater\textless love\textgreater                                                                 & (33.78, 118.29)                                                                               \\ \hline
+				2                                       & \textless Los+Angeles\textgreater                                                                                          & (33.78, 118.29)                                                                               \\ \hline
+				3                                       & \textless love\textgreater                                                                                                 & (33.78, 118.29)                                                                               \\ \hline
+				5                                       & \textless Los+Angeles\textgreater\textless love\textgreater\textless \textit{Pacific+Time}\textgreater                                & (33.78, 118.29)                                                                               \\ \hline
+				\textit{6}                              & \textless Los+Angeles\textgreater\textless \textit{Pacific+Time}\textgreater                                                         & \textit{(33.78, 118.29)}                                                                      \\ \hline
+				7                                       & \textless Los+Angeles\textgreater\textless love\textgreater\textless \textit{Pacific+Time}\textgreater                                & (33.78, 118.29)                                                                               \\ \hline
+				\end{tabular}
+				\caption{Beispiel Schritte Vorverarbeitung + Zerlegung + Zeitzone hinzufügen}
+				\end{table}
 
-					Es sollen nun absolute Häufigkeiten in der Georeferenz-Basis eingeführt werden.
-					Die absoluten Häufigkeiten sollen angeben wie oft ein Tupel aus Referenzwert und Georeferenz in der Georeferenz-Basis vorhanden ist.
-					Dadurch werden Duplikate in der Georeferenz-Basis vermieden.
-					Zusätzlich kann ermittelt werden ob ein Referenzwert an einer bestimmten Position gehäuft auftritt.
+			Für jeden Tweet in den Trainingsdatensätzen wird eine solche Verarbeitung durchgeführt.
+			Es liegt nun also eine Menge an Referenzwerten mit zugehörigen geografischen Koordinaten vor die angeben wo dieser Referenzwert erfasst wurde.
 
-					Vor dem abspeichern eines neuen Tupels soll nun zunächst geprüft werden ob dieses bereits in der Georeferenz-Basis vorhanden ist. 
-					Ist dies der Fall, so wird die absolute Häufigkeit des entsprechenden Eintrags um 1 erhöht.
-					Ist das Tupel noch nicht gespeichert so wird ein neuer Datensatz angelegt und die absolute Häufigkeit mit 1 initialisiert.
+			Um die Vorkommen quantitativ zu erfassen sollen die Tupel aus Referenzwert und geografischer Position verglichen werden.
+			Für jedes Tupel wird in der vorgestellten Struktur der Georeferenz-Basis (siehe Tabelle \ref{tab:strukturMitHierarchie1}) ein Datensatz angelegt und mit einem Wert von 1 für die absolute Häufigkeit initialsiert. 
+			Stimmt sowohl der Referenzwert als auch die geografische Position mit einem vorhandenen Datensatz überein soll die absolute Häufigkeit für dieses Tupel inkrementiert werden.
+			In dieser Art werden alle erzeugten Referenzwerte und geografischen Postionen verglichen und die Vorkommen erfasst.
 
-					Die absolute Häufigkeit misst damit wie oft ein Referenzwert an einer geografischen Position vorkommt.
-					Es ist zu erwarten, dass ein Referenzwert mit geografischem Bezug gehäuft an einer bestimmten geografischen Position oder in einer Region auftritt.
-					Während Referenzwerte die keinen geografischen Bezug haben sehr verteilt oder nur sehr selten auftreten. 
+			Die geografischen Koordinaten eines Tweets sind für diese Art der quantitativen Erfassung allerdings zu genau. 
+			Diese werden zumeist mit Hilfe von GPS-Modulen mobiler Endgeräte wie Smartphones erfasst und geben eine Position oft auf wenige Meter genau an.
+			Das bedeutet, zwei Tweets die wenige Meter voneinander abgesetzt wurden haben in der Regel unterschiedliche Werte für den Längen- und Breitengrad.
+			Dies kann für die Bestimmung der Häufigkeiten problematisch sein, da die Werte in der Regel nicht exakt übereinstimmen.
+			Um dies zu umgehen sollen die geografischen Koordinaten auf Städte abgebildet werden.
+			Damit wird zum einen die geografische Position vergleichbar, und zum anderen bildet dies den Einstieg in die in Kapitel \ref{chp:Grundlagen} eingeführte geografische Hierarchie.
 
-			\subsubsection{Problem der Genauigkeit geografischen Koordinaten in Tweets ----- NACH UNTEN MERGEN -------}  
+			\subsubsection{Bestimmung der nächstgelegenen Stadt mit Hilfe von Voronoi-Regionen} 
 
-				Betrachtet man die Tweet-Lerndaten kann beim Vergleich der Georeferenzen ein Problem entstehen.
-				Die Georeferenz aus den Tweet-Lerndaten besteht aus den geografischen Koordinaten des zugehörigen Tweets.
-				Die geografische Position wird zumeist mit Hilfe von GPS-Modulen mobiler Endgeräte wie Smartphones bestimmt. 
-				Diese können eine Position oft auf wenige Meter genau bestimmen.
-				Das bedeutet, zwei Tweets die wenige Meter voneinander abgesetzt wurden haben unter Umständen unterschiedliche Werte für den Längen- und Breitengrad.
-				Dies kann für die Bestimmung der Häufigkeiten problematisch sein, da die Werte in der Regel nicht exakt übereinstimmen.
-				Um dies zu umgehen sollen die geografischen Koordinaten auf Städte abgebildet werden.
+				In einem Voronoi-Diagramm ist eine Ebene und eine Menge an Punkten derart zerlegt, dass jedem Punkt eine Region zugeordnet wird, die sogenannten Voronoi-Regionen.
+				In jeder dieser Region liegt exakt ein Punkt.  
 
-				\textit{Voronoi-Diagramme} 
+				Sei eine Menge von Punkten $Z = {z_1,z_2,...,z_n}$ auf einer Ebene verteilt.
+				Eine Voronoi-Region $V^i$ zu einem Punkt $z_i$ beinhaltet dann alle Punkte $P^i={p_1,p_2,...,p_n}$ die näher an $z_i$ liegen als an allen anderen Punkten $Z_j={z_j in Z|z_j!=z_i}$.
+				Alle Voronoi-Regionen zu allen Punkten in Z bilden ein Voronoi-Diagramm.
 
-					Sei eine Menge von Punkten $Z = {z_1,z_2,...,z_n}$ auf einer Ebene verteilt.
-					Eine Voronoi-Region $V^i$ zu einem Punkt $z_i$ beinhaltet dann alle Punkte $P^i={p_1,p_2,...,p_n}$ die näher an $z_i$ liegen als an allen anderen Punkten $Z_j={z_j in Z|z_j!=z_i}$.
-					Alle Voronoi-Regionen zu allen Punkten in Z bilden ein Voronoi-Diagramm.
+				Dieses Konzept kann zur Bestimmung der nächstgelegenen Stadt verwendet werden. 
+				Die geografischen Positionen der Städte bilden dabei die Menge der Punkte $Z$ zur Bestimmung der Vornoi-Regionen.
+				Zu jeder Stadt wird nun die Voronoi-Region erzeugt. 
+				Anhand der Voronoi-Region in der ein Punkt $p$ liegt kann nun bestimmt werden welche Stadt $z_i$ am nächsten zu $p$ liegt.
 
-					Dieses Konzept kann zur Bestimmung der nächstgelegenen Stadt verwendet werden. 
-					Die geografischen Positionen der Städte bilden dabei die Punkte $Z$.
-					Zu jeder Stadt wird nun die Voronoi-Region erzeugt. 
-					Anhand der Voronoi-Region in der ein Punkt p liegt kann nun bestimmt werden welche Stadt am nächsten zu p liegt.
+				Jeder Punkt auf dem Globus kann so einer Stadt zugeordnet werden.
+				Dadurch wird der Globus auf Städteebene in geografische Regionen eingeteilt.
+				In Abbildung \ref{img:voronoi} ist ein Voronoi-Diagramm einiger deutscher Städte dargestellt.
 
-					Jeder Punkt auf dem Globus kann so einer Stadt zugeordnet werden.
-					Insbesondere wird der Globus auf Städteebene in geografische Regionen eingeteilt.
-					In Abbildung \ref{img:voronoi} ist ein Voronoi-Diagramm einiger deutscher Städte dargestellt.
+				\begin{figure}[h!]
+				\begin{center}
+				\includegraphics[scale=0.5]{voronoi.png}
+				\caption{Vornoi-Diagramm Deutschland}
+				\label{img:voronoi}
+				\end{center}
+				\end{figure}	
 
-					\begin{figure}[h!]
-					\begin{center}
-					\includegraphics[scale=0.5]{voronoi.png}
-					\caption{Vornoi-Diagramm Deutschland}
-					\label{img:voronoi}
-					\end{center}
-					\end{figure}	
+				Es bleibt zu definieren was unter einer Stadt zu verstehen ist.
+				In dicht besiedelten Gebieten können viele kleine Städte vorhanden sein. 
+				Damit wäre die Positionsangabe wiederum zu genau.
+				Deshalb soll die Definition einer Stadt hier über die Einwohnerzahl stattfinden.
+				Es werden nur Städte verwendet deren Einwohnerzahl 15000 überschreitet.
+				Der Tweet wird also der nächstgelegenen Stadt mit mehr als 15000 Einwohnern zugeordnet.
+				In Ballungsräumen sind damit mehr Städte zu erwarten, womit die Genauigkeit zunimmt.
+				Es ist allerdings auch zu erwarten das dort tendenziell mehr Tweets abgesetzt werden als in ländlichen Gebieten.
+				Womit in jeder Voronoi-Region zu einer Stadt ausreichend Tweets vorhanden sind.
+				Damit können potenziell mehr Tweets zu einer Stadt zugeordnet werden.
+				Wohingegen in ländlichen Gebieten ein größeres Einzugsgebiet pro Stadt zustande kommt.
+				Es sind allerdings auch weniger Tweets zu erwarten. 
+				Durch das größere Einzugsgebiet werden dennoch ausreichend viele Tweets auf eine Stadt zugeordnet. 
 
-					Durch die Teilmengenbeziehung ist es nun nicht mehr nötig die geografischen Regionen der anderen Hierarchieebenen zu bestimmen.
+				Als Ergebnis liegt nun pro Referenzwert statt einer geografischen Koordinate eine Stadt vor.
+				Dies kann als Übergang einer kontinuierlichen Darstellung durch geografische Koordinaten zu einer diskreten Darstellung durch Städte angesehen werden. 
+				Durch die Teilmengenbeziehung ist es nun nicht mehr nötig die geografischen Regionen der anderen Hierarchieebenen zu bestimmen diese werden mit der Stadt implizit mitbestimmt.
+				
+				\textit{Bewertung des Verfahrens zur Bestimmung der nächstgelegenen Stadt}
+
+					Durch die Zuordnung zu Städten, die hier eine exakte geografische Position in Form geografischer Koordinaten aufweisen, entstehen gewisse Ungenauigkeiten.
+					Um das Verfahren zu bewerten wurden die Distanzen, welche zwischen der tatsächlichen Position eines Tweets und der zugeordneten Stadt liegen, protokolliert. 
+					Dies spiegelt den Fehler des Zuordnungsverfahrens wieder.
+
+					In Tabelle \ref{tab:distances} sind die Ergebnisse dargestellt.
+					Es wurden 383222 Tweets untersucht.
+					Im Median liegt die Fehlerdistanz zwischen der tatsächlichen Position und der zugeordneten Stadt bei 3,5 Kilometern.
+					Über die Quantile können die Fehlerdistanzen noch genauer untersucht werden.
+					Das 0.25 Quantil sagt aus, dass 25\% aller Fehlerdistanzen unter 1,7 Kilometern liegen.
+					Der Wert für das 0.95 Quantil liegt bei 24,1 Kilometer, 95\% der Tweets waren näher als 24,1 Kilometer an der zugeordneten Stadt. 
+					Dies ist ausreichend genau. 
+
+						\begin{table}[h]
+						\centering
+						\caption{Fehlerdistanzen zwischen Tweet Ursprung und zugeordneter Stadt (in km)}
+						\label{tab:distances}
+						\begin{tabular}{|l|l|}
+						\hline
+						Durchschnitt & 7      \\ \hline
+						Median       & 3.5    \\ \hline
+						0.25 Quantil & 1.7    \\ \hline
+						0.75 Quantil & 6.9    \\ \hline
+						0.85 Quantil & 10     \\ \hline
+						0.95 Quantil & 24.1   \\ \hline
+						0.98 Quantil & 44.2   \\ \hline
+						Größte Distanz      & 3424.5 \\ \hline
+						Kleinste Distanz     & 0     \\ \hline
+						\end{tabular}
+						\end{table}
+
+				\textit{Grenzen des Verfahrens zur Bestimmung der nächstgelegenen Stadt}
+
 					Es ist zu beachten, dass durch die Erzeugung der Vornoi-Regionen Ländergrenzen nur approximiert werden können. 
 					Voronoi-Regionen zu Städten die in der Nähe einer Landesgrenze liegen können über die Landesgrenzen hinausgehen. 
 					Damit werden geografische Positionen unter Umständen dem falschen Land zugeordnet.
 					Auch dies ist in Abbildung \ref{img:voronoi} an den Landesgrenzen zu erkennen. 
-					Umso größer allerdings die Anzahl der Städte ist, umso genauer wird die Approximation. 
+					Umso größer allerdings die Anzahl der Städte ist die betrachtet wird, umso genauer wird die Approximation. 
 
-				\textit{Vorverarbeitung der geografischen Koordinaten --------- AUFSPLITTEN ---------}
-
-					Die geografischen Koordinaten sollen auf Städte aufgelöst werden.
-					Dies entspricht der untersten Ebene der geografischen Hierarchie.
-					Bei der Auflösung auf eine Stadt werden durch die geografischen Hierarchieebenen implizit auch die Verwaltungseinheiten und das Land bestimmt.
-
-					Jedem Tweet soll mit Hilfe von Voronoi-Regionen die am nächsten gelegene Stadt zugeordnet werden.
-					Als Ergebnis liegt nun pro Referenzwert statt einer geografischen Koordinate eine Stadt vor.
-					Dies kann als Übergang einer kontinuierlichen Darstellung durch geografische Koordinaten zu einer diskreten Darstellung durch Städte angesehen werden. 
-					Wird ein Tweet innerhalb einer Voronoi-Region abgesetzt wird er der enstprechenden Stadt zugeordnet.
-
-					Es bleibt zu definieren was unter einer Stadt zu verstehen ist.
-					In dicht besiedelten Gebieten können viele kleine Städte vorhanden sein. 
-					Damit wäre die Positionsangabe wiederum zu genau.
-					Deshalb soll die Definition einer Stadt hier über die Einwohnerzahl stattfinden.
-					Es werden nur Städte verwendet deren Einwohnerzahl 15000 überschreitet.
-					Der Tweet wird also der nächstgelegenen Stadt mit mehr als 15000 Einwohnern zugeordnet.
-					In Ballungsräumen sind damit mehr Städte zu erwarten, womit die Genauigkeit zunimmt.
-					Es ist allerdings auch zu erwarten das dort tendenziell mehr Tweets abgesetzt werden als in ländlichen Gebieten.
-					Womit in jeder Voronoi-Region zu einer Stadt ausreichend Tweets vorhanden sind.
-					Damit können potenziell mehr Tweets zu einer Stadt zugeordnet werden.
-					Wohingegen in ländlichen Gebieten ein größeres Einzugsgebiet pro Stadt zustande kommt.
-					Es sind allerdings auch weniger Tweets zu erwarten. 
-					Durch das größere Einzugsgebiet werden dennoch ausreichend viele Tweets auf eine Stadt zugeordnet. 
-
-					Die Distanzen, welche zwischen der tatsächlichen Position des Tweets und der zugeordneten Stadt liegen wurden protokolliert. 
-					Dies spiegelt den Fehler der bei einer solchen Zuordnung entsteht wieder.
-
-					In Tabelle \ref{tab:distances} sind die Ergebnisse dargestellt.
-
-					\begin{table}[h]
-					\centering
-					\caption{Fehlerdistanzen zwischen Tweet Ursprung und zugeordneter Stadt (in km)}
-					\label{tab:distances}
-					\begin{tabular}{|l|l|}
-					Durchschnitt & 7      \\ \hline
-					Median       & 3.5    \\ \hline
-					0.25 Quantil & 1.7    \\ \hline
-					0.75 Quantil & 6.9    \\ \hline
-					0.85 Quantil & 10     \\ \hline
-					0.95 Quantil & 24.1   \\ \hline
-					0.98 Quantil & 44.2   \\ \hline
-					Größte Distanz      & 3424.5 \\ \hline
-					Kleinste Distanz     & 0     
-					\end{tabular}
-					\end{table}
-
-					Im Median liegt die Fehlerdistanz zwischen der tatsächlichen Position und der zugeordneten Stadt bei 3,5 Kilometern.
-					Über die Quantile können die Fehlerdistanzen noch genauer untersucht werden.
-					Das 0.25 Quantil sagt aus, dass 25\% aller Fehlerdistanzen unter 1,7 Kilometern liegen.
-					95\% der Fehlerdistanzen liegen unter 24,1 Kilometer. 
-					Dies ist ausreichend genau. 
-
-		\subsection{Vorverarbeitung der geografischen Koordinaten -------- von oben HIER REIN MERGEN --------}  
-
-			\textit{Fazit ------ > fraglich wohin.} 
-
-				\todo{chap: Lösungsansatz sec: einlernen subsec- vorver geog Koordinaten --- > Fazit aufteilen}
-
-				Nach der Vorverarbeitung liegen eine Menge von potenziellen geografischen Indikatoren mit zugehörigen geografischen Koordinaten vor.
-				Bei der Vorverarbeitung wurden einige Probleme des Nutzer-Standortes beseitigt.
-				Insbesondere können Datenwerte separat voneinander betrachtet werden.
-
-				Die so erzeugten potenziellen geografischen Indikatoren können nun in der Georeferenz-Basis als Referenzwerte gespeichert werden.
-				Mit der so erzeugten Georeferenz-Basis ist es grundsätzlich möglich eine Geolokalisierung durchzuführen. 
-				Allerdings wird jedem potenziellen geografischen Indikator eine Georeferenz zugeordnet.
-				Das ist grundsätzlich problematisch, da Referenzwerten die keinen geografischen Bezug aufweisen eine Georeferenz zugeordnet wird. 
-				Dies kann bei der Geolokalisierung zu Fehlern führen.
-				Ein Referenzwert mit geografischem Bezug wird gleich behandelt wie ein Referenzwert ohne geografischen Bezug.
-				Es sollte entschieden werden können ob der Referenzwert einen geografischen Bezug hat oder nicht.
-				Bisher existiert noch kein Hinweis auf den geografischen Bezug.
-				Es existiert lediglich eine Datenbasis die Referenzwerten eine Georeferenz zuweist. 
-
-				Des weiteren können zu einem Referenzwert beliebig viele Datensätze existieren, selbst wenn diese auf denselben Ort verweisen. 
-				Bei einer Abfrage an die Datenbank werden potenziell große Mengen an Datensätzen zurückgeliefert die alle auf dieselbe Georeferenz verweisen.
+		\subsection{Zusammenfassung Verfahren zum Einlernen der Georeferenz-Basis} 
 
 	\section{Auflösen des Nutzer-Standortes mit Hilfe der Georeferenz-Basis} \label{sec:AufloesenDesNutzerStandortes} 
 
@@ -1178,7 +1177,7 @@
 					Deshalb können NGramme mit einem höheren Grad ein Objekt genauer beschreiben als NGramme mit einem niedrigeren Grad.
 
 					Allerdings können NGramme mit einem höheren Grad auch eine schlechtere Beschreibung darstellen. 
-					Beispielsweise wenn das zusätzliche Element keinen geografsichen Bezug hat.
+					Beispielsweise wenn das zusätzliche Element keinen geografischen Bezug hat.
 
 					Bei NGrammen mit einem Grad größer zwei können also zwei Fälle unterschieden werden.
 
