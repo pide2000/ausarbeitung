@@ -1,5 +1,20 @@
 			
-
+\begin{table}[h]
+				\centering
+				\label{tab:bspWerteAusEinemTweet}
+				\begin{tabular}{|l|l|l|}
+				\hline
+				\multicolumn{1}{|c|}{\textbf{Ursprung}} & \multicolumn{2}{l|}{\begin{tabular}[c]{@{}l@{}}Nutzer-Standortfeld:    love Los Angeles \\                Nutzer-Zeitzone:           Pacific-Time\\                geog. Koordinaten:       (33.78, 118.29)\end{tabular}} \\ \hline \hline
+				                                        & \multicolumn{1}{c|}{\textbf{Referenzwert}}                                                                       & \multicolumn{1}{c|}{\textbf{geografische Koordinaten}}                          \\ \hline
+				1                                       & \textless Los+Angeles\textgreater\textless love\textgreater                                                                 & (33.78, 118.29)                                                                               \\ \hline
+				2                                       & \textless Los+Angeles\textgreater                                                                                          & (33.78, 118.29)                                                                               \\ \hline
+				3                                       & \textless love\textgreater                                                                                                 & (33.78, 118.29)                                                                               \\ \hline
+				5                                       & \textless Los+Angeles\textgreater\textless love\textgreater\textless \textit{Pacific+Time}\textgreater                                & (33.78, 118.29)                                                                               \\ \hline
+				\textit{6}                              & \textless Los+Angeles\textgreater\textless \textit{Pacific+Time}\textgreater                                                         & \textit{(33.78, 118.29)}                                                                      \\ \hline
+				7                                       & \textless Los+Angeles\textgreater\textless love\textgreater\textless \textit{Pacific+Time}\textgreater                                & (33.78, 118.29)                                                                               \\ \hline
+				\end{tabular}
+				\caption{Beispiel Schritte Vorverarbeitung + Zerlegung + Zeitzone hinzufügen}
+				\end{table}
 			
 \textit{Dieser Teil zu Begründung warum Ortsverzichnis Abfrage schlecht} 
 			In Ortsverzeichnissen kann eine große Anzahl an Toponymen hinterlegt werden.
