@@ -322,7 +322,7 @@
 				\label{tab:strukturMitHierarchie1} 
 			\end{table}  		
 		
-		\subsection{Schritte zur Vorverarbeitung der Werte des Nutzer-Standortfeldes}
+		\subsection{Schritte zur Vorverarbeitung der Werte des Nutzer-Standortfeldes} \label{sub:Vorv}
 
 			Die Werte des Nutzer-Standortfeldes wird einer Vorverarbeitung unterzogen.
 			In Abbildung \ref{img:vorverarbeitung} sind die einzelnen Schritte dargestellt.
@@ -449,7 +449,7 @@
 				Wenn "'Motor City"' nicht im Ortsverzeichnis hinterlegt ist entsteht durch die alphanumerische Sortierung "'City Michigan Motor USA"'.
 				Der Zusammenhang zwischen Motor und City wäre nicht mehr vorhanden und kann nicht wiedergewonnen werden.
 
-		\subsection{Zerlegung der Werte im Nutzer-Standortfeld} 
+		\subsection{Zerlegung der Werte im Nutzer-Standortfeld} \label{sub:VorvNGramme}
 
 			Als Eingabe wird in diesem Schritt das Ergebnis der Vorverarbeitung genutzt. 
 			Pro Nutzer-Standortfeld existieren ein oder mehrere Token. 
@@ -461,7 +461,7 @@
 			Das bedeutet, der Zusammenhang mehrere Token die in einer gewissen Reihenfolge auftreten soll erhalten bleiben. 
 			Um dies zu erzielen werden die Token in sogenannte N-Gramme zerlegt. 
 
-			\subsubsection{N-Gramme}
+			\subsubsection{N-Gramme} 
 
 				Eine Gruppe von Token soll derart zerlegt werden, dass sowohl einzelne Token betrachtet werden können als auch der Zusammenhang zwischen den Token, der durch ihre Reihenfolge  besteht, erhalten bleibt.
 				Um dies umzusetzen soll eine Menge von Token in N-Gramme zerlegt werden.
@@ -546,7 +546,7 @@
 				Token mit und ohne geografischen Bezug werden weiter verarbeitet.
 				Eine Entscheidung über den geografischen Bezug wird erst während der Geolokalsierung getroffen.
 
-		\subsection{Eliminierung von Mehr- und Doppeldeutigkeiten}
+		\subsection{Eliminierung von Mehr- und Doppeldeutigkeiten} \label{sub:VorvNutzerZeitzone} 
 
 				In Kapitel \ref{sec:zuordnungToponymeGeogObj} wurde auf die Probleme bei der Zuordnung von Toponymen zu geografischen Objekten eingegangen.
 				Dabei wurde die Mehr- und Doppeldeutigkeit von Toponymen betrachtet.
@@ -608,7 +608,7 @@
 					Liegen die beiden geografischen Objekte allerdings in zwei unterschiedlichen Zeitzonen und der Nutzer hat die Nutzer-Zeitzone korrekt angegeben kann die Doppeldeutigkeit aufgelöst werden.
 					Voraussetzung hierfür ist natürlich, dass die geografischen Objekte in zwei unterschiedlichen Zeitzonen liegen und die Nutzer-Zeitzone angegeben ist.
 
-				\textit{Hinzufügen der Nutzer-Zeitzone}
+				\textit{Hinzufügen der Nutzer-Zeitzone} 
 
 					An die Referenzwerte, die aus dem Nutzer-Standort erzeugt wurden soll nun die Zeitzone angehängt werden.
 					Jeder Referenzwert soll einmal mit und einmal ohne Zeitzone existieren. 
@@ -639,7 +639,7 @@
 					Zum einen existiert "'York"' in England zum anderen in den USA.  
 					Mit Hilfe der zusätzlichen Zeitzone können geografische Objekte, wenn sie in verschiedenen Zeitzonen liegen, unterschieden werden.
 
-		\subsection{Bestimmung der absoluten Häufigkeiten der Referenzwerte}
+		\subsection{Bestimmung der absoluten Häufigkeiten der Referenzwerte} \label{sub:absHaufBestimmen} 
 
 			Es werden nun die absoluten Häufigkeiten der Referenzwerte bestimmt.
 			Dabei werden die Vorkommen der Referenzwerte an einer geografischen Position gezählt.
@@ -769,24 +769,17 @@
 
 	\section{Geolokalisierung: Auflösen des Nutzer-Standortes mit Hilfe der Georeferenz-Basis} \label{sec:AufloesenDesNutzerStandortes} 
 
-		Es soll nun das Verfahren zur Geolokalisierung eines Tweets vorgestellt werden.
+		Es wird nun das Verfahren zur Geolokalisierung eines Tweets vorgestellt.
 		Dabei dient die Georeferenz-Basis und die in ihr abgelegten Referenzwerte als Basis für die Zuweisung einer Georeferenz.
 
-		Zunächst werden aus dem Nutzer-Standort und der Nutzer-Zeitzone potenzielle geografische Indikatoren erzeugt.
-		Dies geschieht analog zur Erzeugung von Referenzwerten beim einlernen der Georeferenz-Basis.
-		Es werden also dieselben Vorverarbeitungsschritte für den Nutzer-Standort und die Nutzer-Zeitzone durchgeführt.
+		In Abbildung \ref{img:ablaufGeolok} ist der gesamte Ablauf der Geolokalisierung dargestellt.
+		Zunächst werden aus dem Nutzer-Standortfeld und der Nutzer-Zeitzone potenzielle geografische Indikatoren erzeugt.
+		Dies geschieht analog zur Erzeugung von Referenzwerten beim Einlernen der Georeferenz-Basis.
+		Es werden dazu die Schritte aus den Abschnitten \ref{sub:Vorv}, \ref{sub:VorvNGramme} und \ref{sub:VorvNutzerZeitzone} durchgeführt (Vorverarbeitung).
 		Daraus resultiert eine Menge potenzieller geografischer Indikatoren.
 		Die Werte der potenziellen geografischen Indikatoren werden nun in der Georeferenz-Basis nachgeschlagen. 
-		Dabei werden alle Datensätze deren Referenzwerte mit den potenziellen geografischen Indikatoren korrespondieren zurückgegeben.
-		Auf diesen Datensätzen erfolgt die weitere Verarbeitung und Bestimmung der wahrscheinlichsten Georeferenz.
-		
-		Es liegt nun eine Menge an Datensätzen aus der Georeferenz-Basis vor.
-		Die Referenzwerte entsprechen dabei den potenziellen geografischen Indikatoren.
-		Die absoluten und relativen Häufigkeiten werden für jeden Referenzwert separat analysiert.
-		Das Ziel der Analyse ist es, die wahrscheinlichste Georeferenz zu ermitteln.
-
-		In Abbildung \ref{img:ablaufGeolok} ist der gesamte Ablauf an einem Beispiel dargestellt.
-		In den folgenden Abschnitten soll nun die Analyse genauer betrachtet werden.
+		Dabei werden alle Datensätze, deren Referenzwerte mit den potenziellen geografischen Indikatoren korrespondieren, zurückgegeben.
+		Basierend auf diesen Datensätzen erfolgt in einem Analyse-Schritt die Bestimmung der Georeferenz.
 
 			\begin{figure} 
 			\begin{center}
@@ -796,114 +789,100 @@
 					\end{center}
 			\end{figure}	
 
-		In diesem Abschnitt wird ein Verfahren vorgestellt, welches es ermöglicht einem Tweet mit Hilfe der Georeferenz-Basis eine Georeferenz zuzuordnen. 
-
-
-		In der Georeferenz-Basis sind alle Werte aus den Nutzer-Standorten der Lerndatensätze enthalten.
-		Es sind also auch Referenzwerte vorhanden die keinen geografischen Bezug haben.
-		
-		Es ist die Frage zu beantworten: \\ Wie kann bestimmt werden ob ein Referenzwert geografischen Bezug hat oder nicht? \\
-		Oder: \\ Wie kann vermieden werden, dass ein Referenzwert, der keinen geografischen Bezug hat, zur Geolokalisierung genutzt wird?
-		
-		Dies ist wichtig, denn durch die Referenzwerte wird einem geografischen Indikator eine Georeferenz zugewiesen. 
-		Wird einem geografischen Indikator durch einen Referenzwert ohne geografischen Bezug eine Georeferenz zugewiesen ist diese mit hoher Wahrscheinlichkeit fehlerhaft.
+		Das zentrale Element der Geolokalisierung ist der Analyse-Schritt. 
+		Das Ziel des Analyse-Schrittes ist es, die Georeferenz zu ermitteln.
+	
+		Beim Einlernen wurden keine Informationen verworfen, da noch keine Entscheidung über deren geografischen Bezug getroffen werden konnte.
+		In der Georeferenz-Basis sind alle Werte enthalten, die aus den Nutzer-Standorten der Lerndatensätze beim Einlernen erzeugt wurden.
+		Es sind also auch Referenzwerte vorhanden die keinen geografischen Bezug aufweisen.
+		Wird einem potenziellen geografischen Indikator durch einen Referenzwert ohne geografischen Bezug eine Georeferenz zugewiesen, ist diese mit hoher Wahrscheinlichkeit fehlerhaft.
 		Dies wiederum führt zu schlechten und unzuverlässigen Ergebnissen.
-		Es muss also ein Verfahren gefunden werden um zu entscheiden ob die Referenzwerte einen geografischen Bezug haben oder nicht.
 
-		Es ist zu beachten, dass die Vorverarbeitung keine Aussage zum geografischen Bezug macht, sondern vielmehr die Referenzwerte aus den Nutzer-Standorten extrahiert. 
-		Dies soll sicherstellen, das möglichst viele Informationen aus den Nutzer-Standorten gezogen werden können und insbesondere keine Informationen verloren gehen.  
-		
-		Um zu entscheiden ob ein Referenzwert geografischen Bezug hat oder nicht wird die absolute Häufigkeit verwendet.
-		Die absoluten Häufigkeiten geben an wie oft ein Referenzwert in einer bestimmten Region, zunächst in der Voronoi-Region der entsprechenden Stadt, vorkommt.			 
-		Daraus kann nun ein geografischer Bezug abgeleitet werden.
+		Durch den Analyse-Schritt soll nun folgende Frage beantwortet werden: 
+		\\ Wie kann bestimmt werden, ob ein Referenzwert geografischen Bezug hat oder nicht? \\
+		Oder: 
+		\\ Wie kann vermieden werden, dass ein Referenzwert, der keinen geografischen Bezug hat, zur Geolokalisierung genutzt wird?
 
-		In Kapitel \ref{sec:einlernen} wurde ein Verfahren zum einlernen der Georeferenz-Basis vorgestellt. 
-		Im darauffolgenden Kapitel \ref{sec:geografischerBezug} wurde eine Möglichkeit vorgestellt wie der geografische Bezug der Referenzwerte untersucht werden kann.
-		Dies soll hier genutzt werden um eine Georeferenz zu bestimmen. 
+		Im folgenden wird lediglich der Analyse-Schritt betrachtet. 
+		Als Eingabe werden die Ergebnisse der Abfrage der potenziellen geografischen Indikatoren an die Georeferenz-Basis verwendet. 
 
-		
+		\subsection{Analyse basierend auf absoluten Häufigkeiten} 
 
-		Grundsätzliche Idee des auflösens mit absoluten Häufigkeiten
-		Hier Idee skizzieren. 
-		Schwellwert für den absoluten Häufigkeitswert zur Justierung der Konfidenzen.
+			In der Georeferenz-Basis sind die absoluten Häufigkeiten hinterlegt.
+			Diese sagen aus, wie oft ein Referenzwert an einer geografischen Position, in der Vornoi-Region einer Stadt, aufgetreten ist (siehe Abschnitt \ref{sub:absHaufBestimmen}). 
+			Aus der absoluten Häufigkeit kann abgeleitet werden, ob ein Referenzwert geografischen Bezug hat oder nicht.
 
-		\subsection{Geolokalsierung: Auflösen des Nutzer-Standortes basierend auf absoluten Häufigkeiten} 
+			Eine hohe absolute Häufigkeit kann ein Hinweis auf den geografischen Bezug eines Referenzwertes darstellen. 
+			Es ist anzunehmen, dass in der Voronoi-Region einer Stadt der Name der zugehörigen Stadt häufig vorkommt.
+			Dadurch kann eine Relevanz des Referenzwertes zu einer Stadt abgeleitet werden. 
+			Ist die absolute Häufigkeit für einen Referenzwert gering, so ist er von nur wenigen Nutzern als Nutzer-Standort in einer Voronoi-Region angegeben worden, und somit weniger relevant.
+			In Abbildung \ref{img:ulIstanbulWalesZoom} sind die Tweets in denen "'Istanbul"' im Nutzer-Standort vorkommt aufgetragen.
+			Es tritt deutlich eine Konzentrierung um die Stadt Istanbul auf. 
+			Diese Tweets werden auf die Stadt Istanbul abgebildet, wird die Kombination aus dem Referenzwert "'Istanbul"' und der Georeferenz Istanbul sehr häufig vorkommen.
+			In den Nutzer-Standorten der Tweets rund um Istanbul taucht "'Istanbul"' tatsächlich 972 mal auf.
+			Damit kann eine Relevanz für den Referenzwert "'Istanbul"' zur Stadt Istanbul abgeleitet werden.
 
-			\todo{chap: LsgAnsatz sec: Auflösen subsec: abs. Hauf. Komplette Einführung + Ablauf + Auswertung} 
+			\begin{figure}[!ht]
+					\begin{center}
+						\includegraphics[scale=0.5]{ulIstanbulWalesZoom.pdf}
+						\caption{}
+						\label{img:ulIstanbulWalesZoom}
+					\end{center}
+			\end{figure}	
+
+			\subsubsection{Schwellwert für die absolute Häufigkeit} 
+
+				Um Referenzwerte mit geografischem Bezug zu identifizieren, wird ein Schwellwert für die absolute Häufigkeit eingeführt.
+				Es werden nur Referenzwerte zur Geolokalisierung verwendet, deren absolute Häufigkeit über diesem Schwellwert liegt.
+				Je höher der Schwellwert gewählt wird, umso häufiger muss ein Referenzwert in einer Voronoi-Region vorgekommen sein um in Betracht gezogen zu werden.
+				Dadurch steigt die Wahrscheinlichkeit, dass der zugehörige Referenzwert geografischen Bezug hat. 
+				Durch den Schwellwert wird es zudem ermöglicht die Güte und die Trefferquote zu beeinflussen.
+				Umso geringer der Schwellwert gewählt wird, umso mehr Referenzwerte können in die Betrachtung einbezogen werden, allerdings ist die Wahrscheinlichkeit, dass diese geografischen Bezug aufweisen geringer. 
 
 			\subsubsection{Ablauf}
 
-			\subsubsection{Auswertung}  
-
-				\textit{Die absolute Häufigkeit als Hinweis auf geografischen Bezug zu Städten} 
-				
-				Eine hohe absolute Häufigkeit kann ein Hinweis auf den geografischen Bezug eines Referenzwertes darstellen. 
-				Aufgrund der Eigenschaften des Nutzer-Standorts ist anzunehmen, dass in der Voronoi-Region einer Stadt der Name der zugehörigen Stadt häufig vorkommt.
-				Dadurch kann eine Relevanz des Referenzwertes zu einer Stadt abgeleitet werden. 
-				Tritt der Referenzwert nicht häufig auf, so ist er von nur wenigen Nutzern als Nutzer-Standort in einer Stadt angegeben worden und somit für die Stadt nicht relevant.
-				In Abbildung \ref{img:ulIstanbulWalesZoom} sind die Tweets in denen "'Istanbul"' im Nutzer-Standort vorkommt aufgetragen.
-				Es ist deutlich eine Häufung um die Stadt Istanbul zu erkennen. 
-				Werden die Tweets rund um Istanbul nun auf die Stadt Istanbul abgebildet, wird die Kombination aus dem Referenzwert "'Istanbul"' und der Georeferenz Istanbul sehr häufig vorkommen.
-				In den Nutzer-Standorten der Tweets rund um Istanbul taucht "'Istanbul"' tatsächlich 972 mal auf.
-				Damit kann eine Gewisse Relevanz für den Referenzwert "'Istanbul"' zur Stadt Istanbul abgeleitet werden.
-
-				\begin{figure}[!ht]
-						\begin{center}
-							\includegraphics[scale=0.5]{ulIstanbulWalesZoom.pdf}
-							\caption{}
-							\label{img:ulIstanbulWalesZoom}
-						\end{center}
-				\end{figure}	
-
-				Es kann also ein Schwellwert für die Häufigkeit eingeführt werden um Referenzwerte mit geografischem Bezug zu identifizieren.
-				Allerdings garantiert die absolute Häufigkeit noch nicht, dass ein Referenzwert einen geografischen Bezug hat. 
-				Es können auch Werte an einem bestimmten Ort häufig vorkommen, die keinen geografischen Bezug haben.
-				Um dies erkennen zu können muss ein weiterer Wert berechnet werden.
+				Für jeden potenziellen geografischen Indikator wird aus den Ergebnisdatensätzen derjenige Datensatz gewählt, der die größte absoluten Häufigkeit über dem Schwellwert aufweist.
+				Aus diesen Datensätzen wird wiederum derjenige mit der größten absoluten Häufigkeit gewählt. 
 
 		\subsection{Probleme bei der ausschließlichen Betrachtung der absoluten Häufigkeiten} 
 
-			Betrachtet man die absoluten Häufigkeiten isoliert voneinander wird die Verteilung des Referenzwertes außer acht gelassen. 
+			Bei der Analyse basierend auf absoluten Häufigkeiten wird die Verteilung des Referenzwertes auf dem Globus nicht berücksichtigt.
 			Ein Referenzwert kann eine gleichmäßige Verteilung über mehrere Städte aufweisen.
 			Das bedeutet, der Referenzwert wird in vielen unterschiedlichen Städten benutzt. 
 			Es können trotzdem Häufungen in Städten auftreten.
 			Diese können sogar über einem gewählten Schwellwert für die absolute Häufigkeit liegen.
 			Die Häufung kann jedoch relativ gesehen sehr gering sein.
-			Dies ist ein Hinweis darauf das der Referenzwert keinen geografischen Bezug hat.
-			Die relative Häufung sagt hier aus, das ein Referenzwert sehr verteilt auftritt. 
+			Dies ist ein Hinweis darauf, dass der Referenzwert keinen geografischen Bezug hat.
+			Über die relative Häufigkeit kann die Verteilung des Referenzwertes bestimmt werden. 
 			Es ist also wichtig nicht nur die absoluten Häufigkeiten, sondern auch die relativen Häufigkeiten der Referenzwerte zu berücksichtigen.
 
-			Problem am Beispiel und mit Daten.
-
-			Einbeziehung der relativen Häufigkeiten. 
-			Aufgrund von Beispielbetrachtung The und La Plata. Absolut betrachtet.
-
-
-			"'La Plata"' tritt rund um die Stadt La Plata in Argentien 91 mal auf.
-			Der Referenzwert "'La Plata"' hat offensichtlich einen geografischen Bezug zu einer Stadt. 
-
-			Obwohl "'the"' keinen offensichtlichen geografischen Bezug hat ist die absolute Häufigkeit von 91 Vorkommen in Jakarta hoch.
+			Dies soll anhand eines Beispiels verdeutlicht werden.
+			Der Referenzwert "'La Plata"' hat offensichtlich geografischen Bezug zur Stadt La Plata.
+			"'La Plata"' tritt tatsächlich in der Voronoi-Region der Stadt La Plata in Argentinien 91 mal auf.			 
 			Der Schwellwert könnte nun aufgrund der Erfahrung mit dem Referenzwert "'La Plata"' auf 90 angesetzt werden.
-			Dann würde davon ausgegangen werden, dass der Referenzwert "'the"' einen geografischen Bezug hat.
-			Betrachtet man allerdings die Abbildung \ref{img:ULThe} fällt auf, dass Tweets mit dem Wert "'the"' im Nutzer-Standort sehr verteilt auf dem Globus auftreten.
-			Im Gegensatz dazu tritt "'La Plata"' in den Nutzer-Standorten sehr konzentriert auf.
-			In Abbildung \ref{img:ULlaPlata} wird die Verteilung von Tweets deren Verfasser "'La Plata"' im Nutzer-Standort enthalten dargestellt. 
+
+			Der Referenzwert "'the"' hat offensichtlich keinen geografischen Bezug.
+			Trotzdem tritt der Wert 91 mal in der Stadt Jakarta auf.
+			Mit einem Schwellwert von 90 für die absolute Häufigkeit würde dem Referenzwert "'the"' ein geografischer Bezug zugeordnet werden.
+			Betrachtet man allerdings Abbildung \ref{img:ULThe} fällt auf, dass Tweets mit dem Wert "'the"' im Nutzer-Standort sehr verteilt auf dem Globus auftreten.
+			Im Gegensatz dazu tritt "'La Plata"' in den Nutzer-Standorten sehr konzentriert auf (siehe Abbildung \ref{img:ULlaPlata}),
 			Es ist deutlich eine Häufung um die Stadt La Plata in Argentien zu erkennen, weltweit tritt der Referenzwert aber sehr selten auf.
 			\begin{figure} 
 				\begin{center}
 					\includegraphics[scale=0.6]{ulTheG.pdf}
-					\caption{Tweets mit Nutzer-Standort "'The"'}
+					\caption{Tweets in denen im Nutzer-Standort "'the"' auftaucht}
 					\label{img:ULThe}
 					\end{center}
 				\end{figure}
 			\begin{figure}
 			\begin{center}
 					\includegraphics[scale=0.5]{ulLaPlataG.pdf}
-					\caption{Tweets mit Nutzer-Standort "'La Plata"'}
+					\caption{Tweets in denen im Nutzer-Standort "'La Plata"' auftaucht}
 					\label{img:ULlaPlata}
 				\end{center}
 			\end{figure}		
 
-		\subsection{Auflösen des Nutzer-Standortes basierend auf absoluten und relativen Häufigkeiten} 
+		\subsection{Analyse basierend auf absoluten und relativen Häufigkeiten} 
 
 			Idee skizzieren
 			\todo{chap: LsgAnsatz sec: Auflösen subsec: abs. Hauf. Komplette Einführung + Beispiel überarbeiten} 
@@ -991,7 +970,7 @@
 				Dies ist ein hoher Wert.
 				Da der Referenzwert aber nur einmal vorkam, ist es sehr unwahrscheinlich das er einen geografischen Bezug hat.  
 
-		\subsection{Einführung von Schwellwerten für die absolute und relative Häufigkeit zur Justierung der Ergebnisse}  
+		\subsection{Einführung von Schwellwerten für die absolute und relative Häufigkeit}  
 
 			\todo{chap: LsgAnsatz sec: Auflösen subsec: Schwellwerte für abs. und rel. einführen komplett schreiben} 
 
