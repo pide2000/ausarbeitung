@@ -283,14 +283,6 @@
 			Die Kombinationen aus Referenzwerten und diskreten geografischen Positionen werden in der Georeferenz-Basis gespeichert.
 			Es wird dabei die quantitative Verteilung der Referenzwerte über den Globus erfasst.
 			
-			 \begin{figure}[!ht]
-				\begin{center}
-					\includegraphics[scale=0.6]{einlernenAblauf.pdf}
-					\caption{Ablaufplan einlernen}
-					\label{img:einlernenAblauf}
-				\end{center}
-			\end{figure}
-
 			Die Datenstruktur der Georeferenz-Basis beinhaltet die Referenzwerte, die zugeordnete Stadt, und die übergeordneten Hierarchieebenen. 
 			Zusätzlich wird das vorkommen eines Referenzwertes in einer Stadt als absolute Häufigkeit gespeichert. 
 
@@ -320,8 +312,17 @@
 					\hline
 				\end{tabular}
 				\label{tab:strukturMitHierarchie1} 
-			\end{table}  		
-		
+			\end{table}  
+
+			\begin{figure}[!htb]
+				\begin{center}
+					\includegraphics[width=\linewidth]{einlernenAblauf.pdf}
+					\caption{Ablaufplan einlernen}
+					\label{img:einlernenAblauf}
+				\end{center}
+			\end{figure}
+			\clearpage
+
 		\subsection{Schritte zur Vorverarbeitung der Werte des Nutzer-Standortfeldes} \label{sub:Vorv}
 
 			Die Werte des Nutzer-Standortfeldes wird einer Vorverarbeitung unterzogen.
@@ -530,9 +531,12 @@
 					\end{tabular}
 					\end{table}
 
-				Mit diesem Vorgehen können aus einer Menge Token, bei denen nur einzelne geografischen Bezug aufweisen, extrahiert werden.
-				In Tabelle \ref{tab:NGramme} in Zeile 7 ist dies beispielsweise der Wert "'California"'. 
-				Dieser kann im weiteren einzeln verarbeitet werden. 
+				Durch die Erzeugung von N-Grammen wird es ermöglicht einzelne Token zu betrachten.
+				Haebn die Werte im Nutzer-Standortfeld nur partiellen geografsichen Bezug, können diese getrennt voneinander weiterverarbeitet werden.
+				In Tabelle \ref{tab:NGramme} in Zeile 7 ist dies beispielsweise der Wert "'California"', de getrennt von "'11th"' und "'Dimension"' betrachtet werden kann. 
+				
+				Tauchen widersprüchliche Toponyme in einem Nutzer-Standortfeld auf so können auch diese getrennt voneinander weiterverarbeitet werden.
+
 				In Zeile 3 und 5 bleibt die Hierarchiebeziehung der Token im Bi-Gramm erhalten.
 				Aber es können auch die einzelnen Werte mit geografischem Bezug weiter verarbeitet werden, da aus den Toponymen "'Los+Angeles"' und "'USA"' auch Uni-Gramme erzeugt werden.
 				Der Vorteil der Zerlegung durch N-Gramme besteht darin, dass Token einzeln oder im Zusammenhang betrachtet werden können. 
@@ -540,13 +544,16 @@
 
 			\subsubsection{Weitere Verwendung der entstandenen N-Gramme} 
 
+				Es kann zu diesem Zeitpunkt maschinell keine Entscheidung getroffen werden, ob eines der N-Gramme einen geografischen Bezug aufweist oder nicht.
+				Eine Entscheidung darüber würde erfordern a priori Wissen über den geografischen Bezug der N-Gramme einzubeziehen. 
+				Dies ist allerdings aufgrund der Vielfalt und der möglicherweise auftauchenden Werte mit mittelbarem geografischen Bezug kaum möglich. 
 				Da hier maschinell keine Entscheidung getroffen werden kann welche Uni-, Bi- oder Tri-Gramme einen geografischen Bezug aufweisen, werden alle N-Gramme in die weitere Verarbeitung einbezogen. 			
 				Es werden somit keine Token verworfen denen aufgrund von unzureichenden Informationen, beispielsweise durch ein unvollständiges Ortsverzeichnis, keine Georeferenz zugeordnet werden kann.
 				Auch werden Werte mit mittelbarem geografischen Bezug in die weitere Verarbeitung einbezogen.
 				Token mit und ohne geografischen Bezug werden weiter verarbeitet.
-				Eine Entscheidung über den geografischen Bezug wird erst während der Geolokalsierung getroffen.
+				Eine Entscheidung über den geografischen Bezug wird erst während der Geolokalisierung getroffen.
 
-		\subsection{Eliminierung von Mehr- und Doppeldeutigkeiten} \label{sub:VorvNutzerZeitzone} 
+		\subsection{Mehr- und Doppeldeutigkeiten} \label{sub:VorvNutzerZeitzone} 
 
 				In Kapitel \ref{sec:zuordnungToponymeGeogObj} wurde auf die Probleme bei der Zuordnung von Toponymen zu geografischen Objekten eingegangen.
 				Dabei wurde die Mehr- und Doppeldeutigkeit von Toponymen betrachtet.
@@ -643,6 +650,7 @@
 
 			Es werden nun die absoluten Häufigkeiten der Referenzwerte bestimmt.
 			Dabei werden die Vorkommen der Referenzwerte an einer geografischen Position gezählt.
+			Auf Basis dieser Werte wird die spätere Geolokalisierung ermöglicht.
 
 			Jedes oben ermittelte N-Gramm und die Kombination aus N-Gramm und Zeitzone werden als einzelne Referenzwerte betrachtet. 
 			Jedem Referenzwert werden die geografischen Koordinaten des Tweets zugeordnet, aus dem der Referenzwert erzeugt wurde.
@@ -678,8 +686,9 @@
 			Diese geben eine Position oft auf wenige Meter genau an.
 			Das bedeutet, zwei Tweets die wenige Meter voneinander abgesetzt wurden haben in der Regel unterschiedliche Werte für den Längen- und Breitengrad.
 			Dies kann für die Bestimmung der Häufigkeiten problematisch sein, da die Werte des Längen- und Breitengrades in der Regel nicht exakt übereinstimmen.
+			Deshalb soll mit Hilfe der geografischen Koordinaten jeder Referenzwert der nächstgelegenen Stadt zugeordnet werden (siehe Abschnitt \ref{sub:Stadtbestimmen}).
 
-		\subsection{Zuordnung der nächstgelegenen Stadt mit Hilfe von Voronoi-Regionen} 
+		\subsection{Zuordnung der nächstgelegenen Stadt mit Hilfe von Voronoi-Regionen} \label{sub:Stadtbestimmen} 
 
 			Um die geografischen Positionen der Referenzwerte vergleichbar zu machen, wird jeder Referenzwert auf die geografischen Koordinaten der nächstgelegenen Stadt abgebildet.
 			Dies wird mit Hilfe von Voronoi-Diagrammen umgesetzt.
@@ -767,6 +776,61 @@
 				Auch dies ist in Abbildung \ref{img:voronoi} an den Landesgrenzen zu erkennen. 
 				Umso größer allerdings die Anzahl der Städte ist die betrachtet wird, umso genauer wird die Approximation. 
 
+		\subsection{Zusammenfassung und Beispiel}
+
+			Es wurden die Werte im Nutzer-Standortfeld durch die in den Abschnitten \ref{sub:Vorv}, \ref{sub:VorvNGramme} und \ref{sub:VorvNutzerZeitzone} vorgestellten Schritte verarbeitet.
+			Es entsteht dadurch eine Menge von Referenzwerten.
+			Mit Hilfe der geografischen Koordinaten wird jeder Referenzwert der nächstgelegenen Stadt zugeordnet (siehe Abschnitt \ref{sub:Stadtbestimmen}). 
+			In einem letzten Schritt werden, basierend auf diesen Ergebnissen, die Vorkommen der Referenzwerte pro geografischer Position aufsummiert.
+			Diese werden in der Georeferenz-Basis gespeichert.
+
+			In Abbildung \ref{img:bspEinlernen} ist das Einlernen an einem Beispiel dargestellt.
+			Auf der linken Seite sind 5 Lerndatensätze dargestellt.
+			Dabei ist NSt der Nutzer-Standort, NZz die Nutzer-Zeitzone und GKo sind die geografischen Koordinaten.
+			
+			Diese Werte werden in eine Menge Referenzwerte überführt.
+			Zudem wird jedem Referenzwert die nächstgelegene Stadt zugeordnet.
+			Dies wird durch die Pfeile zwischen den Lerndatensätzen und dem Mittelblock dargestellt.
+			Die Pfeile vom Mittelblock auf die Georeferenz-Basis zeigen an, welche Datensätze übereinstimmen und deshalb zusammengefasst werden. 
+			Die restlichen Datensätze werden direkt in die Georeferenz-Basis übertragen und die absolute Häufigkeit wird mit 1 initialisiert. \footnote{Die Pfeile beim direkten Eintragen wurden ausgelassen um das Diagramm übersichtlich zu halten} 
+			In diesem Beispiel wird deutlich wie durch die Verarbeitung einige Probleme bei der Verwendung des Nutzer-Standortes vermieden werden.
+
+			Datensatz 1 besitzt nur partiellen geografischen Bezug (siehe Abschnitt \ref{sub:partiellerGeografischerBezug}). 
+			Trotzdem kann durch die Zerlegung der Wert "'New+York"', der ein Toponym darstellt, genutzt werden.
+			Damit entsteht ein Eintrag in der Georeferenz-Basis für die Kombination "'New+York"' und New York City (NYC).
+
+			Die Werte in Datensatz 2 stellen eine Hierarchiebeziehung dar.
+			Diese Hierarchie bleibt durch ein Bi-Gramm erhalten.
+			Trotzdem kann die absolute Häufigkeit für die Kombination "'New+York"' und NYC inkrementiert werden, da "'New+York"' durch die Uni-Gramme auch separat betrachtet werden kann.
+			Es wurde also durch die separate Betrachtung eine zusätzliche Information extrahiert.
+
+			Datensatz 3 und 5 weißen eine Doppeldeutigkeit auf.
+			Die geografischen Koordinaten von Datensatz 3 werden auf York in Großbritannien (YO(GB)) aufgelöst.
+			Datensatz 4 wird hingegen York in den USA als Georeferenz zugeordnet (YO(US)). 
+			Allein durch die Betrachtung des Uni-Grammes "'York"' können die beiden Städte nicht unterschieden werden. 
+			Bezieht man jedoch die Nutzer-Zeitzone ein können die Werte unterschieden werden. 
+
+			Datensatz 4 weißt einen Widerspruch im Nutzer-Standort auf (siehe Abschnitt \ref{sub:wiederspruechlicheBezuege}). 
+			Durch die Auflösung der geografischen Koordinaten auf eine Stadt und die Möglichkeit die Werte als Uni-Gramme einzeln zu betrachten kann dennoch eine Information daraus gewonnen werden. 
+			Im Beispiel werden die geografischen Koordinaten auf die Stadt York in Großbritannien aufgelöst.
+			Auch das Toponym "'York"' taucht im Nutzer-Standort auf und wird deshalb der Stadt York zugeordnet.  
+			Durch Datensatz 3 ist diese Kombination schon in der Georeferenz-Basis vorhanden und es wird die absolute Häufigkeit inkrementiert.
+			Gleiches gilt für den Referenzwert bestehend aus Uni-Gramm und Nutzer-Zeitzone.
+			Das bedeutet, selbst wenn widersprüchliche Werte angegeben sind, kann eine gewinnbringende Information aus dem Datensatz gezogen werden.
+
+			Durch diese Verarbeitung entstehen auch Datensätze in der Georeferenz-Basis die nur einmal vorkommen.
+			Diese sollen allerdings nicht verworfen werden. 
+			Es wird dadurch in der Geolokalisierung ermöglicht tiefer gehende Analysen der Vorkommen von Referenzwerten durchzuführen. 
+
+			\begin{figure}[h!]
+				\begin{center}
+				\includegraphics[scale=0.5]{bspEinlernen.pdf}
+				\caption{Beispiel: Einlernen der Georeferenz-Basis}
+				\label{img:bspEinlernen}
+				\end{center}
+			\end{figure}	
+				
+
 	\section{Geolokalisierung: Auflösen des Nutzer-Standortes mit Hilfe der Georeferenz-Basis} \label{sec:AufloesenDesNutzerStandortes} 
 
 		Es wird nun das Verfahren zur Geolokalisierung eines Tweets vorgestellt.
@@ -775,7 +839,7 @@
 		In Abbildung \ref{img:ablaufGeolok} ist der gesamte Ablauf der Geolokalisierung dargestellt.
 		Zunächst werden aus dem Nutzer-Standortfeld und der Nutzer-Zeitzone potenzielle geografische Indikatoren erzeugt.
 		Dies geschieht analog zur Erzeugung von Referenzwerten beim Einlernen der Georeferenz-Basis.
-		Es werden dazu die Schritte aus den Abschnitten \ref{sub:Vorv}, \ref{sub:VorvNGramme} und \ref{sub:VorvNutzerZeitzone} durchgeführt (Vorverarbeitung).
+		Es werden dazu die Schritte aus den Abschnitten \ref{sub:Vorv}, \ref{sub:VorvNGramme} und \ref{sub:VorvNutzerZeitzone} diese Schritte werden in diesem Abschnitt als Vorverarbeitung bezeichnet.
 		Daraus resultiert eine Menge potenzieller geografischer Indikatoren.
 		Die Werte der potenziellen geografischen Indikatoren werden nun in der Georeferenz-Basis nachgeschlagen. 
 		Dabei werden alle Datensätze, deren Referenzwerte mit den potenziellen geografischen Indikatoren korrespondieren, zurückgegeben.
@@ -790,7 +854,7 @@
 			\end{figure}	
 
 		Das zentrale Element der Geolokalisierung ist der Analyse-Schritt. 
-		Das Ziel des Analyse-Schrittes ist es, die Georeferenz zu ermitteln.
+		Das Ziel des Analyse-Schrittes ist es, eine Georeferenz zu ermitteln.
 	
 		Beim Einlernen wurden keine Informationen verworfen, da noch keine Entscheidung über deren geografischen Bezug getroffen werden konnte.
 		In der Georeferenz-Basis sind alle Werte enthalten, die aus den Nutzer-Standorten der Lerndatensätze beim Einlernen erzeugt wurden.
@@ -800,22 +864,44 @@
 
 		Durch den Analyse-Schritt soll nun folgende Frage beantwortet werden: 
 		\\ Wie kann bestimmt werden, ob ein Referenzwert geografischen Bezug hat oder nicht? \\
-		Oder: 
+		Oder anders ausgedrückt: 
 		\\ Wie kann vermieden werden, dass ein Referenzwert, der keinen geografischen Bezug hat, zur Geolokalisierung genutzt wird?
 
-		Im folgenden wird lediglich der Analyse-Schritt betrachtet. 
-		Als Eingabe werden die Ergebnisse der Abfrage der potenziellen geografischen Indikatoren an die Georeferenz-Basis verwendet. 
+		Es wird nun kurz auf die Vorverarbeitung des Nutzer-Stadortfeldes eingegangen.
+		Danach wird ausschließlich der Analyse-Schritt des Verfahrens betrachtet.
 
-		\subsection{Analyse basierend auf absoluten Häufigkeiten} 
+		\subsection{Vorverarbeitung des Nutzer-Standortfeldes}
+
+			Die Schritte der Vorverarbeitung wurden bereits in den Abschnitten \ref{sub:Vorv}, \ref{sub:VorvNGramme} und \ref{sub:VorvNutzerZeitzone} behandelt. 
+			Bei der Geolokalisierung werden diese Schritte ebenfalls auf das Nutzer-Standortfeld angewendet.
+			Dadurch entstehen folgende Vorteile:
+
+			Sind die Werte in einem Nutzer-Standortfeld gleich wie diejenigen eines bereits eingelernten Nutzer-Standortfeldes, werden bei der Abfrage an die Georeferenz-Basis genau diese Werte zurückgeliefert.
+
+			Die Werte werden angeglichen. 
+			Das heißt etwaige Sonder- und Satzzeichen und die Reihenfolge werden beim Vergleichen der Referenzwerte mit den potenziellen geografischen Indikatoren keine Rolle spielen.
+			
+			Nutzer-Standortfelder mit partiellem geografischen Bezug können besser untersucht werden, da die Werte durch die N-Gramme einzeln abgefragt werden.
+
+			Lediglich das Problem, dass in einem Nutzer-Standortfeld widersprüchliche Angaben gemacht werden kann zu einem Problem führen. 
+			Ohne die Nutzer-Zeitzone kann nicht entschieden werden welcher Wert genutzt wird.
+			Lediglich durch einbeziehen der Nutzer-Zeitzone besteht eine Chance die korrekte Georeferenz zu wählen.
+			Dies setzt allerdings voraus, dass die beiden angegebenen geografischen Objekte in zwei unterschiedlichen Zeitzonen liegen.
+
+			Ist eine geografische Hierarchieebene angegeben bleibt diese erhalten.
+			Durch die alphanumerische Sortierung spielt auch die Reihenfolge der Werte keine Rolle.
+
+			Doppel- und Mehrdeutigkeiten können durch die Nutzer-Zeitzone aufgelöst werden. 
+			
+		\subsection{Analyse: Basierend auf absoluten Häufigkeiten} 
 
 			In der Georeferenz-Basis sind die absoluten Häufigkeiten hinterlegt.
-			Diese sagen aus, wie oft ein Referenzwert an einer geografischen Position, in der Vornoi-Region einer Stadt, aufgetreten ist (siehe Abschnitt \ref{sub:absHaufBestimmen}). 
+			Diese sagen aus wie oft ein Referenzwert in der Vornoi-Region einer Stadt aufgetreten ist (siehe Abschnitt \ref{sub:absHaufBestimmen}). 
 			Aus der absoluten Häufigkeit kann abgeleitet werden, ob ein Referenzwert geografischen Bezug hat oder nicht.
 
-			Eine hohe absolute Häufigkeit kann ein Hinweis auf den geografischen Bezug eines Referenzwertes darstellen. 
-			Es ist anzunehmen, dass in der Voronoi-Region einer Stadt der Name der zugehörigen Stadt häufig vorkommt.
-			Dadurch kann eine Relevanz des Referenzwertes zu einer Stadt abgeleitet werden. 
-			Ist die absolute Häufigkeit für einen Referenzwert gering, so ist er von nur wenigen Nutzern als Nutzer-Standort in einer Voronoi-Region angegeben worden, und somit weniger relevant.
+			Eine hohe absolute Häufigkeit in einer Vornoi-Region kann ein Hinweis auf den geografischen Bezug eines Referenzwertes zu dieser Region darstellen. 
+			Es ist beispielsweise anzunehmen, dass in der Voronoi-Region einer Stadt der Name der zugehörigen Stadt häufig vorkommt.
+
 			In Abbildung \ref{img:ulIstanbulWalesZoom} sind die Tweets in denen "'Istanbul"' im Nutzer-Standort vorkommt aufgetragen.
 			Es tritt deutlich eine Konzentrierung um die Stadt Istanbul auf. 
 			Diese Tweets werden auf die Stadt Istanbul abgebildet, wird die Kombination aus dem Referenzwert "'Istanbul"' und der Georeferenz Istanbul sehr häufig vorkommen.
@@ -823,12 +909,16 @@
 			Damit kann eine Relevanz für den Referenzwert "'Istanbul"' zur Stadt Istanbul abgeleitet werden.
 
 			\begin{figure}[!ht]
-					\begin{center}
-						\includegraphics[scale=0.5]{ulIstanbulWalesZoom.pdf}
-						\caption{}
+					\centering
+						\makebox[\textwidth]{
+						\includegraphics[scale=0.7]{ulIstanbulWalesZoom.pdf}
+						} 
+						\caption{Verteilung der Tweets die "'Istanbul"' (rot) oder "'Wales"'' (grün) im Nutzer-Standortfeld enthalten}
 						\label{img:ulIstanbulWalesZoom}
-					\end{center}
+
+
 			\end{figure}	
+
 
 			\subsubsection{Schwellwert für die absolute Häufigkeit} 
 
@@ -837,36 +927,86 @@
 				Je höher der Schwellwert gewählt wird, umso häufiger muss ein Referenzwert in einer Voronoi-Region vorgekommen sein um in Betracht gezogen zu werden.
 				Dadurch steigt die Wahrscheinlichkeit, dass der zugehörige Referenzwert geografischen Bezug hat. 
 				Durch den Schwellwert wird es zudem ermöglicht die Güte und die Trefferquote zu beeinflussen.
-				Umso geringer der Schwellwert gewählt wird, umso mehr Referenzwerte können in die Betrachtung einbezogen werden, allerdings ist die Wahrscheinlichkeit, dass diese geografischen Bezug aufweisen geringer. 
+				Umso geringer der Schwellwert gewählt wird, umso mehr Referenzwerte können in die Betrachtung einbezogen werden, allerdings ist die Wahrscheinlichkeit, dass diese geografischen Bezug aufweisen geringer.  
 
 			\subsubsection{Ablauf}
 
 				Für jeden potenziellen geografischen Indikator wird aus den Ergebnisdatensätzen derjenige Datensatz gewählt, der die größte absoluten Häufigkeit über dem Schwellwert aufweist.
 				Aus diesen Datensätzen wird wiederum derjenige mit der größten absoluten Häufigkeit gewählt. 
+				Das Ergebnis ist ein einzelner Datensatz, dessen Georeferenz dem untersuchten Tweet zugewiesen wird.
+
+				In Abbildung \ref{img:ablaufAnalyseAbsHauf} wird der Ablauf dargestellt.
+				Der Schwellwert wurde dabei auf 10 Vorkommen in einer Vornoi-Region festgelegt. 
+				
+				\begin{figure}[!ht]
+	
+						\centering
+						\makebox[\textwidth]{
+						\includegraphics[scale=0.5]{absHaufBsp.pdf} 
+						} 
+						\caption{Ablauf: Analyse basierend auf absoluten Häufigkeiten}
+						\label{img:absHaufBsp}
+					
+				\end{figure}
 
 		\subsection{Probleme bei der ausschließlichen Betrachtung der absoluten Häufigkeiten} 
 
 			Bei der Analyse basierend auf absoluten Häufigkeiten wird die Verteilung des Referenzwertes auf dem Globus nicht berücksichtigt.
-			Ein Referenzwert kann eine gleichmäßige Verteilung über mehrere Städte aufweisen.
-			Das bedeutet, der Referenzwert wird in vielen unterschiedlichen Städten benutzt. 
-			Es können trotzdem Häufungen in Städten auftreten.
-			Diese können sogar über einem gewählten Schwellwert für die absolute Häufigkeit liegen.
-			Die Häufung kann jedoch relativ gesehen sehr gering sein.
+			Ein Referenzwert kann eine gleichmäßige Verteilung über den Globus aufweisen.
+			Das bedeutet, der Referenzwert wird an vielen unterschiedlichen Orten benutzt. 
+			Wörter wie das englische Wort "'in"' können in einer Voronoi-Region dennoch sehr häufig auftreten. 
+			Es ist aber nicht davon auszugehen, dass "'in"' einen geografischen Bezug hat.  
+			Der Wert der absoluten Häufigkeiten kann für solche Wörter sogar über einem gewählten Schwellwert liegen.
+			Die Häufung kann jedoch relativ, im Vergleich zur globalen Verwendung, sehr gering sein.
 			Dies ist ein Hinweis darauf, dass der Referenzwert keinen geografischen Bezug hat.
 			Über die relative Häufigkeit kann die Verteilung des Referenzwertes bestimmt werden. 
-			Es ist also wichtig nicht nur die absoluten Häufigkeiten, sondern auch die relativen Häufigkeiten der Referenzwerte zu berücksichtigen.
+			Es ist also wichtig nicht nur die absoluten Häufigkeiten, sondern auch die relativen Häufigkeiten, und damit die globale Verteilung der Referenzwerte zu berücksichtigen.
 
 			Dies soll anhand eines Beispiels verdeutlicht werden.
-			Der Referenzwert "'La Plata"' hat offensichtlich geografischen Bezug zur Stadt La Plata.
-			"'La Plata"' tritt tatsächlich in der Voronoi-Region der Stadt La Plata in Argentinien 91 mal auf.			 
-			Der Schwellwert könnte nun aufgrund der Erfahrung mit dem Referenzwert "'La Plata"' auf 90 angesetzt werden.
+			In Argentinien liegt die Stadt La Plata. 
+			Ein Referenzwert "'La Plata"' hat also offensichtlich geografischen Bezug.
+			"'La Plata"' tritt tatsächlich in der Voronoi-Region der Stadt La Plata 91 mal auf (siehe Tabelle \ref{tab:laPlataAbs}).			 
+			Betrachtet man die absoluten Häufigkeiten für den Referenzwert "'La Plata"' könnte man den Schwellwert beispielsweise auf 90 ansetzen.
 
-			Der Referenzwert "'the"' hat offensichtlich keinen geografischen Bezug.
-			Trotzdem tritt der Wert 91 mal in der Stadt Jakarta auf.
-			Mit einem Schwellwert von 90 für die absolute Häufigkeit würde dem Referenzwert "'the"' ein geografischer Bezug zugeordnet werden.
+			\begin{table}[h]
+				\centering
+				\caption{"'La Plata"'}
+				\label{tab:laPlataAbs}
+				\begin{tabular}{|l|l|}
+				\hline
+				Stadt            & abs. Häufigkeit  \\ \hline \hline
+				La Plata         & 91              \\ \hline
+				Villa Gesell     & 9               \\ \hline
+				Mar del Plata    & 5               \\ \hline
+				Quilmes          & 3               \\ \hline
+				... & ... \\ \hline
+				\end{tabular}
+			\end{table}
+
+			Der Referenzwert "'the"' hat hingegen keinen geografischen Bezug.
+			Trotzdem tritt der Wert 91 mal in der Stadt Jakarta auf (siehe Tabelle \ref{tab:theAbs}). 
+			Mit einem Schwellwert von 90, für die absolute Häufigkeit, würde dem Referenzwert "'the"' ein geografischer Bezug attestiert.
 			Betrachtet man allerdings Abbildung \ref{img:ULThe} fällt auf, dass Tweets mit dem Wert "'the"' im Nutzer-Standort sehr verteilt auf dem Globus auftreten.
-			Im Gegensatz dazu tritt "'La Plata"' in den Nutzer-Standorten sehr konzentriert auf (siehe Abbildung \ref{img:ULlaPlata}),
+			Wird ein Tweet mit dem Wert "'the"' im Nutzer-Standortfeld geolokalisiert wird diesem mit hoher Wahrscheinlichkeit eine falsche Georeferenz zugewiesen.
+
+			Im Gegensatz dazu tritt "'La Plata"' in den Nutzer-Standorten sehr konzentriert auf (siehe Abbildung \ref{img:ULlaPlata}).
 			Es ist deutlich eine Häufung um die Stadt La Plata in Argentien zu erkennen, weltweit tritt der Referenzwert aber sehr selten auf.
+
+			\begin{table}[h]
+				\centering
+				\caption{"'the"'}
+				\label{tab:theAbs}
+				\begin{tabular}{|l|l|}
+				\hline
+				Stadt             & abs. Häufigkeit \\ \hline \hline
+				Jakarta           & 91              \\ \hline
+				Singapore         & 27              \\ \hline
+				Bekasi            & 25              \\ \hline
+				Philadelphia      & 23              \\ \hline
+				... & ... \\ \hline
+				\end{tabular}
+				\end{table}
+
 			\begin{figure} 
 				\begin{center}
 					\includegraphics[scale=0.6]{ulTheG.pdf}
@@ -875,51 +1015,46 @@
 					\end{center}
 				\end{figure}
 			\begin{figure}
+
 			\begin{center}
 					\includegraphics[scale=0.5]{ulLaPlataG.pdf}
 					\caption{Tweets in denen im Nutzer-Standort "'La Plata"' auftaucht}
 					\label{img:ULlaPlata}
 				\end{center}
-			\end{figure}		
+			\end{figure}	
 
-		\subsection{Analyse basierend auf absoluten und relativen Häufigkeiten} 
 
-			Idee skizzieren
-			\todo{chap: LsgAnsatz sec: Auflösen subsec: abs. Hauf. Komplette Einführung + Beispiel überarbeiten} 
+			Es werden deshalb zusätzlich die relativen Häufigkeiten betrachtet.	
 
-			\textit{Berechnung der relativen Häufigkeiten}  
+		\subsection{Analyse: Basierend auf absoluten und relativen Häufigkeiten} 
 
-				Um die relativen Häufigkeiten zu berechnen soll das Vorkommen eines Referenzwertes in einer Stadt, durch die Gesamtanzahl der Vorkommen des Referenzwertes geteilt werden.
-				Damit erhält man den prozentualen Anteil der auf eine Stadt entfallenden Vorkommen eines Referenzwertes.
-				Als Basis für diese Berechnung dienen die absoluten Häufigkeiten.
+			Die Analyse basierend auf absoluten Häufigkeiten ist fehleranfällig. 
+			Es wird die Verteilung des Referenzwertes außer acht gelassen.
+			Die absolute Häufigkeit gibt lediglich an wie oft ein Wert in einer Voronoi-Region vorkam.
+			Die relative Häufigkeit gibt dagegen an welchen Anteil der Gesamtvorkommen auf eine Voronoi-Region entfällt.
 
-				Sei $(r_i,c_j)$ ein Datensatz der Georeferenz-Basis mit Referenzwert $r_i$ und Georeferenz $c_i$.
-				Des weiteren liefert $H(r_{i},c_{j})$ die absolute Häufigkeit zu einem Referenzwert $r_i$ und einer Georefrenz $c_i$. 
+			\textit{Berechnung der relativen Häufigkeiten} 
 
-				Damit kann die relative Häufigkeit $rel_{(r_i,c_j)}$ für jede Kombination $(r_i,c_j)$ durch die folgende Formel berechnet werden. 
-				$n_c$ ist dabei die Anzahl aller Georeferenzen.
+				Um die relativen Häufigkeiten zu berechnen wird das Vorkommen eines Referenzwertes in einer Stadt, durch die Gesamtanzahl der Vorkommen des Referenzwertes geteilt werden.
+				Dies wird mit Hilfe der Georeferenz-Basis realisiert.
+				Bei der Abfrage eines potenziellen geografischen Indikators wird nicht nur derjenige Referenzwert mit der größten absoluten Häufigkeit zurückgeliefert sondern auch die Anzahl der Gesamtvorkommen dieses Referenzwertes.
+
+				Die Funktion $max_{abs}(a)$ liefert die maximale absolute Häufigkeit für einen potenziellen geografischen Indikator $a$ aus der Georeferenz-Basis.
+				Die Funktion $sum_{abs}(a)$ liefert die Anzahl der Gesamtvorkommen des potenziellen geografischen Indikators a in der Georeferenz-Basis, dies entspricht der Summe aller absoluten Häufigkeiten aller Vorkommen des Wertes $a$.
+
+				Damit kann die relative Häufigkeit  $rel(a)$ des geografischen Indikators a folgendermaßen berechnet werden.
 
 				\begin{equation}
-					d_{r_i,c_j}=\frac{H(r_i,c_j)}{\sum^{n_c}_{j=0}{H(r_i,c_j)}}
+					rel(a)=\frac{max_{abs}(a)}{sum_{abs}(a)}
 				\end{equation}	
 
-			\subsubsection{Ablauf}
-
-			\subsubsection{Lösung des Beispielproblems von oben}
-
-				Berechnet man nun die relativen Häufigkeiten kann dies abgebildet werden.
-				In Tabelle \ref{tab:the} sind die zugeordneten Städte, die absoluten Häufigkeiten und die berechneten relativen Häufigkeiten für die Vorkommen des Wortes "'the"' aufgetragen. 
-				Die Einträge sind absteigend nach dem Wert der relativen Häufigkeit sortiert.
-				In Tabelle \ref{tab:the} werden nur die vier ersten Einträge dargestellt.  
-				Insgesamt kam das Wort "'the"' in 2824 verschiedenen Städten vor.
-				Dabei wurde es insgesamt 5764 mal verwendet. 
-				Trotz der hohen absoluten Häufigkeit in Jakarta liegt die relative Häufigkeit bei lediglich 1,6\%.
-				Aus den relativen Häufigkeiten lässt sich nun die, in Abbildung \ref{img:ULThe} vermutete, globale Verteilung ablesen.
-
+			\textit{Betrachtung des Beispiels "'La Plata"' und "'the"' bezüglich relativer Häufigkeiten} 
+				
+				Bezieht man die relativen Häufigkeiten ein ergibt sich für den Wert "'the"' Tabelle \ref{tab:the} für "'La Plata"' ergibt sich Tabelle \ref{tab:laPlata}.  
 
 				\begin{table}[h]
 				\centering
-				\caption{"'the"'}
+				\caption{Relative Häufigkeiten für den Referenzwert "'the"'}
 				\label{tab:the}
 				\begin{tabular}{|l|l|l|}
 				\hline
@@ -932,19 +1067,9 @@
 				\end{tabular}
 				\end{table}
 
-				Die Verteilung erklärt sich dadurch, dass das Wort "'the"' im englischen sehr häufig auftritt.
-				Englisch ist die internationale Verkehrssprache und wird dementsprechend global und sehr häufig verwendet.
-				Dies spiegelt sich in der Verteilung der vorkommen auf dem Globus wieder.
-				Die Häufung um Jakarta kann teilweise damit erklärt werden, dass sehr viele Tweets die in und um Jakarta abgesetzt werden eine Angabe von Längen- und Breitengrad aufweisen. 
-
-				In Tabelle \ref{tab:laPlata} wird dieselbe Auswertung für "'La Plata"' dargestellt. 
-				"'La Plata"' ist insgesamt 129 mal in 23 verschiedenen Städten aufgetaucht. 
-				In der Stadt La Plata, in Argentien, kam es 91 mal vor.
-				Dies entspricht einer relativen Häufigkeit von 70,5\%.
-
 				\begin{table}[h]
 				\centering
-				\caption{"'La Plata"'}
+				\caption{Relative Häufigkeiten für den Referenzwert "'La Plata"'}
 				\label{tab:laPlata}
 				\begin{tabular}{|l|l|l|}
 				\hline
@@ -957,50 +1082,76 @@
 				\end{tabular}
 				\end{table}
 
-				"'La Plata"' taucht erwartungsgemäß am häufigsten rund um die Stadt La Plata auf.  
+				Vergleicht man Tabelle \ref{tab:the} mit Tabelle \ref{tab:laPlata} kann durch die relativen Wahrscheinlichkeiten die globale Verteilung der beiden Werte verglichen werden.
+				Es ist deutlich zu erkennen, dass "'La Plata"' (70.5\%) wesentlich konzentrierter auftritt als "'the"' (1,6\%).
 
-				Es lässt sich also anhand der relativen Häufigkeiten ein geografischer Bezug des Referenzwertes nachweisen.
-				Damit kann man zunächst bestimmen ob ein Referenzwert geografischen Bezug hat oder nicht.
-				Die relativen Häufigkeiten können nach dem einlernen der Referenzwerte berechnet und in der Georeferenz-Basis hinterlegt werden.
-				Mit Hilfe eines Schwellwertes für die relativen Häufigkeiten, kann nun bestimmt werden wann ein Referenzwert geografischen Bezug hat.
+			\subsection{Schwellwert für die relative Häufigkeit}
 
-				Aber auch die ausschließliche Betrachtung der relativen Häufigkeiten reicht nicht aus um die geografische Relevanz nachzuweisen.
-				Da die relativen Häufigkeiten basierend auf den Vorkommen des Referenzwertes berechnet werden sagen diese wiederum nichts über die absoluten Häufigkeit aus. 
-				Kommt ein Referenzwert zwei mal in zwei verschiedenen Städten vor, liegen die jeweiligen relativen Häufigkeiten bei 50\%.
-				Dies ist ein hoher Wert.
-				Da der Referenzwert aber nur einmal vorkam, ist es sehr unwahrscheinlich das er einen geografischen Bezug hat.  
+				Auch für die relative Häufigkeit wird ein Schwellwert eingeführt. 
+				Dieser Schwellwert garantiert, das ein Referenzwert einen bestimmten Anteil an Vorkommen auf eine Voronoi-Region vereint.
+				Dadurch können global genutzte Referenzwerte eliminiert werden.
+				Der Schwellwert für die absolute Häufigkeit soll allerdings weiterhin verwendet werden. 
+				Denn für geringe absolute Häufigkeiten kann die relative Häufigkeit hoch sein.
+				Kommt ein Referenzwert in einer Voronoi-Region "'A"' 5 mal vor und in einer Voronoi-Region "'B"' nur ein mal entspricht dies einer relativen Häufigkeit von 83\% für die Vornoi-Region A.
+				Trotz der hohen relativen Häufigkeit ist die absolute Häufigkeit gering.    
+			
+			\subsection{Ablauf}
 
-		\subsection{Einführung von Schwellwerten für die absolute und relative Häufigkeit}  
+				In Abbildung \ref{img:relHaufBsp} ist der Ablauf der Analyse mit absoluten und relativen Häufigkeiten dargestellt.
+				Um den Ablauf übersichtlich zu halten wurden die Referenzwerte mit Zeitzone hier nicht berücksichtigt.
+				
+				Zuerst werden diejenigen Datensätze verworfen, die unter einem Schwellwert von 5 für die absolute Häufigkeit liegen.
+				Danach werden diejenigen Datensätze verworfen, die unter einem Schwellwert von 10\% für die relative Häufigkeit liegen.
+				Aus der Restmenge an Datensätzen wird derjenige gewählt, der die größte relative Häufigkeit aufweist. 
 
-			\todo{chap: LsgAnsatz sec: Auflösen subsec: Schwellwerte für abs. und rel. einführen komplett schreiben} 
+				 \begin{figure}[!ht]
+	
+						\centering
+						\makebox[\textwidth]{
+						\includegraphics[scale=0.5]{relHaufBsp.pdf} 
+						} 
+						\caption{Ablauf: Analyse basierend auf absoluten Häufigkeiten}
+						\label{img:relHaufBsp}
+					
+				\end{figure}
+
+				Mit diesem Ablauf wird einerseits garantiert, dass ein Referenzwert oft genug vorkommt und andererseits einen gewissen Anteil am Gesamtvorkommen auf eine Region vereint.
 
 	\section{Ausnutzen der geografischen Hierarchie zur Verbesserung der Ergebnisse} \label{sec:ausnutzenDerGeografischenHierarchie}
 
-		\todo{chap: LsgAnsatz sec: Ausnutzen Hierarch subsec: Idee skizzieren und Splitten -> mergen} 
-		Idee skizzieren
+		In Abschnitt \ref{sub:Stadtbestimmen} wurden die geografischen Koordinaten der Tweets auf die nächstgelegene Stadt aufgelöst. 
+		Durch die Auflösung auf eine Stadt werden auch implizit die anderen geografischen Hierarchieebenen mitbestimmt. 
+		
+		Dies kann ausgenutzt werden, denn es liegt zu jedem Referenzwert nicht nur die Stadt, sondern auch die Verwaltungseinheit erster und zweiter Ordnung sowie das Land vor.
 
-		\textit{Geografischer Bezug zu Verwaltungseinheiten und Ländern} 
+		\subsubsection{Geografischer Bezug der Referenzwerte zu Verwaltungseinheiten und Ländern} 
 
-			Beim einlernen der Georeferenz-Basis werden durch die absoluten Häufigkeiten die Vorkommen pro Stadt gespeichert.
-			Mit den daraus errechneten relativen Häufigkeiten kann nicht entschieden werden, ob für den Referenzwert eine globale Verteilung vorliegt oder ob der Referenzwert unter Umständen nur regional begrenzt, zum Beispiel in einem Land, auftritt.
 			Für Referenzwerte die ein Land oder eine Verwaltungseinheit bezeichnen ist auf Städteebene eine geringe relative Häufigkeit zu erwarten.
 			Diese Referenzwerte treten in einer größeren geografischen Region als der Voronoi-Region einer Stadt auf.
-			Sie sind somit über mehrere Städte verteilt und werden auf Stadtebene einer geringe relative Häufigkeit aufweisen.
-			Es ist beispielsweise zu erwarten das ein Ländername in den Nutzer-Standorten von Tweets aus dem gesamten Land auftritt.
+			Sie sind somit über mehrere Voronoi-Regionen verteilt und werden auf Stadtebene eine geringe relative Häufigkeit aufweisen.
+			Es ist beispielsweise zu erwarten, dass ein Ländername in den Nutzer-Standorten von Tweets aus dem gesamten Land auftritt.
 			Durch die Unterteilung des Landes in Stadtgebiete wird der Wert sehr verteilt auf die Städte des Landes auftreten.
+			In Abbildung \ref{img:ulus} werden Tweets dargestellt in deren Nutzer-Standortfeld "'USA"' oder "'United States"' vorkommt.
+			Es ist deutlich eine Häufung im Staatsgebiet der Vereinigten Staaten von Amerika zu erkennen.
+			Tatsächlich ist liegt auf Städteebene die maximale relative Häufigkeit für den Referenzwert "'USA"' bei lediglich 0.87\%.   
+			Dies weißt auf eine große Verteilung des Referenzwertes hin, was bei Betrachtung auf Städteebene korrekt ist.
+			Würde einem potenziellen geografischen Indikator "'USA"' auf Städteebene eine Stadt zugewiesen werden, wäre diese mit hoher Wahrscheinlichkeit falsch. 
 
-			Soll nun statt einer Stadt eine Verwaltungseinheit oder das Land als Georeferenz bestimmt werden, kann mit diesen absoluten Häufigkeiten auf Stadtebene keine Aussage über den geografischen Bezug gemacht werden. 
-			
-			Am folgenden Beispiel soll dieser Sachverhalt erläutert werden.
+			\begin{figure}[h!]
+				\begin{center}
+				\includegraphics[scale=0.5]{ulUSA.pdf}
+				\caption{Tweets mit "'USA"' im Nutzer-Standort}
+				\label{img:ulus}
+				\end{center}
+			\end{figure}
 
-			In Abbildung \ref{img:ulIstanbulWalesZoom} sind in grün Tweets dargestellt, welche im Nutzer-Standort "'Wales"' enthalten.
-			Wales entspricht einer Verwaltungseinheit erster Ordnung und gehört zu Großbritannien.
-			Die Tweets sind in der gesamten geografischen Region, über die sich Wales erstreckt, verteilt.
-			Außerhalb von Wales tritt "'Wales"' im Nutzer-Standort sehr selten auf.
-			Die relativen Häufigkeiten auf Stadtebene werden in Tabelle \ref{tab:walesCity} dargestellt.
-			Diese bestätigen eine Verteilung über eine größere geografische Region.
-			Anhand der relativen Häufigkeiten kann aber nicht entschieden werden ob der Referenzwert global verteilt ist, oder in einer bestimmten geografischen Region, wie einem Land, auftritt. 
-			"'Wales"' taucht in insgesamt 78 Städten 346 mal in Nutzer-Standorten auf.
+			Mit Hilfe der implizit bestimmten geografischen Hierarchieebenen ist es aber möglich die absoluten und relativen Häufigkeiten für die anderen Hierarchieebenen zu bestimmen.
+			Basierend auf den Datensätzen der Georeferenz-Basis können diese Werte ermittelt werden.  
+
+		\subsubsection{Ermittlung der absoluten Häufigkeiten} 
+
+			Da zu jedem Referenzwert die zugehörigen Verwaltungseinheiten und Länder bekannt sind können die absoluten direkt aus der Georeferenz-Basis berechnet werden.
+			Für einen Referenzwert müssen lediglich die absoluten Häufigkeiten aufsummiert werden, bei denen der Wert der jeweiligen geografischen Hierarchieebenen übereinstimmen.
 
 			\begin{table}[h]
 			\centering
@@ -1017,19 +1168,7 @@
 			\end{tabular}
 			\end{table}
 
-			Die relative Häufigkeit von 12,7\% deutete eher darauf hin, dass "'Wales"' keinen geografischen Bezug aufweist.
-			Auf Städteebene ist dies auch durchaus korrekt. 
-			Allerdings kann aus diesen Ergebnissen kein geografischer Bezug zu einer der anderen geografischen Hierarchieebenen abgeleitet werden.
-			Das Problem ist, dass Wales keinen geografischen Bezug zu einer Stadt aufweist, wohl aber zu einer Verwaltungseinheit erster Ordnung und daher zu einer geografischen Region. 
 
-			Um dieses Problem lösen zu können müssen zu einem Referenzwert die relativen Häufigkeiten für die anderen geografischen Hierarchieebenen berechnet werden.
-			Damit kann dann die Verteilung der Referenzwerte auf diese Hierarchieebenen betrachtet werden.
-			
-		\textit{Berechnung der relativen Häufigkeiten zu Verwaltungseinheiten und Ländern ----->>>> nach unten MERGEN } 
-
-			Da zu jedem Referenzwert die zugehörigen Verwaltungseinheiten und Länder bekannt sind können die absoluten und relativen Häufigkeiten direkt aus der Georeferenz-Basis berechnet werden.
-
-			Es müssen lediglich die absoluten und relativen Häufigkeiten aufsummiert werden, bei denen der Wert der jeweiligen geografischen Hierarchieebenen übereinstimmen.
 			Im Beispiel aus Tabelle \ref{tab:walesCity} müssen alle absoluten und relativen Häufigkeiten derjenigen Städte aufsummiert werden, die in derselben Verwaltungseinheit erster Ordnung liegen.
 			Betrachtet man die Verwaltungseinheiten zu allen Städten in denen "'Wales"' im Nutzer Standort vorkommt ergibt sich folgende Liste.
 
@@ -1064,17 +1203,29 @@
 			Analog können die Werte für die Verwaltungseinheit zweiter Ordnung und dem Land berechnet werden.
 			Dieses Vorgehen ermöglicht es einen geografischen Bezug eines Referenzwertes auf jeder der geografischen Hierarchieebenen zu prüfen.
 
-		\textit{Fazit}
 
-			Mit der absoluten Häufigkeit besteht ein erster Hinweis darauf ob ein Referenzwert geografischen Bezug hat oder nicht.
-			Die alleinige Betrachtung der absoluten Häufigkeit lässt aber die Verteilung der Werte auf den jeweiligen geografischen Hierarchieebenen außer betracht.
-			Mit den berechneten relativen Häufigkeiten können die Referenzwerte zusätzlich auf ihre Verteilung untersucht werden.
-			Die relativen Häufigkeiten können nach dem Einlernen berechnet und in der Georeferenz-Basis gespeichert werden. 
-			Während der Geolokalisierung kann dies absolute und relative Häufigkeit genutzt werden um die geografischen Indikatoren zu bestimmen. 
+			Soll nun statt einer Stadt eine Verwaltungseinheit oder das Land als Georeferenz bestimmt werden, kann mit diesen absoluten Häufigkeiten auf Stadtebene keine Aussage über den geografischen Bezug gemacht werden. 
+			
+			Am folgenden Beispiel soll dieser Sachverhalt erläutert werden.
 
-		\subsection{Hochziehen und summieren ------ letzte drei abschnitte hier rein mergen ---------}
+			In Abbildung \ref{img:ulIstanbulWalesZoom} sind in grün Tweets dargestellt, welche im Nutzer-Standort "'Wales"' enthalten.
+			Wales entspricht einer Verwaltungseinheit erster Ordnung und gehört zu Großbritannien.
+			Die Tweets sind in der gesamten geografischen Region, über die sich Wales erstreckt, verteilt.
+			Außerhalb von Wales tritt "'Wales"' im Nutzer-Standort sehr selten auf.
+			Die relativen Häufigkeiten auf Stadtebene werden in Tabelle \ref{tab:walesCity} dargestellt.
+			Diese bestätigen eine Verteilung über eine größere geografische Region.
+			Anhand der relativen Häufigkeiten kann aber nicht entschieden werden ob der Referenzwert global verteilt ist, oder in einer bestimmten geografischen Region, wie einem Land, auftritt. 
+			"'Wales"' taucht in insgesamt 78 Städten 346 mal in Nutzer-Standorten auf.
 
-		\subsection{Anpassung der Schwellwerte -------- letzte drei abschnitte hier rein mergen ---------}
+			
+
+			Die relative Häufigkeit von 12,7\% deutete eher darauf hin, dass "'Wales"' keinen geografischen Bezug aufweist.
+			Auf Städteebene ist dies auch durchaus korrekt. 
+			Allerdings kann aus diesen Ergebnissen kein geografischer Bezug zu einer der anderen geografischen Hierarchieebenen abgeleitet werden.
+			Das Problem ist, dass Wales keinen geografischen Bezug zu einer Stadt aufweist, wohl aber zu einer Verwaltungseinheit erster Ordnung und daher zu einer geografischen Region. 
+
+			Um dieses Problem lösen zu können müssen zu einem Referenzwert die relativen Häufigkeiten für die anderen geografischen Hierarchieebenen berechnet werden.
+			Damit kann dann die Verteilung der Referenzwerte auf diese Hierarchieebenen betrachtet werden.
 
 		\subsection{Wahl der Schwellwerte zur Justierung der Genauigkeit und der Trefferquote}
 
@@ -1120,38 +1271,7 @@
 				Es kann also entweder ein Kompromiss gefunden werden der ein Optimum für beide Werte darstellt. 
 				Oder einer der Werte wird optimiert.  
 
-	\subsection{Analyse SCHRITTE ALT, AUFSPLITTEN UND OBEN REIN MERGEN EINMAL IN ABS AUFLÖSEN EINMAL RELATIVE AUFLÖSEN}
-
-			Die Analyse beinhaltet zwei Schritte. 
-			Zuerst müssen diejenigen Referenzwerte gewählt werden, welche am wahrscheinlichsten einen geografischen Bezug haben.
-			Dabei wird jeder Referenzwert separat betrachtet. 
-			In einem nächsten Schritt wird derjenige Referenzwert gewählt, der unter den verbliebenen am wahrscheinlichsten die geografische Position des Nutzers beschreibt. 
-
-			\subsubsection{Auswahl der Referenzwerte mit geografischem Bezug}
-
-				Es können pro Referenzwert zunächst mehrere Datensätze vorliegen.
-				Aus diesen sollen diejenigen gewählt werden, welche am wahrscheinlichsten einen geografischen Bezug aufweisen.
-				Dazu werden sowohl die absoluten als auch die relativen Häufigkeiten genutzt. 
-				Für jeden Referenzwert wird derjenige Datensatz gewählt, der die größte relative Häufigkeit $h_{rel}$ über einem Schwellwert $s_{rel}$ aufweist.
-				Mit diesem Schwellwert lässt sich bestimmen wie verteilt der Referenzwert auftreten kann.
-				Zusätzlich wird geprüft ob die absolute Häufigkeit ebenfalls über einem Schwellwert $s_{abs}$ liegt.
-				Mit diesem Schwellwert lässt sich bestimmen wie häufig der Referenzwert an einer geografischen Position oder in einer geografischen Region auftreten muss. 
-
-			\subsubsection{Bestimmung der wahrscheinlichsten Georeferenz} 
-
-				Nun liegt wiederum eine Menge an Datensätzen vor.
-				Jeder Referenzwert, und damit auch jeder potenzielle geografische Indikator, taucht nur noch ein mal auf. 
-
-				Aus den verbliebenen Datensätzen soll nun die Georeferenz gewählt werden. 
-				Dazu werden die relativen Häufigkeiten verglichen.
-				Es wird der Datensatz mit der höchsten relativen Häufigkeit gewählt.
-				Die Georeferenz dieses Datensatzes wird dann dem Twitter-Nutzer zugewiesen. 
-				Damit wird der Referenzwert ausgewählt der die größte relative Häufigkeit aller untersuchten Referenzwerte aufweist. 
-
-				Die Referenzwerte stellen NGramme dar, wie in der Vorverarbeitung in Unterkapitel \ref{subsec:VorverarbeitungStandortZeitzone} erläutert wird.
-				Es werden hier also insbesondere auch Uni-, Bi- und Trigramme miteinander verglichen.
-				Darauf soll nun eingegangen werden.
-
+	
 				\paragraph{Vergleich der relativen Häufigkeiten zu Uni- Bi- und Trigrammen}
 
 					Jedes Element eines Bi- oder Trigrammes kann potenziell einen geografischen Bezug haben. 
