@@ -12,6 +12,7 @@
 
 			Aus dem Basisdatensatz von 403222 Tweets wurden zufällig 20000 Datensätze als Testdatensätze gewählt (siehe auch Abschnitt \ref{sub:Datenerhebung}. 
 			Diese 20000 werden in den folgenden Abschnitten verwendet.
+			
 			Die geografischen Koordinaten der Tweets werden ebenfalls nach dem Verfahren aus Abschnitt \ref{sub:Stadtbestimmen} auf die nächstgelegene Stadt aufgelöst.
 			Dieser Schritt wird durchgeführt um einem Tweet eine Verwaltungseinheit erster und zweiter Ordnung sowie ein Land zuzuordnen.
 			Zur Bestimmung von Abständen werden weiterhin die ursprünglichen geografischen Koordinaten des Tweets verwendet.  
@@ -97,11 +98,11 @@
 				
 			\subsubsection{False Positive (FP)}
 
-				Gibt an wie viele der Tweets der falschen geografischen Region zugeordnet wurden.  
+				Dieser Wert gibt an wie viele der Tweets der falschen geografischen Region zugeordnet wurden.  
 
 			\subsubsection{Precision}  
 
-				Beschreibt den Anteil der Ergebnismenge, der durch die Geolokalisierung korrekt zugeordnet wurde.
+				Dieser Wert beschreibt den Anteil der Ergebnismenge, der durch die Geolokalisierung korrekt zugeordnet wurde.
 				Der Optimalwert liegt bei 1,0.
 				Dieser lässt sich wie folgt berechnen:
 
@@ -119,7 +120,7 @@
 			\subsubsection{Recall} 
 
 				Der Recall gibt an welchem Anteil an der Gesamtmenge der getesteten Tweets durch die Geolokalisierung eine korrekte Georeferenz zugeordnet wurde.
-				Auch beim Recall liegt der Optimalwert bei 1,0.
+				Der Optimalwert liegt bei 1,0.
 				Der Recall lässt sich berechnen durch:
 
 				\begin{equation}
@@ -133,11 +134,11 @@
 		\subsection{Trade-Off}
 
 			In der Ökonomie bedeutet der Trade-Off die gegenläufige Abhängigkeit von Kosten und Qualität.
-			Es müssen Kosten in Kauf genommen werden um die Qualität zu verbessern. \footnote{Vergleiche http://de.wikipedia.org/wiki/Trade-off\#.C3.96konomie} 
+			Es müssen Kosten in Kauf genommen werden, um die Qualität zu verbessern. \footnote{Vergleiche http://de.wikipedia.org/wiki/Trade-off\#.C3.96konomie} 
 			
 			Bei den vorliegenden Ergebnissen kann der Median oder die Precision als Qualität interpretiert werden.
 			Die Ergebnismenge oder der Recall können als Kosten betrachtet werden.
-			Welche der Kennzahlen die Qualität darstellt und welcher die Kosten kommt auf die jeweiligen Anforderungen an. 
+			Welche der Kennzahlen die Qualität darstellt und welcher die Kosten, kommt auf die jeweiligen Anforderungen an. 
 
 			Im Kern geht es darum, dass jeweils einer der beiden Werte auf Kosten des anderen optimiert werden kann.
 			Durch die Optimierung des Trade-Off wird eine Kombination gefunden, welche das Optimum zwischen Kosten und Qualität darstellt.
@@ -149,7 +150,7 @@
 
 	\section{Ergebnisse}
 
-		Die Kennwerte für die Hierarchieebenen wurden bestimmt indem für jede Kombination aus Schwellwerten alle 20000 Tweets des Testdatensatzes untersucht wurden.
+		Die Kennwerte für die Hierarchieebenen wurden bestimmt, indem für jede Kombination aus Schwellwerten alle 20000 Tweets des Testdatensatzes untersucht wurden.
 		Für vier geografische Hierarchieebenen wurden 150 verschiedene Kombinationen von Schwellwerten auf jeweils 20000 Tweets getestet.
 		Dies entspricht $4*150*20000 = 12000000$ Durchläufen der Geolokalisierung.
 
@@ -161,10 +162,10 @@
 
 			Es werden hier die Ergebnisse aller Durchläufe betrachtet.
 			Dabei werden die Kennzahlen aus Abschnitt \ref{sec:Kennzahlen} pro getestetem Schwellwerte aufgetragen. 
-			Es werden dadurch mögliche Zusammenhang zwischen den gewählten Schwellwerten und den Ergebnissen abgeleitet.
-			Eines der Ziele dieser Arbeit bestand darin das Verfahren bezüglich der Qualität der Ergebnisse justierbar zu machen.
+			Es werden dadurch mögliche Zusammenhänge zwischen den gewählten Schwellwerten und den Ergebnissen abgeleitet.
+			Eines der Ziele dieser Arbeit bestand darin, das Verfahren bezüglich der Qualität der Ergebnisse justierbar zu machen.
 			Dies wird über die Schwellwerte realisiert.
-			Es wird jede der vier Hierarchieebenen einzeln bewertet um zu verifizieren, dass die Angabe der Schwellwerte zur Justierung auf jeder Hierarchieebene verwendet werden kann.
+			Es wird jede der vier Hierarchieebenen einzeln bewertet, um zu verifizieren, dass die Angabe der Schwellwerte zur Justierung auf jeder Hierarchieebene verwendet werden kann.
 
 			\subsubsection{Ergebnisse zur Stadtebene}
 
@@ -189,22 +190,22 @@
 				
 				In Zeile 1 ist der beste Wert der Ergebnismenge dargestellt.
 				Dieser liegt bei 15819, das bedeutet es konnten 15819 Tweets, und damit 79,1\% der untersuchten Tweets eine Stadt zugeordnet werden.
-				Der Wert des Median gibt an, dass 50\% dieser Tweets im Umkreis von 20,43km um die die zugeordnete Stadt versendet wurden.
-				Im Durchschnitt weißen alle 15819 Tweets eine Fehlerdistanz von 1423km auf.
+				Der Wert des Median gibt an, dass 50\% dieser Tweets im Umkreis von 20,43 km um die die zugeordnete Stadt versendet wurden.
+				Im Durchschnitt weisen alle 15819 Tweets eine Fehlerdistanz von 1423 km auf.
 
-				Zeile 4 ist der beste Trade-Off der ermittelt wurde.
+				Zeile 4 ist der beste Trade-Off, der ermittelt wurde.
 				Für den Trade-Off liegt die Ergebnismenge bei 10642(53,21\%).
-				50\% dieser Tweets (ca. 25\% aller untersuchter Tweets) denen eine Stadt zugeordnet werden konnte liegen im Umkreis von 9,17km zu der jeweils zugeordneten Stadt.
-				Die durchschnittliche Fehlerdistanz reduziert sich gegenüber Zeile 1 auf 548,98km. 
+				50\% dieser Tweets (ca. 25\% aller untersuchter Tweets) denen eine Stadt zugeordnet werden konnte, liegen im Umkreis von 9,17 km zu der jeweils zugeordneten Stadt.
+				Die durchschnittliche Fehlerdistanz reduziert sich gegenüber Zeile 1 auf 548,98 km. 
 
-				In Zeile 3 ist der beste Wert der durchschnittlichen Fehlerdistanz angegeben, dieser entspricht 5,53km.
-				Die Ergebnismenge liegt jedoch bei 16(0,08\%).
+				In Zeile 3 ist der beste Wert der durchschnittlichen Fehlerdistanz angegeben, dieser entspricht 5,53 km.
+				Die Ergebnismenge liegt jedoch nur bei 16(0,08\%).
 
 				\begin{table}[h]
 					\centering
 					\begin{tabular}{|l|r|r|r|r|r|}
 					\hline
-					  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Schwellwert\\ relativ\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Schwellwert\\ absolut\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Ergebnismenge\\ (Anteil)\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Median\\ Fehlerdist.\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Durchschn.\\ Fehlerdis.\end{tabular}} \\ \hline
+					  & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Schwellwert\\ relativ\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Schwellwert\\ absolut\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Ergebnismenge\\ (Anteil)\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Median\\ Fehlerdist. \\ (m)\end{tabular}} & \multicolumn{1}{c|}{\begin{tabular}[c]{@{}c@{}}Durchschn.\\ Fehlerdis. \\ (m)\end{tabular}} \\ \hline
 					1 & 2.59                                                                               & 6                                                                                  & \textbf{15819(79.1\%)}                                                                 & 20432.24                                                                          & 1423698.12                                                                           \\ \hline
 					2 & 97,48                                                                              & 7                                                                                  & 198(0.99\%)                                                                         & \textbf{3242.66}                                                                  & 188573.42                                                                            \\ \hline
 					3 & 91.37                                                                              & 101                                                                                & 16(0.08\%)                                                                             & 6016.68                                                                           & \textbf{5532.02}                                                                     \\ \hline \hline
@@ -254,10 +255,10 @@
 				Eine Änderung des Schwellwertes für die absolute Häufigkeit hat bei gleichbleibendem Wert für die relative Häufigkeit kaum einen Einfluss auf den Wert der Precision.
 				Dies gilt für alle Hierarchieebenen wie in den drei Plots in Abbildung \ref{img:precAll} zu erkennen ist. 
 
-				Vergleicht man die Plots in Abbildung \ref{img:adm2Recall} so weißen auch diese dieselbe Charakteristik. 
+				Vergleicht man die Plots in Abbildung \ref{img:recallAll} so weisen auch diese die gleiche Charakteristik auf. 
 				Im Gegensatz zur Precision hat der Schwellwert für die absolute Häufigkeit einen Einfluss auf den Recallwert.
 				Bei gleichbleibendem Schwellwert für die relative Häufigkeit, kann durch die Absenkung des Schwellwertes der absoluten Häufigkeit eine Verbesserung des Recall erreicht werden.
-				Da der Wert der absoluten Häufigkeit keinen Einfluss auf die Precision hat kann dieser erhöht werden um das Ergebnis zu optimieren.
+				Da der Wert der absoluten Häufigkeit keinen Einfluss auf die Precision hat, kann dieser erhöht werden, um das Ergebnis zu optimieren.
 
 				Wiederum beeinflusst der Schwellwert für die relative Häufgikeit die Qualität konträr.
 				Umso größer der Schwellwert der relativen Häufigkeit gewählt wird umso schlechter wird der Recallwert, gleichzeitig verbessert sich allerdings die Precision.
@@ -301,7 +302,7 @@
 			Der Recall lag dagegen bei 24\%.
 
 			Für den besten Trade-Off konnte der Recall auf 84\% erhöht werden, die Precision hat sich dabei nur unwesentlich auf 92\% reduziert. 
-			Durch die Berechnung des besten Trade-Off konnten für die Verwaltungseinheiten erster und zweiter Orndung ähnliche Verbesserung erreicht werden.
+			Durch die Berechnung des besten Trade-Off konnten für die Verwaltungseinheiten erster und zweiter Ordnung eine ähnliche Verbesserung erreicht werden.
 
 			Für die Verwaltungseinheit erster Ordnung wird beim besten Trade-Off eine Precision von 80\% und ein Recall von 54\%, für die Verwaltungseinheit zweiter Ordnung eine Precision von 77\% und ein Recall von 12\% erreicht. 
 			Das bedeutet besipielsweise für die Verwaltungseinheit zweiter Ordnung: Wenn eine Georeferenz zurückgeliefert wird ist diese mit einer Wahrscheinlichkeit von 77\% korrekt. 
@@ -336,7 +337,8 @@
 			In Tabelle \ref{tab:optAdm1Adm2Co} werden die besten Ergebnisse für Precision, Recall und Trade-Off betrachtet.
 			In Zeile 1 wird der beste Wert für die Precision auf Länderebene dargestellt. 
 			Dieser liegt bei 0,99. 
-			Dies bedeutet 99\% der Tweets denen durch die Geolokalisierung ein Land zugeordnet werden konnte waren korrekt, dies ist ein optimaler Wert für die Precision.
+			Dies bedeutet 99\% der Tweets, denen durch die Geolokalisierung ein Land zugeordnet werden konnte, waren korrekt. 
+			Dies ist ein optimaler Wert für die Precision.
 			
 			In Zeile 3 wird der beste Trade-Off auf Länderebene dargestellt.
 			Bei einer Precision von 0,94 kann ein Recall von 0,84 erreicht werden. 
@@ -354,7 +356,7 @@
 
 			Für die Verwaltungseinheit erster Ordnung (Adm1) ergibt sich ein ähnliches Bild. 
 			Beim Vergleich zwischen den optimalen Werten von Precision und Recall zum optimalen Trade-Off ergibt sich eine Änderung von -17\% und -4\%.
-			Die Ergebnisse der Verwaltungseinheit erster Ordnung sind insgesamt schlechter als dijenigen auf Länderebene. 
+			Die Ergebnisse der Verwaltungseinheit erster Ordnung sind insgesamt schlechter als diejenigen auf Länderebene. 
 
 			
 

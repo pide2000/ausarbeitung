@@ -6,7 +6,7 @@
 	Dieses wird durch eine Menge an Lerndatensätzen trainiert.
 	Bei der eigentlichen Geolokalisierung wird dieses eingelernte Sprachmodell analysiert und einem Tweet mit unbekannter Herkunft eine Georeferenz zugeordnet.
 	Es wird ermöglicht durch die Angabe von Schwellwerten das Ergebnis dahingehend zu beeinflussen, dass im Rahmen der erreichbaren Qualität, eine Feinjustierung der Kennzahlen Precision und Recall beziehungsweise durchschnittliche Fehlerdistanz, Median der Fehlerdistanzen und Ergebnismenge vorgenommen werden kann.
-	Es kann vom Nutzer des Verfahrens zusätzlich entschieden werden wie genau der Rückgabewert bezüglich der geografischen Hierarchieebenen sein soll.
+	Es kann vom Nutzer des Verfahrens zusätzlich entschieden werden, wie genau der Rückgabewert bezüglich der geografischen Hierarchieebenen sein soll.
 	Es kann zwischen Stadt (geografische Koordinaten), Verwaltungseinheit erster Ordnung, Verwaltungseinheit zweiter Ordnung und Land gewählt werden.
 	Ist bekannt welche geografische Hierarchieebene zurückgegeben werden soll nutzt das Verfahren dieses Wissen aus um die Ergebnisse zu optimieren.  
 
@@ -25,32 +25,32 @@
 		Es soll dabei die quantitative Verteilung der Werte des Nutzer-Standortes erfasst werden.
 		Jeder Trainingsdatensatz repräsentiert einen Tweet, der den Nutzer-Standort, die Nutzer-Zeitzone und geografische Koordinaten beinhaltet.
 		Die Nutzer-Zeitzone wird verwendet um Doppel- und Mehrdeutigkeiten bezüglich der Werte im Nutzer-Standort auflösen zu können. 
-		Aus diesen Trainingsdatensätzen kann durch die Untersuchung der Nutzer-Standorte und der zugehörigen geografischen Koordinaten bestimmt werden wie oft ein Wert an einer bestimmten geografischen Position vorkommt.
+		Aus diesen Trainingsdatensätzen kann durch die Untersuchung der Nutzer-Standorte und der zugehörigen geografischen Koordinaten bestimmt werden, wie oft ein Wert an einer bestimmten geografischen Position vorkommt.
 
 		Bei der Geolokalisierung soll ein gegebener Nutzer-Standort auf eine Georeferenz aufgelöst werden. 
 		Dies geschieht durch eine Abfrage der Werte im Nutzer-Standort an die Georeferenz-Basis.
 		Es werden daraufhin Ergebnisdatensätze zurückgeliefert, welche die geografische Verteilung des entsprechenden Wertes widerspiegeln.
-		Durch eine Analyse der Verteilungen soll entschieden werden welcher der zurückgelieferten Ergebnisdatensätze am wahrscheinlichsten die korrekte geografische Position, von welcher der Tweet abgesetzt wurde, liefert.
+		Durch eine Analyse der Verteilungen soll entschieden werden, welcher der zurückgelieferten Ergebnisdatensätze am Wahrscheinlichsten die korrekte geografische Position, von welcher der Tweet abgesetzt wurde, liefert.
 		Die Güte und der Trefferquote der Ergebnisse kann dabei mit Hilfe von Schwellwerten justiert werden.
-		Des weiteren kann die Hierarchieebene angegeben werden welcher das Ergebnis zuzuordnen ist.
+		Des weiteren kann die Hierarchieebene angegeben werden, welcher das Ergebnis zuzuordnen ist.
 
 		In Abbildung \ref{img:einteilungLoesungsansatz} sind die beiden Teile des Verfahrens und deren genereller Ablauf dargestellt.
 		In den folgenden Abschnitten wird auf die einzelnen Teile und deren detaillierten Ablauf eingegangen. 
 		
-		Um die einzelnen Schritte für das Training und die Geolokalisierung spezifizieren zu können soll zunächst der Nutzer-Standort eingehend untersucht werden.
+		Um die einzelnen Schritte für das Training und die Geolokalisierung spezifizieren zu können, soll zunächst der Nutzer-Standort eingehend untersucht werden.
 		Dazu wird in einem ersten Abschnitt die Datenbasis vorgestellt.
-		Danach wird eine quantitative Bewertung des Nutzer-Standortes vorgenommen bevor die Herausforderungen erläutert werden die bei der Verwendung des Nutzer-Stadortes als geografsicher Indikator bestehen.
-		Es wird in Abschnitt \ref{sec:VefrahrenZumEinlernen} basierend auf den Ergebnissen ein Verfahrensablauf zum Training entwickelt. 
-		In Abschnitt \ref{sec:AufloesenDesNutzerStandortes} wird die Geolokalisierung, welche die eingelernte Georeferenz-Basis aus dem Training verwendet.
-		Dabei werden Schwellwerte zur Justierung der Güte und Trefferquote eingeführt.
-		Im letzten Abschnitt \ref{sec:ausnutzenDerGeografischenHierarchie} wird vorgestellt wie die geografische Hierarchie einbezogen wird.
+		Danach wird eine quantitative Bewertung des Nutzer-Standortes vorgenommen, bevor die Herausforderungen erläutert werden die bei der Verwendung des Nutzer-Stadortes als geografsicher Indikator bestehen.
+		Es wird in Abschnitt \ref{sec:VefrahrenZumEinlernen} basierend auf den Ergebnissen ein Verfahrensablauf zum Einlernen entwickelt. 
+		In Abschnitt \ref{sec:AufloesenDesNutzerStandortes} wird die Geolokalisierung vorgestellt.
+		Dabei werden Schwellwerte zur Justierung der Qualität der Ergebnisse eingeführt.
+		Im letzten Abschnitt \ref{sec:ausnutzenDerGeografischenHierarchie} wird vorgestellt,s wie die geografische Hierarchie einbezogen wird.
 
 		\textit{Stand der Technik} 
 
 	\section{Verwendete Datenbasis}
 
 		In diesem Abschnitt wird die Datenerhebung und die daraus resultierenden Datensätze betrachtet.
-		Zunächst wird aufgezeigt wie die Daten erhoben wurden, und daraus die Trainingsdatensätze sowie Testdatensätze generiert wurden.
+		Zunächst wird aufgezeigt, wie die Daten erhoben wurden, um daraus die Trainingsdatensätze sowie Testdatensätze zu generieren.
 		Zudem werden 1000 Tweets per Hand auf die grundsätzliche Eignung als geografischer Indikator untersucht.
 		Es werden dabei quantitative Daten zu geografischem Bezug des Nutzer-Standortes erhoben.
 		In einem weiteren Abschnitt werden die Herausforderungen betrachtet die bei der Verwendung des Nutzer-Standortes als geografischer Indikator entstehen. 
@@ -80,7 +80,7 @@
 				Gesamtanzahl Tweets							 & 623645  \\ \hline
 				Tweets ohne valide geografische Koordinaten  &	65428    \\ \hline
 				Tweets ohne Nutzer-Standort 				 & 169320  \\ \hline
-				\begin{tabular}[c]{@{}l@{}}Ohne Nutzer-Stadort und\\ geografische Koordinaten nicht valide\end{tabular} & 65428 \\ \hline
+				\begin{tabular}[c]{@{}l@{}}Ohne Nutzer-Standort und\\ geografische Koordinaten nicht valide\end{tabular} & 65428 \\ \hline
 				Basis zur Erzeugung Lerndatensätze und Testdatensätze & 403222 \\ \hline
 				Lerndatensätze & 383222 \\ \hline
 				Testdatensätze & 20000  \\ \hline
@@ -89,22 +89,22 @@
 
 	\section{Bewertung des Nutzer-Standortes}
 
-		In diesem Abschnitt soll untersucht werden in wie vielen Fällen dem Nutzer-Standort geografischer Bezug nachgewiesen werden kann.
-		Dabei werden zum Nutzer-Standort quantitative Daten erhoben um die Eignung des Nutzer-Standortes zur Geolokalisierung zu überprüfen.
+		In diesem Abschnitt soll untersucht werden, in wie vielen Fällen dem Nutzer-Standort geografischer Bezug nachgewiesen werden kann.
+		Dabei werden zum Nutzer-Standort quantitative Daten erhoben, um die Eignung des Nutzer-Standortes zur Geolokalisierung zu überprüfen.
 
 		\subsection{Methodik zur Untersuchung des Nutzer-Standortes}
 
 			Aus den Basisdatensätzen wurden zufällig 1000 Tweets gewählt. 
 			Es wurde eine Oberfläche zur Untersuchung der Nutzer-Standorte dieser 1000 Tweets erstellt.
-			Die Oberfläche bietet die Möglichkeit in Google-Maps oder auf dem Ortsverzeichnis von geonames.org nach Toponymen zu suchen.
-			Wurde ein Toponym per Suche gefunden wurde dieses dem Datensatz zugeordnet.
+			Die Oberfläche bietet die Möglichkeit, in Google-Maps oder auf dem Ortsverzeichnis von geonames.org nach Toponymen zu suchen.
+			Wurde ein Toponym per Suche gefunden, wurde dieses dem Datensatz zugeordnet.
 
 			In Abbildung \ref{img:oberflaecheQuantitative} ist die Oberfläche zur Untersuchung von Nutzer-Standorten dargestellt. 
 			Der aktuelle Nutzer-Standort wird in der Leiste oben angezeigt, hier Istanbul. 
 			Auf der linken Karte wird das Ergebnis von Google-Maps angezeigt.
 			Rechts kann im geonames.org Ortsverzeichnis gesucht werden. 
 			Die gefundenen Datensätze werden in der Liste rechts angezeigt.  
-			In der rechten Karte kann man sich mit einem Klick auf "'in Karte anzeigen"'' den jeweiligen geonames.org Datensatz aus der Liste anzeigen lassen.
+			In der rechten Karte kann man sich mit einem Klick auf "'in Karte anzeigen"' den jeweiligen geonames.org Datensatz aus der Liste anzeigen lassen.
 
 			\begin{figure}[!ht]
 					\begin{center}
@@ -116,12 +116,8 @@
 
 			Die mit dieser Oberfläche erhobenen Daten wurden untersucht. 
 			Die Ergebnisse werden in den folgenden Abschnitten vorgestellt.
-			Es wurde über Google-Maos und geonames.org versucht den Nutzer-Standort zuzuordnen. 
-			Auch wenn die Sprache oder das verwendete Alphabet nicht bekannt waren wurde eine Georeferenz zugeordnet sofern die Suche auf den Ortsverzeichnissen einen Treffer ergab. 
-
-
-	
-			\todo{chap: Lösungsanatz sec: Untersuchung der Werte ---> die nächsten vier Kapitel: Hecht in Grundlagen, meine Untersuchungen hier lassen unter Methodik} 
+			Es wurde über Google-Maos und geonames.org versucht, den Nutzer-Standort zuzuordnen. 
+			Auch wenn die Sprache oder das verwendete Alphabet nicht bekannt, waren wurde eine Georeferenz zugeordnet, sofern die Suche auf den Ortsverzeichnissen einen Treffer ergab. 
 
 		\subsection{Geografischer Bezug des Nutzer-Standortes} 
 			
@@ -132,9 +128,9 @@
 			In den restlichen 24\% der Fälle konnte kein geografischer Bezug mit Hilfe der Ortsverzeichnisse nachgewiesen werden. 
 			Dies bedeutet nicht, dass grundsätzlich kein geografischer Bezug vorhanden ist. 
 			Es konnte lediglich anhand der genutzten Quellen kein geografischer Bezug hergeleitet werden.
-			Beispielsweise wurde "'Swag City"', ein Beiname für die Stadt "'Ann Arbor"' denn der Spitzname für die Stadt war in den Datenbanken nicht hinterlegt. 
-			Dies zeigt, dass Werte denen über ein Ortsverzeichnis keine Georeferenz zugewiesen werden konnte, durchaus geografischen Bezug haben können.
-			Das verwerfen solcher Werte durch unzureichendes Wissen über Toponyme kann zum Verlust wertvoller Informationen über den tatsächlichen Standort führen.
+			Beispielsweise wurde "'Swag City"', ein Beiname für die Stadt "'Ann Arbor"', denn der Spitzname für die Stadt war in den Datenbanken nicht hinterlegt. 
+			Dies zeigt, dass diesen Werten über ein Ortsverzeichnis keine Georeferenz zugewiesen werden konnte, durchaus aber geografischen Bezug haben können.
+			Das Verwerfen solcher Werte durch unzureichendes Wissen über Toponyme kann zum Verlust wertvoller Informationen über den tatsächlichen Standort führen.
 
 			Hecht et al. konnten in \cite{Hecht2011} den Datenwerten in den Nutzer-Standorten in 80\% der Fälle einen geografischen Bezug feststellen.
 			In den restlichen 20\% der Fälle konnte im Nutzer-Standort kein geografischer Bezug festgestellt werden. 
@@ -145,7 +141,7 @@
 
 		Neben den in Kapitel \ref{sec:zuordnungToponymeGeogObj} erwähnten Problemen bei der Zuordnung von Toponymen zu geografischen Objekten sind noch weitere Probleme zu erwarten.
 		Diese sind hauptsächlich bedingt durch die freie Eingabe des Nutzer-Standortes.
-		Es wurden dabei folgende Klassen identifiziert in die die Werte eingeteilt werden können:
+		Es wurden dabei folgende Klassen identifiziert, in die die Werte eingeteilt werden können:
 
 		\begin{enumerate}	
 		 	\item Partieller geografischer Bezug des Wertes
@@ -159,8 +155,8 @@
 		\subsection{Partieller geografischer Bezug des Datenwertes im Nutzer-Standort} \label{sub:partiellerGeografischerBezug} 
 
 			Hierbei haben nur Teile des Wertes im Nutzer-Standort geografischen Bezug. 
-			Im Nutzer-Standort werden oft weitere Informationen angegeben die keinen geografischen Bezug haben. 
-			Im folgenden einige Beispiele.
+			Im Nutzer-Standort werden oft weitere Informationen angegeben, die keinen geografischen Bezug haben. 
+			Im Folgenden einige Beispiele.
 
 			\begin{table}[h]
 				\centering
@@ -177,12 +173,12 @@
 			\end{table}
 			
 			Es können also auch nur Teile des Nutzer-Standorts für eine Geolokalisierung von Nutzen sein.
-			Diese Informationen müssen extrahiert werden um einen Nutzen aus ihnen ziehen zu können. 
+			Diese Informationen müssen extrahiert werden, um einen Nutzen aus ihnen ziehen zu können. 
 
 		\subsection{Widersprüchliche Toponyme im Nutzer-Standort} \label{sub:wiederspruechlicheBezuege} 
 
-			Es existieren auch Datenwerte in denen mehrere widersprüchliche Angaben gemacht werden.
-			Dies bedeutet es werden zwei oder mehr Datenwerte mit geografischem Bezug angegeben, die auf unterschiedliche geografische Objekte verweisen.
+			Es existieren auch Datenwerte, in denen mehrere widersprüchliche Angaben gemacht werden.
+			Dies bedeutet, es werden zwei oder mehr Datenwerte mit geografischem Bezug angegeben, die auf unterschiedliche geografische Objekte verweisen.
 			Auch hier sollen einige Beispiele genannt werden:
 
 			\begin{table}[h]
@@ -200,15 +196,15 @@
 				
 			In diesen Beispielen sind jeweils zwei Städte angegeben.
 
-			Es kann nun spekuliert werden wieso der Nutzer zwei Städte angibt.
+			Es kann nun spekuliert werden, wieso der Nutzer zwei Städte angibt.
 			Ist er in einer der Städte aufgewachsen und lebt momentan in der anderen?
-			Pendelt er zwischen den Städten um zu Arbeiten?
+			Pendelt er zwischen den Städten um zu arbeiten?
 
-			Es kann hier nicht eindeutig entschieden werden in welcher Stadt sich der Nutzer aufhält.
+			Es kann hier nicht eindeutig entschieden werden, in welcher Stadt sich der Nutzer aufhält.
 
 		\subsection{Geografische Hierarchien im Nutzer-Standort} \label{sub:geografischeHierarchienImNutzerStandort} 
 
-			Es ist auch möglich, dass im Nutzer-Standort teile einer geografischen Hierarchie angegeben sind.
+			Es ist auch möglich, dass im Nutzer-Standort Teile einer geografischen Hierarchie angegeben sind.
 			Beispielsweise die Angabe einer Stadt in Kombination mit einem Land.
 			
 			In den USA wird beispielsweise oft die Stadt und der zugehörige Bundesstaat angegeben.
@@ -230,7 +226,7 @@
 			\end{table}
  
 			Durch die Kombination mehrerer Toponyme unterschiedlicher geografischer Hierarchieebenen wird die geografische Position näher beschrieben.
-			Umso genauer eine geografische Position mit Toponymen beschrieben wird umso geringer ist die Gefahr von Doppel- und Mehrdeutigkeiten.  
+			Umso genauer eine geografische Position mit Toponymen beschrieben wird, umso geringer ist die Gefahr von Doppel- und Mehrdeutigkeiten.  
 			Diese Information sollte bei einer Untersuchung erhalten bleiben.
 			
 		\subsection{Domänenspezifische Toponyme im Nutzer-Standort (Neologismen)} \label{sub:domaenenspezBezug} 
@@ -242,7 +238,7 @@
 			Im Twitter-Umfeld haben sich in den letzten Jahren einige spezielle Begriffe und Formulierungen zur Verwendung in Tweet-Texten etabliert. 
 			Das im Twitter-Umfeld auch spezielle Toponyme im Nutzer-Standort verwendet werden, kann nicht gänzlich ausgeschlossen werden. 
 
-			Ein Beispiel hierfür ist "'Bieberville"', welches in den untersuchten Daten von Hecht et al. öfter vorkommt.
+			Ein Beispiel hierfür ist "'Bieberville"', welches in den untersuchten Daten von Hecht et al. öfter vorkommt \cite{Hecht2011}.
 			"'Bieberville"' wird abgeleitet von dem Pop-Star Justin Bieber.	
 			Da der Pop-Star in Twitter sehr aktiv ist und deshalb viele seiner Fans auch in Twitter aktiv sind hat sich dieser Name etabliert.
 			Unter diesem Gesichtspunkt hätte "'Bieberville"' keinen geografischen Bezug.
@@ -254,7 +250,7 @@
 		
 		\subsection{Kein geografischer oder mittelbar geografischer Bezug} \label{sub:keinGeogOdMittelBarereBezug}
 
-			Im Nutzer-Standortfeld können auch Werte auftauchen die keinen geografischen Bezug aufweisen.
+			Im Nutzer-Standortfeld können auch Werte auftauchen, die keinen geografischen Bezug aufweisen.
 			Beispiele hierfür sind:
 
 			\begin{table}[h]
@@ -262,7 +258,7 @@
 			\caption{Werte ohne oder mit mittelbarem geografischen Bezug}
 			\label{tab:keinOderMittelbarBezug}
 			\begin{tabular}{|l|}
-			% hline
+			\hline
 			Werte                      	\\ \hline
 			In the middle of nowhere   	\\ \hline
 			95                         	\\ \hline
@@ -281,10 +277,10 @@
 			
 			In Abbildung \ref{img:einlernenAblauf} ist der Gesamtablauf des Einlernens dargestellt. 
 			Die Werte im Nutzer-Standortfeld werden zuerst einer Vorverarbeitung unterzogen. 
-			Durch die Vorverarbeitung werden die Datenwerte im Nutzer-Standort vorbereitet um weitere Informationen zu extrahieren.
+			Durch die Vorverarbeitung werden die Datenwerte im Nutzer-Standort vorbereitet, um weitere Informationen zu extrahieren.
 			Es wird danach eine Zerlegung der Werte im Nutzer-Standortfeld vorgenommen.
 			Die Zerlegung extrahiert dabei zusätzliche Informationen aus dem Nutzer-Standort.
-			DDie Nutzer-Zeitzone wird hinzugezogen um bei der Geolokalisierung etwaige Doppel- und Mehrdeutigkeiten von Toponymen erkennen zu können.
+			Die Nutzer-Zeitzone wird hinzugezogen, um bei der Geolokalisierung etwaige Doppel- und Mehrdeutigkeiten von Toponymen erkennen zu können.
 			Das Ergebnis dieser Schritte ist eine Menge an Referenzwerten.
 
 			Parallel dazu werden die geografischen Koordinaten des Tweets auf eine diskrete geografische Position aufgelöst.
@@ -294,10 +290,9 @@
 			Es wird dabei die quantitative Verteilung der Referenzwerte über den Globus erfasst.
 			
 			Die Datenstruktur der Georeferenz-Basis beinhaltet die Referenzwerte, die zugeordnete Stadt, und die übergeordneten Hierarchieebenen. 
-			Zusätzlich wird das vorkommen eines Referenzwertes in einer Stadt als absolute Häufigkeit gespeichert. 
+			Zusätzlich wird das Vorkommen eines Referenzwertes in einer Stadt als absolute Häufigkeit gespeichert. 
 
-			Durch dieses Verfahren lässt sich eine Datenbasis erzeugen die auch domänenspezifische Eigenheiten, in Bezug auf die Verwendung spezieller Begriffe oder Formulierungen, berücksichtigt.
-			Des weiteren werden Toponyme, die in Ortsverzeichnissen unter Umständen nicht hinterlegt sind, berücksichtigt.
+			Durch dieses Verfahren lässt sich eine Datenbasis erzeugen, die auch domänenspezifische Eigenheiten berücksichtigt.
 			Auch geografische Indikatoren mit mittelbarem geografischen Bezug, zum Beispiel die Verwendung spezieller Begriffe in einer geografischen Region, können einbezogen werden.
 
 			In Tabelle \ref{tab:strukturMitHierarchie1} ist die Struktur der Georeferenz-Basis dargestellt.
@@ -305,7 +300,7 @@
 			\begin{table}[htpb]
 				\caption{Struktur der Georeferenz-Basis mit geografischer Hierarchie} 
 				\centering
-				\tiny
+				\small
 				\begin{tabular}{|c|c|c|c|c|c|}
 					\hline
 					Referenzwert & Stadt & Adm2 & Adm1 & Land & abs. Häufigkeit \\
@@ -338,9 +333,10 @@
 			Die Werte des Nutzer-Standortfeldes werden einer Vorverarbeitung unterzogen.
 			In Abbildung \ref{img:vorverarbeitung} sind die einzelnen Schritte dargestellt.
 			Die Vorverarbeitung ist notwendig um die Werte auf die Extrahierung weiterer Daten vorzubereiten.
-			Die einzelnen Worte im Nutzer-Stadort werden als Token bezeichnet. 
+			Die einzelnen Worte im Nutzer-Standort werden als Token bezeichnet. 
 			
-			Es sollen zunächst Sonder- und Satzzeichen entfernt werden, diesen kann in der Regel kein geografischer Bezug nachgewiesen werden.
+			Es sollen zunächst Sonder- und Satzzeichen entfernt werden.
+			Diesen kann in der Regel kein geografischer Bezug nachgewiesen werden.
 			In einem weiteren Schritt werden mit Hilfe eines Ortsverzeichnisses zwei oder mehr Token, die gemeinsam ein Toponym darstellen, zusammengefasst.
 			Danach wird eine alphanumerische Sortierung der Token durchgeführt.
 
@@ -374,19 +370,20 @@
 				Weder die Rangfolge der Hierarchieebene noch das verwendete Satzzeichen sind einheitlich.  
 				Es ist also nicht klar welcher Zusammenhang zwischen den Datenwerten, die durch ein Sonder- oder Satzzeichen getrennt werden, besteht. 
 
-				Auch werden Sonder- und Satzzeichen ausschließlich oder als Dekoration verwendet Beispiele hierfür sind die Zeilen 2 und 5 in Tabelle \ref{tab:VorverarbeitungSonder}.
+				Auch werden Sonder- und Satzzeichen ausschließlich oder als Dekoration verwendet.
+				Beispiele hierfür sind die Zeilen 2 und 5 in Tabelle \ref{tab:VorverarbeitungSonder}.
 				In den oben genannten Fällen bringen Sonder- und Satzzeichen keine zusätzlichen Informationen.
 				Es sollen deshalb in einem ersten Vorverarbeitungsschritt alle Sonder- und Satzzeichen entfernt werden. 
 
-				Liste nach dem entfernen von Sonder- und Satzzeichen:
+				Liste nach dem Entfernen von Sonder- und Satzzeichen:
 
 				\begin{table}[h]
 				\centering
 				\caption{Eliminierung von Sonder- und Satzzeichen}
 				\label{tab:VorverarbeitungSonder}
 				\begin{tabular}{|l|l|l|}
-				\hline \hline
-				  & \multicolumn{1}{c|}{\textbf{Vorher}} & \multicolumn{1}{c|}{\textbf{Nachher}} \\ \hline
+				\hline 
+				  & \multicolumn{1}{c|}{\textbf{Vorher}} & \multicolumn{1}{c|}{\textbf{Nachher}} \\ \hline \hline
 				1 & Mato Grosso \& Rio de Janeiro        & Mato Grosso Rio de Janeiro            \\ \hline
 				2 & \_***\_                              &                                       \\ \hline
 				3 & USA\textbackslash /Los Angeles       & USA Los Angeles                       \\ \hline
@@ -396,7 +393,7 @@
 				\end{tabular}
 				\end{table}
 
-				Der Wert 6 existiert nun nicht mehr, der Wert ist leer und wird somit nicht weiter betrachtet.
+				Der Wert in Zeile 6 existiert nun nicht mehr, der Wert ist leer und wird somit nicht weiter betrachtet.
 
 			\subsubsection{Zusammenfassen von Toponymen mit Hilfe von a priori Wissen aus einem Ortsverzeichnis}
 
@@ -426,13 +423,14 @@
 				\end{tabular}
 				\end{table}
 
-				In diesem Schritt wird keine Geolokalisierung vorgenommen es werden lediglich Toponyme die aus zwei oder mehr Token bestehen identifiziert.
-				Er dient dazu möglichst früh vorhandenes Wissen über Toponyme einzubeziehen und zusammengehörige Toponyme in den nächsten Schritten als ein Token zu behandeln.
+				In diesem Schritt wird keine Geolokalisierung vorgenommen.
+				Es werden lediglich Toponyme die aus zwei oder mehr Token bestehen identifiziert.
+				Er dient dazu, möglichst früh vorhandenes Wissen über Toponyme einzubeziehen und zusammengehörige Toponyme in den nächsten Schritten als ein Token zu behandeln.
 
 			\subsubsection{Angleichung durch alphanumerische Sortierung}
 
 				In diesem Schritt sollen die Token alphanumerisch sortiert werden. 
-				Wenn Toponyme unterschiedlicher geografischer Hierarchieebenen angegeben sind spielt es keine Rolle mehr in welcher Reihenfolge diese angegeben werden.
+				Wenn Toponyme unterschiedlicher geografischer Hierarchieebenen angegeben sind, spielt es keine Rolle mehr, in welcher Reihenfolge diese angegeben werden.
 
 				\begin{table}[h]
 				\centering
@@ -457,25 +455,25 @@
 				Es werden zwar Werte mit gleichem Inhalt und unterschiedlicher Reihenfolge angeglichen.
 				Aber es werden auch potenzielle Toponyme, die aus mehreren Token bestehen, auseinandergezogen.
 				Als Beispiel soll hier "'Motor City Michigan USA"' betrachtet werden.
-				Wenn "'Motor City"' nicht im Ortsverzeichnis hinterlegt ist entsteht durch die alphanumerische Sortierung "'City Michigan Motor USA"'.
+				Wenn "'Motor City"' nicht im Ortsverzeichnis hinterlegt ist, entsteht durch die alphanumerische Sortierung "'City Michigan Motor USA"'.
 				Der Zusammenhang zwischen Motor und City wäre nicht mehr vorhanden und kann nicht wiedergewonnen werden.
 
 		\subsection{Zerlegung der Werte im Nutzer-Standortfeld} \label{sub:VorvNGramme}
 
 			Als Eingabe wird in diesem Schritt das Ergebnis der Vorverarbeitung genutzt. 
 			Pro Nutzer-Standortfeld existieren ein oder mehrere Token. 
-			Ist nur ein Token vorhanden so wird dieser direkt weiter verarbeitet.
-			Sind mehrere Token vorhanden so können diese partiellen geografischen Bezug aufweisen (siehe Abschnitt \ref{sub:partiellerGeografischerBezug}) oder eine Hierarchie darstellen (siehe Abschnitt \ref{sub:geografischeHierarchienImNutzerStandort}).
+			Ist nur ein Token vorhanden, so wird dieser direkt weiter verarbeitet.
+			Sind mehrere Token vorhanden, so können diese partiellen geografischen Bezug aufweisen (siehe Abschnitt \ref{sub:partiellerGeografischerBezug}) oder eine Hierarchie darstellen (siehe Abschnitt \ref{sub:geografischeHierarchienImNutzerStandort}).
 			Durch die Zerlegung sollen einzelne Token für die Weiterverarbeitung extrahiert werden.
-			Im diesem Fall soll es ermöglicht werden Token mit geografischem Bezug von solchen ohne geografischen Bezug zu trennen um diese separat weiterverarbeiten zu können.
+			In diesem Fall soll es ermöglicht werden, Token mit geografischem Bezug von solchen ohne geografischen Bezug zu trennen, um diese separat weiterverarbeiten zu können.
 			Um allerdings die zusätzlichen Informationen, die durch die Angabe einer geografischen Hierarchie entstehen zu erhalten, sollen auch mehrere Token gemeinsam weiterverarbeitet werden können.
-			Das bedeutet, der Zusammenhang mehrere Token die in einer gewissen Reihenfolge auftreten soll erhalten bleiben. 
-			Um dies zu erzielen werden die Token in sogenannte N-Gramme zerlegt. 
+			Das bedeutet, der Zusammenhang mehrere Token, die in einer gewissen Reihenfolge auftreten, soll erhalten bleiben. 
+			Um dies zu erzielen, werden die Token in sogenannte N-Gramme zerlegt. 
 
 			\subsubsection{N-Gramme} 
 
-				Eine Gruppe von Token soll derart zerlegt werden, dass sowohl einzelne Token betrachtet werden können als auch der Zusammenhang zwischen den Token, der durch ihre Reihenfolge  besteht, erhalten bleibt.
-				Um dies umzusetzen soll eine Menge von Token in N-Gramme zerlegt werden.
+				Eine Gruppe von Token soll derart zerlegt werden, dass sowohl einzelne Token betrachtet werden können, als auch der Zusammenhang zwischen den Token, der durch ihre Reihenfolge  besteht, erhalten bleibt.
+				Um dies umzusetzen, wird eine Menge von Token in N-Gramme zerlegt werden.
 
 				Die Zerlegung in N-Gramme findet unter anderem Anwendung in der Computerlinguistik und quantitativen Linguistik.
 				N-Gramme bestehen aus ein oder mehreren Wörtern, die aus einem Text extrahiert werden. 
@@ -541,24 +539,24 @@
 					\end{tabular}
 					\end{table}
 
-				Durch die Erzeugung von N-Grammen wird es ermöglicht einzelne Token zu betrachten.
-				Haebn die Werte im Nutzer-Standortfeld nur partiellen geografsichen Bezug, können diese getrennt voneinander weiterverarbeitet werden.
+				Durch die Erzeugung von N-Grammen wird es ermöglicht, einzelne Token zu betrachten.
+				Haben die Werte im Nutzer-Standortfeld nur partiellen geografischen Bezug, können diese getrennt voneinander weiterverarbeitet werden.
 				In Tabelle \ref{tab:NGramme} in Zeile 7 ist dies beispielsweise der Wert "'California"', de getrennt von "'11th"' und "'Dimension"' betrachtet werden kann. 
 				
-				Tauchen widersprüchliche Toponyme in einem Nutzer-Standortfeld auf so können auch diese getrennt voneinander weiterverarbeitet werden.
+				Tauchen widersprüchliche Toponyme in einem Nutzer-Standortfeld auf, so können auch diese getrennt voneinander weiterverarbeitet werden.
 
 				In Zeile 3 und 5 bleibt die Hierarchiebeziehung der Token im Bi-Gramm erhalten.
 				Aber es können auch die einzelnen Werte mit geografischem Bezug weiter verarbeitet werden, da aus den Toponymen "'Los+Angeles"' und "'USA"' auch Uni-Gramme erzeugt werden.
 				Der Vorteil der Zerlegung durch N-Gramme besteht darin, dass Token einzeln oder im Zusammenhang betrachtet werden können. 
-				Somit kann aus einer Menge Token mehr Information extrahiert werden, als wenn diese gemeinsam oder ausschließlich einzeln betrachtet werden.
+				Somit kann aus einer Menge Token mehr Information extrahiert werden.
 
 			\subsubsection{Weitere Verwendung der entstandenen N-Gramme} 
 
 				Es kann zu diesem Zeitpunkt maschinell keine Entscheidung getroffen werden, ob eines der N-Gramme einen geografischen Bezug aufweist oder nicht.
-				Eine Entscheidung darüber würde erfordern a priori Wissen über den geografischen Bezug der N-Gramme einzubeziehen. 
+				Eine Entscheidung darüber würde erfordern, a priori Wissen über den geografischen Bezug der N-Gramme einzubeziehen. 
 				Dies ist allerdings aufgrund der Vielfalt und der möglicherweise auftauchenden Werte mit mittelbarem geografischen Bezug kaum möglich. 
-				Da hier maschinell keine Entscheidung getroffen werden kann welche Uni-, Bi- oder Tri-Gramme einen geografischen Bezug aufweisen, werden alle N-Gramme in die weitere Verarbeitung einbezogen. 			
-				Es werden somit keine Token verworfen denen aufgrund von unzureichenden Informationen, beispielsweise durch ein unvollständiges Ortsverzeichnis, keine Georeferenz zugeordnet werden kann.
+				Da hier maschinell keine Entscheidung getroffen werden kann, welche Uni-, Bi- oder Tri-Gramme einen geografischen Bezug aufweisen, werden alle N-Gramme in die weitere Verarbeitung einbezogen. 			
+				Es werden somit keine Token verworfen, denen aufgrund von unzureichenden Informationen, beispielsweise durch ein unvollständiges Ortsverzeichnis, keine Georeferenz zugeordnet werden kann.
 				Auch werden Werte mit mittelbarem geografischen Bezug in die weitere Verarbeitung einbezogen.
 				Token mit und ohne geografischen Bezug werden weiter verarbeitet.
 				Eine Entscheidung über den geografischen Bezug wird erst während der Geolokalisierung getroffen.
@@ -568,9 +566,10 @@
 				In Kapitel \ref{sec:zuordnungToponymeGeogObj} wurde auf die Probleme bei der Zuordnung von Toponymen zu geografischen Objekten eingegangen.
 				Dabei wurde die Mehr- und Doppeldeutigkeit von Toponymen betrachtet.
 				In den N-Grammen kann dieses Problem nach wie vor auftauchen.
-				Dies ist genau dann der Fall wenn ein N-Gramm ein Toponym darstellt.
+				Dies ist genau dann der Fall, wenn ein N-Gramm ein Toponym darstellt.
 
-				Um diesem Problem zu begegnen soll die Nutzer-Zeitzone als weiterer geografischer Indikator hinzugezogen werden.
+				Um diesem Problem zu begegnen, wird die Nutzer-Zeitzone als weiterer geografischer Indikator hinzugezogen.
+
 				Zunächst sollen die generellen Eigenschaften der Nutzer-Zeitzone erläutert werden bevor erklärt wird wie die Nutzer-Zeitzone das Problem der Mehr- und Doppeldeutigkeit von Toponymen beheben kann.
 
 				\subsubsection{Eigenschaften der Nutzer-Zeitzone}
@@ -621,13 +620,13 @@
 					Lediglich die dünn besiedelte Region der Mountain Time kann nur an einigen Ballungszentren erkannt werden. 
 					Grundsätzlich scheint der Großteil der Angaben aber korrekt zu sein.
 
-					Ist ein Toponym doppel- oder mehrdeutig kann nicht entschieden werden welches geografische Objekt zugeordnet werden soll.
-					Liegen die beiden geografischen Objekte allerdings in zwei unterschiedlichen Zeitzonen und der Nutzer hat die Nutzer-Zeitzone korrekt angegeben kann die Doppeldeutigkeit aufgelöst werden.
+					Ist ein Toponym doppel- oder mehrdeutig kann nicht entschieden werden, welches geografische Objekt zugeordnet werden soll.
+					Liegen die beiden geografischen Objekte allerdings in zwei unterschiedlichen Zeitzonen und der Nutzer hat die Nutzer-Zeitzone korrekt angegeben, kann die Doppeldeutigkeit aufgelöst werden.
 					Voraussetzung hierfür ist natürlich, dass die geografischen Objekte in zwei unterschiedlichen Zeitzonen liegen und die Nutzer-Zeitzone angegeben ist.
 
 				\textit{Hinzufügen der Nutzer-Zeitzone} 
 
-					An die Referenzwerte, die aus dem Nutzer-Standort erzeugt wurden soll nun die Zeitzone angehängt werden.
+					An die Referenzwerte, die aus dem Nutzer-Standort erzeugt wurden, wird nun die Zeitzone angehängt werden.
 					Jeder Referenzwert soll einmal mit und einmal ohne Zeitzone existieren. 
 					Damit wird garantiert, dass eingelernte Referenzwerte, die eine falsche Zeitzone aufweisen, trotzdem berücksichtigt werden können. 
 
@@ -677,7 +676,7 @@
 				2                 & \textless Los+Angeles\textgreater                                                           & (33.78, 118.29)                                                 \\ \hline
 				3                 & \textless love\textgreater                                                                  & (33.78, 118.29)                                                 \\ \hline
 				5                 & \textless Los+Angeles\textgreater\textless love\textgreater\textless Pacific+Time\textgreater & (33.78, 118.29)                                                 \\ \hline
-				\textit{6}        & \textless Los+Angeles\textgreater\textless Pacific+Time\textgreater                          & \textit{(33.78, 118.29)}                                        \\ \hline
+				\textit{6}        & \textless Los+Angeles\textgreater\textless Pacific+Time\textgreater                          & (33.78, 118.29)                                      \\ \hline
 				7                 & \textless Los+Angeles\textgreater\textless love\textgreater\textless Pacific+Time\textgreater & (33.78, 118.29)                                                 \\ \hline
 				\end{tabular}
 				\caption{Ergebnis für Love Los Angeles, Pacific Time}
@@ -691,12 +690,12 @@
 			Mit Hilfe dieser Daten wird nun die Georeferenz-Basis aufgebaut. 
 			Für jedes Tupel wird in der vorgestellten Struktur der Georeferenz-Basis (siehe Tabelle \ref{tab:strukturMitHierarchie1}) ein Datensatz angelegt und mit einem Wert von 1 für die absolute Häufigkeit initialisiert. 
 			Stimmt sowohl der Referenzwert als auch die geografische Position mit einem vorhandenen Datensatz überein, wird die absolute Häufigkeit für dieses Tupel inkrementiert.
-			In dieser Art werden alle erzeugten Referenzwerte und geografischen Postionen verglichen und die Anzahl der Vorkommen an einer geografischen Position erfasst.
+			In dieser Art werden alle erzeugten Referenzwerte und geografischen Postionen verglichen, und die Anzahl der Vorkommen an einer geografischen Position erfasst.
 
 			Die geografischen Koordinaten eines Tweets sind für diese Art der quantitativen Erfassung allerdings zu genau. 
 			Der Längen- und Breitengrad wird meistens mit Hilfe von GPS-Modulen mobiler Endgeräte, wie Smartphones, erfasst.
 			Diese geben eine Position oft auf wenige Meter genau an.
-			Das bedeutet, zwei Tweets die wenige Meter voneinander abgesetzt wurden haben in der Regel unterschiedliche Werte für den Längen- und Breitengrad.
+			Das bedeutet, zwei Tweets die wenige Meter voneinander abgesetzt wurden, haben in der Regel unterschiedliche Werte für den Längen- und Breitengrad.
 			Dies kann für die Bestimmung der Häufigkeiten problematisch sein, da die Werte des Längen- und Breitengrades in der Regel nicht exakt übereinstimmen.
 			Deshalb soll mit Hilfe der geografischen Koordinaten jeder Referenzwert der nächstgelegenen Stadt zugeordnet werden (siehe Abschnitt \ref{sub:Stadtbestimmen}).
 
@@ -713,9 +712,9 @@
 			Alle Voronoi-Regionen zu allen Punkten in Z bilden ein Voronoi-Diagramm.
 
 			Dieses Konzept kann zur Bestimmung der nächstgelegenen Stadt verwendet werden. 
-			Die geografischen Positionen der Städte bilden dabei die Menge der Punkte $Z$ zur Bestimmung der Vornoi-Regionen.
+			Die geografischen Positionen der Städte bilden dabei die Menge der Punkte $Z$ zur Bestimmung der Voronoi-Regionen.
 			Zu diesen geografischen Koordinaten werden nun die Voronoi-Regionen erzeugt. 
-			Anhand der Voronoi-Region in der ein Punkt $p$ liegt kann nun bestimmt werden welche Stadt $z_i$ am nächsten zu $p$ liegt.
+			Anhand der Voronoi-Region in der ein Punkt $p$ liegt, kann nun bestimmt werden, welche Stadt $z_i$ am nächsten zu $p$ liegt.
 
 			Jeder Punkt auf dem Globus kann so einer Stadt und deren geografischen Position zugeordnet werden.
 			Dadurch wird der Globus auf Städteebene in geografische Regionen eingeteilt.
@@ -724,7 +723,7 @@
 			\begin{figure}[h!]
 				\begin{center}
 				\includegraphics[scale=0.5]{voronoi.png}
-				\caption{Beispiel eines Vornoi-Diagramm für einige deutsche Städte}
+				\caption{Beispiel eines Voronoi-Diagramm für einige deutsche Städte}
 				\label{img:voronoi}
 				\end{center}
 			\end{figure}	
@@ -733,12 +732,13 @@
 
 			In dicht besiedelten Gebieten können viele kleine Städte vorhanden sein. 
 			Damit wäre die Positionsangabe wiederum zu genau.
-			Es werden deshalb nur Städte verwendet deren Einwohnerzahl 15000 überschreitet.
+			Es werden deshalb nur Städte verwendet, deren Einwohnerzahl 15000 überschreitet.
 			Jeder Referenzwert wird also der nächstgelegenen Stadt mit mehr als 15000 Einwohnern zugeordnet.
 			In Ballungsräumen sind damit mehr Städte zu erwarten, womit kleinere Voronoi-Regionen entstehen.
 			Dadurch nimmt die Genauigkeit zu.
 			In diesen Gegenden sind allerdings auch mehr Tweets zu erwarten, womit pro Voronoi-Region für die spätere Auswertung ausreichend Referenzwerte vorhanden sind. 
-			In ländlichen Gebieten sind hingegen viele kleine Orte und nur wenigen große Städte zu erwarten diese werden dadurch in größere Voronoi-Regionen eingeteilt.
+			In ländlichen Gebieten sind hingegen viele kleine Orte und nur wenigen große Städte zu erwarten. 
+			Diese werden dadurch in größere Voronoi-Regionen eingeteilt.
 			Es sind allerdings auch weniger Tweets zu erwarten. 
 			Durch das größere Einzugsgebiet kann dennoch eine ausreichende Anzahl an Referenzwerten einer Stadt zugeordnet werden. 
 
@@ -752,8 +752,8 @@
 
 				Die Auflösung der geografischen Koordinaten auf Städte wurde mit Hilfe des Ortsverzeichnisses geonames.org umgesetzt.
 				Jeder Stadt ist dabei eine geografische Koordinate zugeordnet.
-				Wird nach obigem Verfahren eine geografische Position auf eine Stadt aufgelöst entstehen Ungenauigkeiten.
-				Um das Verfahren zu bewerten wurden die Distanzen, welche zwischen der tatsächlichen Position eines Tweets und der zugeordneten Position der Stadt liegen, protokolliert. 
+				Wird nach obigem Verfahren eine geografische Position auf eine Stadt aufgelöst, entstehen Ungenauigkeiten.
+				Um das Verfahren zu bewerten, wurden die Distanzen, welche zwischen der tatsächlichen Position eines Tweets und der zugeordneten Position der Stadt liegen, protokolliert. 
 				Dies spiegelt den Fehler des Zuordnungsverfahrens wieder.
 
 				In Tabelle \ref{tab:distances} sind die Ergebnisse dargestellt.
@@ -762,8 +762,9 @@
 				Über die Quantile können die Fehlerdistanzen noch genauer untersucht werden.
 				Das 0.25 Quantil sagt aus, dass 25\% aller Fehlerdistanzen unter 1,7 Kilometern liegen.
 				Der Wert für das 0.95 Quantil liegt bei 24,1 Kilometer, 95\% der Tweets waren näher als 24,1 Kilometer an der zugeordneten Stadt. 
+				
 				Es wird dadurch auch deutlich, dass ein Großteil der Tweets in der Nähe größerer Städte abgesendet wurden. 
-				Der Wert für das 0.95 Quantil bedeutet: 95\% der Tweets wurden im Abstand von weniger als 24 Kilometern zu einer Stadt mit mehr als 15000 Einwohnern versendet.
+				95\% der Tweets wurden im Abstand von weniger als 24 Kilometern zu einer Stadt mit mehr als 15000 Einwohnern versendet.
 
 					\begin{table}[h]
 					\centering
@@ -785,19 +786,21 @@
 
 			\textit{Grenzen des Verfahrens zur Bestimmung der nächstgelegenen Stadt}
 
-				Es ist zu beachten, dass durch die Erzeugung der Vornoi-Regionen Ländergrenzen nur approximiert werden können. 
+				Es ist zu beachten, dass durch die Erzeugung der Voronoi-Regionen Ländergrenzen nur approximiert werden können. 
 				Voronoi-Regionen zu Städten die in der Nähe einer Landesgrenze liegen können über die Landesgrenzen hinausgehen. 
 				Damit werden geografische Positionen unter Umständen dem falschen Land zugeordnet.
 				Auch dies ist in Abbildung \ref{img:voronoi} an den Landesgrenzen zu erkennen. 
 				Umso größer allerdings die Anzahl der Städte ist die betrachtet wird, umso genauer wird die Approximation. 
 
-		\subsection{Zusammenfassung und Beispiel}
+		\section{Zusammenfassung und Beispiel}
 
 			Es wurden die Werte im Nutzer-Standortfeld durch die in den Abschnitten \ref{sub:Vorv}, \ref{sub:VorvNGramme} und \ref{sub:VorvNutzerZeitzone} vorgestellten Schritte verarbeitet.
 			Es entsteht dadurch eine Menge von Referenzwerten.
+			
 			Mit Hilfe der geografischen Koordinaten wird jeder Referenzwert der nächstgelegenen Stadt zugeordnet (siehe Abschnitt \ref{sub:Stadtbestimmen}). 
+			
 			In einem letzten Schritt werden, basierend auf diesen Ergebnissen, die Vorkommen der Referenzwerte pro geografischer Position aufsummiert.
-			Diese werden in der Georeferenz-Basis gespeichert.
+			Diese Referenzwerte werden in der Georeferenz-Basis gespeichert.
 
 			In Abbildung \ref{img:bspEinlernen} ist das Einlernen an einem Beispiel dargestellt.
 			Auf der linken Seite sind 5 Lerndatensätze dargestellt.
@@ -806,8 +809,11 @@
 			Diese Werte werden in eine Menge Referenzwerte überführt.
 			Zudem wird jedem Referenzwert die nächstgelegene Stadt zugeordnet.
 			Dies wird durch die Pfeile zwischen den Lerndatensätzen und dem Mittelblock dargestellt.
+			
 			Die Pfeile vom Mittelblock auf die Georeferenz-Basis zeigen an, welche Datensätze übereinstimmen und deshalb zusammengefasst werden. 
-			Die restlichen Datensätze werden direkt in die Georeferenz-Basis übertragen und die absolute Häufigkeit wird mit 1 initialisiert. \footnote{Die Pfeile beim direkten Eintragen wurden ausgelassen um das Diagramm übersichtlich zu halten} 
+			
+			Die restlichen Datensätze werden direkt in die Georeferenz-Basis übertragen und die absolute Häufigkeit wird mit 1 initialisiert. \footnote{Die Pfeile beim direkten Eintragen wurden ausgelassen, um das Diagramm übersichtlich zu halten.} 
+			
 			In diesem Beispiel wird deutlich wie durch die Verarbeitung einige Probleme bei der Verwendung des Nutzer-Standortes vermieden werden.
 
 			Datensatz 1 besitzt nur partiellen geografischen Bezug (siehe Abschnitt \ref{sub:partiellerGeografischerBezug}). 
@@ -819,25 +825,28 @@
 			Trotzdem kann die absolute Häufigkeit für die Kombination "'New+York"' und NYC inkrementiert werden, da "'New+York"' durch die Uni-Gramme auch separat betrachtet werden kann.
 			Es wurde also durch die separate Betrachtung eine zusätzliche Information extrahiert.
 
-			Datensatz 3 und 5 weißen eine Doppeldeutigkeit auf.
+			Datensatz 3 und 5 weisen eine Doppeldeutigkeit auf.
 			Die geografischen Koordinaten von Datensatz 3 werden auf York in Großbritannien (YO(GB)) aufgelöst.
+			
 			Datensatz 4 wird hingegen York in den USA als Georeferenz zugeordnet (YO(US)). 
 			Allein durch die Betrachtung des Uni-Grammes "'York"' können die beiden Städte nicht unterschieden werden. 
 			Bezieht man jedoch die Nutzer-Zeitzone ein können die Werte unterschieden werden. 
 
-			Datensatz 4 weißt einen Widerspruch im Nutzer-Standort auf (siehe Abschnitt \ref{sub:wiederspruechlicheBezuege}). 
-			Durch die Auflösung der geografischen Koordinaten auf eine Stadt und die Möglichkeit die Werte als Uni-Gramme einzeln zu betrachten kann dennoch eine Information daraus gewonnen werden. 
+			Datensatz 4 weist einen Widerspruch im Nutzer-Standort auf (siehe Abschnitt \ref{sub:wiederspruechlicheBezuege}). 
+			Durch die Auflösung der geografischen Koordinaten auf eine Stadt und die Möglichkeit, die Werte als Uni-Gramme einzeln zu betrachten kann dennoch eine Information daraus gewonnen werden. 
+			
 			Im Beispiel werden die geografischen Koordinaten auf die Stadt York in Großbritannien aufgelöst.
 			Auch das Toponym "'York"' taucht im Nutzer-Standort auf und wird deshalb der Stadt York zugeordnet.  
 			Durch Datensatz 3 ist diese Kombination schon in der Georeferenz-Basis vorhanden und es wird die absolute Häufigkeit inkrementiert.
 			Gleiches gilt für den Referenzwert bestehend aus Uni-Gramm und Nutzer-Zeitzone.
+			
 			Das bedeutet, selbst wenn widersprüchliche Werte angegeben sind, kann eine gewinnbringende Information aus dem Datensatz gezogen werden.
 
-			Durch diese Verarbeitung entstehen auch Datensätze in der Georeferenz-Basis die nur einmal vorkommen.
+			Durch diese Verarbeitung entstehen auch Datensätze in der Georeferenz-Basis, die nur einmal vorkommen.
 			Diese sollen allerdings nicht verworfen werden. 
-			Es wird dadurch in der Geolokalisierung ermöglicht tiefer gehende Analysen der Vorkommen von Referenzwerten durchzuführen. 
+			Es wird dadurch in der Geolokalisierung ermöglicht, tiefer gehende Analysen der Vorkommen von Referenzwerten durchzuführen. 
 
-			\begin{figure}[h!]
+			\begin{figure}[H]
 				\begin{center}
 				\includegraphics[scale=0.5]{bspEinlernen.pdf}
 				\caption{Beispiel: Einlernen der Georeferenz-Basis}
@@ -852,12 +861,15 @@
 		Dabei dient die Georeferenz-Basis und die in ihr abgelegten Referenzwerte als Basis für die Zuweisung einer Georeferenz.
 
 		In Abbildung \ref{img:ablaufGeolok} ist der gesamte Ablauf der Geolokalisierung dargestellt.
-		Zunächst werden aus dem Nutzer-Standortfeld und der Nutzer-Zeitzone potenzielle geografische Indikatoren erzeugt.
+		Aus dem Nutzer-Standortfeld und der Nutzer-Zeitzone werden zunächst potenzielle geografische Indikatoren erzeugt.
 		Dies geschieht analog zur Erzeugung von Referenzwerten beim Einlernen der Georeferenz-Basis.
 		Es werden dazu die Schritte aus den Abschnitten \ref{sub:Vorv}, \ref{sub:VorvNGramme} und \ref{sub:VorvNutzerZeitzone} diese Schritte werden in diesem Abschnitt als Vorverarbeitung bezeichnet.
+		
 		Daraus resultiert eine Menge potenzieller geografischer Indikatoren.
+		
 		Die Werte der potenziellen geografischen Indikatoren werden nun in der Georeferenz-Basis nachgeschlagen. 
 		Dabei werden alle Datensätze, deren Referenzwerte mit den potenziellen geografischen Indikatoren korrespondieren, zurückgegeben.
+		
 		Basierend auf diesen Datensätzen erfolgt in einem Analyse-Schritt die Bestimmung der Georeferenz.
 
 			\begin{figure} 
@@ -873,7 +885,8 @@
 	
 		Beim Einlernen wurden keine Informationen verworfen, da noch keine Entscheidung über deren geografischen Bezug getroffen werden konnte.
 		In der Georeferenz-Basis sind alle Werte enthalten, die aus den Nutzer-Standorten der Lerndatensätze beim Einlernen erzeugt wurden.
-		Es sind also auch Referenzwerte vorhanden die keinen geografischen Bezug aufweisen.
+		Es sind also auch Referenzwerte vorhanden, die keinen geografischen Bezug aufweisen.
+		
 		Wird einem potenziellen geografischen Indikator durch einen Referenzwert ohne geografischen Bezug eine Georeferenz zugewiesen, ist diese mit hoher Wahrscheinlichkeit fehlerhaft.
 		Dies wiederum führt zu schlechten und unzuverlässigen Ergebnissen.
 
@@ -882,7 +895,7 @@
 		Oder anders ausgedrückt: 
 		\\ Wie kann vermieden werden, dass ein Referenzwert, der keinen geografischen Bezug hat, zur Geolokalisierung genutzt wird?
 
-		Es wird nun kurz auf die Vorverarbeitung des Nutzer-Stadortfeldes eingegangen.
+		Es wird nun kurz auf die Vorverarbeitung des Nutzer-Standortfeldes eingegangen.
 		Danach wird ausschließlich der Analyse-Schritt des Verfahrens betrachtet.
 
 		\subsection{Vorverarbeitung des Nutzer-Standortfeldes (Geolokalisierung)}
@@ -898,9 +911,9 @@
 			
 			Nutzer-Standortfelder mit partiellem geografischen Bezug können besser untersucht werden, da die Werte durch die N-Gramme einzeln abgefragt werden.
 
-			Lediglich das Problem, dass in einem Nutzer-Standortfeld widersprüchliche Angaben gemacht werden kann zu einem Problem führen. 
-			Ohne die Nutzer-Zeitzone kann nicht entschieden werden welcher Wert genutzt wird.
-			Lediglich durch einbeziehen der Nutzer-Zeitzone besteht eine Chance die korrekte Georeferenz zu wählen.
+			Lediglich das Problem, dass in einem Nutzer-Standortfeld widersprüchliche Angaben gemacht werden, kann zu einem Problem führen. 
+			Ohne die Nutzer-Zeitzone kann nicht entschieden werden, welcher Wert genutzt wird.
+			Lediglich durch Einbeziehen der Nutzer-Zeitzone besteht eine Chance, die korrekte Georeferenz zu wählen.
 			Dies setzt allerdings voraus, dass die beiden angegebenen geografischen Objekte in zwei unterschiedlichen Zeitzonen liegen.
 
 			Ist eine geografische Hierarchieebene angegeben bleibt diese erhalten.
@@ -908,18 +921,19 @@
 
 			Doppel- und Mehrdeutigkeiten können durch die Nutzer-Zeitzone aufgelöst werden. 
 			
-		\subsection{Analyse: Basierend auf absoluten Häufigkeiten} 
+		\subsection{Analyse auf Basis absoluter Häufigkeiten} 
 
 			In der Georeferenz-Basis sind die absoluten Häufigkeiten hinterlegt.
-			Diese sagen aus wie oft ein Referenzwert in der Vornoi-Region einer Stadt aufgetreten ist (siehe Abschnitt \ref{sub:absHaufBestimmen}). 
+			Diese sagen aus wie oft ein Referenzwert in der Voronoi-Region einer Stadt aufgetreten ist (siehe Abschnitt \ref{sub:absHaufBestimmen}). 
 			Aus der absoluten Häufigkeit kann abgeleitet werden, ob ein Referenzwert geografischen Bezug hat oder nicht.
 
-			Eine hohe absolute Häufigkeit in einer Vornoi-Region kann ein Hinweis auf den geografischen Bezug eines Referenzwertes zu dieser Region darstellen. 
+			Eine hohe absolute Häufigkeit in einer Voronoi-Region kann ein Hinweis auf den geografischen Bezug eines Referenzwertes zu dieser Region darstellen. 
 			Es ist beispielsweise anzunehmen, dass in der Voronoi-Region einer Stadt der Name der zugehörigen Stadt häufig vorkommt.
 
 			In Abbildung \ref{img:ulIstanbulWalesZoom} sind die Tweets in denen "'Istanbul"' im Nutzer-Standort vorkommt aufgetragen.
 			Es tritt deutlich eine Konzentrierung um die Stadt Istanbul auf. 
-			Diese Tweets werden auf die Stadt Istanbul abgebildet, wird die Kombination aus dem Referenzwert "'Istanbul"' und der Georeferenz Istanbul sehr häufig vorkommen.
+			Diese Tweets werden auf die Stadt Istanbul abgebildet.
+			An dieser geografischen Position wird die Kombination aus dem Referenzwert "'Istanbul"' und der Georeferenz Istanbul sehr häufig vorkommen.
 			In den Nutzer-Standorten der Tweets rund um Istanbul taucht "'Istanbul"' tatsächlich 972 mal auf.
 			Damit kann eine Relevanz für den Referenzwert "'Istanbul"' zur Stadt Istanbul abgeleitet werden.
 
@@ -939,9 +953,9 @@
 
 				Um Referenzwerte mit geografischem Bezug zu identifizieren, wird ein Schwellwert für die absolute Häufigkeit eingeführt.
 				Es werden nur Referenzwerte zur Geolokalisierung verwendet, deren absolute Häufigkeit über diesem Schwellwert liegt.
-				Je höher der Schwellwert gewählt wird, umso häufiger muss ein Referenzwert in einer Voronoi-Region vorgekommen sein um in Betracht gezogen zu werden.
+				Je höher der Schwellwert gewählt wird, umso häufiger muss ein Referenzwert in einer Voronoi-Region vorgekommen sein, um in Betracht gezogen zu werden.
 				Dadurch steigt die Wahrscheinlichkeit, dass der zugehörige Referenzwert geografischen Bezug hat. 
-				Durch den Schwellwert wird es zudem ermöglicht die Güte und die Trefferquote zu beeinflussen.
+				Durch den Schwellwert wird es zudem ermöglicht, die Güte und die Trefferquote zu beeinflussen.
 				Umso geringer der Schwellwert gewählt wird, umso mehr Referenzwerte können in die Betrachtung einbezogen werden, allerdings ist die Wahrscheinlichkeit, dass diese geografischen Bezug aufweisen geringer.  
 
 			\subsubsection{Ablauf}
@@ -951,7 +965,7 @@
 				Das Ergebnis ist ein einzelner Datensatz, dessen Georeferenz dem untersuchten Tweet zugewiesen wird.
 
 				In Abbildung \ref{img:absHaufBsp} wird der Ablauf dargestellt.
-				Der Schwellwert wurde dabei auf 10 Vorkommen in einer Vornoi-Region festgelegt. 
+				Der Schwellwert wurde dabei auf 10 Vorkommen in einer Voronoi-Region festgelegt. 
 				
 				\begin{figure}[!ht]
 	
@@ -964,7 +978,7 @@
 					
 				\end{figure}
 
-		\subsection{Probleme bei der ausschließlichen Betrachtung der absoluten Häufigkeiten} 
+		\subsubsection{Probleme bei der ausschließlichen Betrachtung der absoluten Häufigkeiten} 
 
 			Bei der Analyse basierend auf absoluten Häufigkeiten wird die Verteilung des Referenzwertes auf dem Globus nicht berücksichtigt.
 			Ein Referenzwert kann eine gleichmäßige Verteilung über den Globus aufweisen.
@@ -1041,7 +1055,7 @@
 
 			Es werden deshalb zusätzlich die relativen Häufigkeiten betrachtet.	
 
-		\subsection{Analyse: Basierend auf absoluten und relativen Häufigkeiten} \label{sub:Analyse-absRel} 
+		\subsection{Analyse basierend absoluten und relativen Häufigkeiten} \label{sub:Analyse-absRel} 
 
 			Die Analyse basierend auf absoluten Häufigkeiten ist fehleranfällig. 
 			Es wird die Verteilung des Referenzwertes außer acht gelassen.
@@ -1050,9 +1064,9 @@
 
 			\textit{Berechnung der relativen Häufigkeiten}  
 
-				Um die relativen Häufigkeiten zu berechnen wird das Vorkommen eines Referenzwertes in einer Stadt, durch die Gesamtanzahl der Vorkommen des Referenzwertes geteilt werden.
+				Um die relativen Häufigkeiten zu berechnen, wird das Vorkommen eines Referenzwertes in einer Stadt, durch die Gesamtanzahl der Vorkommen des Referenzwertes geteilt werden.
 				Dies wird mit Hilfe der Georeferenz-Basis realisiert.
-				Bei der Abfrage eines potenziellen geografischen Indikators wird nicht nur derjenige Referenzwert mit der größten absoluten Häufigkeit zurückgeliefert sondern auch die Anzahl der Gesamtvorkommen dieses Referenzwertes.
+				Bei der Abfrage eines potenziellen geografischen Indikators wird nicht nur derjenige Referenzwert mit der größten absoluten Häufigkeit zurückgeliefert, sondern auch die Anzahl der Gesamtvorkommen dieses Referenzwertes.
 
 				Die Funktion $max_{abs}(a)$ liefert die maximale absolute Häufigkeit für einen potenziellen geografischen Indikator $a$ aus der Georeferenz-Basis.
 				Die Funktion $sum_{abs}(a)$ liefert die Anzahl der Gesamtvorkommen des potenziellen geografischen Indikators a in der Georeferenz-Basis, dies entspricht der Summe aller absoluten Häufigkeiten aller Vorkommen des Wertes $a$.
@@ -1065,7 +1079,7 @@
 
 			\textit{Betrachtung des Beispiels "'La Plata"' und "'the"' bezüglich relativer Häufigkeiten} 
 				
-				Bezieht man die relativen Häufigkeiten ein ergibt sich für den Wert "'the"' Tabelle \ref{tab:the} für "'La Plata"' ergibt sich Tabelle \ref{tab:laPlata}.  
+				Bezieht man die relativen Häufigkeiten ein, ergibt sich für den Wert "'the"' Tabelle \ref{tab:the} für "'La Plata"' ergibt sich Tabelle \ref{tab:laPlata}.  
 
 				\begin{table}[h]
 				\centering
@@ -1100,20 +1114,20 @@
 				Vergleicht man Tabelle \ref{tab:the} mit Tabelle \ref{tab:laPlata} kann durch die relativen Wahrscheinlichkeiten die globale Verteilung der beiden Werte verglichen werden.
 				Es ist deutlich zu erkennen, dass "'La Plata"' (70.5\%) wesentlich konzentrierter auftritt als "'the"' (1,6\%).
 
-			\subsection{Schwellwert für die relative Häufigkeit}
+			\subsubsection{Schwellwert für die relative Häufigkeit}
 
 				Auch für die relative Häufigkeit wird ein Schwellwert eingeführt. 
 				Dieser Schwellwert garantiert, das ein Referenzwert einen bestimmten Anteil an Vorkommen auf eine Voronoi-Region vereint.
 				Dadurch können global genutzte Referenzwerte eliminiert werden.
 				Der Schwellwert für die absolute Häufigkeit soll allerdings weiterhin verwendet werden. 
 				Denn für geringe absolute Häufigkeiten kann die relative Häufigkeit hoch sein.
-				Kommt ein Referenzwert in einer Voronoi-Region "'A"' 5 mal vor und in einer Voronoi-Region "'B"' nur ein mal entspricht dies einer relativen Häufigkeit von 83\% für die Vornoi-Region A.
+				Kommt ein Referenzwert in einer Voronoi-Region "'A"' 5 mal vor und in einer Voronoi-Region "'B"' nur ein mal entspricht dies einer relativen Häufigkeit von 83\% für die Voronoi-Region A.
 				Trotz der hohen relativen Häufigkeit ist die absolute Häufigkeit gering.    
 			
-			\subsection{Ablauf}
+			\subsubsection{Ablauf}
 
 				In Abbildung \ref{img:relHaufBsp} ist der Ablauf der Analyse mit absoluten und relativen Häufigkeiten dargestellt.
-				Um den Ablauf übersichtlich zu halten wurden die Referenzwerte mit Zeitzone hier nicht berücksichtigt.
+				Um den Ablauf übersichtlich zu halten, sind die Referenzwerte mit Zeitzone hier nicht berücksichtigt.
 				
 				Zuerst werden diejenigen Datensätze verworfen, die unter einem Schwellwert von 5 für die absolute Häufigkeit liegen.
 				Danach werden diejenigen Datensätze verworfen, die unter einem Schwellwert von 10\% für die relative Häufigkeit liegen.
@@ -1134,20 +1148,22 @@
 
 	\section{Verwendung der geografischen Hierarchie} \label{sec:ausnutzenDerGeografischenHierarchie}
 
-		In Abschnitt \ref{sub:Stadtbestimmen} wurden die geografischen Koordinaten der Tweets auf die nächstgelegene Stadt aufgelöst. 
+		Die geografischen Koordinaten der Tweets werden wie in Abschnitt \ref{img:voronoi} auf die nächstgelegene Stadt aufgelöst. 
 		Dies geschieht mit Hilfe des Ortsverzeichnisses geonames.org. 	
-		Dieses Ortsverzeichnis bildet die geografische Hierarchieebenen, wie in Abschnitt eingeführt \ref{sub:geografischeHierarchie} ,ab. 
+		Dieses Ortsverzeichnis bildet die geografische Hierarchieebenen ab (siehe Abschnitt \ref{sub:geografischeHierarchie}). 
 		Jeder Stadt werden die Verwaltungseinheiten erster und zweiter Ordnung sowie ein Land zugeordnet.
 
 		Das bedeutet, jeder Referenzwert kann neben der Stadt auch auf eine Verwaltungseinheit erster Ordnung, eine Verwaltungseinheit zweiter Ordnung oder auf ein Land aufgelöst werden.
+		
 		Beim Nutzen des vorgestellten Verfahrens kann dadurch bestimmt werden in welcher der geografischen Hierarchieebenen das Ergebnis zurückgeliefert werden soll. 
-		Damit ist die Anforderung aus Kapitel \ref{ANFORDERUNGEN} erfüllt.
-		Ist für eine Anwendung eine flächige Bestimmung der Position ausreichend, beispielsweise reicht es aus ein Land als Ergebnis der Geolokalisierung zurückzugeben, kann dies ausgenutzt werden um die Ergebnisse zu verbessern.
+		Damit ist die Anforderung aus Kapitel \ref{sec:Zielsetzung} erfüllt.
+		Ist für eine Anwendung eine flächige Bestimmung der Position ausreichend, beispielsweise reicht es aus, ein Land als Ergebnis der Geolokalisierung zurückzugeben, kann dies ausgenutzt werden, um die Ergebnisse zu verbessern.
 
 		\subsection{Geografischer Bezug der Referenzwerte zu Verwaltungseinheiten und Ländern} 
 
-			Umso höher man in der geografischen Hierarchieebene steigt umso größer werden die betrachteten geografischen Regionen.
-			Das bedeutet die gleiche Menge an Referenzwerten, wird bei der Betrachtung in einer höheren Hierarchieebene einer geringeren Menge an möglichen geografischen Regionen zugeordnet.
+			Umso höher man in der geografischen Hierarchieebene steigt, umso größer werden die betrachteten geografischen Regionen.
+			Die gleiche Menge an Referenzwerten, wird bei der Betrachtung in einer höheren Hierarchieebene einer geringeren Menge an möglichen geografischen Regionen zugeordnet.
+			
 			In Tabelle \ref{tab:AnzahlRegionen} wird für die einzelnen Hierarchieebenen die Anzahl der möglichen Regionen, denen ein Referenzwert zugeordnet werden kann, dargestellt.
 			
 			\begin{table}[h]
@@ -1167,7 +1183,7 @@
 			Dieselbe Menge an Referenzwerten, verteilt sich, beispielsweise auf Länderebene, also auf weniger geografische Regionen. 
 			Vergleicht man die Anzahl der Regionen auf Länderebene mit der auf Städteebene erhöht sich die Anzahl möglicher Regionen um den Faktor 99. \footnote{Faktor gerundet: exakter Wert 99,239316239}
 
-			Für Referenzwerte die ein Land oder eine Verwaltungseinheit bezeichnen ist auf Städteebene eine geringe relative Häufigkeit zu erwarten.
+			Für Referenzwerte, die ein Land oder eine Verwaltungseinheit bezeichnen, ist auf Städteebene eine geringe relative Häufigkeit zu erwarten.
 			Diese Referenzwerte treten in einer größeren geografischen Region als der Voronoi-Region einer Stadt auf.
 			Ländernamen treten auf Städteebene sehr verteilt auf und werden deshalb eine geringe relative Häufigkeit aufweisen.
 			Es ist beispielsweise zu erwarten, dass ein Ländername in den Nutzer-Standorten von Tweets aus dem gesamten Land auftritt.
@@ -1177,7 +1193,7 @@
 			Dies weißt auf eine große Verteilung des Referenzwertes hin, was bei Betrachtung auf Städteebene korrekt ist.
 			Die relative Häufigkeit sagt allerdings nichts darüber aus, ob ein Referenzwert global verteilt auftritt oder eventuell doch einer regionalen Begrenzung unterliegt. 
 
-			Um die Verteilung auf den höheren geografsichen Hierrachiebenene zu bestimmen werden nun die absoluten Häufigkeiten für die einzelnen Hierarchieebene berechnet.
+			Um die Verteilung auf den höheren geografischen Hierarchieebenen zu bestimmen, werden nun die absoluten Häufigkeiten für die einzelnen Hierarchieebene berechnet.
 			Daraus können dann nach dem selben Prinzip wie in Abschnitt \ref{sub:Analyse-absRel} beschrieben berechnet werden.
 			
 			
@@ -1191,7 +1207,7 @@
 
 		\subsection{Ermittlung der absoluten Häufigkeiten} 
 
-			Da zu jedem Referenzwert die zugehörigen Verwaltungseinheiten und Länder bekannt sind können die absoluten Häufigkeiten direkt aus der Georeferenz-Basis berechnet werden.
+			Da zu jedem Referenzwert die zugehörigen Verwaltungseinheiten und Länder bekannt sind, können die absoluten Häufigkeiten direkt aus der Georeferenz-Basis berechnet werden.
 			Für einen Referenzwert A müssen lediglich die absoluten Häufigkeiten aufsummiert werden, bei denen der Wert der jeweiligen geografischen Hierarchieebene übereinstimmt.
 
 			Dies wird an einem Beispiel erläutert.
@@ -1243,12 +1259,12 @@
 			\end{tabular}
 			\end{table}  
 
-			Der Wert für die relative Häufigkeit sagt nun aus, dass 86,1\% der Tweets in deren Nutzer-Standortfeld "'Wales"' auftritt in der geografischen Region Wales liegen.
+			Der Wert für die relative Häufigkeit sagt nun aus, dass 86,1\% der Tweets in deren Nutzer-Standortfeld "'Wales"' auftritt, auch in der geografischen Region Wales liegen.
 			Dies ist ein deutlicher Hinweis darauf, dass der Referenzwert einen geografischen Bezug zu Wales hat.
 
 			Analog können die Werte für die Verwaltungseinheit zweiter Ordnung und dem Land berechnet werden.
 
-		\subsection{Zusammenfassung: Nutzung geografische Hierarchieebenen}
+		\subsubsection{Zusammenfassung: Nutzung geografischer Hierarchieebenen}
 
 			Durch die Einbeziehung der geografischen Hierarchieebenen wird zum einen ermöglicht, die gewünschte Hierarchieebene der zurückgegebene Georeferenz zu bestimmen.
 			Zum anderen kann das Wissen über die gewünschte geografische Hierarchieebene genutzt werden um mehr Informationen zu erhalten.

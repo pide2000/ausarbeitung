@@ -21,7 +21,7 @@
 		
 			In Abschnitt \ref{sub:DatenInTwitterNachricht} wurden bereits einige Daten vorgestellt, die mit einem Tweet versendet werden. 
 			Aus diesen Daten kann der Nutzer-Standort durch geeignete Verfahren abgeleitet werden. 
-			Bei der Kategorisierung über die Informationsquelle werden die Verfahren dahingehend eingeteilt welche dieser Daten genutzt werden um eine Geolokalisierung zu realisieren.
+			Bei der Kategorisierung über die Informationsquelle werden die Verfahren dahingehend eingeteilt, welche dieser Daten genutzt werden, um eine Geolokalisierung zu realisieren.
 
 			Zur Geolokalsierung werden hauptsächliche folgende Informationen genutzt:
 
@@ -33,7 +33,7 @@
 
 	\section{Kategorisierung über die verwendete Methode}
 
-		Um eine Geolokalsierung zu realsieren wird unabhängig von der Informationsquelle und dem Schwerpunkt der Lokalisierung unterschiedliche Verfahren genutzt.
+		Um eine Geolokalsierung zu realsieren, wird unabhängig von der Informationsquelle und dem Schwerpunkt der Lokalisierung unterschiedliche Verfahren genutzt.
 		Diese können nach \cite{Schulz2013} und \cite{Cheng2010} in zwei Verfahrensgruppen eingeteilt werden.
 
 		\subsection{Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis (GZ)}  
@@ -43,8 +43,8 @@
 			Dabei kann sowohl auf ein lokal gespeichertes Ortsverzeichnis als auch auf Internet Ressourcen zurückgegriffen werden.  
 			In der Regel durchläuft der untersuchte Text eine manuelle oder automatische Vorverarbeitung, um potenzielle Toponyme herauszufiltern. 
 			Dieses Verfahren wird auf verschiedene Tweet-Daten angewendet.
-			Bei der Vorverarbeitung der Texte wird in der Regel a priori Wissen verwendet um potenzielle Toponyme zu erkennen.
-			Dies setzt voraus, das die Toponyme bekannt sind und erkannt werden können. 
+			Bei der Vorverarbeitung der Texte wird in der Regel a priori Wissen verwendet, um potenzielle Toponyme zu erkennen.
+			Dies setzt voraus, dass die Toponyme bekannt sind und erkannt werden können. 
 			Bei Freitext-Feldern ist man allerdings mit den Problemen von Toponyme aus Abschnitt \ref{sec:zuordnungToponymeGeogObj} konfrontiert.
 			Zusätzlich sind verschiedene Schreibweisen und Neologismen zu erwarten. 
 			Ein weiteres Problem stellen Toponyme dar, die Doppeldeutigkeiten zu anderen Wörtern aufweisen, die keinen geografischen Bezug haben.
@@ -52,7 +52,7 @@
 			Diese Methoden werden oft auch als Geocoding bezeichnet. 
 			Geocoding wird jedoch in verschiedenen Fachrichtungen unterschiedlich definiert. 
 			In \cite{bibsmaniaaa:Goldberg2008} wird genauer auf den Begriff des Geocoding und die Poblematik eingegangen und eine Definition  des Begriffs vorgeschlagen.
-			Im vorliegenden Kontext ist es präziser und weniger missverständlich die Methodik als "'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis"' zu bezeichnen, anstatt den Begriff "'Geocoding"' einzusetzen. 
+			Im vorliegenden Kontext ist es präziser und weniger missverständlich, die Methodik als "'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis"' zu bezeichnen, anstatt den Begriff "'Geocoding"' einzusetzen. 
 
 		\subsection{Inhaltsanalyse mit probabilistischen Sprachmodellen oder geografische Themenmodelle (SM)}
 
@@ -61,7 +61,7 @@
 			Ein unbekannter Text kann dann mit Hilfe der zuvor gelernten Zuordnung einer geografischen Region zugeordnet werden.
 			
 			\cite{Priedhorsky2013} definiert die Verbindung der klassischen "'Themenmodellierung"' (siehe auch \cite{Blei2012}) und "'Standorterkennung (Location Awareness)"' (siehe auch \cite{Wang2007}) geografische Themenmodelle. 
-			Durch klassische "'Themenmodellierung"' kann analysiert werden zu welches Thema in einem unbekannten Text behandelt wird. 
+			Durch klassische "'Themenmodellierung"' kann analysiert werden, welches Thema in einem unbekannten Text behandelt wird. 
 			Dazu werden während einer Lernphase Themen-Wörterbücher erstellt, diese enthalten charakteristische Wörter zu definierten Themenfeldern. \cite{Blei2012} 
 			Bei der Verbindung des Verfahrens zur Themenmodellierung mit einer "'Standorterkennung"' können statt Themen geografische Positionen oder Regionen zugeordnet werden.
 			Es werden also Wörterbücher für geografische Positionen oder Regionen erstellt. 
@@ -117,31 +117,31 @@
 		Dies trifft auf den Tweet-Text nicht zu, dennoch liefern die Verfahren hinreichend gute Ergebnisse.  
 		Die Einschränkung des Nutzer-Standortfeldes auf 30 Zeichen verhindert zudem eine übermäßig große Anzahl an zu untersuchenden Werten.
 		Bei der Untersuchung des Tweet-Textes mit Hilfe von probabilistischen Sprachmodellen oder geografischen Themenmodellen müssen wesentlich komplexere und umfangreichere Zusammenhänge erfasst werden als bei der Untersuchung des Nutzer-Standortfeldes.
-		Bei der Untersuchung des Nutzer-Standortfeldes ist es daher möglich einen simplen Ansatz zur probabilistischen Auswertung zu wählen, da aufgrund der zu erwartenden Toponyme mit einer wesentlich geringeren Komplexität zu rechnen ist.
+		Bei der Untersuchung des Nutzer-Standortfeldes ist es daher möglich, einen simplen Ansatz zur probabilistischen Auswertung zu wählen, da aufgrund der zu erwartenden Toponyme mit einer wesentlich geringeren Komplexität zu rechnen ist.
 
 		Des weiteren wurde in der Literatur bisher nur ein mal auf die Möglichkeit hingewiesen, die Ergebnisse bezüglich der Qualität durch eine Vorgabe zu justieren.  
-		Schulz et al. haben in \cite{Schulz2013} auf die Möglichkeit hingewiesen ihr Verfahren bezüglich Precision und Recall zu optimieren.
+		Schulz et al. haben in \cite{Schulz2013} auf die Möglichkeit hingewiesen, ihr Verfahren bezüglich Precision und Recall zu optimieren.
 		Dabei wird der Wert der Precision auf Kosten des Recall optimiert oder umgekehrt.
 		Es wird keine Möglichkeit der Feinjustierung angeboten, lediglich die zwei besten Ergebnisse für Precision und Recall können gewählt werden.
-		Eine Feinjustierung würde die Möglichkeit bieten einen Kompromiss zwischen den Werten Precision und Recall zu ermitteln, um das bestmögliche Ergebnis zu erhalten.
+		Eine Feinjustierung würde die Möglichkeit bieten, einen Kompromiss zwischen den Werten Precision und Recall zu ermitteln, um das bestmögliche Ergebnis zu erhalten.
 
-		Kinsella et al. beschreiben in \cite{Kinsella2011} die Möglichkeit als Rückgabewert ein Land, den Staat, die Stadt und die Postleitzahl zu erhalten.
+		Kinsella et al. beschreiben in \cite{Kinsella2011} die Möglichkeit, als Rückgabewert ein Land, den Staat, die Stadt und die Postleitzahl zu erhalten.
 		Die meisten Verfahren verwenden aber keine geografischen Hierarchieebenen für die Rückgabe. 
 		Entweder es werden konkrete geografische Koordinaten zurückgeliefert oder das Ergebnis besteht aus einer kontinuierlichen Wahrscheinlichkeitsverteilung.
 		Konkrete geografische Koordinaten könnten mit Hilfe eines Ortsverzeichnisses zwar auf eine geografische Hierarchieebene aufgelöst werden, aber die Ergebnisse werden nicht basierend auf den geografischen Hierarchieebenen evaluiert.
 		Eine Evaluierung findet meistens über Distanzen statt, dabei werden aber die Grenzen von Verwaltungseinheiten nicht berücksichtigt. 
-		In einigen Fällen kann es wichtig sein zu Wissen mit welchem Precision- und welchem Recallwert ein Land bestimmt werden kann. 
+		In einigen Fällen kann es wichtig sein zu wissen mit welchem Precision- und welchem Recallwert ein Land bestimmt werden kann. 
 
-		Priedhorsky et al. beschreiben in \cite{Priedhorsky2013} ein Verfahren welches gaußsche Mischverteilungen(GMM) verwendet um eine Wahrscheinlichkeitsverteilung von häufig auftauchenden Worten auf dem Globus zu modellieren.
+		Priedhorsky et al. beschreiben in \cite{Priedhorsky2013} ein Verfahren, welches Gaußsche Mischverteilungen(GMM) verwendet um eine Wahrscheinlichkeitsverteilung von häufig auftauchenden Worten auf dem Globus zu modellieren.
 		Dabei werden zum einlernen der GMM's die Inhalte aus dem Nutzer-Standort, der Nutzer-Zeitzone, dem Tweet-Text, der Nutzer-Beschreibung \footnote{Die Nutzer-Beschreibung ist ein Freitext-Feld des Nutzer-Profils in dem Nutzer sich selbst beschreiben können} und der Nutzer-Sprache verwendet.
 		Die Werte in diesen Feldern werden dabei in einzelne Worte und Kombinationen aus diesen zerlegt.
 		Dies geschieht durch sogenannte N-Gramme bis zum Grad 2. 
-		Das heißt es werden maximal zwei Wörter zusammengefasst.
+		Das heißt, es werden maximal zwei Wörter zusammengefasst.
 		Zusätzlich werden alle Wörter einzeln betrachtet.
-		Für jeden so erzeugten Wert wird an dem Ort an dem der Tweet versendet wurde ein GMM erzeugt.
-		Taucht ein Wert mehrmals an einem Ort auf werden die GMM zusammengefasst und erhalten ein größeres Gewicht, und damit eine höhere Wahrscheinlichkeit.
-		Soll eine Geolokalisierung durchgeführt werden werden die Felder wiederum in N-Gramme zerlegt und die entsprechenden GMM's zugeordnet. 
-		Anhand der Verteilung und der Wahrscheinlichkeit kann dann eine Entscheidung getroffen werden welche geografische Region am wahrscheinlichsten den tatsächlichen Standort wiedergibt. 
+		Für jeden so erzeugten Wert wird an dem Ort, an dem der Tweet versendet wurde, ein GMM erzeugt.
+		Taucht ein Wert mehrmals an einem Ort auf, werden die GMM zusammengefasst und erhalten ein größeres Gewicht, und damit eine höhere Wahrscheinlichkeit.
+		Soll eine Geolokalisierung durchgeführt werden, werden die Felder wiederum in N-Gramme zerlegt und die entsprechenden GMM's zugeordnet. 
+		Anhand der Verteilung und der Wahrscheinlichkeit kann dann eine Entscheidung getroffen werden, welche geografische Region am wahrscheinlichsten den tatsächlichen Standort wiedergibt. 
 		Das Ergebnis einer solchen Auswertung entspricht einer kontinuierlichen Wahrscheinlichkeitsverteilung. 
 		Es werden dabei keinerlei Grenzen geografischer Regionen berücksichtigt. 
 		Nahe einer Küstenlinie können Bereiche der GMM's im Meer liegen und geben somit eine Wahrscheinlichkeit dafür an, dass ein Tweet vom Meer versendet wurde.  
@@ -156,9 +156,9 @@
 	\section{Zusammenfassung und Forschungslücken}
 
 		Die vorgenommene Einordnung von \cite{Schulz2013} wurde analysiert. 
-		Dabei wurde festgestellt, dass das Nutzer-Standortfeld bisher lediglich ein mal mit probabilistischen Sprachmodellen oder geografische Themenmodellen untersucht wurde.
+		Dabei wurde festgestellt, dass das Nutzer-Standortfeld bisher lediglich ein mal mit probabilistischen Sprachmodellen oder geografischen Themenmodellen untersucht wurde.
 		Die scheinbaren Potenziale die durch probabilistische Sprachmodelle oder geografische Themenmodelle gilt es zu nutzen.
-		Des weiteren wurde festgestellt, dass kein Verfahren eine Möglichkeit bietet die Qualität der Ergebnisse dahingehend zu verbessern, dass der optimale Kompromiss zwischen Precision und Recall oder Fehlerdistanzen und Ergebnismenge erreicht werden kann.
+		Des weiteren wurde festgestellt, dass kein Verfahren eine Möglichkeit bietet, die Qualität der Ergebnisse dahingehend zu verbessern, dass der optimale Kompromiss zwischen Precision und Recall oder Fehlerdistanzen und Ergebnismenge erreicht werden kann.
 		Die Rückgabewerte der meisten Verfahren bestehen aus geografischen Koordinaten oder Wahrscheinlichkeitsverteilungen. 
 		Die Auflösung auf eine Verwaltungseinheit, ein Land oder eine Stadt müssen in einem weiteren Schritt durchgeführt werden.
 		Die Evaluierung auf diesen geografischen Hierarchieebenen ist mit einem solchen Ergebnis nicht möglich. 
