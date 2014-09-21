@@ -1,204 +1,172 @@
 %!TEX root = ../document.tex
 \chapter{Verwandte Arbeiten} \label{chap:VerwandteArbeiten} 
-	Durch das aufkommen der nutzergenerierte 
-	Die Geolokalisierung von Tweets ist ein Feld an dem nach wie vor aktiv geforscht wird.
 
+	Die Geolokalisierung von sozialen Medien gewinnt zunehmend an Bedeutung. 
+	Die große Verfügbarkeit von Twitter-Daten trägt dazu bei, dass die Lokalisierung von Twitter-Daten im Mittelpunkt vieler Forschungsaktivitäten steht. 
+	Die Probleme und Verfahren zur Geokalisierung von Tweets oder Twitter-Nutzern sind deshalb Gegenstand zahlreicher Publikationen. 
+	In diesem Kapitel sollen bestehende Ansätze zur Geolokalsierung im Twitter-Umfeld vorgestellt und verglichen werden. 
+	Eine Kategorisierung kann in mehreren Dimensionen stattfinden.
+	Die in der Literatur beschriebenen Verfahren lassen sich durch eine Reihe von Kriterien einordnen.
 
+	\begin{itemize}
+		\item Informationsquellen zur Geolokalisierung
+		\item Verwendete Methode zur Geolokalisierung
+	\end{itemize}
 
-	An die Geolokalsierung werden dabei gewisse Mindestanforderungen bezüglich der Genauigkeit und der Trefferquote gestellt.
-	Die entwickelten Verfahren unterscheiden sich sowohl durch die verwendete Methode als auch durch den Untersuchungsgegenstand.  
+	Zunächst sollen die Kriterien zur Kategorisierung erläutert werden.
+	Später werden die Arbeiten basierend auf diesen Kriterien eingeordnet.
+	Es folgt darauf eine Bewertung der für diese Arbeit relevanten Arbeiten.
+
+	\section{Kategorisierung über die Informationsquelle}
+		
+			In Abschnitt \ref{sub:DatenInTwitterNachricht} wurden bereits einige Daten vorgestellt, die mit einem Tweet versendet werden. 
+			Aus diesen Daten kann der Nutzer-Standort durch geeignete Verfahren abgeleitet werden. 
+			Bei der Kategorisierung über die Informationsquelle werden die Verfahren dahingehend eingeteilt welche dieser Daten genutzt werden um eine Geolokalisierung zu realisieren.
+
+			Zur Geolokalsierung werden hauptsächliche folgende Informationen genutzt:
+
+			\begin{itemize}
+				\item Tweet-Text (TX)
+				\item Nutzer-Standort (UL)
+				\item Nutzer-Zeitzone (UT)
+			\end{itemize}
+
+	\section{Kategorisierung über die verwendete Methode}
+
+		Um eine Geolokalsierung zu realsieren wird unabhängig von der Informationsquelle und dem Schwerpunkt der Lokalisierung unterschiedliche Verfahren genutzt.
+		Diese können nach \cite{Schulz2013} und \cite{Cheng2010} in zwei Verfahrensgruppen eingeteilt werden.
+
+		\subsection{Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis (GZ)}  
 	
-	In diesem Abschnitt sollen bestehende Ansätze zur Geolokalisierung im Twitter-Umfeld untersucht werden. 
-	Es werden Kriterien zur Einordnung der bestehenden Ansätze erarbeitet und erläutert.   
-	Die Arbeiten werden mit Hilfe der Kriterien schematisch eingeordnet um einen Überblick zu erhalten. 
+			Es wird darunter eine einfache Abfrage an ein Ortsverzeichnis verstanden. 
+			Es werden einzelne Wörter oder mehrere Wörter in einem Ortsverzeichnis nachgeschlagen, um diese einem konkreten geografischen Ort zuweisen zu können.
+			Dabei kann sowohl auf ein lokal gespeichertes Ortsverzeichnis als auch auf Internet Ressourcen zurückgegriffen werden.  
+			In der Regel durchläuft der untersuchte Text eine manuelle oder automatische Vorverarbeitung, um potenzielle Toponyme herauszufiltern. 
+			Dieses Verfahren wird auf verschiedene Tweet-Daten angewendet.
+			Bei der Vorverarbeitung der Texte wird in der Regel a priori Wissen verwendet um potenzielle Toponyme zu erkennen.
+			Dies setzt voraus, das die Toponyme bekannt sind und erkannt werden können. 
+			Bei Freitext-Feldern ist man allerdings mit den Problemen von Toponyme aus Abschnitt \ref{sec:zuordnungToponymeGeogObj} konfrontiert.
+			Zusätzlich sind verschiedene Schreibweisen und Neologismen zu erwarten. 
+			Ein weiteres Problem stellen Toponyme dar, die Doppeldeutigkeiten zu anderen Wörtern aufweisen, die keinen geografischen Bezug haben.
 
-		\section{Kategorisierung bestehender Ansätze}
+			Diese Methoden werden oft auch als Geocoding bezeichnet. 
+			Geocoding wird jedoch in verschiedenen Fachrichtungen unterschiedlich definiert. 
+			In \cite{bibsmaniaaa:Goldberg2008} wird genauer auf den Begriff des Geocoding und die Poblematik eingegangen und eine Definition  des Begriffs vorgeschlagen.
+			Im vorliegenden Kontext ist es präziser und weniger missverständlich die Methodik als "'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis"' zu bezeichnen, anstatt den Begriff "'Geocoding"' einzusetzen. 
 
-		In früheren Arbeiten wurde bereits versucht, eine Einordnung der bestehenden Verfahren vorzunehmen. 
-		Es ist interessant die Kategorisierungsansätze und die verwandten Arbeiten einiger Autoren zu studieren.
-		Es lässt sich dadurch die Entwicklung zum Thema Lokalisierung im Twitter-Umfeld beobachten. 
-		Einige Kategorisierungsansätze werden im folgenden aufgelistet und erläutert.
+		\subsection{Inhaltsanalyse mit probabilistischen Sprachmodellen oder geografische Themenmodelle (SM)}
 
-		Sowohl in \cite{Hecht2011} als in \cite{Cheng2010} beschränken sich die verwandten Arbeiten nicht auf die Lokalisierung im Twitter-Umfeld, es werden Arbeiten zur Lokalisierung von Web-Inhalten im Allgemeinen aufgelistet. 
-		Dies lässt darauf schliessen, dass sich vor den Jahren 2010/2011 nur wenige Arbeiten mit der Lokalisierung im Twitter-Umfeld beschäftigt haben.  
-		
-		\subsubsection{Kategorisierung über die untersuchte Ressource}
-		
-			\cite{Hecht2011} nimmt deshalb eine Kategorisierung anhand der untersuchten Ressource vor. 
-			Es wird unterschieden zwischen Forschungen zur "'Lokalisierung von Microblogging-Seiten und deren Inhalten"' und der "'Lokalisierung von Nutzern, welche Inhalte zu Web 2.0 Seiten beisteuern"'. 
-			Zusätzlich wird in dieser Arbeit das "'Verhalten der Nutzer im Umgang mit der Veröffentlichung ihres aktuellen Standorts"' und die "'Vorhersage privater Informationen"' betrachtet. Darauf soll hier allerdings nicht weiter eingegangen werden.      
-
-		\subsubsection{Kategorisierung über die verwendete Methode}
-
-			\cite{Cheng2010} klassifiziert die vorgestellten Arbeiten anhand der verwendeteten Methodik. 
-			Es wird auf Arbeiten zur Lokalisierung von Webseiten, Web-Logs, Suchanfragen und Web-Nutzern verwiesen. 
-			Diese werden in die folgenden drei Kategorien eingeteilt.
-
-		\paragraph*{"'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis (Content analysis with terms in a gazetteer)"'}  
-	
-			Es wird darunter eine einfache Datenbanksuche verstanden. 
-			Es werden einzelne Wörter in einer Datenbank nachgeschlagen um diese einem konkreten geografischen Ort zuweisen zu können.
-			Dabei kann sowohl lokal auf eine Geo-Datenbank als auch auf Internet Ressourcen zurückgegriffen werden.  
-			In der Regel durchläuft der untersuchte Text eine manuelle oder automatische Vorverarbeitung um potenziell geografische Begriffe, sogenannte Toponyme, herauszufiltern. 
-
-		\paragraph*{"'Inhaltsanalyse mit probabilistischen Sprachmodellen (Content analysis with probabilistic language models)"'}
-		
-			Dabei werden Texte oder Textteile einer Twitter-Kurznachricht zu vordefinierten geografischen Regionen wie Ländern oder Städten zugeordnet. 
-			Nach einer Vorverarbeitung des Textes erfolgt eine statistische Auswertung, um danach den Text oder einzelne Textteile, wie beispielsweise Wörter, einer geografischen Region zuzuordnen. 
-			Eine unbekannter Text kann dann mit Hilfe der zuvor gelernten Zuordnung einer geografischen Region zugeordnet werden.
-
-		\paragraph*{"'Schlussfolgerungen durch soziale Verbindungen (Inference via social relations)"'} 
-
-			Es werden soziale Verbindungen, die in Netzwerken abgebildet sind, herangezogen um Rückschlüsse auf den geografischen Ort des untersuchten Inhaltes oder einer Person ziehen zu können.
-
-		Preidhorsky et al. schlagen in \cite{Priedhorsky2013} eine weitere Einteilung anhand der Methodik vor. 
-		Allerdings werden hier ausschließlich Arbeiten im Twitter-Umfeld betrachtet. 
-
-		\paragraph*{"'Geocoding"'} Im wesentlichen entspricht dies der "'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis"' aus \cite{Cheng2010}. 
-		"'Geocoding"' wird als Begriff in vielen Fachrichtungen unterschiedlich definiert, was zu Missverständnissen führen kann. 
-		In \cite{bibsmaniaaa:Goldberg2008} wird genauer auf den Begriff des Geocoding und die Poblematik eingegangen und eine Definition  des Begriffs vorgeschlagen.
-		Im vorliegenden Kontext ist es präziser und weniger missverständlich die Methodik als "'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis"' zu bezeichnen, anstatt den Begriff "'Geocoding"' einzusetzen. 
-		
-		\paragraph*{"'Geografische Themenmodelle (geografic Topic Modeling)"'} wird definiert als die Verbindung von "'Themenmodellierung"' und "'Standorterkennung (Location Awareness)"'. 
-		Durch klassisches "'Themenmodellierung"' lässt sich aus aus Texten eine Menge von Themen extrahieren. 
-		Durch eine Lernphase werden Wörterbücher zu den Themen erstellt.
-		Mit Hilfe dieser Themen-Wörterbücher kann später das Thema eines Textes bestimmt werden. \cite{Blei2012} 
-		Unter "'Standorterkennung"' wird hier verstanden, dass nicht nur das Thema sondern auch eine bestimmte Region extrahiert werden kann. 
-		Dies kann durch geografischen Koordinaten in Twitter-Kurznachrichten realisiert werden. 
-		Im Unterschied zur Kategorie "'Inhaltsanalyse mit probabilsitischen Sprachmodellen"' aus \cite{Cheng2010} wird hier jedoch keine vorgegebene geografische Region gefordert. 
-		Vielmehr ergeben sich die geografischen Regionen aus den Themenmodellen und den zugehörigen geografischen Koordinaten.
-		Es wird damit eine kontinuierliche Region beschrieben, welche nicht zwangsweise durch Stadt-, Staaten- oder Ländergrenzen beschränkt ist.  
-
-		\paragraph*{"'Statistische Klassifizierung (Statistical classifiers)"'} Diese Kategorie entspricht der "'Inhaltsanalyse mit probabilsitischen Sprachmodellen"' wobei in \cite{Cheng2010} nur eine Arbeit in dieser Kategorie betrachtet wird. \cite{Priedhorsky2013} listet mehrere Arbeiten auf, die sich in diese Kategorie einordnen lassen.   
-
-		\paragraph*{"'Informationen aus sozialen Verbindungen (Social Network Information)"'} analog zu "'Schlussfolgerungen durch soziale Verbindungen"' aus \cite{Cheng2010} werden soziale Verbindungen herangezogen um den Standort zu bestimmen. 
-
-		Priedhorsky et al. wählen eine ähnliche Einteilung wie vormals Cheng et al. in 2010, die verwandten Arbeiten stammen allerdings aus dem Twitter-Umfeld. 
-		Dabei ist zu bemerken, dass sich die verwendeten Methoden zur Lokalisierung im Twitter-Umfeld nicht wesentlich von denen in anderen Bereichen unterscheiden. 
-		Um die Arbeiten im Twitter-Umfeld sinnvoll voneinander abgrenzen zu können muss die Kategorisierung mehr Dimensionen umfassen. 
-		Es müssen mehr Kriterien zur Kategorisierung herangezogen werden als die reine Methodik.   
-
-		Mahmud et al. betrachten in \cite{Mahmud2012} hauptsächlich Arbeiten im Twitter-Umfeld. 
-		Diese werden in die folgenden Kategorien unterteilt. 
-
-		\begin{enumerate}
-			\item  "'Inhaltsbasierte Standortschätzung von Tweets (Content-based Location Estimation from Tweets)"'
-			\item "'Inhaltsbasierte Standortextrahierung von Tweets (Conetnt-based Location Extraction from Tweets"'
-			\item "'Standortschätzung ohne den Tweet Inhalt zu nutzen (Location Estimation without using Tweets Content)"'
-		\end{enumerate}
-
-		\paragraph*{"'Inhaltsbasierte Standort-Schätzung von Tweets (Content-based Location Estimation from Tweets)"'} hier wird die geografische Position durch eine Inhaltsanalyse der Twitter-Kurznachricht geschätzt. 
-		Die Schätzung erfolgt dabei durch probabilistische Modelle.
-		Diese Kategorie vereint damit "'Geografische Themenmodelle"', "'Statistische Klassifizierung"' aus \cite{Priedhorsky2013} mit "'Inhaltsanalyse mit probabilsitischen Sprachmodellen"' aus \cite{Cheng2010} und ist damit als genereller anzusehen, als die vorgenannten Kategorien. 
-
-		\paragraph*{"'Inhaltsbasierte Standort-Extrahierung von Tweets (Content-based Location Extraction from Tweets"'} die verwandten Arbeiten in dieser Kategorie versuchen direkte Hinweise auf einen geografischen Ort aus einer Twitter-Kurznachricht zu extrahieren. 
-		Diese Kategorie ähnelt dem "'Geocoding"' beziehungsweise der "'Inhaltsanalyse mit Begriffen in einem geografischen Verzeichnis"'. 
-
-		\paragraph*{"'Standortschätzung ohne den Tweet Inhalt zu nutzen (Location Estimation without using Tweets Content)"'} hierunter versteht der Autor alle Informationen die nicht unmittelbar im Tweet-Text enthalten sind. Dazu zählen Informationen aus dem Nutzerprofil oder Informationen über die sozialen Verbindungen des Nutzers.
-
-
-		\cite{Mahmud2012} nutzt ebenfalls die Methodik um die Arbeiten zu kategorisieren. 
-		Allerdings wird hier eine generellere Einteilung vorgenommen. 
-		So wird unterteilt, ob der Standort geschätzt oder extrahiert wurde.  
-		Mahmud et al. bringen aber auch eine weitere Dimension ein. 
-		Es wird hier zusätzlich unterschieden ob das angewendete Verfahren den Tweet-Inhalt nutzt oder andere Informationen. 
-
-		Dies ist sinnvoll, denn die genannten Methoden lassen sich sowohl auf den Tweet-Inhalt als auch auf andere Informationen, beispielsweise aus dem Nutzerprofil, anwenden. 
-		
-		Frühere Arbeiten verweisen auf ein weiteres Spektrum an Arbeiten aus anderen Bereichen, wie Lokalisierung von Flickr Bildern oder Web-Log Einträgen.
-		Arbeiten zur Lokalisierung im Twitter-Umfeld werden hier seltener erwähnt. 
-		In späteren Arbeiten, wie in \cite{Priedhorsky2013}, wird hingegen fast ausschließlich auf Arbeiten aus dem Twitter-Umfeld verwiesen. 
-		Dies spiegelt die steigende Anzahl der Arbeiten zur Lokalisierung im Twitter-Umfeld wieder.
-		Betrachtet man die Ausarbeitungen zur Lokalisierung im Twitter-Umfeld genauer, wird allerdings schnell klar, dass die Kategorisierung der Arbeiten anhand der verwendeten Methodik, dem Umfang nicht mehr gerecht wird. 
-		
-		Bei genauerer Betrachtung der Arbeiten stellt man allerdings fest, dass diese Klassifizierungen dem Umfang der Arbeiten nicht gerecht wird. 
-		\cite{Hecht2011} verweist auf ähnliche Ansätze mit einem anderen Untersuchungsgegenstand.
-		\cite{Cheng2010} kategorisiert die Arbeiten anhand der Methodik, und verweist ebenso auf andere Untersuchungsgegenstände. 
-		\cite{Priedhorsky2013} verweist ausschliesslich auf Arbeiten im Twitter-Umfeld und kategorisiert diese anhand der verwendeten Methodik. 
-		Die Methodeneinteilung ist aufgrund der Begriffswahl missverständlich und kann somit zu Problemen führen. 
-
-		\subsection{Erweiterter Kategorisierungsansatz}
-		In \cite{Schulz2013} werden die folgenden Dimensionen zur Abgrenzung herangezogen.
-
-		\todo{Indikatoren aus \cite{Schulz2013}}
-
-		Allerdings lassen sich noch andere Dimensionen zur Klassifizierung der Arbeiten heranziehen. 
-		Wird besipielsweise der Text einer Twitter-Kurznachricht durch eine einfache Geokodierung untersucht wird dies andere Ergebnisse liefern als eine Untersuchung auf Basis eines geografischen Themenmodells.  
+			Dabei werden Texte oder Textteile zu vordefinierten geografischen Regionen zugeordnet. 
+			Nach einer Vorverarbeitung erfolgt eine statistische Auswertung, um danach den Text oder einzelne Textteile einer geografischen Region zuzuordnen. 
+			Ein unbekannter Text kann dann mit Hilfe der zuvor gelernten Zuordnung einer geografischen Region zugeordnet werden.
+			
+			\cite{Priedhorsky2013} definiert die Verbindung der klassischen "'Themenmodellierung"' (siehe auch \cite{Blei2012}) und "'Standorterkennung (Location Awareness)"' (siehe auch \cite{Wang2007}) geografische Themenmodelle. 
+			Durch klassische "'Themenmodellierung"' kann analysiert werden zu welches Thema in einem unbekannten Text behandelt wird. 
+			Dazu werden während einer Lernphase Themen-Wörterbücher erstellt, diese enthalten charakteristische Wörter zu definierten Themenfeldern. \cite{Blei2012} 
+			Bei der Verbindung des Verfahrens zur Themenmodellierung mit einer "'Standorterkennung"' können statt Themen geografische Positionen oder Regionen zugeordnet werden.
+			Es werden also Wörterbücher für geografische Positionen oder Regionen erstellt. 
+			Dies kann durch geografischen Koordinaten in Twitter-Kurznachrichten realisiert werden. 
 		
 
-		\cite{Hecht2011} nutzen diese Methode um eine Ground-Truth zu bestimmen indem das Userlocation-Feld in Wikipedia nachschlagen wird. Wikipedia bietet zu vielen Artikeln eine grografische Position in Form von Längen- und Breitengrad an, diese werden dann der untersuchten Twitter-Kurznachricht zugeordnet. 
-		\cite{Hale2012} nutzen die Yahoo und die Google Geocoding Api um das Userlocation-Feld eingehender zu untersuchen.  
+	\section{Kategorisierung bestehender Ansätze} 
+
+		Die bekannten Methoden zur Geolokalisierung im Twitter Umfeld sollen nun kategorisiert werden. 
+		In Tabelle \ref{tab:kategor} sind die verwandten Arbeiten anhand der oben aufgeführten Kategorien in Anlehnung an Schulz et al. \cite{Schulz2013} eingeordnet.
+		Zusätzlich wurde untersucht ob die Verfahren die Möglichkeit zur individuellen Justierung(JU) der Güte der Ergebnisse zulassen, und ob die Genauigkeit des Rückgabewertes bezüglich geografischer Regionen bestimmt werden kann (RR).
+		Es wird dabei insbesondere die Kombination von verwendeter Methode und Informationsquelle betrachtet.
 		
 
-		
-		Eine weitere zu betrachtende Dimension stellt daher der konkrete Untersuchungsgegenstand in Form des Indikators dar.
+		% ===== DEFAULT ROTATION PARAMETERS
+		\begin{table}[h]
+		\centering
+		\begin{tabular}{lccccccccc}
+		  & \rot{GZ \& UL}
+		  & \rot{GZ \& TX}
+		  & \rot{GZ \& UL \& TZ \& TX}
+		  & \rot{GZ \& UL \& TX}
+		  & \rot{SM \& TX}
+		  & \rot{SM \& UL \& TZ}
+		  & \rot{JU}
+		  & \rot{RR}
+		   \\
+		  \midrule
+		  \cite{Paradesi2011} 		& X & | & | & | & | & |  &   |    &  |  \\ \hline
+		  \cite{Hale2012} 			& X & | & | & | & | & |  &   |    &  |  \\ \hline
+		  \cite{Hecht2011} 			&   & X & | & | & | & |  &   |    &  |  \\ \hline
+		  \cite{Cheng2010} 			&   & X & | & | & | & |  &   |    &  |  \\ \hline
+		  \cite{MacEachren2011} 	&   &   & X & | & | & |  &   |    &  |  \\ \hline
+		  \cite{Schulz2013}			&   &   & X & | & | & |  &  (X)   &  |  \\ \hline
+		  \cite{Hale2012}  			&   &   &   & X & | & |  &   |    &  |  \\ \hline
+		  \cite{Eisenstein2010} 	&   &   &   &   & X & |  &   |    &  |  \\ \hline
+		  \cite{Chandra2011}    	&   &   &   &   & X & |  &   |    &  |  \\ \hline
+		  \cite{Gelernter2011}  	&   &   &   &   & X & |  &   |    &  |  \\ \hline
+		  \cite{Kinsella2011}   	&   &   &   &   & X & |  &   |    &  X  \\ \hline
+		  \cite{Ikawa2012}      	&   &   &   &   & X & |  &   |    &  |  \\ \hline
+	      \cite{Priedhorsky2013}	&   &   &   &   &   & X  &	 |    &  |  \\ \hline  \hline
+		  vorgestelltes Verfahren 	&   &   &   &   &   & X  &   X    &  X  \\ \hline
+		  \bottomrule
+		  \label{tab:kategor}
+		\end{tabular}
+		\end{table}
+
+		\newpage
+
+		Es fällt auf, dass das Nutzer-Standortfeld selten mit probabilistischen Sprachmodellen oder geografischen Themenmodellen untersucht wurde.
+		Die Verwendung dieser Modelle ist jedoch auf dem Tweet-Text gut erprobt. 
+		Im Nutzer-Standortfeld ist zu erwarten, dass der Großteil der Werte einen geografischen Bezug haben.
+		Dies trifft auf den Tweet-Text nicht zu, dennoch liefern die Verfahren hinreichend gute Ergebnisse.  
+		Die Einschränkung des Nutzer-Standortfeldes auf 30 Zeichen verhindert zudem eine übermäßig große Anzahl an zu untersuchenden Werten.
+		Bei der Untersuchung des Tweet-Textes mit Hilfe von probabilistischen Sprachmodellen oder geografischen Themenmodellen müssen wesentlich komplexere und umfangreichere Zusammenhänge erfasst werden als bei der Untersuchung des Nutzer-Standortfeldes.
+		Bei der Untersuchung des Nutzer-Standortfeldes ist es daher möglich einen simplen Ansatz zur probabilistischen Auswertung zu wählen, da aufgrund der zu erwartenden Toponyme mit einer wesentlich geringeren Komplexität zu rechnen ist.
+
+		Des weiteren wurde in der Literatur bisher nur ein mal auf die Möglichkeit hingewiesen, die Ergebnisse bezüglich der Qualität durch eine Vorgabe zu justieren.  
+		Schulz et al. haben in \cite{Schulz2013} auf die Möglichkeit hingewiesen ihr Verfahren bezüglich Precision und Recall zu optimieren.
+		Dabei wird der Wert der Precision auf Kosten des Recall optimiert oder umgekehrt.
+		Es wird keine Möglichkeit der Feinjustierung angeboten, lediglich die zwei besten Ergebnisse für Precision und Recall können gewählt werden.
+		Eine Feinjustierung würde die Möglichkeit bieten einen Kompromiss zwischen den Werten Precision und Recall zu ermitteln, um das bestmögliche Ergebnis zu erhalten.
+
+		Kinsella et al. beschreiben in \cite{Kinsella2011} die Möglichkeit als Rückgabewert ein Land, den Staat, die Stadt und die Postleitzahl zu erhalten.
+		Die meisten Verfahren verwenden aber keine geografischen Hierarchieebenen für die Rückgabe. 
+		Entweder es werden konkrete geografische Koordinaten zurückgeliefert oder das Ergebnis besteht aus einer kontinuierlichen Wahrscheinlichkeitsverteilung.
+		Konkrete geografische Koordinaten könnten mit Hilfe eines Ortsverzeichnisses zwar auf eine geografische Hierarchieebene aufgelöst werden, aber die Ergebnisse werden nicht basierend auf den geografischen Hierarchieebenen evaluiert.
+		Eine Evaluierung findet meistens über Distanzen statt, dabei werden aber die Grenzen von Verwaltungseinheiten nicht berücksichtigt. 
+		In einigen Fällen kann es wichtig sein zu Wissen mit welchem Precision- und welchem Recallwert ein Land bestimmt werden kann. 
+
+		Priedhorsky et al. beschreiben in \cite{Priedhorsky2013} ein Verfahren welches gaußsche Mischverteilungen(GMM) verwendet um eine Wahrscheinlichkeitsverteilung von häufig auftauchenden Worten auf dem Globus zu modellieren.
+		Dabei werden zum einlernen der GMM's die Inhalte aus dem Nutzer-Standort, der Nutzer-Zeitzone, dem Tweet-Text, der Nutzer-Beschreibung \footnote{Die Nutzer-Beschreibung ist ein Freitext-Feld des Nutzer-Profils in dem Nutzer sich selbst beschreiben können} und der Nutzer-Sprache verwendet.
+		Die Werte in diesen Feldern werden dabei in einzelne Worte und Kombinationen aus diesen zerlegt.
+		Dies geschieht durch sogenannte N-Gramme bis zum Grad 2. 
+		Das heißt es werden maximal zwei Wörter zusammengefasst.
+		Zusätzlich werden alle Wörter einzeln betrachtet.
+		Für jeden so erzeugten Wert wird an dem Ort an dem der Tweet versendet wurde ein GMM erzeugt.
+		Taucht ein Wert mehrmals an einem Ort auf werden die GMM zusammengefasst und erhalten ein größeres Gewicht, und damit eine höhere Wahrscheinlichkeit.
+		Soll eine Geolokalisierung durchgeführt werden werden die Felder wiederum in N-Gramme zerlegt und die entsprechenden GMM's zugeordnet. 
+		Anhand der Verteilung und der Wahrscheinlichkeit kann dann eine Entscheidung getroffen werden welche geografische Region am wahrscheinlichsten den tatsächlichen Standort wiedergibt. 
+		Das Ergebnis einer solchen Auswertung entspricht einer kontinuierlichen Wahrscheinlichkeitsverteilung. 
+		Es werden dabei keinerlei Grenzen geografischer Regionen berücksichtigt. 
+		Nahe einer Küstenlinie können Bereiche der GMM's im Meer liegen und geben somit eine Wahrscheinlichkeit dafür an, dass ein Tweet vom Meer versendet wurde.  
+
+		Priedhorsky et al. testen ihr Verfahren auf unterschiedlichen Kombinationen der Werte. 
+		Unter anderem wird die Kombination aus Nutzer-Standortfeld und Nutzer-Zeitzone verwendet. 
+		Es wird ein Median der Fehlerdistanz von 1862km erreicht. 
+		Der Ergebnismenge liegt bei 87,7\% (Anteil der derjenigen Tweets denen eine Georeferenz zugeordnet werden konnte).
+		Es ist zu beachten, dass der Tweet-Datensatz nicht von Tweets ohne Eintrag im Nutzer-Standortfeld bereinigt wurde. 
 
 
-		Betrachtet man die Gesamtheit an arbeiten im Bereich der Lokalisierung im Twitter Netzwerk drängen sich noch mehr Dimensionen zur Klassifizeirung der arbeiten auf.
+	\section{Zusammenfassung und Forschungslücken}
 
-		\begin{enumerate}
-		 	\item Räumliche Indikatoren
-		 	\item Techniken
-		 	\item Fokus der Lokalisierung
-		 \end{enumerate} 	
-
-
-		\todo{Tabelle einfügen, bereits fertig, nur noch Format anpassen (Lesbarkeit)}
-
-	
-
-	\section{}
-
-		Durch die Kategorisierung wird deutlich, dass auf dem Nutzer-Standort in Kombination mit der Zeitzone bisher keine NLP ausgeführt wurde. 
-		Es ist sinnvoll NLP auf den vorgenannten feldern auszuführen, da die Inhalte ähnlich dynamisch sein können wie im Text Feld.
-		Der Nutzer-Standort bietet den Vorteil, dass die Intention ist, dass ein Toponym eingegeben. 
-
-
-		Es wird selten eine geografische Hierarchie zum abbilden der Positionen verwendet.
+		Die vorgenommene Einordnung von \cite{Schulz2013} wurde analysiert. 
+		Dabei wurde festgestellt, dass das Nutzer-Standortfeld bisher lediglich ein mal mit probabilistischen Sprachmodellen oder geografische Themenmodellen untersucht wurde.
+		Die scheinbaren Potenziale die durch probabilistische Sprachmodelle oder geografische Themenmodelle gilt es zu nutzen.
+		Des weiteren wurde festgestellt, dass kein Verfahren eine Möglichkeit bietet die Qualität der Ergebnisse dahingehend zu verbessern, dass der optimale Kompromiss zwischen Precision und Recall oder Fehlerdistanzen und Ergebnismenge erreicht werden kann.
+		Die Rückgabewerte der meisten Verfahren bestehen aus geografischen Koordinaten oder Wahrscheinlichkeitsverteilungen. 
+		Die Auflösung auf eine Verwaltungseinheit, ein Land oder eine Stadt müssen in einem weiteren Schritt durchgeführt werden.
+		Die Evaluierung auf diesen geografischen Hierarchieebenen ist mit einem solchen Ergebnis nicht möglich. 
+		Gerade an Landesgrenzen oder Grenzen von Verwaltungseinheiten haben Fehlerdistanzen keine Aussagekraft über die korrekte Verortung auf eine geografische Region.
 
 
 
 
-	\section{GAZZETEER UND NACHTEILE}
-
-		Bei einer Abfrage des Toponyms "'Hamburg"' auf ein Ortsverzeichnis, wie geonames.org, würden somit mindestens 31 Georeferenzen als Ergebnis erscheinen.
-		Tatsächlich liefert geonames.org folgendes Ergebnis:
-
-		\begin{table}[htpb]
-			\caption{Abfrage an geonames.org für Hamburg} 
-			\centering
-			\begin{tabular}{|c|c|}
-				\hline
-				Land & Anzahl\\
-				\hline\hline
-				USA & 29 \\
-				\hline
-				Süd Afrika & 2 \\
-				\hline
-				Deutschland & 1 \\
-				\hline
-				Kanada & 1 \\
-				\hline
-				Surinam & 1 \\
-				\hline
-			\end{tabular}
-			\label{tab:usCitiesGermanNames} 
-		\end{table} 
-
-		Dies basiert auf Mehrdeutigkeiten aus dem Ergebnis muss eine Auswahl getroffen werden ohne zusätzliches Wissen über den Ort zu haben getroffen werden.
-
-
-		Tatsächlich beinhaltet die geonames.org Datenbank keinen dieser Bei- und Spitznamen.
-		Durch eine Abfrage an dieses Ortsverzeichnis könnte somit keine Georeferenz bestimmt werden.
-		Eine Abfrage in Google Maps hingegen bietet bei Eingabe der oben genannten Bei- und Spitznamen Detroit als Vorschlag an. \footnote{http://de.wikipedia.org/wiki/Detroit (abgerufen Juli 2014)} 
-
-
-		\textit{Probleme früherer Ansätze auf Gazetteer Basis, es wird für ein Land kein Polygon zurückgegeben sondern ein konkreter Punkt. 
-		Messung der Genauigkeit bei Evaluierung auf Länderebene nicht möglich.  
-		Ich kann das tun da ich alle test tweets auf eine Stadt abbilde, somit zusätzliche Information über Stadt, Adm1 usw bekomme und somit evaluieren kann ob sich ein Tweet in einem Land befindet, denn auch die ergebnisse haben implizit auch alle anderen geografsichen Hierarchieebenen.
-		}
 
 
 
-
-	

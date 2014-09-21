@@ -1,3 +1,41 @@
 %!TEX root = ../document.tex
 \chapter{Zusammenfassung} 
-	\todo{chap: Zusammenfassung} 
+
+	Über das Twitter-Netzwerk werden täglich mehr als 500 Millionen Tweets und damit Informationen verbreitet und weitergegeben. 
+	Die Tweets sind zum Größtenteil öffentlich zugänglich. 
+	Aus dieser enormen Informationsmenge lassen sich Erkenntnisse ableiten, mit denen politische und wirtschaftliche Entscheidungsprozesse unterstützt und verbessert werden können. 
+	Im Katastrophenfall können schnelle Informationen den Entscheidungsträgern wichtige Hinweise liefern, die notwendigen, präventiven Schutzmaßnahmen einzuleiten.
+	Um die Informationen effizient nutzen zu können, müssen den Tweets geografische Koordinaten zugeordnet werden.
+	Allerdings weisen nur ca. 1\% der Twitter-Nachrichten geografische Koordinaten auf.
+
+	Mit dem in dieser Arbeit vorgestellten Verfahren ist es möglich, Tweets über Angaben im Nutzer-Standort und der Nutzer-Zeitzone einer geografischen Position zuzuordnen.
+	Die Geolokalisierung von Tweets erfolgt über eine Wissensdatenbank (Georeferenz-Basis), die mit einem Lerndatensatz bestehend aus Tweets mit den benötigten Informationen eingelernt wird. 
+	Aus diesen Lerndatensätzen werden Referenzwerte extrahiert, denen eine Georeferenz zugeordnet wird.
+	Damit kann das Vorkommen der Referenzwert an einer geografischen Postion oder in einer geografischen Region erfasst und in der Georeferenz-Basis gespeichert werden.
+	Die Georeferenz-Basis stellt eine Art probabilistisches Sprachmodell für geografische Positionen oder Regionen dar.
+	Soll ein Tweet lokalisiert werden, werden aus dessen Nutzer-Standortfeld und Nutzer-Zeitzone potenzielle geografische Indiaktoren erzeugt.
+	Durch eine Abfrage dieser potenziellen geografischer Indikatoren an diese Georeferenz-Basis werden diejenigen Datensätze zurückgegeben, für die der Referenzwert mit einem der potenziellen geografischen Indikatoren korrespondiert.
+	Es liegt dann eine Menge an möglichen Georeferenzen zu dem Tweet vor.
+	Durch eine Analyse der Verteilung der Referenzwerte wird dann die wahrscheinlichste Georeferenz gewählt.
+	Durch die Angabe von Schwellwerten für die Verteilung kann das Verfahren justiert werden, für eine gegeben Anforderung an die Precision können entsprechende Schwellwerte gewählt werden.
+	Der Einfluss auf den Recallwert ist vorhersehbar.
+	Dies macht das Verfahren beherrschbar und die Ergebnisse vorhersagbar.
+	Des weiteren kann durch die Wahl der Schwellwerte eine Optimierung des Trade-Off durchgeführt werden um die bestmöglichen Ergebnisse zu erzielen.
+	Es kann zudem bestimmt werden, ob das Ergebnis eine Stadt(geografische Koordinaten), Verwaltungseinheit erster Ordnung(beispielsweise ein Bundesland), Verwaltungseinheit zweiter Ordnung(beispielsweise Regierungsbezirke) oder ein Land sein soll. 
+	Das Wissen über den gewünschten Rückgabewert wird einbezogen, um die Ergebnisse zu optimieren.
+	Es werden keine Einschränkungen bezüglich der verwendeten Sprache oder des verwendeten Alphabets gemacht.
+ 	
+	Es konnten folgende Ergebnisse erzielt werden. 
+	Für den Rückgabewert Stadt wurde eine maximale Ergebnismenge von 79,1\% bei einem Median der Fehlerdistanzen von 20,43km erzielt.
+	Der beste Wert für den Median der Fehlerdistanzen liegt bei 3,24km mit einer Ergebnismenge von 0,99\%.
+	Die Optimierung des Median zieht eine Absenkung der Ergebnismenge nach sich. 
+	Durch die Evaluierung wurden Schwellwerte für den besten möglichen Trade-Off zwischen Median und Ergebnismenge ermittelt.
+	Dadurch konnte eine Ergebnismenge von 53,21\% und ein Median von 9,17km erreicht werden. 
+	Im Vergleich zum besten Wert des Median der Fehlerdistanzen (3,24km) konnte durch eine moderate Änderung des Median die Ergebnismenge um ca. das 50-fache (von ) gesteigert werden.
+	Auf den restlichen geografischen Hierarchieebenen wurden als Kennzahlen Precision und Recall verwendet.
+	Für die Verwaltungseinheit zweiter Ordnung konnte für den besten Trade-Off eine Precision von 77\% bei einem Recall von 12\%, für die Verwaltungseinheit zweiter Ordnung lag der beste Trade-Off eine Precision von 80\% bei einem Recall von 54\%.
+	Auf Länderebene lag der beste Wert für die Precision bei 99\% bei einem Recall von 23\%, dies bedeutet nahezu alle Tweets, denen durch die Geolokalisierung ein Land zugeordnet werden konnte, wurden dem korrekten Land zugeordnet.
+	Der beste Trade-Off lag hier bei einer Precision von 92\% und einem Recall von 84\%.
+
+
+

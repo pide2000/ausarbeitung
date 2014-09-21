@@ -1,6 +1,16 @@
 %!TEX root = ../document.tex
 \chapter{Lösungsansatz} \label{chp:Loesungsansatz}
-	
+		
+	Es wird nun ein Verfahren vorgestellt, welches die formulierten Forschungslücken aus Kapitel \ref{chap:VerwandteArbeiten} behandelt.
+	Es wird ein Art geografisches Sprachmodell erzeugt.
+	Dieses wird durch eine Menge an Lerndatensätzen trainiert.
+	Bei der eigentlichen Geolokalisierung wird dieses eingelernte Sprachmodell analysiert und einem Tweet mit unbekannter Herkunft eine Georeferenz zugeordnet.
+	Es wird ermöglicht durch die Angabe von Schwellwerten das Ergebnis dahingehend zu beeinflussen, dass im Rahmen der erreichbaren Qualität, eine Feinjustierung der Kennzahlen Precision und Recall beziehungsweise durchschnittliche Fehlerdistanz, Median der Fehlerdistanzen und Ergebnismenge vorgenommen werden kann.
+	Es kann vom Nutzer des Verfahrens zusätzlich entschieden werden wie genau der Rückgabewert bezüglich der geografischen Hierarchieebenen sein soll.
+	Es kann zwischen Stadt (geografische Koordinaten), Verwaltungseinheit erster Ordnung, Verwaltungseinheit zweiter Ordnung und Land gewählt werden.
+	Ist bekannt welche geografische Hierarchieebene zurückgegeben werden soll nutzt das Verfahren dieses Wissen aus um die Ergebnisse zu optimieren.  
+
+
 	\section{Überblick} 
 
 		Die Bestimmung der geografischen Position, von der ein Tweet abgesetzt wurde, soll durch die Auswertung des Nutzer-Standortfeldes erfolgen. 
@@ -46,7 +56,7 @@
 		In einem weiteren Abschnitt werden die Herausforderungen betrachtet die bei der Verwendung des Nutzer-Standortes als geografischer Indikator entstehen. 
 		Diese sind weitestgehend der freien unkontrollierten Eingabe des Nutzers geschuldet.
 
-		\subsection{Datenerhebung} 
+		\subsection{Datenerhebung} \label{sub:Datenerhebung} 
 
 			Die Trainingsdatensätze und die Testdatensätze, die später zur Evaluierung verwendet werden, wurden als zufällige Samples aus einem größeren Datensatz erzeugt.
 			Der Datensatz wurde mit Hilfe der Twitter Streaming API erzeugt.
@@ -63,7 +73,7 @@
 				\begin{table}[h]
 				\centering
 				\caption{Basisdatensätze}
-				\label{my-label}
+				\label{tab:databaseQuantitativ}
 				\begin{tabular}{|l||l|}
 				\hline
 				Zeitraum & \begin{tabular}[c]{@{}l@{}}23.01.2014 12:00 Uhr\\ bis  04.02.2014 21:00 Uhr\end{tabular} \\ \hline
@@ -154,8 +164,8 @@
 
 			\begin{table}[h]
 				\centering
-				\caption{Beipiele für Nutzer-Standorte mit partiellem geografischen bezug}
-				\label{my-label}
+				\caption{Beipiele für Nutzer-Standorte mit partiellem geografischen Bezug}
+				\label{tab:partiellerGeogrBezug}
 				\begin{tabular}{|l|l|l|}
 				\hline
 				\multicolumn{1}{|c|}{Wert} & \multicolumn{1}{c|}{geografischer Bezug} & \multicolumn{1}{c|}{kein geografischer Bezug} \\ \hline
@@ -178,7 +188,7 @@
 			\begin{table}[h]
 			\centering
 			\caption{Beispiele für widersprüchliche Toponyme}
-			\label{my-label}
+			\label{tab:wiederspruechlicheBezuege}
 			\begin{tabular}{|l|l|l|l|}
 			\hline
 			\multicolumn{1}{|c|}{Wert}      & \multicolumn{1}{c|}{Toponym 1} & \multicolumn{1}{c|}{Toponym 2} & \multicolumn{1}{c|}{Entfernung in km} \\ \hline
@@ -208,7 +218,7 @@
 			\begin{table}[h]
 			\centering
 			\caption{Beispiele für Nutzer-Standorte mit geografischen Hierarchieebenen}
-			\label{my-label}
+			\label{tab:geografischeHierarchie}
 			\begin{tabular}{|l|c|c|c|c|}
 			\hline
 			\multicolumn{1}{|c|}{Wert} & Stadt       & \multicolumn{1}{l|}{Adm2} & Adm1 & \multicolumn{1}{l|}{Land} \\ \hline
@@ -249,8 +259,8 @@
 
 			\begin{table}[h]
 			\centering
-			\caption{My caption}
-			\label{my-label}
+			\caption{Werte ohne oder mit mittelbarem geografischen Bezug}
+			\label{tab:keinOderMittelbarBezug}
 			\begin{tabular}{|l|}
 			% hline
 			Werte                      	\\ \hline
@@ -325,7 +335,7 @@
 
 		\subsection{Schritte zur Vorverarbeitung der Werte des Nutzer-Standortfeldes} \label{sub:Vorv}
 
-			Die Werte des Nutzer-Standortfeldes wird einer Vorverarbeitung unterzogen.
+			Die Werte des Nutzer-Standortfeldes werden einer Vorverarbeitung unterzogen.
 			In Abbildung \ref{img:vorverarbeitung} sind die einzelnen Schritte dargestellt.
 			Die Vorverarbeitung ist notwendig um die Werte auf die Extrahierung weiterer Daten vorzubereiten.
 			Die einzelnen Worte im Nutzer-Stadort werden als Token bezeichnet. 
@@ -670,6 +680,8 @@
 				\textit{6}        & \textless Los+Angeles\textgreater\textless Pacific+Time\textgreater                          & \textit{(33.78, 118.29)}                                        \\ \hline
 				7                 & \textless Los+Angeles\textgreater\textless love\textgreater\textless Pacific+Time\textgreater & (33.78, 118.29)                                                 \\ \hline
 				\end{tabular}
+				\caption{Ergebnis für Love Los Angeles, Pacific Time}
+					\label{tab:bspWerteAusEinemTweet}
 				\end{table}
 
 
@@ -738,8 +750,10 @@
 			
 			\textit{Bewertung des Verfahrens zur Bestimmung der nächstgelegenen Stadt}
 
-				Durch die Zuordnung zu Städten, die hier eine exakte geografische Position in Form geografischer Koordinaten aufweisen, entstehen gewisse Ungenauigkeiten.
-				Um das Verfahren zu bewerten wurden die Distanzen, welche zwischen der tatsächlichen Position eines Tweets und der zugeordneten Stadt liegen, protokolliert. 
+				Die Auflösung der geografischen Koordinaten auf Städte wurde mit Hilfe des Ortsverzeichnisses geonames.org umgesetzt.
+				Jeder Stadt ist dabei eine geografische Koordinate zugeordnet.
+				Wird nach obigem Verfahren eine geografische Position auf eine Stadt aufgelöst entstehen Ungenauigkeiten.
+				Um das Verfahren zu bewerten wurden die Distanzen, welche zwischen der tatsächlichen Position eines Tweets und der zugeordneten Position der Stadt liegen, protokolliert. 
 				Dies spiegelt den Fehler des Zuordnungsverfahrens wieder.
 
 				In Tabelle \ref{tab:distances} sind die Ergebnisse dargestellt.
@@ -748,7 +762,8 @@
 				Über die Quantile können die Fehlerdistanzen noch genauer untersucht werden.
 				Das 0.25 Quantil sagt aus, dass 25\% aller Fehlerdistanzen unter 1,7 Kilometern liegen.
 				Der Wert für das 0.95 Quantil liegt bei 24,1 Kilometer, 95\% der Tweets waren näher als 24,1 Kilometer an der zugeordneten Stadt. 
-				Dies ist ausreichend genau. 
+				Es wird dadurch auch deutlich, dass ein Großteil der Tweets in der Nähe größerer Städte abgesendet wurden. 
+				Der Wert für das 0.95 Quantil bedeutet: 95\% der Tweets wurden im Abstand von weniger als 24 Kilometern zu einer Stadt mit mehr als 15000 Einwohnern versendet.
 
 					\begin{table}[h]
 					\centering
@@ -870,7 +885,7 @@
 		Es wird nun kurz auf die Vorverarbeitung des Nutzer-Stadortfeldes eingegangen.
 		Danach wird ausschließlich der Analyse-Schritt des Verfahrens betrachtet.
 
-		\subsection{Vorverarbeitung des Nutzer-Standortfeldes}
+		\subsection{Vorverarbeitung des Nutzer-Standortfeldes (Geolokalisierung)}
 
 			Die Schritte der Vorverarbeitung wurden bereits in den Abschnitten \ref{sub:Vorv}, \ref{sub:VorvNGramme} und \ref{sub:VorvNutzerZeitzone} behandelt. 
 			Bei der Geolokalisierung werden diese Schritte ebenfalls auf das Nutzer-Standortfeld angewendet.
@@ -935,7 +950,7 @@
 				Aus diesen Datensätzen wird wiederum derjenige mit der größten absoluten Häufigkeit gewählt. 
 				Das Ergebnis ist ein einzelner Datensatz, dessen Georeferenz dem untersuchten Tweet zugewiesen wird.
 
-				In Abbildung \ref{img:ablaufAnalyseAbsHauf} wird der Ablauf dargestellt.
+				In Abbildung \ref{img:absHaufBsp} wird der Ablauf dargestellt.
 				Der Schwellwert wurde dabei auf 10 Vorkommen in einer Vornoi-Region festgelegt. 
 				
 				\begin{figure}[!ht]
@@ -1026,14 +1041,14 @@
 
 			Es werden deshalb zusätzlich die relativen Häufigkeiten betrachtet.	
 
-		\subsection{Analyse: Basierend auf absoluten und relativen Häufigkeiten} 
+		\subsection{Analyse: Basierend auf absoluten und relativen Häufigkeiten} \label{sub:Analyse-absRel} 
 
 			Die Analyse basierend auf absoluten Häufigkeiten ist fehleranfällig. 
 			Es wird die Verteilung des Referenzwertes außer acht gelassen.
 			Die absolute Häufigkeit gibt lediglich an wie oft ein Wert in einer Voronoi-Region vorkam.
 			Die relative Häufigkeit gibt dagegen an welchen Anteil der Gesamtvorkommen auf eine Voronoi-Region entfällt.
 
-			\textit{Berechnung der relativen Häufigkeiten} 
+			\textit{Berechnung der relativen Häufigkeiten}  
 
 				Um die relativen Häufigkeiten zu berechnen wird das Vorkommen eines Referenzwertes in einer Stadt, durch die Gesamtanzahl der Vorkommen des Referenzwertes geteilt werden.
 				Dies wird mit Hilfe der Georeferenz-Basis realisiert.
@@ -1117,60 +1132,92 @@
 
 				Mit diesem Ablauf wird einerseits garantiert, dass ein Referenzwert oft genug vorkommt und andererseits einen gewissen Anteil am Gesamtvorkommen auf eine Region vereint.
 
-	\section{Ausnutzen der geografischen Hierarchie zur Verbesserung der Ergebnisse} \label{sec:ausnutzenDerGeografischenHierarchie}
+	\section{Verwendung der geografischen Hierarchie} \label{sec:ausnutzenDerGeografischenHierarchie}
 
 		In Abschnitt \ref{sub:Stadtbestimmen} wurden die geografischen Koordinaten der Tweets auf die nächstgelegene Stadt aufgelöst. 
-		Durch die Auflösung auf eine Stadt werden auch implizit die anderen geografischen Hierarchieebenen mitbestimmt. 
-		
-		Dies kann ausgenutzt werden, denn es liegt zu jedem Referenzwert nicht nur die Stadt, sondern auch die Verwaltungseinheit erster und zweiter Ordnung sowie das Land vor.
+		Dies geschieht mit Hilfe des Ortsverzeichnisses geonames.org. 	
+		Dieses Ortsverzeichnis bildet die geografische Hierarchieebenen, wie in Abschnitt eingeführt \ref{sub:geografischeHierarchie} ,ab. 
+		Jeder Stadt werden die Verwaltungseinheiten erster und zweiter Ordnung sowie ein Land zugeordnet.
 
-		\subsubsection{Geografischer Bezug der Referenzwerte zu Verwaltungseinheiten und Ländern} 
+		Das bedeutet, jeder Referenzwert kann neben der Stadt auch auf eine Verwaltungseinheit erster Ordnung, eine Verwaltungseinheit zweiter Ordnung oder auf ein Land aufgelöst werden.
+		Beim Nutzen des vorgestellten Verfahrens kann dadurch bestimmt werden in welcher der geografischen Hierarchieebenen das Ergebnis zurückgeliefert werden soll. 
+		Damit ist die Anforderung aus Kapitel \ref{ANFORDERUNGEN} erfüllt.
+		Ist für eine Anwendung eine flächige Bestimmung der Position ausreichend, beispielsweise reicht es aus ein Land als Ergebnis der Geolokalisierung zurückzugeben, kann dies ausgenutzt werden um die Ergebnisse zu verbessern.
+
+		\subsection{Geografischer Bezug der Referenzwerte zu Verwaltungseinheiten und Ländern} 
+
+			Umso höher man in der geografischen Hierarchieebene steigt umso größer werden die betrachteten geografischen Regionen.
+			Das bedeutet die gleiche Menge an Referenzwerten, wird bei der Betrachtung in einer höheren Hierarchieebene einer geringeren Menge an möglichen geografischen Regionen zugeordnet.
+			In Tabelle \ref{tab:AnzahlRegionen} wird für die einzelnen Hierarchieebenen die Anzahl der möglichen Regionen, denen ein Referenzwert zugeordnet werden kann, dargestellt.
+			
+			\begin{table}[h]
+			\centering
+			\begin{tabular}{|l|l|}
+			\hline
+			\textbf{Geografische Hierarchieebene} & \textbf{Anzahl Regionen} \\ \hline
+			Land                                  & 234                      \\ \hline
+			Verwaltungseinheit erster Ordnung     & 1851                     \\ \hline
+			Verwaltungseinheit zweiter Ordnung    & 4039                     \\ \hline
+			Stadt (Voronoi-Regionen)              & 23322                    \\ \hline
+			\end{tabular}
+			\caption{Anzahl Regionen pro Hierarchieebene}
+			\label{tab:AnzahlRegionen}
+			\end{table}
+
+			Dieselbe Menge an Referenzwerten, verteilt sich, beispielsweise auf Länderebene, also auf weniger geografische Regionen. 
+			Vergleicht man die Anzahl der Regionen auf Länderebene mit der auf Städteebene erhöht sich die Anzahl möglicher Regionen um den Faktor 99. \footnote{Faktor gerundet: exakter Wert 99,239316239}
 
 			Für Referenzwerte die ein Land oder eine Verwaltungseinheit bezeichnen ist auf Städteebene eine geringe relative Häufigkeit zu erwarten.
 			Diese Referenzwerte treten in einer größeren geografischen Region als der Voronoi-Region einer Stadt auf.
-			Sie sind somit über mehrere Voronoi-Regionen verteilt und werden auf Stadtebene eine geringe relative Häufigkeit aufweisen.
+			Ländernamen treten auf Städteebene sehr verteilt auf und werden deshalb eine geringe relative Häufigkeit aufweisen.
 			Es ist beispielsweise zu erwarten, dass ein Ländername in den Nutzer-Standorten von Tweets aus dem gesamten Land auftritt.
-			Durch die Unterteilung des Landes in Stadtgebiete wird der Wert sehr verteilt auf die Städte des Landes auftreten.
 			In Abbildung \ref{img:ulus} werden Tweets dargestellt in deren Nutzer-Standortfeld "'USA"' oder "'United States"' vorkommt.
 			Es ist deutlich eine Häufung im Staatsgebiet der Vereinigten Staaten von Amerika zu erkennen.
-			Tatsächlich ist liegt auf Städteebene die maximale relative Häufigkeit für den Referenzwert "'USA"' bei lediglich 0.87\%.   
+			Tatsächlich liegt auf Städteebene die maximale relative Häufigkeit für den Referenzwert "'USA"' bei lediglich 0.87\%.   
 			Dies weißt auf eine große Verteilung des Referenzwertes hin, was bei Betrachtung auf Städteebene korrekt ist.
-			Würde einem potenziellen geografischen Indikator "'USA"' auf Städteebene eine Stadt zugewiesen werden, wäre diese mit hoher Wahrscheinlichkeit falsch. 
+			Die relative Häufigkeit sagt allerdings nichts darüber aus, ob ein Referenzwert global verteilt auftritt oder eventuell doch einer regionalen Begrenzung unterliegt. 
 
-			\begin{figure}[h!]
-				\begin{center}
-				\includegraphics[scale=0.5]{ulUSA.pdf}
-				\caption{Tweets mit "'USA"' im Nutzer-Standort}
-				\label{img:ulus}
-				\end{center}
-			\end{figure}
+			Um die Verteilung auf den höheren geografsichen Hierrachiebenene zu bestimmen werden nun die absoluten Häufigkeiten für die einzelnen Hierarchieebene berechnet.
+			Daraus können dann nach dem selben Prinzip wie in Abschnitt \ref{sub:Analyse-absRel} beschrieben berechnet werden.
+			
+			
+			%\begin{figure}[h!]
+			%	\begin{center}
+			%	\includegraphics[scale=0.5]{ulUSA.pdf}
+			%	\caption{Tweets mit "'USA"' im Nutzer-Standort}
+			%	\label{img:ulus}
+			%	\end{center}
+			%\end{figure}
 
-			Mit Hilfe der implizit bestimmten geografischen Hierarchieebenen ist es aber möglich die absoluten und relativen Häufigkeiten für die anderen Hierarchieebenen zu bestimmen.
-			Basierend auf den Datensätzen der Georeferenz-Basis können diese Werte ermittelt werden.  
+		\subsection{Ermittlung der absoluten Häufigkeiten} 
 
-		\subsubsection{Ermittlung der absoluten Häufigkeiten} 
+			Da zu jedem Referenzwert die zugehörigen Verwaltungseinheiten und Länder bekannt sind können die absoluten Häufigkeiten direkt aus der Georeferenz-Basis berechnet werden.
+			Für einen Referenzwert A müssen lediglich die absoluten Häufigkeiten aufsummiert werden, bei denen der Wert der jeweiligen geografischen Hierarchieebene übereinstimmt.
 
-			Da zu jedem Referenzwert die zugehörigen Verwaltungseinheiten und Länder bekannt sind können die absoluten direkt aus der Georeferenz-Basis berechnet werden.
-			Für einen Referenzwert müssen lediglich die absoluten Häufigkeiten aufsummiert werden, bei denen der Wert der jeweiligen geografischen Hierarchieebenen übereinstimmen.
+			Dies wird an einem Beispiel erläutert.
+			In Abbildung \ref{img:ulIstanbulWalesZoom} sind in Grün Tweets aufgetragen in denen der Wert "'Wales"' im Nutzer-Standortfeld auftaucht.
+			Die Tweets häufen sich deutlich in der geografischen Region, welche Wales umfasst. \footnote{Wales wird als Verwaltungseinheit erster Ordnung behandelt. Genau genommen handelt es sich bei Wales um ein Land, allerdings ist die übergeordnete Verwaltungseinheit Großbritannien womit Wales in der Hierarchieebene als Verwaltungseinheit erster Ordnung geführt wird.} 
+			In Tabelle \ref{tab:walesCity} sind die ersten 4 Ergebnisse für die Abfrage des Wertes "'Wales"' an die Georeferenz-Basis dargestellt.
+			"'Wales"' taucht in insgesamt 78 Städten 346 mal in Nutzer-Standorten auf.
+			Es wird zusätzlich die Verwaltungseinheit erster Ordnung betrachtet.
+			Es fällt auf, dass die ersten vier Ergebnisse in Wales liegen.
 
 			\begin{table}[h]
 			\centering
-			\caption{"'Wales"'}
+			\caption{Ergebnis der Georeferenz-Basis für den Referenzwert "'Wales"' auf Städteebene}
 			\label{tab:walesCity}
-			\begin{tabular}{|l|l|l|}
+			\begin{tabular}{|l|l|l|l|}
 			\hline
-			Stadt      & abs. Häufigkeit & rel. Häufigkeit in \% \\ \hline \hline
-			Cardiff    & 44 			 & 12,7 \\ \hline
-			Newport    & 32 			 & 9,2  \\ \hline
-			Carmarthen & 24 			 & 6,9  \\ \hline
-			Swansea    & 18 			 & 5,2  \\ \hline
-			...    & ... & ...  \\ \hline
+			Stadt      & Adm1 & abs. Häufigkeit & rel. Häufigkeit in \% \\ \hline \hline
+			Cardiff    & Wales & 44 			& 12,7 \\ \hline
+			Newport    & Wales & 32 			& 9,2  \\ \hline
+			Carmarthen & Wales & 24 			& 6,9  \\ \hline
+			Swansea    & Wales & 18 			& 5,2  \\ \hline
+			...    & ... \\ \hline
 			\end{tabular}
 			\end{table}
 
-
-			Im Beispiel aus Tabelle \ref{tab:walesCity} müssen alle absoluten und relativen Häufigkeiten derjenigen Städte aufsummiert werden, die in derselben Verwaltungseinheit erster Ordnung liegen.
-			Betrachtet man die Verwaltungseinheiten zu allen Städten in denen "'Wales"' im Nutzer Standort vorkommt ergibt sich folgende Liste.
+			Betrachtet man nun die Verwaltungseinheiten erster Ordnung aller Ergebnisse ergibt sich folgende Liste:
 
 			\begin{enumerate}
 				\item Wales 35
@@ -1178,10 +1225,9 @@
 				\item unterschiedliche Verwaltungseinheiten 13
 			\end{enumerate}
 
-			Aus dieser Betrachtung alleine lässt sich noch nicht entscheiden ob der Referenzwert "'Wales"' einen geografischen Bezug zu einer Verwaltungseinheit hat.
-			Denn der Referenzwert kam sowohl in 30 Städten in England als auch in 30 Städten in Wales vor, was keinen signifikanten Unterschied darstellt. 
-			Summiert man allerdings die Vorkommen und relativen Häufigkeiten pro Stadt auf ergibt sich daraus Tabelle \ref{tab:WalesVerw1}.
-
+			Werden die absoluten Häufigkeiten derjenigen Datensätze aufsummiert, bei denen die Verwaltungseinheit erster Ordnung übereinstimmt ergibt sich Tabelle \ref{tab:WalesVerw1}.
+			Die Städte wurden dabei verworfen, es wird nun ausschließlich die Verwaltungseinheit erster Ordnung betrachtet.
+			
 			\begin{table}[h]
 			\centering
 			\caption{"'Wales"'}
@@ -1197,145 +1243,20 @@
 			\end{tabular}
 			\end{table}  
 
-			Die relative Häufigkeit von 86,1\% weißt nun deutlich darauf hin, dass der Referenzwert einen geografischen Bezug zu Wales hat.
-			Mit diesem Vorgehen, kann der geografische Bezug eines Referenzwertes auf jeder der geografischen Hierarchieebenen untersucht werden.
+			Der Wert für die relative Häufigkeit sagt nun aus, dass 86,1\% der Tweets in deren Nutzer-Standortfeld "'Wales"' auftritt in der geografischen Region Wales liegen.
+			Dies ist ein deutlicher Hinweis darauf, dass der Referenzwert einen geografischen Bezug zu Wales hat.
 
 			Analog können die Werte für die Verwaltungseinheit zweiter Ordnung und dem Land berechnet werden.
-			Dieses Vorgehen ermöglicht es einen geografischen Bezug eines Referenzwertes auf jeder der geografischen Hierarchieebenen zu prüfen.
 
+		\subsection{Zusammenfassung: Nutzung geografische Hierarchieebenen}
 
-			Soll nun statt einer Stadt eine Verwaltungseinheit oder das Land als Georeferenz bestimmt werden, kann mit diesen absoluten Häufigkeiten auf Stadtebene keine Aussage über den geografischen Bezug gemacht werden. 
-			
-			Am folgenden Beispiel soll dieser Sachverhalt erläutert werden.
-
-			In Abbildung \ref{img:ulIstanbulWalesZoom} sind in grün Tweets dargestellt, welche im Nutzer-Standort "'Wales"' enthalten.
-			Wales entspricht einer Verwaltungseinheit erster Ordnung und gehört zu Großbritannien.
-			Die Tweets sind in der gesamten geografischen Region, über die sich Wales erstreckt, verteilt.
-			Außerhalb von Wales tritt "'Wales"' im Nutzer-Standort sehr selten auf.
-			Die relativen Häufigkeiten auf Stadtebene werden in Tabelle \ref{tab:walesCity} dargestellt.
-			Diese bestätigen eine Verteilung über eine größere geografische Region.
-			Anhand der relativen Häufigkeiten kann aber nicht entschieden werden ob der Referenzwert global verteilt ist, oder in einer bestimmten geografischen Region, wie einem Land, auftritt. 
-			"'Wales"' taucht in insgesamt 78 Städten 346 mal in Nutzer-Standorten auf.
-
-			
-
-			Die relative Häufigkeit von 12,7\% deutete eher darauf hin, dass "'Wales"' keinen geografischen Bezug aufweist.
-			Auf Städteebene ist dies auch durchaus korrekt. 
-			Allerdings kann aus diesen Ergebnissen kein geografischer Bezug zu einer der anderen geografischen Hierarchieebenen abgeleitet werden.
-			Das Problem ist, dass Wales keinen geografischen Bezug zu einer Stadt aufweist, wohl aber zu einer Verwaltungseinheit erster Ordnung und daher zu einer geografischen Region. 
-
-			Um dieses Problem lösen zu können müssen zu einem Referenzwert die relativen Häufigkeiten für die anderen geografischen Hierarchieebenen berechnet werden.
-			Damit kann dann die Verteilung der Referenzwerte auf diese Hierarchieebenen betrachtet werden.
-
-		\subsection{Wahl der Schwellwerte zur Justierung der Genauigkeit und der Trefferquote}
-
-			Die Wahl der beiden Schwellwerte ist abhängig von den Anforderungen.
-			Dabei ist die gewünschte geografische Hierarchie der zurückgegeben Georeferenz ein Faktor.
-			Und die gewünschte Genauigkeit und Trefferquote.
-			
-			\paragraph{Gewünschte Hierarchieebene der Georeferenz}
-
-				Umso größer die betrachtete geografische Region ist, umso weniger Möglichkeiten zur Einteilung gibt es.
-				Auf Städteebene gibt es 23322 verschiedene geografische Regionen. 
-				Für jede Stadt mit mehr als 15000 Einwohnern existiert dabei eine Region.
-				Diese Städte verteilen sich auf 234 verschiedene Länder.
-				Dieselbe Menge an Referenzwerten, verteilt sich auf Länderebene also auf weniger geografische Regionen. 
-				Dadurch werden die Werte der relativen Häufigkeit und der absoluten Häufigkeit insgesamt größer.
-				Relativ zueinander werden allerdings nach wie vor Referenzwerte mit geografischem Bezug größer sein als Referenzwerte ohne geografischen Bezug.
-
-				Es müssen also für jeder geografsiche Hierarchieebene geeignete Schwellwerte $s_{rel}$ und $s_{abs}$ gefunden werden.
-
-			\paragraph{Genauigkeit und Trefferquote} 
-
-				Der zweite Faktor ist die gewünschte Trefferquote und die Genauigkeit.
-
-				Umso niedriger der Schwellwert $s_{rel}$ ist, umso größer wird die Wahrscheinlichkeit Referenzwerte zu wählen die keinen geografischen Bezug haben.
-				Daraus resultieren mehr fehlerhafte Zuordnungen einer Georeferenz.
-				Wodurch die Genauigkeit schlechter wird.
-				Dadurch können allerdings mehr Georeferenzen zugeordnet werden, wordurch die Trefferquote verbessert wird.
-				Umso höher der Schwellwert $s_{rel}$ gewählt wird umso mehr Referenzwerte mit geografischem Bezug werden verworfen.
-				Die Wahrscheinlichkeit, dass die gewählten Referenzwerte tatsächlich geografischen Bezug haben ist allerdings höher.
-				Dadurch können weniger Georeferenzen zugeordnet werden.
-				Somit sinkt die Trefferquote.
-				Allerdings sind die zugewiesenen Georeferenzen sicherer womit die Genauigkeit steigt.
-
-				Der Schwellwert $s_{abs}$ vermeidet, dass Referenzwerte gewählt werden die eine hohe realtive Häufigkeit aufweisen aber aufgrund ihrer geringen Vorkommen nicht relevant sind.
-				Die Auswirkungen der Wahl des Schwellwertes $s_{abs}$ verhalten sich Analog zum Schwellwert $s_{rel}$.
-
-			\paragraph{Fazit}
-
-				Die Wahl der Schwellwerte hängt zum einen von der Hierarchieebene und zum anderen von den Anforderungen an die Genauigkeit und die Trefferquote ab.
-				In Bezug auf die geografischen Hierarchieebenen sind lediglich separate Schwellwerte für jede geografischen Hierarchieebenen zu bestimmen, da die relativen und absoluten Häufigkeiten sich insgesamt verändern.
-				Bezüglich der Genauigkeit und der Trefferquote ist ein Kompromiss zwischen den beiden Werten einzugehen. 
-				Die Verbesserung der Trefferquote geht mit einer Verschlechterung der Genauigkeit einher und umgekehrt.
-				Es kann also entweder ein Kompromiss gefunden werden der ein Optimum für beide Werte darstellt. 
-				Oder einer der Werte wird optimiert.  
-
-	
-				\paragraph{Vergleich der relativen Häufigkeiten zu Uni- Bi- und Trigrammen}
-
-					Jedes Element eines Bi- oder Trigrammes kann potenziell einen geografischen Bezug haben. 
-					Umso mehr Elemente ein NGramm beinhaltet umso spezieller kann die Beschreibung des geografischen Objekts sein.
-					Deshalb können NGramme mit einem höheren Grad ein Objekt genauer beschreiben als NGramme mit einem niedrigeren Grad.
-
-					Allerdings können NGramme mit einem höheren Grad auch eine schlechtere Beschreibung darstellen. 
-					Beispielsweise wenn das zusätzliche Element keinen geografischen Bezug hat.
-
-					Bei NGrammen mit einem Grad größer zwei können also zwei Fälle unterschieden werden.
-
-					\begin{enumerate}
-						\item Die Kombination aus den Elementen des NGrammes beschreibt einen Ort genauer
-						\item Die Kombination aus den Elementen des NGrammes beschreibt einen Ort nicht genauer
-					\end{enumerate}
-
-					\subparagraph{Fall1} 
-
-						Ein Beispiel für den ersten Fall ist der Nutzer-Standort "'york"' mit der Nutzer-Zeitzone "'eastern+time+us+canada"'. 
-						Durch die Vorverarbeitung werden folgende potenzielle geografische Indikatoren erzeugt.
-						\begin{enumerate}		
-							\item york
-							\item york \textit{eastern+time+us+canada}
-						\end{enumerate}		
-
-						Eine Stadt Namens York existiert sowohl in Grossbritannien als auch in den USA.
-						Fragt man nun die beiden Referenzwerte in der Georeferenz-Basis ab erhält man folgende Werte:
-
-							\begin{table}[h]
-								\centering
-									\caption{"'york"'}
-									\label{tab:york}
-									\begin{tabular}{|l|l|l|l|}
-									\hline
-									Referenzwert 				& Stadt  	& abs. Häufigkeit & rel. Häufigkeit in \% \\ \hline \hline
-									York          				& York (GB) & 97              & 48,3       \\ \hline
-									york eastern+time+us+canada & York (US) & 12              & 63,2        \\ \hline
-									\end{tabular}
-							\end{table}
-
-							Die realtive Häufigkeit für york in Kombination mit der Zeitzone ist höher. 
-							Die Zeitzone gibt zusätzliche Auskunft darüber welches York gemeint ist. 
-							Die Kombination ist spezieller, kommt deshalb seltener vor und potenziell eher dort wo sie zutrifft. 
-							In diesem Fall in York in den USA. 
-
-							In den meisten Fällen beschreibt einer der beiden Indikatoren eine größere geografische Region wie beispielsweise einen Bundesstaat der USA.
-							Wird ein weiterer Wert, beispielsweise ein Städtename hinzugenommen, wird die Angabe des Ortes genauer. 
-							Die Wahrscheinlichkeit, dass diese Kombination ausserhalb des Ortes auftritt wird geringer. 
-
-					\subparagraph{Fall 2}
-
-						Hier können wiederum 2 Fälle unterschieden werden.
-
-						\begin{enumerate}
-							\item Beide Elemente beziehen sich auf unterschiedliche geografische Objekte
-							\item Nur ein Element hat geografischen Bezug das andere nicht 
-						\end{enumerate}
-
-						Wenn zu einem Referenzwert mit geografischem Bezug ein Element hinzugefügt wird, welches keinen geografischen Bezug hat, beschreibt dies den Ort nicht genauer.
-						Es ist zu erwarten, dass die Kombination der Elemente sehr selten vorkommt oder sehr verteilt ist. 
-						Ist die Kombination verteilter, so ist der relative Wert geringer als der des einzelnen Referenzwertes mit geografischem Bezug.
-						Ist die Kombination seltener kann der Referenzwert bereits durch den Schwellwert $s_{abs}$ aussortiert werden.		
-
-						Wenn zu einem Referenzwert mit geografischem Bezug ein Element hinzugefügt wird, welches zwar geografischen Bezug hat, aber dieses sich auf ein anderes geografisches Objekt bezieht ist dasselbe Verhalten zu erwarten.
+			Durch die Einbeziehung der geografischen Hierarchieebenen wird zum einen ermöglicht, die gewünschte Hierarchieebene der zurückgegebene Georeferenz zu bestimmen.
+			Zum anderen kann das Wissen über die gewünschte geografische Hierarchieebene genutzt werden um mehr Informationen zu erhalten.
+			Die Referenzwerte werden auf weniger mögliche Regionen verteilt womit die Anzahl der Referenzwerte in den einzelnen Regionen zunimmt.
+			Oder anders ausgedrückt: Größere geografische Regionen vereinen mehr Tweets auf sich. 
+			Es wird dabei nicht durch a priori Wissen unterschieden ob ein Referenzwert eine Stadt oder ein Land bezeichnet. 
+			Durch die Hierarchieebenen und die relative Häufigkeit ist das Verfahren in der Lage die Zuordnung in jeder geografischen Hierarchieebene selbständig durchzuführen.
+			In der jeweils niedrigeren Hierarchieebene werden Referenzwerte, die eine Region einer höheren Hierarchieebene beschreiben, aufgrund ihrer geringen relativen Häufigkeit nicht genutzt.  
 
 	\newpage
 	

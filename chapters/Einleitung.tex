@@ -8,7 +8,7 @@
 		Die Nutzer können 140 Zeichen lange Nachrichten, sogenannte "'Tweets"', erstellen und veröffentlichen können.
 		Längst ist Twitter zu einem Massenphänomen geworden und übernimmt die Rolle eines Nachrichtenmediums \cite{Petrovic2013}.
 		Die Twitter-Nutzer verfassen täglich mehr als 500 Millionen Tweets \cite{twitterinc2013}. 
-		Durch die Möglichkeiten die Twitter bietet kann theoretisch jeder Mensch Nachrichten und Informationen über das Twitter-Netzwerk verbreiten und weitergeben. 
+		Durch die Möglichkeiten die Twitter bietet, kann theoretisch jeder Mensch Nachrichten und Informationen über das Twitter-Netzwerk verbreiten und weitergeben. 
 		In den Tweets wird unter anderem über Großereignisse, persönliche Erfahrungen oder Erlebnisse berichtet. 
 		Die Tweets sind zum Größtenteil öffentlich zugänglich.
 		Dieses enorme Potenzial an Informationen sollte genutzt und verarbeitet werden.
@@ -26,7 +26,7 @@
 		Es wird gezeigt, dass die globale Kommunikation innerhalb des Twitter-Netzwerks nicht nur von der geografischen Distanz abhängig ist, sondern auch von sozialen, ökonomischen und kulturellen Attributen eines Landes.   
 
 		Selbst die Epidemieforschung kann von den Daten des Twitter-Netzwerks profitieren. 
-		So zeigten Szomsor et al. in \cite{Szomszor2011}, dass die Vorhersage der Schweinegrippe im Jahr 2009 durch die Analyse von Tweets eine Woche früher möglich gewesen wäre als dies mit konventionellen Frühwarnsystemen der Fall war. 
+		So zeigten Szomsor et al. in \cite{Szomszor2011}, dass die Vorhersage der Schweinegrippe im Jahr 2009 durch die Analyse von Tweets eine Woche früher möglich gewesen wäre, als dies mit konventionellen Frühwarnsystemen der Fall war. 
 
  		Diese wichtigen Erkenntnisse und Vorhersagen konnten nur aufgrund von Tweets mit geografischen Koordinaten ermittelt werden.
  		Allerdings weisen nur ca. 1\% der Twitter-Kurznachrichten geografische Koordinaten auf \cite{Schulz2013}.
@@ -40,10 +40,10 @@
 		Unter anderem kann im Nutzerprofil ein Standort angegeben werden. 
 		Bei der Eingabe des Nutzer-Standortes wird vom Twitter-Nutzer abgefragt, wo dieser sich befindet. 
 		Die Intention der Abfrage zielt also darauf ab, dass der Nutzer einen Wert eingibt, der auf ein geografisches Objekt verweist. 
-		Dieses Feld eignet sich deshalb gut um daraus eine geografische Position abzuleiten.
-		Betrachtet man den Nutzer-Standort jedoch genauer fällt auf, dass dieser nicht ohne weiteres zur Bestimmung einer geografischen Position verwendet werden kann.
+		Dieses Feld eignet sich deshalb gut, um daraus eine geografische Position abzuleiten.
+		Betrachtet man den Nutzer-Standort jedoch genauer, fällt auf, dass dieser nicht ohne weiteres zur Bestimmung einer geografischen Position verwendet werden kann.
 		
-		Naheliegend ist, dass der Nutzer im Nutzer-Standort einen Ortsnamen (Toponym) verwendet um seinen Standort anzugeben.
+		Naheliegend ist, dass der Nutzer im Nutzer-Standort einen Ortsnamen (Toponyme) verwendet, um seinen Standort anzugeben.
 		Der Nutzer-Standort wird jedoch über ein Freitext-Feld eingegeben und direkt abgespeichert.
 		Durch die freie Eingabe werden unter anderem Abkürzungen, größere geografische Regionen oder spezielle Bei- und Spitznamen im Nutzer-Standort eingegeben. 
 		Wenn der Nutzer-Standort ein Toponym darstellt, können zudem Probleme wie Mehr- und Doppeldeutigkeiten auftreten.
@@ -59,7 +59,7 @@
 	    Ca. 66\% aller analysierten Nutzer-Standorte enthalten demnach einen Wert mit geografischem Bezug.
 	    Es könnten somit zusätzlich 66\% der Twitter-Nutzer eine geografische Position zugeordnet. 
 
-	    Der Nutzer-Standort bietet somit ein großes Potenzial um weiteren Tweets eine geografische Position zuzuordnen.
+	    Der Nutzer-Standort bietet somit ein großes Potenzial, um weiteren Tweets eine geografische Position zuzuordnen.
 	    Um eine Geolokalisierung von Tweets mit Hilfe des Nutzer-Standortes realisieren zu können, müssen die oben genannten Probleme bezüglich der angegebenen Werte im Nutzer-Standort gelöst werden.
 	    Zusätzlich muss verifiziert werden, dass der Nutzer-Standort den Ort des Absendens eines Tweets hinreichend genau beschreibt.
 
@@ -74,14 +74,14 @@
 	  	\begin{itemize}
 	  		\item Wie können die oben genannten Probleme, der eingegebenen Werte im Nutzer-Standort, weitestgehend eliminiert werden?
 	  		\item Wie genau kann aus dem Nutzer-Standort die Position, von der ein Tweet abgesendet wurde, bestimmt werden? 
-			\item Ist es möglich die Ergebnisse bezüglich Genauigkeit und Trefferquote zu justieren?
+			\item Ist es möglich, die Ergebnisse bezüglich der Qulität der Ergebnisse zu justieren?
 			\item Ausnutzen einer geografischen Hierarchie zur besseren Bestimmung des geografischen Standortes? 
 	  	\end{itemize}
 
 	\section{Zielsetzung} 
 
 		Das übergeordnete Ziel dieser Arbeit besteht darin, Tweets mit Hilfe des angegebenen Nutzer-Standortes einer geografischen Position zuzuordnen.
-		Dadurch soll die Position von der ein Tweet versendet wurde möglichst genau bestimmt werden.
+		Dadurch soll die Position, von der ein Tweet versendet wurde, möglichst genau bestimmt werden.
 
 		Es soll dazu ein Verfahren zur Geolokalisierung von Tweets entwickelt werden, welches die Probleme der angegebenen Werte im Nutzer-Standort so weit wie möglich eliminiert.
 		Es sollen Vorgaben bezüglich der Güte und der Trefferquote der Ergebnisse gemacht werden können.
@@ -97,26 +97,15 @@
 	
 	\section{Gliederung der Arbeit}
 
-			In Kapitel 2 
-			In diesem Abschnitt sollen die Grundlagen für die entwickelte Methode vermittelt werden. 
-			Es wird auf den Mikroblogging-Dienst Twitter eingegangen und es werden grundsätzliche Methoden und Verfahren vorgestellt welche zum Verständnis der entwickelten Methode benötigt werden. 
-			Ebenso werden häufig genutzte geografische Grundbegriffe vermittelt.
-
-		\subsection*{Abschnitt 3: Stand der Technik}
-			Es werden aktuelle Ansätze betrachtet, eingeordnet und in Bezug auf die angegebenen Anforderungen untersucht.
-			Es werden sowohl die Verfahren zur '"Analyse'" und Zuordnung als auch die Verfahren zum abbilden der geografischen Einheiten untersucht und eingeordnet. 
-
-		\subsection*{Abschnitt 4: Lösungsansatz}
-			In diesem Abschnitt wird, unter Berücksichtigung der gegebenen Anforderungen, ein Verfahren zur Lösung der Fragestellungen entwickelt. 
+			In Kapitel 2 sollen die Grundlagen für die entwickelte Methode vermittelt werden. 
+			Es wird auf den Mikroblogging-Dienst Twitter eingegangen und es werden grundsätzliche Methoden und Verfahren vorgestellt welche zum Verständnis des entwickelten Verfahrens benötigt werden. 
+			Ebenso werden häufig genutzte geografische Grundbegriffe eingeführt.
+			In Kapitel 3 werden verwandte Arbeiten betrachtet, eingeordnet und in Bezug auf die angegebenen Anforderungen untersucht.. 
+			Kapitel 4  stellt ein Verfahren zur Lösung der Fragestellungen vor. 
 			Um einen Überblick zu gewährleisten, wird das Verfahren zunächst allgemein betrachtet, danach wird jeder Verfahrensschritt dargelegt.
-			Es wird gezeigt wie aus Tweet-Daten der Standort eines Twitter-Nutzers bestimmen werden kann.
-			Dabei werden Methoden der Sprachverarbeitung, Statistik und geografische Hierarchien eingesetzt. 
-
-		\subsection*{Abschnitt 5: Referenzimplementierung der entwickelten Methode}
-			Es werden ausgewählte Auszüge, Probleme und Fallstricke der Referenzimplementierung erläutert und erklärt. 
-
-		\subsection*{Abschnitt 6: Leistungsbewertung der entwickelten Methode}
-			In diesem Abschnitt werden die Ergebnisse der Referenzimplementierung bewertet und, soweit sinnvoll, gegenüber bestehenden Ansätze einer kritischen Betrachtung unterzogen. 
-
-		\subsection*{Abschnitt 7: Zusammenfassung und Ausblick}
-			Zusammenfassung der Arbeit und kritischer Rückblick. Im Ausblick werden mögliche Verbesserungen und Ideen zur Weiterentwicklung gegeben.  
+			Das Verfahren läuft in zwei Schritten, einer Lernphase und der eigentlichen Geolokalisierung. 
+			Im Kapitel 4, Evaluierung, werden die Ergebnisse der Referenzimplementierung bewertet.
+			Es werden die besten erreichten Ergebnisse dargestellt und interpretiert. 
+			Des weiteren werden verschiedene Einstellungen für Schwellwerte zur Justierung des Verfahrens bezüglich der Qualität getestete.
+			In Kapitel 5 wird das Verfahren und die Ergebnisse zusammengefasst. 
+			Im Ausblick werden mögliche Verbesserungen und Ideen zur Weiterentwicklung gegeben.  
