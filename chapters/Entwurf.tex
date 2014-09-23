@@ -274,6 +274,7 @@
 			Dies kann bedingt durch die Landessprache oder Dialekte der Fall sein.
 
 	\section{Verfahren zum Einlernen der Georeferenz-Basis} \label{sec:VefrahrenZumEinlernen} 	
+
 			
 			In Abbildung \ref{img:einlernenAblauf} ist der Gesamtablauf des Einlernens dargestellt. 
 			Die Werte im Nutzer-Standortfeld werden zuerst einer Vorverarbeitung unterzogen. 
@@ -282,6 +283,15 @@
 			Die Zerlegung extrahiert dabei zusätzliche Informationen aus dem Nutzer-Standort.
 			Die Nutzer-Zeitzone wird hinzugezogen, um bei der Geolokalisierung etwaige Doppel- und Mehrdeutigkeiten von Toponymen erkennen zu können.
 			Das Ergebnis dieser Schritte ist eine Menge an Referenzwerten.
+
+			\begin{figure}[!htb]
+				\begin{center}
+					\includegraphics[scale=0.5]{einlernenAblauf.png}
+					\caption{Ablaufplan einlernen}
+					\label{img:einlernenAblauf}
+				\end{center}
+			\end{figure}
+			\clearpage
 
 			Parallel dazu werden die geografischen Koordinaten des Tweets auf eine diskrete geografische Position aufgelöst.
 			Dies erfolgt durch die Zuordnung der geografischen Koordinaten zu der nächstgelegenen Stadt.
@@ -297,10 +307,10 @@
 
 			In Tabelle \ref{tab:strukturMitHierarchie1} ist die Struktur der Georeferenz-Basis dargestellt.
 
-			\begin{table}[htpb]
+			\begin{table}[htb]
 				\caption{Struktur der Georeferenz-Basis mit geografischer Hierarchie} 
 				\centering
-				\small
+				\tiny
 				\begin{tabular}{|c|c|c|c|c|c|}
 					\hline
 					Referenzwert & Stadt & Adm2 & Adm1 & Land & abs. Häufigkeit \\
@@ -319,14 +329,7 @@
 				\label{tab:strukturMitHierarchie1} 
 			\end{table}  
 
-			\begin{figure}[!htb]
-				\begin{center}
-					\includegraphics[width=\linewidth]{einlernenAblauf.pdf}
-					\caption{Ablaufplan einlernen}
-					\label{img:einlernenAblauf}
-				\end{center}
-			\end{figure}
-			\clearpage
+			
 
 		\subsection{Schritte zur Vorverarbeitung der Werte des Nutzer-Standortfeldes} \label{sub:Vorv}
 
@@ -848,7 +851,7 @@
 
 			\begin{figure}[H]
 				\begin{center}
-				\includegraphics[scale=0.5]{bspEinlernen.pdf}
+				\includegraphics[scale=0.4]{bspEinlernen.png}
 				\caption{Beispiel: Einlernen der Georeferenz-Basis}
 				\label{img:bspEinlernen}
 				\end{center}
@@ -874,7 +877,7 @@
 
 			\begin{figure} 
 			\begin{center}
-						\includegraphics[scale=0.5]{geolokalisierungAllg.pdf}
+						\includegraphics[scale=0.5]{geolokalisierungAllg.png}
 						\caption{Ablauf der Geolokalisierung mit Beispiel}
 						\label{img:ablaufGeolok}
 					\end{center}
@@ -971,7 +974,7 @@
 	
 						\centering
 						\makebox[\textwidth]{
-						\includegraphics[scale=0.5]{absHaufBsp.pdf} 
+						\includegraphics[scale=0.4]{absHaufBsp.png} 
 						} 
 						\caption{Ablauf: Analyse basierend auf absoluten Häufigkeiten}
 						\label{img:absHaufBsp}
@@ -1137,9 +1140,9 @@
 	
 						\centering
 						\makebox[\textwidth]{
-						\includegraphics[scale=0.5]{relHaufBsp.pdf} 
+						\includegraphics[scale=0.4]{relHaufBsp.png} 
 						} 
-						\caption{Ablauf: Analyse basierend auf absoluten Häufigkeiten}
+						\caption{Analyse basierend auf relativen Häufigkeiten}
 						\label{img:relHaufBsp}
 					
 				\end{figure}
