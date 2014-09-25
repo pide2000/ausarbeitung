@@ -1,16 +1,19 @@
 % coordinates for the background shape on the titlepage
-\newcommand{\diameter}{20}
-%\newcommand{\xone}{-40}
-\newcommand{\xone}{-20}
-\newcommand{\xtwo}{480}
-\newcommand{\yone}{50}
-\newcommand{\ytwo}{-710}
+\newcommand{\diameter}{15} % Runde Ecken
+\newcommand{\xone}{-60} % abstand von links, größer -> weiter nach rechts
+%\newcommand{\xone}{-20}
+\newcommand{\xtwo}{460} % abstand von rechts, kleiner -> weiter nach links
+\newcommand{\yone}{70} % abstand von oben, kleiner -> weiter nach unten
+\newcommand{\ytwo}{-710} % abstand von untern, größer -> weiter nach unten
+
+\renewcommand{\titlefont}{\sffamily}
+\sffamily
 
 \begin{titlepage}
 
 % [ Rahmen ]
 \begin{tikzpicture}[overlay]
-\draw[color=gray]  
+\draw[thick,color=black]  
  		 (\xone pt, \yone pt)
   -- (\xtwo pt, \yone pt)
  arc (90:0:\diameter pt) 
@@ -22,66 +25,43 @@
 
 % [ Logo ]
 %\begin{textblock}{10}[0,0](1.7,1.125)
-\begin{textblock}{10}[0,0](2.0,1.125)
+\begin{textblock}{10}[0,0](1.7,0.9)
 	\includegraphics[width=.3\textwidth]{Bilder/KITLogo_RGB.pdf}
 \end{textblock}
 
-  
-  \begin{center}
-    \begin{tabular}{r|l}
-%	\includegraphics[width=.3\textwidth]{KITLogo_RGB.pdf}
-%      \includegraphics[width=1.5cm]{BILDER/iprlogo} 
-& 
-      \begin{minipage}{8cm} 
-        \begin{large} \myinstitute \\
-          \\
-          \myprofessor \\
-          \\
-          \myfaculty \\
-        \end{large}
-      \end{minipage} \\
-      % \hline
-%      \multicolumn{2}{l}{
-%       \begin{minipage}{7.5cm}
-%          \vspace{.3cm}
-%          \makebox{ \large 
-%            Universit\"at Karlsruhe,
-%            Fakult\"at f\"ur Informatik} \\
-%        \end{minipage}
-%      } \\
-      \begin{minipage}{5cm}
-        \begin{flushright}
-          \vspace{4cm}
-          \myseminar \\
-          \myseminardate
-        \end{flushright}
-      \end{minipage}
-      &\\
-      & 
-      \begin{minipage}{8cm}
-        \vspace{-0.7cm}
-        
-        \begin{center}
-          \begin{minipage}{8cm}
-            \begin{flushleft}
-              
-                \mytitle\\[1cm]
-                \myname \\[.5cm]
-                
-              
-              Mat.Nr.: \mymanr
-              \vspace{3cm}
-            \end{flushleft}
-          \end{minipage}
-        \end{center}
-        \vspace{4cm}
-      \end{minipage}  \\
-      & Referent:  \\
-       & Betreuer: \myadvisor
-    \end{tabular}
-  \end{center}
+\begin{center}
 
-\begin{textblock}{10}[0,0](1.75,15.365)
+%\hbox{}
+%\vskip 4.0cm
+\vfill
+{\huge\bfseries\titlefont \textbf{Hier steht der Titel der\\
+                Diplom- oder Studienarbeit} \par}
+
+\vskip 2.0cm
+
+{\Large Diplomarbeit}\\
+{\Large von}\\
+
+\vskip 1.0cm
+
+{\LARGE{\textbf{Vorname~Nachname}}}\\
+
+\vskip 1.0cm
+
+{\large an der Fakultät für Informatik, Institut für Telematik}\\
+{\large Forschungsbereich Dezentrale Systeme und Netzdienste}\\
+
+\vskip 4.0cm
+
+\begin{tabular}{l<{\hspace{15pt}}l}
+Erstgutachter:      & Prof.~Dr.~Hannes~Hartenstein \\
+Zweitgutachter:     & ?? \\
+Betreuer:           & Dipl.-Inform.~Vorname~Nachname \\
+Bearbeitungszeit:   & 01.~Januar~2010 -- 30.~Juni~2010 \\
+\end{tabular}
+\end{center}
+
+\begin{textblock}{10}[0,0](1.75,15.4)
 \tiny{ 
 KIT -- Universit\"at des Landes Baden-W\"urttemberg und nationales Forschungszentrum der Helmholz-Gesellschaft
 }
@@ -95,6 +75,7 @@ KIT -- Universit\"at des Landes Baden-W\"urttemberg und nationales Forschungszen
 
   
 \end{titlepage}
+\rmfamily
 \clearpage
 
 

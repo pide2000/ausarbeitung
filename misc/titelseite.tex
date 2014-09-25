@@ -1,0 +1,92 @@
+%% Vorlage by Patrick Armbruster, 26.11.2009
+%% patrick.armbruster@xplorer.net
+%% (KIT titlepage layout with vector graphics)
+%% 
+
+% Use font defined by \titlepagefont for whole titlepage
+\titlepagefont
+
+%----------------------------------------
+% set wallpaper of this page
+%   Wähle eines der folgenden Rahmenformate, je nachdem ob du auf der linken Seite
+%   einen extra Rand von 11mm benötigst oder nicht (je nach Bindung ev. schöner).
+\ThisCenterWallPaper{1.0}{logos/kit-titlepage-border} \def\extraBorderLeft{0mm}
+%\ThisCenterWallPaper{1.0}{logos/kit-titlepage-border-ext} \def\extraBorderLeft{11mm}
+
+\setlength{\wpYoffset}{\hoffset} % correct wrong wallpaper offset
+%----------------------------------------
+
+%----------------------------------------
+% format head
+\titlehead{%
+	\hspace{\extraBorderLeft}\hspace{-10mm}\large\resizebox{!}{18mm}{%
+% Wähle eines der folgenden KIT Logos:
+%		\includegraphics*{logos/kit-logo-de-green}
+		\includegraphics*{logos/kit-logo-en-green}
+%		\includegraphics*{logos/kit-logo-de-sw}
+%		\includegraphics*{logos/kit-logo-en-sw}
+	}
+}
+%----------------------------------------
+
+%----------------------------------------
+% format foot
+\titlefoot{
+	\hbox{
+		\hspace{\extraBorderLeft}\hspace{-10mm}
+		\tiny{KIT -- Universität des Landes Baden-Württemberg und nationales Forschungszentrum in der Helmholtz-Gemeinschaft}
+		\hspace{8mm}\Large\textbf{www.kit.edu}
+	}
+}
+%----------------------------------------
+
+% start titlepage
+\begin{titlepage}
+\begin{adjustwidth}{\extraBorderLeft}{}
+\begin{center}
+
+\hbox{}
+%\vskip 0.5cm
+\vfill
+{\huge\bfseries\titlefont Hier steht der Titel der\\
+                Diplom- oder Studienarbeit \par}
+
+\vskip 2.0cm
+
+{\Large Diplomarbeit}\\
+{\Large von}\\
+
+\vskip 1.0cm
+
+{\LARGE{\textbf{Vorname~Nachname}}}\\
+
+\vskip 1.0cm
+
+{\large an der Fakultät für Informatik, Institut für Telematik}\\
+{\large Forschungsbereich Dezentrale Systeme und Netzdienste}\\
+
+\vskip 4.0cm
+
+\begin{tabular}{l<{\hspace{15pt}}l}
+Erstgutachter:      & Prof.~Dr.~Hannes~Hartenstein \\
+Zweitgutachter:     & ?? \\
+Betreuer:           & Dipl.-Inform.~Vorname~Nachname \\
+Bearbeitungszeit:   & 01.~Januar~2010 -- 30.~Juni~2010 \\
+\end{tabular}
+
+
+%----------------------------------------
+% !! In der FINALEN Version die folgenden Zeilen auskommentieren !!
+\vskip 1.5cm
+{\Large\bfseries\textcolor{red}{--- Entwurf vom \today \ ---} \par}
+%----------------------------------------
+
+
+\end{center}
+\vfill
+\end{adjustwidth}
+\end{titlepage}
+
+
+% for the following pages, reset font to default
+\defaultfont

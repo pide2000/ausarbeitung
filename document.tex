@@ -32,7 +32,6 @@
 \usepackage{amsmath}
 \usepackage[colorinlistoftodos, textwidth=2cm, shadow, textsize = tiny]{todonotes}
 
-
 %begin rotate
 
 \usepackage{booktabs}% http://ctan.org/pkg/booktabs
@@ -86,6 +85,9 @@ im Twitter-Netzwerk}
 \newcommand{\myseminar}{Diplomarbeit}
 \newcommand{\myseminardate}{2014}
 
+
+\setcounter{tocdepth}{1}
+
 %==============================================================================
 
 % Macros
@@ -95,31 +97,49 @@ im Twitter-Netzwerk}
 
 %==============================================================================
 
+
+
+
+%========== textsize
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\fancyhf{} % clear all header and footer fields
+\fancyhead[LE,RO]{{\headfont\thepage}} % left/right header for even/odd pages
+\fancyhead[LO]{\headfont\nouppercase{\rightmark}} % header for left side (odd)
+\fancyhead[RE]{\headfont\nouppercase{\leftmark}} % right header for even pages
+\renewcommand{\headrulewidth}{0.5pt} % head rule
+\renewcommand{\footrulewidth}{0pt} % no rule
+% plainstyle
+\fancypagestyle{plain}{%
+\fancyhf{} % clear all header and footer fields
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+%\cfoot{\headfont\thepage}
+}
+
+%===========
+
+
 \begin{document}
-\setstretch{1}
+\renewcommand{\bibname} {Literatur} 
+%\setstretch{1}
 \input{misc/Titelseiten} 
 
 \setstretch{1,0}
 \input{misc/Inhaltsverzeichnis}
 
 \input{chapters/Einleitung}
+%\input{chapters/Grundlagen}
+%\input{chapters/StandDerTechnik}
+%\input{chapters/Entwurf}
+%\input{chapters/Leistungsbewertung}
+%\input{chapters/Zusammenfassung}
 
-\input{chapters/Grundlagen}
-
-\input{chapters/StandDerTechnik}
-
-\input{chapters/Entwurf}
-
-%\input{chapters/Implementierung}
-
-\input{chapters/Leistungsbewertung}
-
-\input{chapters/Zusammenfassung}
-
-%\input{chapters/IdeenUndNotizen.tex}
 	
 \nocite{*}								% Alle Refenezen werden aufgelistet
-\bibliographystyle{alpha} 				% Layout Stil der Bibliographie
+\bibliographystyle{plain} 				% Layout Stil der Bibliographie
  \bibliography{bibtex/dipl}                     % Literatur Datei einbinden
 
  \listoffigures %Liste der Abbildungen
